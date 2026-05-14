@@ -1,0 +1,186 @@
+{"instruction":"Open a connection handle to localhost on port 5001","input":"","output":"h:hopen `::5001","source":"qformortals"}
+{"instruction":"Open a connection to a remote server using IP address and port","input":"","output":"h:hopen ``:10.43.23.198:5010","source":"qformortals"}
+{"instruction":"Open a connection to localhost using Unix domain socket on port 5010","input":"","output":"h:hopen ``:unix://5010","source":"qformortals"}
+{"instruction":"Send a synchronous message to a remote q process and get the result","input":"h:hopen `::5001","output":"h\"2+2\"","source":"qformortals"}
+{"instruction":"Send an asynchronous message to a remote q process without waiting for result","input":"h:hopen `::5001","output":"neg[h]\"a:10\"","source":"qformortals"}
+{"instruction":"Execute a remote function by name with arguments","input":"h:hopen `::5001","output":"h (`g; 6; 7)","source":"qformortals"}
+{"instruction":"Send a one-shot synchronous request without maintaining connection","input":"","output":"``:mydb.us.com:5010:elmo:sesame \"1+1\"","source":"kx_docs"}
+{"instruction":"Close a connection handle","input":"h:hopen `::5001","output":"hclose h","source":"kx_docs"}
+{"instruction":"Flush buffered async messages before closing a connection","input":"h:hopen `::5001","output":"neg[h][];hclose h","source":"kx_docs"}
+{"instruction":"Open a connection with timeout of 10 seconds","input":"","output":"h:hopen(``:mydb.us.com:5010:elmo:sesame;10000)","source":"kx_docs"}
+{"instruction":"Send function with arguments for remote execution","input":"h:hopen `::5001","output":"h ({x*y}; 6; 7)","source":"qformortals"}
+{"instruction":"Serialize a q entity to a binary file","input":"","output":"`:/data/a set 42","source":"qformortals"}
+{"instruction":"Serialize a list to a binary file","input":"","output":"`:/data/L set 10 20 30","source":"qformortals"}
+{"instruction":"Deserialize a q entity from a binary file using get","input":"","output":"get `:/data/a","source":"qformortals"}
+{"instruction":"Deserialize a q entity from a binary file using value","input":"","output":"value `:/data/t","source":"qformortals"}
+{"instruction":"Save a table to a binary file","input":"t:([] c1:`a`b`c; c2:10 20 30; c3:1.1 2.2 3.3)","output":"save `:/data/t","source":"qformortals"}
+{"instruction":"Load a serialized table from file into workspace","input":"","output":"load `:/data/t","source":"qformortals"}
+{"instruction":"Write raw binary data to a file","input":"","output":"`:/data/answer.bin 1: 0x06072a","source":"qformortals"}
+{"instruction":"Read a file as raw binary data","input":"","output":"read1 `:/data/answer.bin","source":"qformortals"}
+{"instruction":"Save table as comma-separated values file","input":"t:([] c1:`a`b`c; c2:10 20 30)","output":"save `:/data/t.csv","source":"qformortals"}
+{"instruction":"Save table as tab-delimited text file","input":"t:([] c1:`a`b`c; c2:10 20 30)","output":"save `:/data/t.txt","source":"qformortals"}
+{"instruction":"Splay a table to a directory","input":"","output":"`:/data/tsplay/ set ([] c1:10 20 30; c2:1.1 2.2 3.3)","source":"qformortals"}
+{"instruction":"Read the column order from a splayed table's .d file","input":"","output":"get hsym `$\"/data/tsplay/.d\"","source":"qformortals"}
+{"instruction":"Enumerate symbols in a table before splaying","input":"","output":"`:/db/tsplay/ set .Q.en[`:/db; ([] c1:`a`b`c; c2:10 20 30)]","source":"qformortals"}
+{"instruction":"Get the count of bytes in a file","input":"","output":"hcount `:/data/solong.txt","source":"qformortals"}
+{"instruction":"Delete a file from the filesystem","input":"","output":"hdel `:/data/solong.txt","source":"qformortals"}
+{"instruction":"Convert a string path to a symbolic file handle","input":"","output":"hsym `$\"/data/file name.csv\"","source":"qformortals"}
+{"instruction":"Open a file handle for binary writes","input":"","output":"h:hopen `:/data/raw","source":"qformortals"}
+{"instruction":"Append data to an open file handle","input":"h:hopen `:/data/L","output":"h 42","source":"qformortals"}
+{"instruction":"Read a text file into memory as list of strings","input":"","output":"read0 `:/data/solong.txt","source":"qformortals"}
+{"instruction":"Write strings to a text file","input":"","output":"`:/data/solong.txt 0: (\"Life\"; \"The Universe\"; \"And Everything\")","source":"qformortals"}
+{"instruction":"Open a text file handle for appending","input":"","output":"h:hopen `:/data/new.txt","source":"qformortals"}
+{"instruction":"Append strings to an open text file handle","input":"h:hopen `:/data/new.txt","output":"neg[h] (\"and\"; \"that\")","source":"qformortals"}
+{"instruction":"Format table as comma-separated values","input":"t:([] c1:`a`b`c; c2:1 2 3)","output":"csv 0: t","source":"qformortals"}
+{"instruction":"Format table with custom delimiter","input":"t:([] c1:`a`b`c; c2:1 2 3)","output":"\"\\t\" 0: t","source":"qformortals"}
+{"instruction":"Parse fixed-width text records","input":"","output":"(\"JFS D\";4 8 10 7 10) 0: `:/data/Fixed.txt","source":"qformortals"}
+{"instruction":"Parse comma-separated values without header","input":"","output":"(\"JSF\"; \",\") 0: read0 `:/data/Simple.csv","source":"qformortals"}
+{"instruction":"Parse CSV with header row creating table","input":"","output":"(\"JSF\"; enlist \",\") 0: `:/data/Titles.csv","source":"qformortals"}
+{"instruction":"Parse key-value pairs with string keys","input":"","output":"\"S=;\" 0: \"one=1;two=2;three=3\"","source":"qformortals"}
+{"instruction":"Parse key-value pairs with integer keys","input":"","output":"\"I=;\" 0: \"1=one;2=two;3=three\"","source":"qformortals"}
+{"instruction":"Write partitioned HDB using .Q.dpft","input":"","output":".Q.dpft[`:/hdb; 2015.01.01; `sym; `trade]","source":"qformortals"}
+{"instruction":"Read a splayed table from disk","input":"","output":"get `$\":path/to/table\"","source":"qformortals"}
+{"instruction":"Append enumerated data to a splayed table","input":"","output":".[`:/tmp/trade/; (); ,; .Q.en[`:/tmp] ([] sym:`ibm`msft; px:100 200)]","source":"qformortals"}
+{"instruction":"Check and fix partitioned database structure","input":"","output":".Q.chk[`:/hdb]","source":"qformortals"}
+{"instruction":"Set parted attribute on sym column in HDB partition","input":"","output":"@[`:/hdb/2015.01.01/trade/; `sym; `p#]","source":"qformortals"}
+{"instruction":"Register a callback function on connection open","input":"","output":".z.po:{`Registry upsert (x; `unregistered);}","source":"qformortals"}
+{"instruction":"Register a callback function on connection close","input":"","output":".z.pc:{delete from `Registry where zw=x;}","source":"qformortals"}
+{"instruction":"Define a synchronous message handler","input":"","output":".z.pg:{$[-11h=type first x; .[value first x; 1_x; ::]; `unsupported]}","source":"qformortals"}
+{"instruction":"Define an asynchronous message handler","input":"","output":".z.ps:{show \"ignore\"}","source":"qformortals"}
+{"instruction":"Get the connection handle of the calling process","input":"","output":".z.w","source":"qformortals"}
+{"instruction":"Send async callback to client during server function execution","input":"","output":"neg[.z.w] (`mycallback; x+1)","source":"qformortals"}
+{"instruction":"Publish update to all subscribers in tickerplant","input":"","output":".u.pub[`trade; ([] sym:`ibm`msft; px:100 200; sz:10 20)]","source":"qformortals"}
+{"instruction":"Subscribe to a tickerplant table","input":"h:hopen `::5010","output":"h (`.u.sub; `trade; `)","source":"qformortals"}
+{"instruction":"Define update handler for subscriber","input":"","output":"upd:{[t;x] t insert x}","source":"qformortals"}
+{"instruction":"Write down intraday data at end of day","input":"","output":".Q.dpft[`:/hdb; .z.d; `sym; `trade]","source":"qformortals"}
+{"instruction":"Reload HDB to pick up new partition","input":"","output":"\\l .","source":"qformortals"}
+{"instruction":"Serialize table with proper symbol enumeration","input":"","output":"`:/db/t/ set .Q.en[`:/db; ([] sym:`a`b`c; val:1 2 3)]","source":"qformortals"}
+{"instruction":"Enumerate a sym column against the sym file","input":"","output":"`sym?`ibm`msft`goog","source":"qformortals"}
+{"instruction":"Write splayed table to directory with trailing slash","input":"","output":"`:/data/tsplay/ set ([] c1:10 20 30; c2:1.1 2.2 3.3)","source":"qformortals"}
+{"instruction":"Apply grouped attribute to sym column","input":"","output":"@[`t; `sym; `g#]","source":"qformortals"}
+{"instruction":"Apply sorted attribute to time column","input":"","output":"@[`t; `time; `s#]","source":"qformortals"}
+{"instruction":"Query splayed table with column restriction","input":"","output":"select time, sym, px from trade","source":"qformortals"}
+{"instruction":"Query partitioned table with date filter","input":"","output":"select from trade where date=2015.01.01, sym=`ibm","source":"qformortals"}
+{"instruction":"Fan-out synchronous query to multiple processes","input":"h1:hopen `::5001; h2:hopen `::5002","output":"raze (h1; h2)@\\:\"select from trade where sym=`ibm\"","source":"qformortals"}
+{"instruction":"Fan-out async query with callback aggregation","input":"h1:hopen `::5001; h2:hopen `::5002","output":"neg[h1]({.z.pg:{result::x}}; \"select from trade\")","source":"qformortals"}
+{"instruction":"Create partitioned directory structure for integer partitions","input":"","output":"`:0 set ()","source":"qformortals"}
+{"instruction":"Write table to integer partition by symbol","input":"","output":"(` sv `:/tmp, `$string sym?`eurusd, `trade, `) upsert .Q.en[`:/hdb] tab","source":"qformortals"}
+{"instruction":"Append to splayed table using upsert","input":"","output":"`:/data/trade/ upsert ([] sym:`ibm`msft; px:101 201)","source":"qformortals"}
+{"instruction":"Sort splayed table on disk by sym column","input":"","output":"xasc[`sym; `:/data/trade/]","source":"qformortals"}
+{"instruction":"Load sym file from HDB directory","input":"","output":"sym:get `:/hdb/sym","source":"qformortals"}
+{"instruction":"Save updated sym file back to HDB","input":"","output":"`:/hdb/sym set sym","source":"qformortals"}
+{"instruction":"Create symlink to HDB sym file","input":"","output":"system \"ln -s /hdb/sym /tmp/sym\"","source":"qformortals"}
+{"instruction":"Register table schema for splaying","input":"","output":"trade:([] time:`time$(); sym:`symbol$(); px:`float$(); sz:`int$())","source":"qformortals"}
+{"instruction":"Clear temporary directory except sym and 0","input":"","output":"system \"rm -rf /tmp/0/*\"; {system \"rm -rf \",x;}each 1_'string` sv'/tmp,'key[/tmp]except`sym`0","source":"qformortals"}
+{"instruction":"Write empty partition 0 to mark integer partitioning","input":"","output":"`:0 set ()","source":"qformortals"}
+{"instruction":"Open connection to tickerplant log file","input":"","output":"h:hopen `:/tick/log","source":"qformortals"}
+{"instruction":"Replay tickerplant log for recovery","input":"","output":"-11!`:/ tick/log","source":"qformortals"}
+{"instruction":"Set timer to trigger writedown every 5 minutes","input":"","output":"system \"t 300000\"","source":"qformortals"}
+{"instruction":"Define timer callback for periodic writedown","input":"","output":".z.ts:{writedown each tables[]}","source":"qformortals"}
+{"instruction":"Check if table has sorted attribute on time","input":"","output":"`s~attr t`time","source":"qformortals"}
+{"instruction":"Remove all attributes from a column","input":"","output":"@[`t; `sym; `#]","source":"qformortals"}
+{"instruction":"Get list of partitions in an HDB","input":"","output":"key `:/hdb","source":"qformortals"}
+{"instruction":"Get partition for specific date","input":"","output":".Q.par[`:/hdb; 2015.01.01; `trade]","source":"qformortals"}
+{"instruction":"Verify parted attribute is applied","input":"","output":"`p~attr trade`sym","source":"qformortals"}
+{"instruction":"Open file handle with error handling","input":"","output":"@[hopen; `::5001; {0N!\"Connection failed: \",x; 0Ni}]","source":"qformortals"}
+{"instruction":"Execute protected evaluation on remote call","input":"h:hopen `::5001","output":"@[h; \"2+2\"; {`$\"Error: \",x}]","source":"qformortals"}
+{"instruction":"Set port for q process to listen on","input":"","output":"\\p 5001","source":"qformortals"}
+{"instruction":"Query current listening port","input":"","output":"system \"p\"","source":"qformortals"}
+{"instruction":"Open SSL/TLS encrypted connection","input":"","output":"h:hopen ``:tcps://mydb.us.com:5010","source":"qformortals"}
+{"instruction":"Open Unix domain socket with SSL","input":"","output":"h:hopen ``:unixs://5010","source":"qformortals"}
+{"instruction":"Send compressed message over IPC","input":"h:hopen `::5001","output":"neg[h]({system \"z 1\"}; \"large data\")","source":"qformortals"}
+{"instruction":"Disable IPC compression for localhost","input":"","output":"system \"z 0\"","source":"qformortals"}
+{"instruction":"Define custom authentication handler","input":"","output":".z.pw:{[u;p] (u~`user) and p~\"pass\"}","source":"qformortals"}
+{"instruction":"Open connection with username and password","input":"","output":"h:hopen `::5001:user:pass","source":"qformortals"}
+{"instruction":"Send table over IPC efficiently","input":"h:hopen `::5001","output":"neg[h](`.u.upd; `trade; ([] sym:`ibm; px:100))","source":"qformortals"}
+{"instruction":"Query remote table and materialize locally","input":"h:hopen `::5001","output":"trade:h \"select from trade where date=2015.01.01\"","source":"qformortals"}
+{"instruction":"Execute remote qSQL with local parameters","input":"h:hopen `::5001; s:`ibm","output":"h (\"select from trade where sym=\"; s)","source":"qformortals"}
+{"instruction":"Create deferred response handle","input":"","output":".z.pg:{.z.w set neg .z.w; -30!(`.z.pg; x)}","source":"qformortals"}
+{"instruction":"Send deferred response after computation","input":"","output":"neg[h]({result::compute[x]; (neg h) result}; params)","source":"qformortals"}
+{"instruction":"Check if connection handle is valid","input":"","output":"@[hopen; `::5001; {0b}]","source":"qformortals"}
+{"instruction":"Reconnect on connection failure","input":"","output":"h:@[hopen; `::5001; {.z.ts:{h::hopen `::5001}; system \"t 5000\"; 0Ni}]","source":"qformortals"}
+{"instruction":"Define gateway function for load balancing","input":"h1:hopen `::5001; h2:hopen `::5002; h3:hopen `::5003","output":"gateway:{[hs; q] raze hs@\\:q}","source":"qformortals"}
+{"instruction":"Distribute query to least loaded process","input":"","output":"h:{x where min each x@\\:\"count each tables[]\"}[h1; h2; h3]","source":"qformortals"}
+{"instruction":"Create RDB update handler with in-memory insert","input":"","output":"upd:{[t;x] t insert x}","source":"qformortals"}
+{"instruction":"Create RDB update handler with disk writedown","input":"","output":"upd:{[t;x] t insert x; if[count[t]>10000; .tmp.writedown[t]]}","source":"qformortals"}
+{"instruction":"Partition table by sym for efficient queries","input":"","output":"t:select from trade where sym=`ibm","source":"qformortals"}
+{"instruction":"Write intraday data to temporary partition","input":"","output":"(` sv `:/tmp, `$string sym?`ibm, `trade, `) upsert .Q.en[`:/hdb] tab","source":"qformortals"}
+{"instruction":"Move temporary partition to HDB at end of day","input":"","output":"system \"mv /tmp /hdb/2015.01.01\"","source":"qformortals"}
+{"instruction":"Apply parted attribute after sorting","input":"","output":"@[`:/hdb/2015.01.01/trade/; `sym; `p#]","source":"qformortals"}
+{"instruction":"Register subscriber with tickerplant","input":"h:hopen `::5010","output":"h (`.u.sub; `trade; `ibm)","source":"qformortals"}
+{"instruction":"Unsubscribe from tickerplant table","input":"h:hopen `::5010","output":"h (`.u.unsub; `trade; `ibm)","source":"qformortals"}
+{"instruction":"Publish to specific subscribers only","input":"","output":".u.pub[`trade; data; subList]","source":"qformortals"}
+{"instruction":"Create tickerplant log file","input":"","output":"L:hopen `:/tick/log","source":"qformortals"}
+{"instruction":"Append message to tickerplant log","input":"L:hopen `:/tick/log","output":"L enlist (`upd; `trade; data)","source":"qformortals"}
+{"instruction":"Roll tickerplant log at end of day","input":"L:hopen `:/tick/log","output":"hclose L; L:hopen `$\":tick/log.\",string .z.d","source":"qformortals"}
+{"instruction":"Replay messages from log with upd handler","input":"","output":"-11!(`:log; upd)","source":"qformortals"}
+{"instruction":"Query across multiple date partitions","input":"","output":"select from trade where date within 2015.01.01 2015.01.31","source":"qformortals"}
+{"instruction":"Query specific partition directly","input":"","output":"select from `:/hdb/2015.01.01/trade/ where sym=`ibm","source":"qformortals"}
+{"instruction":"Merge results from multiple partitions","input":"","output":"raze {select from x where sym=`ibm} each `:/hdb/2015.01.01/trade`:/hdb/2015.01.02/trade","source":"qformortals"}
+{"instruction":"Check HDB partition integrity","input":"","output":".Q.chk `:/hdb","source":"qformortals"}
+{"instruction":"Populate missing tables in partition","input":"","output":".Q.chk[`:/hdb/2015.01.01]","source":"qformortals"}
+{"instruction":"Set grouped attribute on partitioned table","input":"","output":"@[`:/hdb/2015.01.01/trade/; `sym; `g#]","source":"qformortals"}
+{"instruction":"Remove partition from HDB","input":"","output":"system \"rm -rf /hdb/2015.01.01\"","source":"qformortals"}
+{"instruction":"Copy partition to new location","input":"","output":"system \"cp -r /hdb/2015.01.01 /backup/2015.01.01\"","source":"qformortals"}
+{"instruction":"Verify splayed table columns match schema","input":"","output":"cols[trade]~key `:/data/trade/","source":"qformortals"}
+{"instruction":"Read single column from splayed table","input":"","output":"get `:/data/trade/sym","source":"qformortals"}
+{"instruction":"Write single column to splayed table","input":"","output":"`:/data/trade/sym set `ibm`msft`goog","source":"qformortals"}
+{"instruction":"Query with virtual partition column","input":"","output":"select from trade where date=2015.01.01","source":"qformortals"}
+{"instruction":"Use virtual row index i in query","input":"","output":"select from trade where i<1000","source":"qformortals"}
+{"instruction":"Map-reduce across partitions","input":"","output":"raze {select avg px by sym from x} each date","source":"qformortals"}
+{"instruction":"Parallel query with peach on partitions","input":"","output":"raze {select from x where sym=`ibm}peach date","source":"qformortals"}
+{"instruction":"Create view on partitioned table","input":"","output":"v::select from trade where sym=`ibm","source":"qformortals"}
+{"instruction":"Materialize view for faster access","input":"","output":"v:select from trade where sym=`ibm","source":"qformortals"}
+{"instruction":"Check if table is splayed","input":"","output":"11h=type each value trade","source":"qformortals"}
+{"instruction":"Check if table is partitioned","input":"","output":"`date in cols trade","source":"qformortals"}
+{"instruction":"Get partition type of HDB","input":"","output":"type first key `:/hdb","source":"qformortals"}
+{"instruction":"Enumerate new symbols to sym file","input":"","output":"sym:`sym?`new`symbols","source":"qformortals"}
+{"instruction":"Extend sym file with new symbols","input":"","output":"`:/hdb/sym set distinct sym,`new`symbols","source":"qformortals"}
+{"instruction":"Re-enumerate table against updated sym file","input":"","output":"trade:.Q.en[`:/hdb; trade]","source":"qformortals"}
+{"instruction":"Check enumeration domain of sym column","input":"","output":"-20h=type trade`sym","source":"qformortals"}
+{"instruction":"Convert enumerated sym back to symbols","input":"","output":"sym@trade`sym","source":"qformortals"}
+{"instruction":"Unenumerate all sym columns in table","input":"","output":"@[trade; symcols; sym@]","source":"qformortals"}
+{"instruction":"Save table without sym enumeration","input":"","output":"`:/data/trade set trade","source":"qformortals"}
+{"instruction":"Save table with sym enumeration","input":"","output":"`:/data/trade/ set .Q.en[`:/hdb; trade]","source":"qformortals"}
+{"instruction":"Query with sym unenumeration","input":"","output":"select sym:sym@sym, px from trade","source":"qformortals"}
+{"instruction":"Apply unique attribute to sym file","input":"","output":"@[`:/hdb/sym; `; `u#]","source":"qformortals"}
+{"instruction":"Check sym file attribute","input":"","output":"attr get `:/hdb/sym","source":"qformortals"}
+{"instruction":"Deduplicate sym file","input":"","output":"`:/hdb/sym set distinct get `:/hdb/sym","source":"qformortals"}
+{"instruction":"Compact sym file by removing unused syms","input":"","output":"newsym:distinct raze {get `$\":hdb/\",string[x],\"/trade/sym\"} each dates","source":"qformortals"}
+{"instruction":"Re-index splayed table after sym compaction","input":"","output":"`:hdb/2015.01.01/trade/sym set newsym?get `:hdb/2015.01.01/trade/sym","source":"qformortals"}
+{"instruction":"Write table to year partition","input":"","output":"`:/hdb/2015/trade/ set .Q.en[`:/hdb; trade]","source":"qformortals"}
+{"instruction":"Write table to month partition","input":"","output":"`:/hdb/2015.01m/trade/ set .Q.en[`:/hdb; trade]","source":"qformortals"}
+{"instruction":"Query year-partitioned table","input":"","output":"select from trade where year=2015","source":"qformortals"}
+{"instruction":"Query month-partitioned table","input":"","output":"select from trade where month=2015.01m","source":"qformortals"}
+{"instruction":"Get partition values for HDB","input":"","output":".Q.pv","source":"qformortals"}
+{"instruction":"Get partition directory for date","input":"","output":".Q.par[`:/hdb; 2015.01.01; `]","source":"qformortals"}
+{"instruction":"Get partition table directory","input":"","output":".Q.par[`:/hdb; 2015.01.01; `trade]","source":"qformortals"}
+{"instruction":"Check if date partition exists","input":"","output":"2015.01.01 in .Q.pv","source":"qformortals"}
+{"instruction":"Get all tables in HDB partition","input":"","output":"tables `:/hdb/2015.01.01","source":"qformortals"}
+{"instruction":"Compare table across partitions","input":"","output":"{select from `$\":hdb/\",string[x],\"/trade\" where sym=`ibm} each .Q.pv","source":"qformortals"}
+{"instruction":"Create segment definition for distributed HDB","input":"","output":"`:/hdb/par.txt 0: string each `:/server1/hdb`:/server2/hdb","source":"qformortals"}
+{"instruction":"Load segmented database","input":"","output":"\\l /hdb","source":"qformortals"}
+{"instruction":"Query segmented table","input":"","output":"select from trade where date=2015.01.01","source":"qformortals"}
+{"instruction":"Get list of segments","input":"","output":"get `:/hdb/par.txt","source":"qformortals"}
+{"instruction":"Create gateway for query distribution","input":"","output":"gw:{raze {x\"select from trade\"} each handles}","source":"qformortals"}
+{"instruction":"Aggregate results from gateway","input":"","output":"select sum sz by sym from gw[]","source":"qformortals"}
+{"instruction":"Configure slave threads for parallel processing","input":"","output":"system \"s 4\"","source":"qformortals"}
+{"instruction":"Query number of slave threads","input":"","output":"system \"s\"","source":"qformortals"}
+{"instruction":"Execute function on slave thread","input":"","output":"peach[compute; til 100]","source":"qformortals"}
+{"instruction":"Create IPC load balancer","input":"h1:hopen `::5001; h2:hopen `::5002","output":"lb:{[hs; q] i:0; {x mod count y} scan til count hs; hs[i] q}","source":"qformortals"}
+{"instruction":"Implement round-robin query distribution","input":"","output":"rr:{[hs] i::0; {hs[i mod count hs]; i+:1}}","source":"qformortals"}
+{"instruction":"Define failover connection handler","input":"","output":"failover:{[hs; q] {$[x~0Ni; y; x]} over hs@\\:q}","source":"qformortals"}
+{"instruction":"Monitor connection health","input":"h1:hopen `::5001","output":"@[h1; \"1+1\"; {0b}]","source":"qformortals"}
+{"instruction":"Reconnect dropped connections","input":"","output":"reconnect:{[h] @[hclose; h; {}]; hopen h}","source":"qformortals"}
+{"instruction":"Create connection pool","input":"","output":"pool:{hopen each `::5001`::5002`::5003}[]","source":"qformortals"}
+{"instruction":"Close all connections in pool","input":"pool:hopen each `::5001`::5002","output":"hclose each pool","source":"qformortals"}
+{"instruction":"Broadcast query to all processes","input":"pool:hopen each `::5001`::5002","output":"pool@\\:\"select count i from trade\"","source":"qformortals"}
+{"instruction":"Collect and merge distributed results","input":"pool:hopen each `::5001`::5002","output":"raze pool@\\:\"select from trade where sym=`ibm\"","source":"qformortals"}
+{"instruction":"Create async result collector","input":"","output":"results:(); collect:{results,:x}","source":"qformortals"}
+{"instruction":"Send async queries with callback","input":"pool:hopen each `::5001`::5002","output":"neg[pool]@\\:({collect x}; \"select from trade\")","source":"qformortals"}
+{"instruction":"Wait for all async results","input":"","output":"while[count[results]<count pool; system \"sleep 1\"]","source":"qformortals"}
+{"instruction":"Define custom serialization for IPC","input":"","output":"-8!trade","source":"qformortals"}
+{"instruction":"Deserialize IPC message","input":"","output":"-9!msg","source":"qformortals"}
+{"instruction":"Check IPC message size before sending","input":"","output":"count -8!trade","source":"qformortals"}
+{"instruction":"Compress data before IPC transmission","input":"","output":"-19!(17; 2; 8; data)","source":"qformortals"}
+{"instruction":"Decompress received IPC data","input":"","output":"-19!(0; compressed)","source":"qformortals"}

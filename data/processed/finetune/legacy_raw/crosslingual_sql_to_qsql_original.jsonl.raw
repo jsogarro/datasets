@@ -1,0 +1,153 @@
+{"instruction": "Retrieve all records from the trades table", "input": "", "output": "select from trades"}
+{"instruction": "Get sym and price columns from trades", "input": "", "output": "select sym, price from trades"}
+{"instruction": "Show me the unique symbols from trades", "input": "", "output": "select distinct sym from trades"}
+{"instruction": "Fetch the first 10 trades", "input": "", "output": "select[10] from trades"}
+{"instruction": "How many rows are in the trades table", "input": "", "output": "count trades"}
+{"instruction": "Find trades where price exceeds 100", "input": "", "output": "select from trades where price>100"}
+{"instruction": "Get AAPL trades with price above 150", "input": "", "output": "select from trades where sym=`AAPL, price>150"}
+{"instruction": "Extract trades between 9:30 and 10:00", "input": "", "output": "select from trades where time within 09:30 10:00"}
+{"instruction": "Get the last 50 quotes", "input": "", "output": "select[-50] from quotes"}
+{"instruction": "Show me trades where size is at least 1000", "input": "", "output": "select from trades where size>=1000"}
+{"instruction": "Show quotes where bid is less than 50", "input": "", "output": "select from quotes where bid<50"}
+{"instruction": "Find trades between 100 and 200 in price", "input": "", "output": "select from trades where price within 100 200"}
+{"instruction": "Get the first trade of the day", "input": "", "output": "select[1] from trades"}
+{"instruction": "Show me all symbols starting with A", "input": "", "output": "select from trades where sym like \"A*\""}
+{"instruction": "Retrieve orders where side is buy", "input": "", "output": "select from orders where side=`buy"}
+{"instruction": "Get trades sorted by time ascending", "input": "", "output": "`time xasc select from trades"}
+{"instruction": "Show the top 20 trades by size", "input": "", "output": "20#`size xdesc select from trades"}
+{"instruction": "Find quotes with spread less than 0.01", "input": "", "output": "select from quotes where (ask-bid)<0.01"}
+{"instruction": "Get all trades from the morning session", "input": "", "output": "select from trades where time<12:00"}
+{"instruction": "Get the 5 most recent quotes", "input": "", "output": "-5#select from quotes"}
+{"instruction": "Retrieve trades with null prices", "input": "", "output": "select from trades where null price"}
+{"instruction": "Get trades where symbol is in a specific list", "input": "", "output": "select from trades where sym in `AAPL`GOOG`MSFT"}
+{"instruction": "Find quotes updated in the last hour", "input": "", "output": "select from quotes where time>.z.t-01:00"}
+{"instruction": "Show quotes where both bid and ask are positive", "input": "", "output": "select from quotes where bid>0, ask>0"}
+{"instruction": "Get the complete trades table sorted by symbol then time", "input": "", "output": "`sym`time xasc select from trades"}
+{"instruction": "Retrieve quotes with zero spread", "input": "", "output": "select from quotes where bid=ask"}
+{"instruction": "Get orders with quantity greater than 500", "input": "", "output": "select from orders where qty>500"}
+{"instruction": "Get trades with abnormal size", "input": "", "output": "select from trades where size>10000"}
+{"instruction": "Find quotes older than 5 minutes", "input": "", "output": "select from quotes where time<.z.t-00:05"}
+{"instruction": "Get the 10 largest orders by quantity", "input": "", "output": "10#`qty xdesc select from orders"}
+{"instruction": "Retrieve trades during market hours only", "input": "", "output": "select from trades where time within 09:30 16:00"}
+{"instruction": "Get quotes with valid bid-ask", "input": "", "output": "select from quotes where bid<ask"}
+{"instruction": "Show trades sorted by price descending", "input": "", "output": "`price xdesc select from trades"}
+{"instruction": "Retrieve the earliest quote in the table", "input": "", "output": "select[1] from `time xasc quotes"}
+{"instruction": "Get the 3 most volatile symbols by price", "input": "", "output": "3#`price xdesc select from trades"}
+{"instruction": "Find quotes with stale timestamps", "input": "", "output": "select from quotes where time<.z.t-00:10"}
+{"instruction": "Calculate average price by symbol", "input": "", "output": "select avg price by sym from trades"}
+{"instruction": "Get total volume and average price for each symbol", "input": "", "output": "select totalVol:sum size, avgPx:avg price by sym from trades"}
+{"instruction": "Compute VWAP by symbol", "input": "", "output": "select vwap:size wavg price by sym from trades"}
+{"instruction": "Find the maximum price for each symbol", "input": "", "output": "select maxPx:max price by sym from trades"}
+{"instruction": "Calculate OHLC bars by symbol in 5-minute intervals", "input": "", "output": "select o:first price, h:max price, l:min price, c:last price by sym, 5 xbar time.minute from trades"}
+{"instruction": "Get the top 3 symbols by total volume", "input": "", "output": "3#`totalVol xdesc select totalVol:sum size by sym from trades"}
+{"instruction": "Average bid-ask spread by symbol", "input": "", "output": "select avgSpread:avg ask-bid by sym from quotes"}
+{"instruction": "Get median price by symbol", "input": "", "output": "select medPx:med price by sym from trades"}
+{"instruction": "Sum volume by hour of day", "input": "", "output": "select totalVol:sum size by time.hh from trades"}
+{"instruction": "Average order size by side", "input": "", "output": "select avgSize:avg qty by side from orders"}
+{"instruction": "Find last price for each symbol", "input": "", "output": "select lastPx:last price by sym from trades"}
+{"instruction": "Get standard deviation of prices by symbol", "input": "", "output": "select stdPx:dev price by sym from trades"}
+{"instruction": "Find first and last trade times by symbol", "input": "", "output": "select firstTime:first time, lastTime:last time by sym from trades"}
+{"instruction": "Get variance of price by instrument", "input": "", "output": "select varPx:var price by sym from trades"}
+{"instruction": "Find range of prices by symbol", "input": "", "output": "select priceRange:max[price]-min[price] by sym from trades"}
+{"instruction": "Find peak volume hour", "input": "", "output": "select peakVol:max size by time.hh from trades"}
+{"instruction": "Average quote age by symbol", "input": "", "output": "select avgAge:avg .z.t-time by sym from quotes"}
+{"instruction": "Count orders by time bucket", "input": "", "output": "select cnt:count i by 30 xbar time.minute from orders"}
+{"instruction": "Find min, max, and average prices by symbol", "input": "", "output": "select minPx:min price, maxPx:max price, avgPx:avg price by sym from trades"}
+{"instruction": "Calculate turnover by symbol", "input": "", "output": "select turnover:sum price*size by sym from trades"}
+{"instruction": "Get percentile ranks of prices by symbol", "input": "", "output": "select p50:0.5*med price, p90:0.9*med price by sym from trades"}
+{"instruction": "Find most active trading hour", "input": "", "output": "select tradeCount:count i by time.hh from trades"}
+{"instruction": "Get median spread by time of day", "input": "", "output": "select medSpread:med ask-bid by time.hh from quotes"}
+{"instruction": "Find symbols with highest volatility", "input": "", "output": "`volatility xdesc select volatility:dev price by sym from trades"}
+{"instruction": "Get trade count distribution by size buckets", "input": "", "output": "select cnt:count i by 100 xbar size from trades"}
+{"instruction": "Find cumulative volume by symbol over time", "input": "", "output": "select cumVol:sums size by sym from trades"}
+{"instruction": "Calculate rolling volume by 10-minute windows", "input": "", "output": "select rollingVol:sum size by sym, 10 xbar time.minute from trades"}
+{"instruction": "Calculate average spread as percentage of mid", "input": "", "output": "select avgSpreadPct:avg (ask-bid)%0.5*bid+ask by sym from quotes"}
+{"instruction": "Find correlation between volume and volatility", "input": "", "output": "select volVolCorr:cor[sum size;dev price] by sym from trades"}
+{"instruction": "Update price by adding 10 to all values", "input": "", "output": "update price:price+10 from trades"}
+{"instruction": "Set status to active for AAPL trades", "input": "", "output": "update status:`active from trades where sym=`AAPL"}
+{"instruction": "Add a mid column as average of bid and ask", "input": "", "output": "update mid:0.5*bid+ask from quotes"}
+{"instruction": "Delete rows where price is null", "input": "", "output": "delete from trades where null price"}
+{"instruction": "Remove the temp column", "input": "", "output": "delete temp from trades"}
+{"instruction": "Update cumulative volume by symbol", "input": "", "output": "update cumVol:sums size by sym from trades"}
+{"instruction": "Add a spread column to quotes", "input": "", "output": "update spread:ask-bid from quotes"}
+{"instruction": "Update notional as price times size", "input": "", "output": "update notional:price*size from trades"}
+{"instruction": "Delete the deprecated flag column", "input": "", "output": "delete deprecated from instruments"}
+{"instruction": "Set exchange to NASDAQ for tech symbols", "input": "", "output": "update exch:`NASDAQ from trades where sym in `AAPL`GOOG`MSFT"}
+{"instruction": "Add timestamp for last update", "input": "", "output": "update lastUpdate:.z.p from trades"}
+{"instruction": "Update VWAP for each symbol", "input": "", "output": "update vwap:size wavg price by sym from trades"}
+{"instruction": "Add percentage change column", "input": "", "output": "update pctChange:100*price%prev price from trades"}
+{"instruction": "Update commission based on size tiers", "input": "", "output": "update commission:0.001*price*size from trades"}
+{"instruction": "Add moving average of price", "input": "", "output": "update ma20:20 mavg price from trades"}
+{"instruction": "Delete orders with invalid quantities", "input": "", "output": "delete from orders where qty<=0"}
+{"instruction": "Update age of quotes", "input": "", "output": "update age:.z.t-time from quotes"}
+{"instruction": "Delete stale quotes", "input": "", "output": "delete from quotes where time<.z.t-00:05"}
+{"instruction": "Add tick count by symbol", "input": "", "output": "update tickCount:count i by sym from trades"}
+{"instruction": "Delete instruments with no trades", "input": "", "output": "delete from instruments where not sym in exec distinct sym from trades"}
+{"instruction": "Add z-score of prices", "input": "", "output": "update zScore:(price-avg price)%dev price by sym from trades"}
+{"instruction": "Set alert for quote staleness", "input": "", "output": "update staleAlert:time<.z.t-00:01 from quotes"}
+{"instruction": "Add volume bucket classification", "input": "", "output": "update volBucket:`low`med`high 0 500 2000 bin size from trades"}
+{"instruction": "Update drawdown for each symbol", "input": "", "output": "update drawdown:price%maxs price by sym from trades"}
+{"instruction": "Set circuit breaker status", "input": "", "output": "update halted:abs[price%prev price -1]>0.1 from trades"}
+{"instruction": "Update last seen timestamp", "input": "", "output": "update lastSeen:.z.p by sym from quotes"}
+{"instruction": "Update cross-venue average price", "input": "", "output": "update xVenueAvg:avg price by sym, time from trades"}
+{"instruction": "Delete test instruments", "input": "", "output": "delete from instruments where sym like \"TEST*\""}
+{"instruction": "Delete quotes with crossed markets", "input": "", "output": "delete from quotes where bid>ask"}
+{"instruction": "Add message rate metric", "input": "", "output": "update msgRate:count i by sym, time.minute from quotes"}
+{"instruction": "Left join trades with instruments on sym", "input": "", "output": "trades lj `sym xkey instruments"}
+{"instruction": "As-of join trades with latest quotes", "input": "", "output": "aj[`sym`time;trades;quotes]"}
+{"instruction": "Inner join trades and orders on sym", "input": "", "output": "trades ij `sym xkey orders"}
+{"instruction": "Union join two tables with different schemas", "input": "", "output": "t1 uj t2"}
+{"instruction": "Window join to get quotes within 1 second before each trade", "input": "", "output": "wj[-00:00:01 00:00:00+\\:trades`time;`sym`time;trades;(quotes;(::;`bid);(::;`ask))]"}
+{"instruction": "Window join for all quotes 5 seconds around each trade", "input": "", "output": "wj[-00:00:05 00:00:05+\\:trades`time;`sym`time;trades;(quotes;(::;`bid);(::;`ask))]"}
+{"instruction": "Window join for microstructure analysis", "input": "", "output": "wj[-00:00:00.1 00:00:00.1+\\:trades`time;`sym`time;trades;(quotes;(last;`bid);(last;`ask))]"}
+{"instruction": "Window join to find quotes bracketing each trade", "input": "", "output": "wj[-00:00:00.5 00:00:00.5+\\:trades`time;`sym`time;trades;(quotes;(first;`bid);(last;`ask))]"}
+{"instruction": "Window join for liquidity analysis", "input": "", "output": "wj[-00:00:10 00:00:00+\\:trades`time;`sym`time;trades;(quotes;(avg;`bidSize);(avg;`askSize))]"}
+{"instruction": "Create a table with sym, price, and size columns", "input": "", "output": "([] sym:`symbol$(); price:`float$(); size:`long$())"}
+{"instruction": "Add a grouped attribute to sym for faster lookups", "input": "", "output": "update `g#sym from `trades"}
+{"instruction": "Use functional select to dynamically select columns", "input": "", "output": "?[trades;();0b;`sym`price!`sym`price]"}
+{"instruction": "Filter trades where price equals max price for that symbol using fby", "input": "", "output": "select from trades where price=(max;price) fby sym"}
+{"instruction": "Calculate rolling 10-period average of price", "input": "", "output": "update mavg10:10 mavg price from trades"}
+{"instruction": "Create a keyed table with sym as key", "input": "", "output": "([sym:`symbol$()] price:`float$(); size:`long$())"}
+{"instruction": "Functional update to add a new column", "input": "", "output": "![trades;();0b;enlist[`notional]!enlist ((*);`price;`size)]"}
+{"instruction": "Filter using fby to find symbols with above-average volume", "input": "", "output": "select from trades where size>(avg;size) fby sym"}
+{"instruction": "Transpose a table for analysis", "input": "", "output": "flip trades"}
+{"instruction": "Apply a function across each symbol group", "input": "", "output": "{select avg price from x} each value `sym xgroup trades"}
+{"instruction": "Create an empty keyed table with multiple keys", "input": "", "output": "([sym:`symbol$(); date:`date$()] price:`float$())"}
+{"instruction": "Functional delete to remove rows dynamically", "input": "", "output": "![trades;enlist (>;`price;100);0b;`symbol$()]"}
+{"instruction": "Get metadata about table structure", "input": "", "output": "meta trades"}
+{"instruction": "Filter using each-prior to find price increases", "input": "", "output": "select from trades where price>prev price"}
+{"instruction": "Enumerate symbols against a sym file", "input": "", "output": ".Q.en[`:db;trades]"}
+{"instruction": "Calculate returns using ratios", "input": "", "output": "update return:ratios price from trades"}
+{"instruction": "Create a partitioned database", "input": "", "output": "`:db/2026.01.01/trades/ set .Q.en[`:db;trades]"}
+{"instruction": "Add sorted attribute for binary search", "input": "", "output": "update `s#time from `quotes"}
+{"instruction": "Functional exec to extract a dictionary", "input": "", "output": "?[trades;();();`sym`price!`sym`price]"}
+{"instruction": "Use each-prior with a window", "input": "", "output": "update delta:price-prev price from trades"}
+{"instruction": "Get table count efficiently", "input": "", "output": "count trades"}
+{"instruction": "Filter using a where clause with multiples conditions via fby", "input": "", "output": "select from trades where price=(max;price) fby sym, size>(avg;size) fby sym"}
+{"instruction": "Get distinct values from a column", "input": "", "output": "distinct trades`sym"}
+{"instruction": "Create a cross join", "input": "", "output": "trades cross instruments"}
+{"instruction": "Extract column types", "input": "", "output": "type each flip trades"}
+{"instruction": "Use iasc for ascending indices", "input": "", "output": "trades iasc trades`price"}
+{"instruction": "Use reverse to flip row order", "input": "", "output": "reverse trades"}
+{"instruction": "Apply til to generate indices", "input": "", "output": "til count trades"}
+{"instruction": "Delete rows by index", "input": "", "output": "delete from `trades where i in 0 1 2"}
+{"instruction": "Use differ to find changes", "input": "", "output": "where differ trades`sym"}
+{"instruction": "Calculate inter-row differences", "input": "", "output": "differ trades`price"}
+{"instruction": "Create a sym file for enumeration", "input": "", "output": "`:db/sym set `symbol$()"}
+{"instruction": "Use group to cluster by value", "input": "", "output": "group trades`sym"}
+{"instruction": "Get unique indices with distinct", "input": "", "output": "distinct trades`sym"}
+{"instruction": "Encode to base with vs", "input": "", "output": "2 vs 255"}
+{"instruction": "Generate sequence with til", "input": "", "output": "til 100"}
+{"instruction": "Create date range", "input": "", "output": ".z.d+til 30"}
+{"instruction": "Build time series", "input": "", "output": "09:30:00.0+00:00:01*til 390"}
+{"instruction": "Use ema for smoothing", "input": "", "output": "update smooth:ema[0.1;price] from trades"}
+{"instruction": "Use reverse to flip order", "input": "", "output": "reverse trades"}
+{"instruction": "Apply xasc to sort ascending", "input": "", "output": "`price xasc trades"}
+{"instruction": "Sort descending with xdesc", "input": "", "output": "`price xdesc trades"}
+{"instruction": "Use cut to partition", "input": "", "output": "5 cut til 20"}
+{"instruction": "Use ss for string search", "input": "", "output": "\"AAPL\" ss \"A\""}
+{"instruction": "Use trim to remove whitespace", "input": "", "output": "trim \" AAPL \""}
+{"instruction": "Apply ltrim for left trim", "input": "", "output": "ltrim \" AAPL\""}
+{"instruction": "Get rtrim for right trim", "input": "", "output": "rtrim \"AAPL \""}
+{"instruction": "Parse a string to timestamp", "input": "", "output": "\"P\"$\"2026.04.18D10:30:00.000\""}
+{"instruction": "Format timestamp as string", "input": "", "output": "string .z.p"}

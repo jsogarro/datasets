@@ -1,0 +1,203 @@
+{"instruction": "Write a q function to calculate VWAP (volume-weighted average price) over a time window for each symbol in a trades table", "input": "Table schema: trades:([] time:`timestamp; sym:`symbol; price:`float; size:`long)", "output": "vwap:{[trades;window]\n  select vwap:size wavg price by sym from trades where time within window\n  }"}
+{"instruction": "Calculate intraday VWAP for each symbol", "input": "", "output": "select vwap:size wavg price by sym from trades"}
+{"instruction": "Perform an asof join to match trades with the most recent quotes", "input": "trades and quotes tables with time and sym columns", "output": "aj[`sym`time;trades;quotes]"}
+{"instruction": "Write a function to perform a window join for calculating mid price over 1-minute windows", "input": "", "output": "wj1[neg[60000]#0;`time;trades;(quotes;(avg;`bid;`ask))]"}
+{"instruction": "Join trades table with quotes table using asof join on symbol and time", "input": "", "output": "aj[`sym`time;trades;quotes]"}
+{"instruction": "Create a simple trades table schema in q/kdb+", "input": "", "output": "trades:([] time:`timestamp$(); sym:`symbol$(); price:`float$(); size:`long$())"}
+{"instruction": "Select all trades for symbol AAPL with price greater than 150", "input": "", "output": "select from trades where sym=`AAPL, price>150"}
+{"instruction": "Update the price column in trades table by multiplying by 1.01", "input": "", "output": "update price:price*1.01 from `trades"}
+{"instruction": "Delete all trades older than 7 days from the trades table", "input": "", "output": "delete from `trades where time<.z.d-7"}
+{"instruction": "Calculate total volume and average price by symbol", "input": "", "output": "select totalVol:sum size, avgPrice:avg price by sym from trades"}
+{"instruction": "Get the count of trades per symbol per day", "input": "", "output": "select count i by sym, date:`date$time from trades"}
+{"instruction": "Find the maximum and minimum price for each symbol", "input": "", "output": "select high:max price, low:min price by sym from trades"}
+{"instruction": "Calculate cumulative sum of size grouped by symbol", "input": "", "output": "select cumSize:sums size by sym from trades"}
+{"instruction": "Bucket prices into $5 intervals", "input": "", "output": "select from trades where price=5 xbar price"}
+{"instruction": "Create 1-minute time bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price, volume:sum size by sym, time:60000 xbar time.minute from trades"}
+{"instruction": "Select distinct symbols from the trades table", "input": "", "output": "exec distinct sym from trades"}
+{"instruction": "Get the last trade for each symbol", "input": "", "output": "select last price, last size by sym from trades"}
+{"instruction": "Select trades where symbol is in a list of tech stocks", "input": "", "output": "select from trades where sym in `AAPL`MSFT`GOOGL`AMZN"}
+{"instruction": "Filter trades to only include regular trading hours (9:30 AM to 4:00 PM)", "input": "", "output": "select from trades where time.time within 09:30 16:00"}
+{"instruction": "Get column names from a table", "input": "", "output": "cols trades"}
+{"instruction": "Get column types from a table", "input": "", "output": "meta trades"}
+{"instruction": "Count the number of rows in a table", "input": "", "output": "count trades"}
+{"instruction": "Create a dictionary mapping symbols to prices", "input": "", "output": "priceDict:`AAPL`MSFT`GOOGL!150.5 310.2 2800.75"}
+{"instruction": "Lookup price for AAPL in a dictionary", "input": "", "output": "priceDict[`AAPL]"}
+{"instruction": "Generate a list of numbers from 1 to 100", "input": "", "output": "1+til 100"}
+{"instruction": "Calculate moving average with window size 10", "input": "", "output": "mavg[10;prices]"}
+{"instruction": "Calculate exponential moving average with alpha 0.1", "input": "", "output": "ema[0.1;prices]"}
+{"instruction": "Load a CSV file into a table", "input": "", "output": "trades:(\"TSFF\";enlist csv) 0: `:trades.csv"}
+{"instruction": "Save a table to disk in binary format", "input": "", "output": "`:trades/ set trades"}
+{"instruction": "Load a table from disk", "input": "", "output": "trades:get `:trades/"}
+{"instruction": "Connect to a kdb+ server on localhost port 5000", "input": "", "output": "h:hopen `:localhost:5000"}
+{"instruction": "Execute a synchronous query on a remote server", "input": "", "output": "h\"select from trades where sym=`AAPL\""}
+{"instruction": "Close a connection handle", "input": "", "output": "hclose h"}
+{"instruction": "Subscribe to updates from a tickerplant", "input": "", "output": "h:hopen `:localhost:5010\nh(\".u.sub\";`trade;`)"}
+{"instruction": "Define an update function to handle incoming trade data", "input": "", "output": "upd:{[t;x] t insert x}"}
+{"instruction": "Replay a tickerplant log file", "input": "", "output": "-11!`:tp.log"}
+{"instruction": "Schedule a function to run every 60 seconds", "input": "", "output": ".z.ts:{[] myfunc[]; }\n\\t 60000"}
+{"instruction": "Get current UTC timestamp", "input": "", "output": ".z.p"}
+{"instruction": "Get current date", "input": "", "output": ".z.d"}
+{"instruction": "Apply sorted attribute to symbol column", "input": "", "output": "update `s#sym from `trades"}
+{"instruction": "Apply parted attribute to date column in a partitioned table", "input": "", "output": "update `p#date from trades"}
+{"instruction": "Apply unique attribute to a column", "input": "", "output": "update `u#id from `trades"}
+{"instruction": "Functional select to get all trades for a symbol", "input": "", "output": "?[trades;enlist(=;`sym;enlist `AAPL);0b;()]"}
+{"instruction": "Functional update to multiply all prices by 2", "input": "", "output": "![`trades;();0b;enlist[`price]!enlist(*;`price;2)]"}
+{"instruction": "Trap an error and return a default value", "input": "", "output": "@[{select from trades where sym=x};`AAPL;{`$\"Error: \",x}]"}
+{"instruction": "Protected evaluation that returns error without signaling", "input": "", "output": ".[{1%x};0;{`error}]"}
+{"instruction": "Use each-parallel to process a list in parallel", "input": "", "output": "result:myfunc peach symList"}
+{"instruction": "Check memory usage", "input": "", "output": ".Q.w[]"}
+{"instruction": "Garbage collect to free memory", "input": "", "output": ".Q.gc[]"}
+{"instruction": "Calculate percentage change from previous price", "input": "", "output": "select pctChange:100*1-price%prev price by sym from trades"}
+{"instruction": "Calculate returns from price series", "input": "", "output": "returns:1_deltas[prices]%prev prices"}
+{"instruction": "Calculate Bollinger Bands with 20-period moving average and 2 standard deviations", "input": "", "output": "ma:mavg[20;prices]\nstd:mdev[20;prices]\nupper:ma+2*std\nlower:ma-2*std"}
+{"instruction": "Convert string to symbol", "input": "", "output": "`$\"AAPL\""}
+{"instruction": "Convert timestamp to date", "input": "", "output": "`date$timestamp"}
+{"instruction": "Convert float to integer", "input": "", "output": "`int$150.75"}
+{"instruction": "Pivot a table to create columns for each symbol", "input": "", "output": "exec price by time, sym from trades"}
+{"instruction": "Use fby to calculate percentage of total volume per symbol", "input": "", "output": "select sym, size, pct:100*size%sum[size] fby sym from trades"}
+{"instruction": "Self-join to find crossing trades", "input": "", "output": "select t1.time, t1.sym, t1.price, t2.price from trades t1, trades t2 where t1.sym=t2.sym, t1.time<t2.time, t1.price>t2.price"}
+{"instruction": "Create a rolling correlation between two price series with window 20", "input": "", "output": "cor[20;prices1;prices2]"}
+{"instruction": "Calculate intraday high-low range as percentage of opening price", "input": "", "output": "select range:100*(max price - min price)%first price by sym from trades"}
+{"instruction": "Find time gaps between consecutive trades greater than 1 minute", "input": "", "output": "select from trades where 60000<deltas time"}
+{"instruction": "Rank symbols by total volume in descending order", "input": "", "output": "`totalVol xdesc select totalVol:sum size by sym from trades"}
+{"instruction": "Calculate bid-ask spread and mid price", "input": "", "output": "update spread:ask-bid, midprice:0.5*bid+ask from quotes"}
+{"instruction": "Filter outliers beyond 3 standard deviations from mean", "input": "", "output": "select from trades where abs[price-avg price]<=3*dev price"}
+{"instruction": "Calculate time-weighted average price (TWAP)", "input": "", "output": "select twap:sum[price*deltas time]%sum deltas time by sym from trades"}
+{"instruction": "Resample tick data to 5-second OHLC bars", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:5 xbar time.second from trades"}
+{"instruction": "Calculate annualized realized volatility from daily returns", "input": "", "output": "vol:sqrt[252]*dev returns"}
+{"instruction": "Get top 10 symbols by trading volume", "input": "", "output": "10#`totalVol xdesc select totalVol:sum size by sym from trades"}
+{"instruction": "Calculate percentage of buy-side volume", "input": "", "output": "select buyPct:100*sum[size where side=`buy]%sum size by sym from trades"}
+{"instruction": "Mark each trade as uptick, downtick, or flat", "input": "", "output": "update tick:?[price>prev price;`up;?[price<prev price;`down;`flat]] from trades"}
+{"instruction": "Extract unique trading dates from trades table", "input": "", "output": "exec distinct `date$time from trades"}
+{"instruction": "Calculate cumulative volume-weighted average price by symbol", "input": "", "output": "select cumVwap:sums[price*size]%sums size by sym from trades"}
+{"instruction": "Identify trades executed at or above the ask price", "input": "", "output": "select from aj[`sym`time;trades;quotes] where price>=ask"}
+{"instruction": "Get the previous price using lag-1", "input": "", "output": "prevPrice:prev price"}
+{"instruction": "Calculate order book imbalance ratio", "input": "", "output": "update imbalance:(bidSize-askSize)%bidSize+askSize from quotes"}
+{"instruction": "Split a list into chunks of 100 elements", "input": "", "output": "0N 100#mylist"}
+{"instruction": "Initialize an empty RDB trades table", "input": "", "output": "trades:([] time:`timestamp$(); sym:`symbol$(); price:`float$(); size:`long$(); side:`symbol$())"}
+{"instruction": "Filter to regular trading hours on NYSE and NASDAQ", "input": "", "output": "select from trades where time.time within 09:30 16:00, exch in `NYSE`NASDAQ"}
+{"instruction": "Calculate daily returns for each symbol", "input": "", "output": "select dailyReturn:100*(last price - first price)%first price by sym, date:`date$time from trades"}
+{"instruction": "Find the median trade size per symbol", "input": "", "output": "select medSize:med size by sym from trades"}
+{"instruction": "Calculate the order imbalance from level 1 quotes", "input": "", "output": "select imb:(bidSize-askSize)%(bidSize+askSize) by sym from quotes"}
+{"instruction": "Compute the simple moving average of the last 50 prices", "input": "", "output": "sma:mavg[50;prices]"}
+{"instruction": "Get all records from the last hour", "input": "", "output": "select from trades where time>.z.p-01:00"}
+{"instruction": "Calculate the percentage change from the opening price", "input": "", "output": "select pctChange:100*(price-first price)%first price by sym from trades"}
+{"instruction": "Find the symbol with the highest total volume", "input": "", "output": "first exec sym from `totalVol xdesc select totalVol:sum size by sym from trades"}
+{"instruction": "Compute order arrival rate per symbol (trades per second)", "input": "", "output": "select arrivalRate:(count i)%((last time - first time)%1000000000) by sym from trades"}
+{"instruction": "Create a flag for trades larger than average size", "input": "", "output": "update largeFlag:size>avg size from `trades"}
+{"instruction": "Calculate the correlation matrix for a set of price series", "input": "", "output": "corrMatrix:cor flip (price1;price2;price3)"}
+{"instruction": "Select trades within 2 standard deviations of the mean price", "input": "", "output": "select from trades where abs[price-mu]<=2*sigma from ([]mu:avg price;sigma:dev price) cross trades"}
+{"instruction": "Calculate dollar volume (price * size) for each trade", "input": "", "output": "update dollarVol:price*size from `trades"}
+{"instruction": "Group trades into 10-minute buckets", "input": "", "output": "select from trades where time=600000 xbar time.minute"}
+{"instruction": "Calculate the number of trades per minute by symbol", "input": "", "output": "select tradeCount:count i by sym, minute:time.minute from trades"}
+{"instruction": "Create a lagged price column with 5-period lag", "input": "", "output": "update lag5price:prev[5;price] from `trades"}
+{"instruction": "Calculate the maximum drawdown in a price series", "input": "", "output": "maxDD:min prices - maxs prices"}
+{"instruction": "Identify block trades (size > 10000 shares)", "input": "", "output": "select from trades where size>10000"}
+{"instruction": "Calculate intraday momentum (last price vs first price ratio)", "input": "", "output": "select momentum:(last price)%first price by sym from trades"}
+{"instruction": "Compute tick-by-tick returns", "input": "", "output": "update tickReturn:1-price%prev price from `trades"}
+{"instruction": "Create equally-weighted portfolio returns from multiple symbols", "input": "", "output": "portfolioReturn:avg returns"}
+{"instruction": "Calculate Sharpe ratio from returns (assuming risk-free rate = 0)", "input": "", "output": "sharpe:(avg returns)%dev returns"}
+{"instruction": "Get the most recent quote for each symbol", "input": "", "output": "select last bid, last ask by sym from quotes"}
+{"instruction": "Calculate order flow toxicity (trades above ask vs below bid)", "input": "", "output": "select toxicity:(sum size where price>ask) - sum size where price<bid by sym from aj[`sym`time;trades;quotes]"}
+{"instruction": "Find the longest sequence of consecutive up-ticks", "input": "", "output": "max sums 0=deltas signum deltas prices"}
+{"instruction": "Create 1-hour OHLCV bars with volume", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price, volume:sum size by sym, hour:60 xbar time.minute from trades"}
+{"instruction": "Calculate the average trade size for each symbol", "input": "", "output": "select avgSize:avg size by sym from trades"}
+{"instruction": "Identify symbols that have traded in the last 5 minutes", "input": "", "output": "exec distinct sym from trades where time>.z.p-00:05"}
+{"instruction": "Calculate the execution shortfall (arrival price vs VWAP)", "input": "", "output": "select shortfall:(first price)-(size wavg price) by sym from trades"}
+{"instruction": "Get the distribution of trades by hour of day", "input": "", "output": "select count i by hour:time.hh from trades"}
+{"instruction": "Calculate rolling maximum over a 30-period window", "input": "", "output": "rollMax:mmax[30;prices]"}
+{"instruction": "Calculate VWAP for a 5-minute window", "input": "", "output": "select vwap:size wavg price by sym from trades where time within(5#00:01)"}
+{"instruction": "Calculate VWAP for a 10-minute window", "input": "", "output": "select vwap:size wavg price by sym from trades where time within(10#00:01)"}
+{"instruction": "Calculate VWAP for a 15-minute window", "input": "", "output": "select vwap:size wavg price by sym from trades where time within(15#00:01)"}
+{"instruction": "Calculate VWAP for a 30-minute window", "input": "", "output": "select vwap:size wavg price by sym from trades where time within(30#00:01)"}
+{"instruction": "Calculate VWAP for a 60-minute window", "input": "", "output": "select vwap:size wavg price by sym from trades where time within(60#00:01)"}
+{"instruction": "Calculate 5-period simple moving average", "input": "", "output": "mavg[5;prices]"}
+{"instruction": "Calculate 5-period exponential moving average", "input": "", "output": "ema[0.200;prices]"}
+{"instruction": "Calculate 10-period simple moving average", "input": "", "output": "mavg[10;prices]"}
+{"instruction": "Calculate 10-period exponential moving average", "input": "", "output": "ema[0.100;prices]"}
+{"instruction": "Calculate 20-period simple moving average", "input": "", "output": "mavg[20;prices]"}
+{"instruction": "Calculate 20-period exponential moving average", "input": "", "output": "ema[0.050;prices]"}
+{"instruction": "Calculate 50-period simple moving average", "input": "", "output": "mavg[50;prices]"}
+{"instruction": "Calculate 50-period exponential moving average", "input": "", "output": "ema[0.020;prices]"}
+{"instruction": "Calculate 100-period simple moving average", "input": "", "output": "mavg[100;prices]"}
+{"instruction": "Calculate 100-period exponential moving average", "input": "", "output": "ema[0.010;prices]"}
+{"instruction": "Calculate 200-period simple moving average", "input": "", "output": "mavg[200;prices]"}
+{"instruction": "Calculate 200-period exponential moving average", "input": "", "output": "ema[0.005;prices]"}
+{"instruction": "Create 1-second OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:1000 xbar time.second from trades"}
+{"instruction": "Create 5-second OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:5000 xbar time.second from trades"}
+{"instruction": "Create 10-second OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:10000 xbar time.second from trades"}
+{"instruction": "Create 30-second OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:30000 xbar time.second from trades"}
+{"instruction": "Create 1-minute OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:60000 xbar time.minute from trades"}
+{"instruction": "Create 5-minute OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:300000 xbar time.minute from trades"}
+{"instruction": "Create 15-minute OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:900000 xbar time.minute from trades"}
+{"instruction": "Create 30-minute OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:1800000 xbar time.minute from trades"}
+{"instruction": "Create 60-minute OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:3600000 xbar time.minute from trades"}
+{"instruction": "Bucket prices into $0.01 intervals", "input": "", "output": "update bucketedPrice:0.01 xbar price from `trades"}
+{"instruction": "Bucket prices into $0.05 intervals", "input": "", "output": "update bucketedPrice:0.05 xbar price from `trades"}
+{"instruction": "Bucket prices into $0.1 intervals", "input": "", "output": "update bucketedPrice:0.1 xbar price from `trades"}
+{"instruction": "Bucket prices into $0.5 intervals", "input": "", "output": "update bucketedPrice:0.5 xbar price from `trades"}
+{"instruction": "Bucket prices into $1 intervals", "input": "", "output": "update bucketedPrice:1 xbar price from `trades"}
+{"instruction": "Bucket prices into $5 intervals", "input": "", "output": "update bucketedPrice:5 xbar price from `trades"}
+{"instruction": "Bucket prices into $10 intervals", "input": "", "output": "update bucketedPrice:10 xbar price from `trades"}
+{"instruction": "Calculate total price by symbol", "input": "", "output": "select sum price by sym from trades"}
+{"instruction": "Calculate average price by symbol", "input": "", "output": "select avg price by sym from trades"}
+{"instruction": "Calculate maximum price by symbol", "input": "", "output": "select max price by sym from trades"}
+{"instruction": "Calculate minimum price by symbol", "input": "", "output": "select min price by sym from trades"}
+{"instruction": "Calculate median price by symbol", "input": "", "output": "select med price by sym from trades"}
+{"instruction": "Calculate standard deviation price by symbol", "input": "", "output": "select dev price by sym from trades"}
+{"instruction": "Calculate variance price by symbol", "input": "", "output": "select var price by sym from trades"}
+{"instruction": "Perform a asof join between trades and quotes on symbol and time", "input": "", "output": "aj[`sym`time;trades;quotes]"}
+{"instruction": "Perform a inner join between trades and quotes on symbol and time", "input": "", "output": "ij[`sym`time;trades;quotes]"}
+{"instruction": "Perform a left join between trades and quotes on symbol and time", "input": "", "output": "lj[`sym`time;trades;quotes]"}
+{"instruction": "Perform a union join between trades and quotes on symbol and time", "input": "", "output": "uj[`sym`time;trades;quotes]"}
+{"instruction": "Calculate cor between two price series", "input": "", "output": "cor[prices1;prices2]"}
+{"instruction": "Calculate cov between two price series", "input": "", "output": "cov[prices1;prices2]"}
+{"instruction": "Calculate scov between two price series", "input": "", "output": "scov[prices1;prices2]"}
+{"instruction": "Calculate svar between two price series", "input": "", "output": "svar[prices1;prices2]"}
+{"instruction": "Calculate rolling sum with 10-period window", "input": "", "output": "msum[10;values]"}
+{"instruction": "Calculate rolling sum with 20-period window", "input": "", "output": "msum[20;values]"}
+{"instruction": "Calculate rolling sum with 30-period window", "input": "", "output": "msum[30;values]"}
+{"instruction": "Calculate rolling average with 10-period window", "input": "", "output": "mavg[10;values]"}
+{"instruction": "Calculate rolling average with 20-period window", "input": "", "output": "mavg[20;values]"}
+{"instruction": "Calculate rolling average with 30-period window", "input": "", "output": "mavg[30;values]"}
+{"instruction": "Calculate rolling maximum with 10-period window", "input": "", "output": "mmax[10;values]"}
+{"instruction": "Calculate rolling maximum with 20-period window", "input": "", "output": "mmax[20;values]"}
+{"instruction": "Calculate rolling maximum with 30-period window", "input": "", "output": "mmax[30;values]"}
+{"instruction": "Calculate rolling minimum with 10-period window", "input": "", "output": "mmin[10;values]"}
+{"instruction": "Calculate rolling minimum with 20-period window", "input": "", "output": "mmin[20;values]"}
+{"instruction": "Calculate rolling minimum with 30-period window", "input": "", "output": "mmin[30;values]"}
+{"instruction": "Calculate rolling standard deviation with 10-period window", "input": "", "output": "mdev[10;values]"}
+{"instruction": "Calculate rolling standard deviation with 20-period window", "input": "", "output": "mdev[20;values]"}
+{"instruction": "Calculate rolling standard deviation with 30-period window", "input": "", "output": "mdev[30;values]"}
+{"instruction": "Calculate rolling count with 10-period window", "input": "", "output": "mcount[10;values]"}
+{"instruction": "Calculate rolling count with 20-period window", "input": "", "output": "mcount[20;values]"}
+{"instruction": "Calculate rolling count with 30-period window", "input": "", "output": "mcount[30;values]"}
+{"instruction": "Calculate cumulative sum of a series", "input": "", "output": "sums values"}
+{"instruction": "Calculate cumulative prd of a series", "input": "", "output": "prds values"}
+{"instruction": "Calculate cumulative max of a series", "input": "", "output": "maxs values"}
+{"instruction": "Calculate cumulative min of a series", "input": "", "output": "mins values"}
+{"instruction": "Calculate 1-period lagged values", "input": "", "output": "prev[1;values]"}
+{"instruction": "Calculate 1-period price change", "input": "", "output": "deltas[1;prices]"}
+{"instruction": "Calculate 2-period lagged values", "input": "", "output": "prev[2;values]"}
+{"instruction": "Calculate 2-period price change", "input": "", "output": "deltas[2;prices]"}
+{"instruction": "Calculate 5-period lagged values", "input": "", "output": "prev[5;values]"}
+{"instruction": "Calculate 5-period price change", "input": "", "output": "deltas[5;prices]"}
+{"instruction": "Calculate 10-period lagged values", "input": "", "output": "prev[10;values]"}
+{"instruction": "Calculate 10-period price change", "input": "", "output": "deltas[10;prices]"}
+{"instruction": "Filter trades with size greater than 100", "input": "", "output": "select from trades where size>100"}
+{"instruction": "Filter trades with size greater than 500", "input": "", "output": "select from trades where size>500"}
+{"instruction": "Filter trades with size greater than 1000", "input": "", "output": "select from trades where size>1000"}
+{"instruction": "Filter trades with size greater than 5000", "input": "", "output": "select from trades where size>5000"}
+{"instruction": "Filter trades with size greater than 10000", "input": "", "output": "select from trades where size>10000"}
+{"instruction": "Get top 5 symbols by volume", "input": "", "output": "5#`volume xdesc select volume:sum size by sym from trades"}
+{"instruction": "Get top 10 symbols by volume", "input": "", "output": "10#`volume xdesc select volume:sum size by sym from trades"}
+{"instruction": "Get top 20 symbols by volume", "input": "", "output": "20#`volume xdesc select volume:sum size by sym from trades"}
+{"instruction": "Get top 50 symbols by volume", "input": "", "output": "50#`volume xdesc select volume:sum size by sym from trades"}
+{"instruction": "Get top 100 symbols by volume", "input": "", "output": "100#`volume xdesc select volume:sum size by sym from trades"}
+{"instruction": "Calculate 10th percentile of prices", "input": "", "output": "0.1 xrank prices"}
+{"instruction": "Calculate 25th percentile of prices", "input": "", "output": "0.25 xrank prices"}
+{"instruction": "Calculate 50th percentile of prices", "input": "", "output": "0.5 xrank prices"}
+{"instruction": "Calculate 75th percentile of prices", "input": "", "output": "0.75 xrank prices"}
+{"instruction": "Calculate 90th percentile of prices", "input": "", "output": "0.9 xrank prices"}
+{"instruction": "Calculate 95th percentile of prices", "input": "", "output": "0.95 xrank prices"}
+{"instruction": "Calculate 99th percentile of prices", "input": "", "output": "0.99 xrank prices"}

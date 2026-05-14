@@ -1,0 +1,192 @@
+{"instruction":"Compute running sum of a list using scan","input":"","output":"(+) scan 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Compute product of all elements using over","input":"","output":"(*) over 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Use sums keyword for running sum","input":"","output":"sums 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Use prd keyword for product","input":"","output":"prd 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Compute running maximum using scan","input":"","output":"(|) scan 3 1 4 1 5 9","source":"qformortals"}
+{"instruction":"Compute running minimum using scan","input":"","output":"(&) scan 3 1 4 1 5 9","source":"qformortals"}
+{"instruction":"Use maxs keyword for running maximum","input":"","output":"maxs 3 1 4 1 5 9","source":"qformortals"}
+{"instruction":"Use mins keyword for running minimum","input":"","output":"mins 3 1 4 1 5 9","source":"qformortals"}
+{"instruction":"Flatten nested list using raze over","input":"","output":"raze over (\"the \";(\"quick \";\"brown \";(\"fox \";\"jumps \";\"over \");\"the \");(\"lazy \";\"dog.\"))","source":"qformortals"}
+{"instruction":"Join strings using over","input":"","output":"(,/) over (\"the \";(\"quick \";\"brown \";(\"fox \";\"jumps \";\"over \");\"the \");(\"lazy \";\"dog.\"))","source":"qformortals"}
+{"instruction":"Apply function until convergence","input":"","output":"{x*x} scan .01","source":"qformortals"}
+{"instruction":"Compute Fibonacci sequence using scan","input":"","output":"{x,sum -2#x} scan 1 1","source":"qformortals"}
+{"instruction":"Apply count to each string","input":"","output":"count each (\"the\";\"quick\";\" brown\";\"fox\")","source":"qformortals"}
+{"instruction":"Apply running sum to each sublist","input":"","output":"(+\\)each(2 3 4;(5 6;7 8);9 10 11 12)","source":"qformortals"}
+{"instruction":"Apply sum to rows of a matrix","input":"m:(3 4;5 6;7 8)","output":"sum each m","source":"qformortals"}
+{"instruction":"Apply each-left to add scalar to list","input":"","output":"10+/:1 2 3 4 5","source":"qformortals"}
+{"instruction":"Apply each-right to add list to scalar","input":"","output":"1 2 3 4 5+\\:10","source":"qformortals"}
+{"instruction":"Compute differences using each-prior","input":"","output":"deltas 2 5 9 14 20","source":"qformortals"}
+{"instruction":"Compute ratios using each-prior","input":"","output":"ratios 1 2 4 8 16","source":"qformortals"}
+{"instruction":"Apply binary function to adjacent pairs","input":"","output":"(-):prior 2 5 9 14 20","source":"qformortals"}
+{"instruction":"Get previous values shifted by 1","input":"","output":"prev 2 5 9 14 20","source":"qformortals"}
+{"instruction":"Get previous values shifted by 2","input":"","output":"2 xprev 2 5 9 14 20","source":"qformortals"}
+{"instruction":"Apply each to parallel lists","input":"","output":"(1 2 3;10 20 30;100 200 300)+/:1 2 3","source":"qformortals"}
+{"instruction":"Compute outer product with each-left and each-right","input":"","output":"1 2 3*/:\\:4 5 6","source":"qformortals"}
+{"instruction":"Apply function with error trapping using protected eval","input":"","output":"@[{x%y}; (10; 0); {`$\"Error: \",x}]","source":"qformortals"}
+{"instruction":"Apply function to index with error handling","input":"","output":".[trade; (::; `px); max; 0]","source":"qformortals"}
+{"instruction":"Trap divide by zero error","input":"","output":"@[%; (10; 0); 0N]","source":"qformortals"}
+{"instruction":"Trap type error in list indexing","input":"","output":"@[(1 2 3)@; 10; `outofbounds]","source":"qformortals"}
+{"instruction":"Protected evaluation with multiple arguments","input":"","output":".[+; (2; 3); {`error}]","source":"qformortals"}
+{"instruction":"Execute with error signal","input":"","output":"@[{if[x<0; '`negative]; x*2}; -5; {x}]","source":"qformortals"}
+{"instruction":"Cast string to float","input":"","output":"\"f\"$\"3.14\"","source":"qformortals"}
+{"instruction":"Cast string to integer","input":"","output":"\"i\"$\"42\"","source":"qformortals"}
+{"instruction":"Cast string to long","input":"","output":"\"j\"$\"1000000000\"","source":"qformortals"}
+{"instruction":"Cast string to symbol","input":"","output":"\"s\"$\"hello\"","source":"qformortals"}
+{"instruction":"Cast float to int","input":"","output":"\"i\"$3.14","source":"qformortals"}
+{"instruction":"Cast symbol to string","input":"","output":"string `symbol","source":"qformortals"}
+{"instruction":"Parse date from string","input":"","output":"\"d\"$\"2015.01.01\"","source":"qformortals"}
+{"instruction":"Parse time from string","input":"","output":"\"t\"$\"12:34:56.789\"","source":"qformortals"}
+{"instruction":"Parse timestamp from string","input":"","output":"\"p\"$\"2015.01.01D12:34:56.789\"","source":"qformortals"}
+{"instruction":"Convert list to float type","input":"","output":"\"f\"$1 2 3","source":"qformortals"}
+{"instruction":"Add type suffix to create long literal","input":"","output":"42j","source":"qformortals"}
+{"instruction":"Add type suffix to create float literal","input":"","output":"3.14f","source":"qformortals"}
+{"instruction":"Add type suffix to create int literal","input":"","output":"42i","source":"qformortals"}
+{"instruction":"Check type of value","input":"","output":"type 42","source":"qformortals"}
+{"instruction":"Check if value is long type","input":"","output":"7h=type 42j","source":"qformortals"}
+{"instruction":"Check if value is float type","input":"","output":"9h=type 3.14","source":"qformortals"}
+{"instruction":"Check if list is homogeneous","input":"","output":"type 1 2 3","source":"qformortals"}
+{"instruction":"Cast heterogeneous list to symbol","input":"","output":"\"s\"$(1;2;`three)","source":"qformortals"}
+{"instruction":"Partial application of addition","input":"","output":"add10:10+","source":"qformortals"}
+{"instruction":"Partial application of multiplication","input":"","output":"double:2*","source":"qformortals"}
+{"instruction":"Projection of binary function","input":"","output":"addFive:+[5;]","source":"qformortals"}
+{"instruction":"Projection of ternary function","input":"","output":"substr:?[;0;]","source":"qformortals"}
+{"instruction":"Compose two functions","input":"","output":"negRecip:neg reciprocal::","source":"qformortals"}
+{"instruction":"Chain multiple function compositions","input":"","output":"f:reverse upper::","source":"qformortals"}
+{"instruction":"Use implicit x argument in lambda","input":"","output":"{x*x}","source":"qformortals"}
+{"instruction":"Use implicit y argument in lambda","input":"","output":"{x+y}","source":"qformortals"}
+{"instruction":"Use implicit z argument in lambda","input":"","output":"{x+y+z}","source":"qformortals"}
+{"instruction":"Define point-free style function","input":"","output":"sumSq:sum {x*x}@","source":"qformortals"}
+{"instruction":"Curry function with partial application","input":"","output":"mul:{x*y}; mul3:mul[3;]","source":"qformortals"}
+{"instruction":"Apply function projection to list","input":"","output":"10+/:1 2 3 4 5","source":"qformortals"}
+{"instruction":"Project binary operator","input":"","output":"gt5:5<","source":"qformortals"}
+{"instruction":"Use projection with where clause","input":"","output":"select from trades where 100<price","source":"qformortals"}
+{"instruction":"Compute 5-period moving average","input":"","output":"5 mavg 1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Compute 3-period moving sum","input":"","output":"3 msum 1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Compute 4-period moving standard deviation","input":"","output":"4 mdev 1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Compute 2-period moving count","input":"","output":"2 mcount 1 2 3 4 5 0N 7 8 9 10","source":"qformortals"}
+{"instruction":"Get 3-period lagged values","input":"","output":"3 xprev 1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Compute differences between adjacent elements","input":"","output":"deltas 1 3 6 10 15","source":"qformortals"}
+{"instruction":"Compute ratios between adjacent elements","input":"","output":"ratios 1 2 4 8 16","source":"qformortals"}
+{"instruction":"Compute 5-period moving maximum","input":"","output":"5 mmax 3 1 4 1 5 9 2 6 5 3","source":"qformortals"}
+{"instruction":"Compute 5-period moving minimum","input":"","output":"5 mmin 3 1 4 1 5 9 2 6 5 3","source":"qformortals"}
+{"instruction":"Apply moving window function","input":"","output":"5{avg x} each 0N 5#1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Compute weighted moving average","input":"","output":"(1 2 3%sum 1 2 3) wavg 3#'1 2 3 4 5 6 7","source":"qformortals"}
+{"instruction":"Apply exponential moving average","input":"","output":"0.3 ema 1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Get first n elements using sublist","input":"","output":"5#1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Get last n elements using negative sublist","input":"","output":"-5#1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Get middle elements using sublist with offset","input":"","output":"3 4 sublist 1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Drop first n elements","input":"","output":"5_1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Drop last n elements using negative drop","input":"","output":"-5_1 2 3 4 5 6 7 8 9 10","source":"qformortals"}
+{"instruction":"Compute rolling correlation","input":"","output":"cor each 5#'price1 price2","source":"qformortals"}
+{"instruction":"Compute rolling covariance","input":"","output":"cov each 5#'price1 price2","source":"qformortals"}
+{"instruction":"Apply sliding window to time series","input":"","output":"{avg x} each 5#'til 20","source":"qformortals"}
+{"instruction":"Compute centered moving average","input":"","output":"avg each -2 2#'til 20","source":"qformortals"}
+{"instruction":"Use prior with custom function","input":"","output":"(+):prior 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Apply each-prior with subtraction","input":"","output":"(-):prior 10 15 18 24 29","source":"qformortals"}
+{"instruction":"Compute percent changes","input":"","output":"100*-1+ratios 100 105 103 110","source":"qformortals"}
+{"instruction":"Apply running product","input":"","output":"prds 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Find running maximum index","input":"","output":"maxs til 10","source":"qformortals"}
+{"instruction":"Find running minimum index","input":"","output":"mins til 10","source":"qformortals"}
+{"instruction":"Apply accumulating scan with custom function","input":"","output":"{x+2*y} scan 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Use over to find final accumulated value","input":"","output":"{x+2*y} over 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Apply scan with three arguments","input":"","output":"{x+y+z}/[1;2 3 4;5 6 7]","source":"qformortals"}
+{"instruction":"Converge with unary function","input":"","output":"{floor x%2} scan 100","source":"qformortals"}
+{"instruction":"Apply do iteration n times","input":"","output":"10{x+1}/0","source":"qformortals"}
+{"instruction":"Apply while iteration with condition","input":"","output":"{x<100}{x+1}/0","source":"qformortals"}
+{"instruction":"Use scan for running all","input":"","output":"(&) scan 1 1 0 1 1","source":"qformortals"}
+{"instruction":"Use scan for running any","input":"","output":"(|) scan 0 0 1 0 0","source":"qformortals"}
+{"instruction":"Apply max to all elements","input":"","output":"max 3 1 4 1 5 9 2 6","source":"qformortals"}
+{"instruction":"Apply min to all elements","input":"","output":"min 3 1 4 1 5 9 2 6","source":"qformortals"}
+{"instruction":"Apply all to boolean list","input":"","output":"all 1 1 1 1 1b","source":"qformortals"}
+{"instruction":"Apply any to boolean list","input":"","output":"any 0 0 1 0 0b","source":"qformortals"}
+{"instruction":"Use converge to find fixed point","input":"","output":"{x%2} scan 128","source":"qformortals"}
+{"instruction":"Apply nested each","input":"","output":"count each each ((1 2;3 4 5);(6;7 8))","source":"qformortals"}
+{"instruction":"Apply each to dictionary values","input":"","output":"upper each `a`b`c!\"abc\"","source":"qformortals"}
+{"instruction":"Apply each-left with dictionary","input":"","output":"`a`b`c!/:1 2 3","source":"qformortals"}
+{"instruction":"Apply each-right with dictionary","input":"","output":"1 2 3!\\:`a`b`c","source":"qformortals"}
+{"instruction":"Compute running distinct count","input":"","output":"count each {distinct x,y}\\1 2 3 2 1 4 5","source":"qformortals"}
+{"instruction":"Apply scan to build list","input":"","output":"{x,y} scan 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Use over for reduction","input":"","output":"{x,y} over (\"a\";\"b\";\"c\")","source":"qformortals"}
+{"instruction":"Apply moving window with step","input":"","output":"3{avg x} each 2#'til 20","source":"qformortals"}
+{"instruction":"Compute exponentially weighted moving average","input":"","output":"0.2 ema til 10","source":"qformortals"}
+{"instruction":"Apply parallel each on large list","input":"","output":"count peach til 1000000","source":"qformortals"}
+{"instruction":"Use peach with custom function","input":"","output":"{sum x*x}peach (til 10;til 20;til 30)","source":"qformortals"}
+{"instruction":"Apply protected eval in each","input":"","output":"@[;0] each ((1 2 3);();(5 6))","source":"qformortals"}
+{"instruction":"Use each with index operation","input":"","output":"(1 2 3;10 20 30;100 200 300)@\\:0","source":"qformortals"}
+{"instruction":"Apply type cast to each element","input":"","output":"\"f\"$ each (\"3.14\";\"2.71\";\"1.41\")","source":"qformortals"}
+{"instruction":"Parse dates using each","input":"","output":"\"d\"$ each (\"2015.01.01\";\"2015.01.02\";\"2015.01.03\")","source":"qformortals"}
+{"instruction":"Apply string operations to each","input":"","output":"upper each (\"hello\";\"world\";\"kdb\")","source":"qformortals"}
+{"instruction":"Trim whitespace from each string","input":"","output":"trim each (\" hello \";\" world \";\" kdb \")","source":"qformortals"}
+{"instruction":"Count nulls in each column","input":"trades:([] sym:`ibm`msft`; price:100 0N; size:0N 200)","output":"sum each null trades","source":"qformortals"}
+{"instruction":"Fill nulls in each column","input":"trades:([] sym:`ibm`msft`; price:100 0N; size:0N 200)","output":"fills each trades","source":"qformortals"}
+{"instruction":"Apply aggregation to each group","input":"trades:([] sym:`ibm`ibm`msft`msft; price:100 101 200 201)","output":"avg each trades`price group trades`sym","source":"qformortals"}
+{"instruction":"Compute distinct values in each group","input":"trades:([] sym:`ibm`ibm`msft`msft; price:100 101 200 201)","output":"distinct each trades`sym group trades`sym","source":"qformortals"}
+{"instruction":"Apply window function with overlap","input":"","output":"3{avg x} each {(x-2)+til 3} each 2+til 10","source":"qformortals"}
+{"instruction":"Compute cumulative sum","input":"","output":"sums 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Compute cumulative product","input":"","output":"prds 1 2 3 4 5","source":"qformortals"}
+{"instruction":"Compute cumulative maximum","input":"","output":"maxs 3 1 4 1 5 9","source":"qformortals"}
+{"instruction":"Compute cumulative minimum","input":"","output":"mins 3 1 4 1 5 9","source":"qformortals"}
+{"instruction":"Apply forward fill","input":"","output":"fills 1 0N 0N 2 0N 3","source":"qformortals"}
+{"instruction":"Replace nulls with zero","input":"","output":"0^1 0N 2 0N 3","source":"qformortals"}
+{"instruction":"Replace nulls with forward fill","input":"","output":"fills 1 0N 0N 2 0N 0N 3","source":"qformortals"}
+{"instruction":"Check for null values","input":"","output":"null 1 0N 2 0N 3","source":"qformortals"}
+{"instruction":"Count non-null values","input":"","output":"sum not null 1 0N 2 0N 3","source":"qformortals"}
+{"instruction":"Filter out null values","input":"","output":"(1 0N 2 0N 3) where not null 1 0N 2 0N 3","source":"qformortals"}
+{"instruction":"Use protected eval with default value","input":"","output":"@[+;(2;3);0]","source":"qformortals"}
+{"instruction":"Trap error and return error message","input":"","output":"@[+;(`a;3);{`$x}]","source":"qformortals"}
+{"instruction":"Apply protected eval to list of operations","input":"","output":"@[;0] each ((1 2 3);(4 5);())","source":"qformortals"}
+{"instruction":"Use protected eval for dictionary access","input":"d:`a`b`c!1 2 3","output":"@[d;`x;0N]","source":"qformortals"}
+{"instruction":"Trap type error in arithmetic","input":"","output":"@[*;(2;`a);{`typeerror}]","source":"qformortals"}
+{"instruction":"Execute with signal handling","input":"","output":"@[{if[0>x;'`negative];x+1};-5;{x}]","source":"qformortals"}
+{"instruction":"Apply function with multiple error handlers","input":"","output":".[+;(2;`a);{[e] $[e~\"type\";0N;'e]}]","source":"qformortals"}
+{"instruction":"Protected assignment to global","input":"","output":"@[`.;`x;:;42]","source":"qformortals"}
+{"instruction":"Protected update to table","input":"trades:([] sym:`ibm`msft; price:100 200)","output":"@[trades;`price;*;1.1]","source":"qformortals"}
+{"instruction":"Compute 10-period moving average on price column","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201)","output":"10 mavg trades`price","source":"qformortals"}
+{"instruction":"Compute 5-period moving sum on size column","input":"trades:([] sym:`ibm`msft`ibm`msft; size:100 200 150 250)","output":"5 msum trades`size","source":"qformortals"}
+{"instruction":"Apply moving standard deviation to prices","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201)","output":"5 mdev trades`price","source":"qformortals"}
+{"instruction":"Compute differences between consecutive prices","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201)","output":"deltas trades`price","source":"qformortals"}
+{"instruction":"Compute price ratios","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 100 200)","output":"ratios trades`price","source":"qformortals"}
+{"instruction":"Get previous price using xprev","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201)","output":"1 xprev trades`price","source":"qformortals"}
+{"instruction":"Lag price by 5 periods","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201)","output":"5 xprev trades`price","source":"qformortals"}
+{"instruction":"Apply exponential moving average to prices","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100.0 200.0 101.0 201.0)","output":"0.3 ema trades`price","source":"qformortals"}
+{"instruction":"Compute moving maximum","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201)","output":"3 mmax trades`price","source":"qformortals"}
+{"instruction":"Compute moving minimum","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201)","output":"3 mmin trades`price","source":"qformortals"}
+{"instruction":"Apply moving count ignoring nulls","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 0N 101 201)","output":"3 mcount trades`price","source":"qformortals"}
+{"instruction":"Compute percent change from previous price","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100.0 200.0 101.0 201.0)","output":"100*-1+ratios trades`price","source":"qformortals"}
+{"instruction":"Apply cumulative sum to size","input":"trades:([] sym:`ibm`msft`ibm`msft; size:100 200 150 250)","output":"sums trades`size","source":"qformortals"}
+{"instruction":"Compute running maximum of prices","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201)","output":"maxs trades`price","source":"qformortals"}
+{"instruction":"Compute running minimum of prices","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201)","output":"mins trades`price","source":"qformortals"}
+{"instruction":"Forward fill null prices","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 0N 0N 201)","output":"fills trades`price","source":"qformortals"}
+{"instruction":"Create boolean mask for null prices","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 0N 101 0N)","output":"null trades`price","source":"qformortals"}
+{"instruction":"Replace null prices with zero","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 0N 101 0N)","output":"0^trades`price","source":"qformortals"}
+{"instruction":"Apply lag to multiple columns","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100 200 101 201; size:10 20 15 25)","output":"1 xprev trades`price`size","source":"qformortals"}
+{"instruction":"Compute correlation between price and size","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100.0 200.0 101.0 201.0; size:10.0 20.0 15.0 25.0)","output":"trades[`price] cor trades[`size]","source":"qformortals"}
+{"instruction":"Compute covariance between price and size","input":"trades:([] sym:`ibm`msft`ibm`msft; price:100.0 200.0 101.0 201.0; size:10.0 20.0 15.0 25.0)","output":"trades[`price] cov trades[`size]","source":"qformortals"}
+{"instruction":"Apply type checking on each element","input":"","output":"type each (1;2.0;`three;\"four\")","source":"qformortals"}
+{"instruction":"Check if each element is numeric","input":"","output":"(type each (1;2.0;`three;\"four\")) in -7 -9h","source":"qformortals"}
+{"instruction":"Cast each element to string","input":"","output":"string each (1;2.0;`three)","source":"qformortals"}
+{"instruction":"Parse each string as integer","input":"","output":"\"i\"$ each (\"1\";\"2\";\"3\")","source":"qformortals"}
+{"instruction":"Parse each string as float","input":"","output":"\"f\"$ each (\"1.1\";\"2.2\";\"3.3\")","source":"qformortals"}
+{"instruction":"Cast each to long with error handling","input":"","output":"@[\"j\"$;] each (\"123\";\"456\";\"abc\")","source":"qformortals"}
+{"instruction":"Check type compatibility for operations","input":"","output":"all (type each (1;2;3))=type 1","source":"qformortals"}
+{"instruction":"Ensure homogeneous list type","input":"","output":"type 1 2 3","source":"qformortals"}
+{"instruction":"Detect heterogeneous list","input":"","output":"0h=type (1;2.0;`three)","source":"qformortals"}
+{"instruction":"Cast all elements to common type","input":"","output":"\"f\"$(1;2;3)","source":"qformortals"}
+{"instruction":"Apply function composition","input":"","output":"reverse upper \"hello\"","source":"qformortals"}
+{"instruction":"Chain multiple transformations","input":"","output":"(reverse upper trim::)\" HELLO \"","source":"qformortals"}
+{"instruction":"Define composition of three functions","input":"","output":"f:neg reciprocal abs::","source":"qformortals"}
+{"instruction":"Apply point-free function definition","input":"","output":"isPositive:0<","source":"qformortals"}
+{"instruction":"Use projection in function composition","input":"","output":"addThenDouble:(2*)10+::","source":"qformortals"}
+{"instruction":"Define curried function","input":"","output":"add:{x+y}; add5:add[5;]","source":"qformortals"}
+{"instruction":"Apply partial application to binary operator","input":"","output":"gt10:10<","source":"qformortals"}
+{"instruction":"Use implicit arguments in lambda","input":"","output":"{x*x+y}[3;4]","source":"qformortals"}
+{"instruction":"Define function with all implicit args","input":"","output":"{x+y+z}[1;2;3]","source":"qformortals"}
+{"instruction":"Apply projection to ternary function","input":"","output":"?[`trades; enlist (=; `sym; enlist `ibm); 0b; `price`size!`price`size]","source":"qformortals"}
+{"instruction":"Use do iteration with counter","input":"","output":"10{x+1}/0","source":"qformortals"}
+{"instruction":"Apply while iteration","input":"","output":"{x<100}{x*2}/1","source":"qformortals"}
+{"instruction":"Use converge with numeric function","input":"","output":"{x%2} scan 1024","source":"qformortals"}
+{"instruction":"Apply scan with boolean test","input":"","output":"{x>1}{x%2}\\128","source":"qformortals"}
+{"instruction":"Iterate until value stabilizes","input":"","output":"{floor x%2} over 100","source":"qformortals"}
+{"instruction":"Apply Newton's method iteration","input":"","output":"{.5*x+n%x}[;2.0] scan 1.0","source":"qformortals"}
+{"instruction":"Use fixed-point iteration","input":"","output":"{cos x} scan 1.0","source":"qformortals"}
+{"instruction":"Apply scan to generate sequence","input":"","output":"{x,sum -2#x} scan 1 1","source":"qformortals"}

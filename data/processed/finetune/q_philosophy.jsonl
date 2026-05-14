@@ -1,0 +1,500 @@
+{"instruction": "Write q code to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "In q/kdb+, compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Give a short q expression to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Produce q code to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Use q syntax to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Return a q expression to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Show the q code to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Create q code to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Using idiomatic q, compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Return only q code to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Provide q syntax to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Show a concise q expression to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Use q to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Generate q code that will compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Form a q expression that can compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Write the q expression for how to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Give q/kdb+ code to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Create a concise q expression to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Write only the q expression to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Give the q expression needed to compute 100 divided by 10 minus 5 using q right-to-left evaluation.", "input": "", "output": "100%10-5"}
+{"instruction": "Write q code to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "In q/kdb+, compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Give a short q expression to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Produce q code to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Use q syntax to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Return a q expression to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Show the q code to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Create q code to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Using idiomatic q, compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Return only q code to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Provide q syntax to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Show a concise q expression to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Use q to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Generate q code that will compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Form a q expression that can compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Write the q expression for how to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Give q/kdb+ code to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Create a concise q expression to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Write only the q expression to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Give the q expression needed to compute 2 plus 3 times 4 with q right-to-left evaluation.", "input": "", "output": "2+3*4"}
+{"instruction": "Write q code to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "In q/kdb+, write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Give a short q expression to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Produce q code to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Use q syntax to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Return a q expression to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Show the q code to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Create q code to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Using idiomatic q, write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Return only q code to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Provide q syntax to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Show a concise q expression to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Use q to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Generate q code that will write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Form a q expression that can write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Write the q expression for how to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Give q/kdb+ code to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Create a concise q expression to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Write only the q expression to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Give the q expression needed to write symbol atom alpha.", "input": "", "output": "`alpha"}
+{"instruction": "Write q code to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "In q/kdb+, ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Give a short q expression to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Produce q code to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Use q syntax to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Return a q expression to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Show the q code to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Create q code to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Using idiomatic q, ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Return only q code to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Provide q syntax to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Show a concise q expression to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Use q to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Generate q code that will ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Form a q expression that can ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Write the q expression for how to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Give q/kdb+ code to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Create a concise q expression to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Write only the q expression to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Give the q expression needed to ask q for the type of long atom 42.", "input": "", "output": "type 42"}
+{"instruction": "Write q code to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "In q/kdb+, ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Give a short q expression to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Produce q code to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Use q syntax to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Return a q expression to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Show the q code to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Create q code to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Using idiomatic q, ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Return only q code to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Provide q syntax to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Show a concise q expression to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Use q to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Generate q code that will ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Form a q expression that can ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Write the q expression for how to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Give q/kdb+ code to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Create a concise q expression to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Write only the q expression to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Give the q expression needed to ask q for the type of short atom 42h.", "input": "", "output": "type 42h"}
+{"instruction": "Write q code to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "In q/kdb+, ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Give a short q expression to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Produce q code to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Use q syntax to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Return a q expression to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Show the q code to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Create q code to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Using idiomatic q, ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Return only q code to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Provide q syntax to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Show a concise q expression to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Use q to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Generate q code that will ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Form a q expression that can ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Write the q expression for how to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Give q/kdb+ code to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Create a concise q expression to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Write only the q expression to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Give the q expression needed to ask q for the type of int atom 42i.", "input": "", "output": "type 42i"}
+{"instruction": "Write q code to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "In q/kdb+, ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Give a short q expression to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Produce q code to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Use q syntax to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Return a q expression to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Show the q code to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Create q code to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Using idiomatic q, ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Return only q code to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Provide q syntax to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Show a concise q expression to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Use q to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Generate q code that will ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Form a q expression that can ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Write the q expression for how to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Give q/kdb+ code to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Create a concise q expression to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Write only the q expression to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Give the q expression needed to ask q for the type of float atom 42f.", "input": "", "output": "type 42f"}
+{"instruction": "Write q code to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "In q/kdb+, ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Give a short q expression to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Produce q code to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Use q syntax to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Return a q expression to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Show the q code to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Create q code to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Using idiomatic q, ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Return only q code to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Provide q syntax to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Show a concise q expression to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Use q to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Generate q code that will ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Form a q expression that can ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Write the q expression for how to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Give q/kdb+ code to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Create a concise q expression to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Write only the q expression to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Give the q expression needed to ask q for the type of boolean atom 1b.", "input": "", "output": "type 1b"}
+{"instruction": "Write q code to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "In q/kdb+, ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Give a short q expression to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Produce q code to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Use q syntax to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Return a q expression to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Show the q code to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Create q code to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Using idiomatic q, ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Return only q code to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Provide q syntax to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Show a concise q expression to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Use q to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Generate q code that will ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Form a q expression that can ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Write the q expression for how to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Give q/kdb+ code to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Create a concise q expression to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Write only the q expression to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Give the q expression needed to ask q for the type of char atom a.", "input": "", "output": "type \"a\""}
+{"instruction": "Write q code to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "In q/kdb+, ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Give a short q expression to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Produce q code to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Use q syntax to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Return a q expression to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Show the q code to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Create q code to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Using idiomatic q, ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Return only q code to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Provide q syntax to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Show a concise q expression to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Use q to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Generate q code that will ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Form a q expression that can ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Write the q expression for how to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Give q/kdb+ code to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Create a concise q expression to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Write only the q expression to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Give the q expression needed to ask q for the type of symbol atom alpha.", "input": "", "output": "type `alpha"}
+{"instruction": "Write q code to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "In q/kdb+, ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Give a short q expression to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Produce q code to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Use q syntax to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Return a q expression to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Show the q code to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Create q code to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Using idiomatic q, ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Return only q code to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Provide q syntax to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Show a concise q expression to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Use q to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Generate q code that will ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Form a q expression that can ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Write the q expression for how to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Give q/kdb+ code to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Create a concise q expression to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Write only the q expression to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Give the q expression needed to ask q for the type of simple long list 1 2 3.", "input": "", "output": "type 1 2 3"}
+{"instruction": "Write q code to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "In q/kdb+, ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Give a short q expression to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Produce q code to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Use q syntax to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Return a q expression to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Show the q code to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Create q code to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Using idiomatic q, ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Return only q code to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Provide q syntax to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Show a concise q expression to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Use q to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Generate q code that will ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Form a q expression that can ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Write the q expression for how to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Give q/kdb+ code to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Create a concise q expression to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Write only the q expression to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Give the q expression needed to ask q for the type of simple float list 1 2 3f.", "input": "", "output": "type 1 2 3f"}
+{"instruction": "Write q code to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "In q/kdb+, ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Give a short q expression to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Produce q code to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Use q syntax to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Return a q expression to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Show the q code to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Create q code to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Using idiomatic q, ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Return only q code to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Provide q syntax to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Show a concise q expression to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Use q to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Generate q code that will ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Form a q expression that can ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Write the q expression for how to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Give q/kdb+ code to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Create a concise q expression to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Write only the q expression to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Give the q expression needed to ask q for the type of symbol list a b c.", "input": "", "output": "type `a`b`c"}
+{"instruction": "Write q code to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "In q/kdb+, ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Give a short q expression to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Produce q code to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Use q syntax to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Return a q expression to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Show the q code to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Create q code to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Using idiomatic q, ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Return only q code to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Provide q syntax to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Show a concise q expression to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Use q to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Generate q code that will ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Form a q expression that can ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Write the q expression for how to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Give q/kdb+ code to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Create a concise q expression to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Write only the q expression to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Give the q expression needed to ask q for the type of string abc.", "input": "", "output": "type \"abc\""}
+{"instruction": "Write q code to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "In q/kdb+, create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Give a short q expression to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Produce q code to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Use q syntax to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Return a q expression to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Show the q code to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Create q code to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Using idiomatic q, create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Return only q code to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Provide q syntax to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Show a concise q expression to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Use q to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Generate q code that will create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Form a q expression that can create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Write the q expression for how to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Give q/kdb+ code to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Create a concise q expression to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Write only the q expression to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Give the q expression needed to create a typed empty long list.", "input": "", "output": "`long$()"}
+{"instruction": "Write q code to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "In q/kdb+, create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Give a short q expression to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Produce q code to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Use q syntax to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Return a q expression to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Show the q code to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Create q code to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Using idiomatic q, create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Return only q code to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Provide q syntax to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Show a concise q expression to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Use q to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Generate q code that will create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Form a q expression that can create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Write the q expression for how to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Give q/kdb+ code to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Create a concise q expression to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Write only the q expression to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Give the q expression needed to create a typed empty symbol list.", "input": "", "output": "`symbol$()"}
+{"instruction": "Write q code to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "In q/kdb+, create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Give a short q expression to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Produce q code to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Use q syntax to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Return a q expression to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Show the q code to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Create q code to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Using idiomatic q, create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Return only q code to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Provide q syntax to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Show a concise q expression to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Use q to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Generate q code that will create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Form a q expression that can create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Write the q expression for how to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Give q/kdb+ code to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Create a concise q expression to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Write only the q expression to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Give the q expression needed to create a typed empty float list.", "input": "", "output": "`float$()"}
+{"instruction": "Write q code to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "In q/kdb+, use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Give a short q expression to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Produce q code to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Use q syntax to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Return a q expression to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Show the q code to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Create q code to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Using idiomatic q, use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Return only q code to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Provide q syntax to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Show a concise q expression to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Use q to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Generate q code that will use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Form a q expression that can use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Write the q expression for how to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Give q/kdb+ code to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Create a concise q expression to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Write only the q expression to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Give the q expression needed to use a projection to add 2 to 10.", "input": "", "output": "+[;2]10"}
+{"instruction": "Write q code to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "In q/kdb+, use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Give a short q expression to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Produce q code to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Use q syntax to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Return a q expression to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Show the q code to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Create q code to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Using idiomatic q, use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Return only q code to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Provide q syntax to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Show a concise q expression to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Use q to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Generate q code that will use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Form a q expression that can use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Write the q expression for how to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Give q/kdb+ code to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Create a concise q expression to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Write only the q expression to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Give the q expression needed to use a projection to subtract from 10.", "input": "", "output": "-[10;]3"}
+{"instruction": "Write q code to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "In q/kdb+, create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Give a short q expression to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Produce q code to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Use q syntax to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Return a q expression to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Show the q code to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Create q code to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Using idiomatic q, create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Return only q code to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Provide q syntax to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Show a concise q expression to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Use q to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Generate q code that will create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Form a q expression that can create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Write the q expression for how to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Give q/kdb+ code to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Create a concise q expression to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Write only the q expression to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Give the q expression needed to create a projection that divides by 100.", "input": "", "output": "%[;100]"}
+{"instruction": "Write q code to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "In q/kdb+, use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Give a short q expression to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Produce q code to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Use q syntax to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Return a q expression to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Show the q code to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Create q code to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Using idiomatic q, use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Return only q code to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Provide q syntax to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Show a concise q expression to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Use q to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Generate q code that will use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Form a q expression that can use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Write the q expression for how to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Give q/kdb+ code to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Create a concise q expression to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Write only the q expression to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Give the q expression needed to use prior with minus on 10 13 20.", "input": "", "output": "(-) prior 10 13 20"}
+{"instruction": "Write q code to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "In q/kdb+, use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Give a short q expression to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Produce q code to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Use q syntax to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Return a q expression to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Show the q code to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Create q code to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Using idiomatic q, use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Return only q code to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Provide q syntax to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Show a concise q expression to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Use q to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Generate q code that will use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Form a q expression that can use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Write the q expression for how to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Give q/kdb+ code to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Create a concise q expression to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Write only the q expression to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Give the q expression needed to use deltas on 10 13 20.", "input": "", "output": "deltas 10 13 20"}
+{"instruction": "Write q code to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "In q/kdb+, use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Give a short q expression to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Produce q code to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Use q syntax to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Return a q expression to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Show the q code to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Create q code to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Using idiomatic q, use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Return only q code to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Provide q syntax to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Show a concise q expression to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Use q to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Generate q code that will use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Form a q expression that can use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Write the q expression for how to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Give q/kdb+ code to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Create a concise q expression to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Write only the q expression to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Give the q expression needed to use each prior form to compare consecutive values.", "input": "", "output": "(=':)1 1 2 2 3"}
+{"instruction": "Write q code to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "In q/kdb+, get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Give a short q expression to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Produce q code to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Use q syntax to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Return a q expression to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Show the q code to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Create q code to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Using idiomatic q, get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Return only q code to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Provide q syntax to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Show a concise q expression to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Use q to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Generate q code that will get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Form a q expression that can get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Write the q expression for how to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Give q/kdb+ code to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Create a concise q expression to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Write only the q expression to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Give the q expression needed to get pairwise deltas of 1 2 3.", "input": "", "output": "deltas 1 2 3"}
+{"instruction": "Plus join keyed current positions with keyed deltas.", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "In q, plus join keyed current positions with keyed deltas.", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "Write q code to plus join keyed current positions with keyed deltas.", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "Given the provided q context, plus join keyed current positions with keyed deltas.", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "Using qSQL, plus join keyed current positions with keyed deltas.", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "Return q code to plus join keyed current positions with keyed deltas.", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "For the supplied tables, plus join keyed current positions with keyed deltas.", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "Create an idiomatic q expression to plus join keyed current positions with keyed deltas.", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "As-of join daily closes to prior daily reference values.", "input": "daily:([] date:2026.05.07 2026.05.08 2026.05.09 2026.05.07 2026.05.08 2026.05.09;sym:`IBM`IBM`IBM`MSFT`MSFT`MSFT;close:99.5 100.8 101.2 248.0 250.7 252.1;volume:10000 12500 11800 15000 17500 16800);ref:([]date:2026.05.07 2026.05.08 2026.05.07 2026.05.08;sym:`IBM`IBM`MSFT`MSFT;vwap:99.4 100.6 248.1 250.5)", "output": "aj[`sym`date;daily;`sym`date xasc ref]"}
+{"instruction": "In q, as-of join daily closes to prior daily reference values.", "input": "daily:([] date:2026.05.07 2026.05.08 2026.05.09 2026.05.07 2026.05.08 2026.05.09;sym:`IBM`IBM`IBM`MSFT`MSFT`MSFT;close:99.5 100.8 101.2 248.0 250.7 252.1;volume:10000 12500 11800 15000 17500 16800);ref:([]date:2026.05.07 2026.05.08 2026.05.07 2026.05.08;sym:`IBM`IBM`MSFT`MSFT;vwap:99.4 100.6 248.1 250.5)", "output": "aj[`sym`date;daily;`sym`date xasc ref]"}
+{"instruction": "Write q code to as-of join daily closes to prior daily reference values.", "input": "daily:([] date:2026.05.07 2026.05.08 2026.05.09 2026.05.07 2026.05.08 2026.05.09;sym:`IBM`IBM`IBM`MSFT`MSFT`MSFT;close:99.5 100.8 101.2 248.0 250.7 252.1;volume:10000 12500 11800 15000 17500 16800);ref:([]date:2026.05.07 2026.05.08 2026.05.07 2026.05.08;sym:`IBM`IBM`MSFT`MSFT;vwap:99.4 100.6 248.1 250.5)", "output": "aj[`sym`date;daily;`sym`date xasc ref]"}
+{"instruction": "Given the provided q context, as-of join daily closes to prior daily reference values.", "input": "daily:([] date:2026.05.07 2026.05.08 2026.05.09 2026.05.07 2026.05.08 2026.05.09;sym:`IBM`IBM`IBM`MSFT`MSFT`MSFT;close:99.5 100.8 101.2 248.0 250.7 252.1;volume:10000 12500 11800 15000 17500 16800);ref:([]date:2026.05.07 2026.05.08 2026.05.07 2026.05.08;sym:`IBM`IBM`MSFT`MSFT;vwap:99.4 100.6 248.1 250.5)", "output": "aj[`sym`date;daily;`sym`date xasc ref]"}
+{"instruction": "Using qSQL, as-of join daily closes to prior daily reference values.", "input": "daily:([] date:2026.05.07 2026.05.08 2026.05.09 2026.05.07 2026.05.08 2026.05.09;sym:`IBM`IBM`IBM`MSFT`MSFT`MSFT;close:99.5 100.8 101.2 248.0 250.7 252.1;volume:10000 12500 11800 15000 17500 16800);ref:([]date:2026.05.07 2026.05.08 2026.05.07 2026.05.08;sym:`IBM`IBM`MSFT`MSFT;vwap:99.4 100.6 248.1 250.5)", "output": "aj[`sym`date;daily;`sym`date xasc ref]"}
+{"instruction": "Return q code to as-of join daily closes to prior daily reference values.", "input": "daily:([] date:2026.05.07 2026.05.08 2026.05.09 2026.05.07 2026.05.08 2026.05.09;sym:`IBM`IBM`IBM`MSFT`MSFT`MSFT;close:99.5 100.8 101.2 248.0 250.7 252.1;volume:10000 12500 11800 15000 17500 16800);ref:([]date:2026.05.07 2026.05.08 2026.05.07 2026.05.08;sym:`IBM`IBM`MSFT`MSFT;vwap:99.4 100.6 248.1 250.5)", "output": "aj[`sym`date;daily;`sym`date xasc ref]"}
+{"instruction": "For the supplied tables, as-of join daily closes to prior daily reference values.", "input": "daily:([] date:2026.05.07 2026.05.08 2026.05.09 2026.05.07 2026.05.08 2026.05.09;sym:`IBM`IBM`IBM`MSFT`MSFT`MSFT;close:99.5 100.8 101.2 248.0 250.7 252.1;volume:10000 12500 11800 15000 17500 16800);ref:([]date:2026.05.07 2026.05.08 2026.05.07 2026.05.08;sym:`IBM`IBM`MSFT`MSFT;vwap:99.4 100.6 248.1 250.5)", "output": "aj[`sym`date;daily;`sym`date xasc ref]"}
+{"instruction": "Create an idiomatic q expression to as-of join daily closes to prior daily reference values.", "input": "daily:([] date:2026.05.07 2026.05.08 2026.05.09 2026.05.07 2026.05.08 2026.05.09;sym:`IBM`IBM`IBM`MSFT`MSFT`MSFT;close:99.5 100.8 101.2 248.0 250.7 252.1;volume:10000 12500 11800 15000 17500 16800);ref:([]date:2026.05.07 2026.05.08 2026.05.07 2026.05.08;sym:`IBM`IBM`MSFT`MSFT;vwap:99.4 100.6 248.1 250.5)", "output": "aj[`sym`date;daily;`sym`date xasc ref]"}
+{"instruction": "Plus join keyed current positions with keyed deltas (variant 1).", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "In q, plus join keyed current positions with keyed deltas (variant 1).", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "Write q code to plus join keyed current positions with keyed deltas (variant 1).", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}
+{"instruction": "Given the provided q context, plus join keyed current positions with keyed deltas (variant 1).", "input": "pos:([sym:`IBM`MSFT]qty:100 200;cash:1000 2000);delta:([sym:`IBM`MSFT]qty:10 -20;cash:-100 300)", "output": "pos pj delta"}

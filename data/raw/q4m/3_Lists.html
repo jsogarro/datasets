@@ -1,0 +1,2387 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Q for Mortals: a textbook for kdb+ and the q programming language">
+      
+      
+      
+        <meta name="author" content="Jeffry Borror">
+      
+      
+        <link rel="canonical" href="https://code.kx.com/q4m3/3_Lists/">
+      
+      
+        
+      
+      <link rel="icon" href="https://code.kx.com/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-7.3.6+insiders-3.2.2">
+    
+    
+      
+        <title>3. Lists - Q for Mortals</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.b941530a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.1d832a92.min.css">
+        
+      
+      <link rel="preload" as="style" href="../assets/stylesheets/vendor/mermaid.733f213f.min.css">
+      
+    
+    
+    
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://code.kx.com/stylesheets/2021.css">
+    
+      <link rel="stylesheet" href="https://code.kx.com/stylesheets/prism.css">
+    
+      <link rel="stylesheet" href="https://code.kx.com/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://code.kx.com/stylesheets/hide-footer-nav.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"..":".."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="kx-light" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-lists" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://code.kx.com/" title="code.kx.com" class="md-header__button md-logo" aria-label="Q for Mortals" data-md-component="logo">
+      
+  <img src="https://code.kx.com/img/kx.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Q for Mortals
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. Lists
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="kx-light" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Q for Mortals" class="md-nav__button md-logo" aria-label="Q for Mortals" data-md-component="logo">
+      
+  <img src="https://code.kx.com/img/kx.svg" alt="logo">
+
+    </a>
+    Q for Mortals
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Contents
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preface/" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0_Overview/" class="md-nav__link">
+        0. Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Q_Shock_and_Awe/" class="md-nav__link">
+        1. Q Shock and Awe
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Basic_Data_Types_Atoms/" class="md-nav__link">
+        2. Basic Data Types â Atoms
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3. Lists
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3. Lists
+      </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="In this chapter">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      In this chapter
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#30-overview" class="md-nav__link">
+    3.0 Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-introduction-to-lists" class="md-nav__link">
+    3.1 Introduction to Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Introduction to Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-list-definition-and-assignment" class="md-nav__link">
+    3.1.1 List Definition and Assignment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-count" class="md-nav__link">
+    3.1.2 count
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-simple-lists" class="md-nav__link">
+    3.2 Simple Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Simple Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-simple-integer-lists" class="md-nav__link">
+    3.2.1 Simple Integer Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-simple-floating-point-lists" class="md-nav__link">
+    3.2.2 Simple Floating Point Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-simple-binary-lists" class="md-nav__link">
+    3.2.3 Simple Binary Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-simple-symbol-lists" class="md-nav__link">
+    3.2.4 Simple Symbol Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#325-simple-char-lists-and-strings" class="md-nav__link">
+    3.2.5 Simple char Lists and Strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#326-lists-of-temporal-data" class="md-nav__link">
+    3.2.6 Lists of Temporal Data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-empty-and-singleton-lists" class="md-nav__link">
+    3.3 Empty and Singleton Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Empty and Singleton Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-the-general-empty-list" class="md-nav__link">
+    3.3.1 The General Empty List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-singleton-lists" class="md-nav__link">
+    3.3.2 Singleton Lists
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-indexing" class="md-nav__link">
+    3.4 Indexing
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 Indexing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-index-notation" class="md-nav__link">
+    3.4.1 Index Notation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-indexed-assignment" class="md-nav__link">
+    3.4.2 Indexed Assignment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-indexing-domain" class="md-nav__link">
+    3.4.3 Indexing Domain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-empty-index-and-null-item" class="md-nav__link">
+    3.4.4 Empty Index and Null Item
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-lists-with-expressions" class="md-nav__link">
+    3.4.5 Lists with Expressions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-combining-lists" class="md-nav__link">
+    3.5 Combining Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 Combining Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-joining-with" class="md-nav__link">
+    3.5.1 Joining with ,
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-merging-with" class="md-nav__link">
+    3.5.2 Merging with ^
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-lists-as-maps" class="md-nav__link">
+    3.6 Lists as Maps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-nesting" class="md-nav__link">
+    3.7 Nesting
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 Nesting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-depth" class="md-nav__link">
+    3.7.1 Depth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372-pictorial-representation" class="md-nav__link">
+    3.7.2 Pictorial Representation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#373-examples" class="md-nav__link">
+    3.7.3 Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-iterated-indexing-and-indexing-at-depth" class="md-nav__link">
+    3.8 Iterated Indexing and Indexing at Depth
+  </a>
+  
+    <nav class="md-nav" aria-label="3.8 Iterated Indexing and Indexing at Depth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#381-iterated-item-indexing" class="md-nav__link">
+    3.8.1 Iterated Item Indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#382-indexing-at-depth" class="md-nav__link">
+    3.8.2 Indexing at Depth
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-indexing-with-lists" class="md-nav__link">
+    3.9 Indexing with Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.9 Indexing with Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#391-retrieving-multiple-items" class="md-nav__link">
+    3.9.1 Retrieving Multiple Items
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#392-indexing-via-a-variable" class="md-nav__link">
+    3.9.2 Indexing via a Variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#393-indexing-with-nested-lists" class="md-nav__link">
+    3.9.3 Indexing with Nested Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#394-assignment-with-list-indexing" class="md-nav__link">
+    3.9.4 Assignment with List Indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#395-juxtaposition" class="md-nav__link">
+    3.9.5 Juxtaposition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#396-find" class="md-nav__link">
+    3.9.6 Find (?)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310-elided-indices" class="md-nav__link">
+    3.10 Elided Indices
+  </a>
+  
+    <nav class="md-nav" aria-label="3.10 Elided Indices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3101-eliding-indices-for-a-matrix" class="md-nav__link">
+    3.10.1 Eliding Indices for a Matrix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3102-eliding-indices-for-deeply-nested-lists" class="md-nav__link">
+    3.10.2 Eliding Indices for Deeply Nested Lists
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#311-rectangular-lists-and-matrices" class="md-nav__link">
+    3.11 Rectangular Lists and Matrices
+  </a>
+  
+    <nav class="md-nav" aria-label="3.11 Rectangular Lists and Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3111-rectangular-lists" class="md-nav__link">
+    3.11.1 Rectangular Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3112-formal-definition-of-matrices" class="md-nav__link">
+    3.11.2 Formal Definition of Matrices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3113-two-and-three-dimensional-matrices" class="md-nav__link">
+    3.11.3 Two- and Three-Dimensional Matrices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3114-matrix-flexibility" class="md-nav__link">
+    3.11.4 Matrix Flexibility
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#312-useful-list-operations" class="md-nav__link">
+    3.12 Useful List Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="3.12 Useful List Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3121-til" class="md-nav__link">
+    3.12.1 til
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3122-distinct" class="md-nav__link">
+    3.12.2 distinct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3123-where" class="md-nav__link">
+    3.12.3 where
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3124-group" class="md-nav__link">
+    3.12.4 group
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Operators/" class="md-nav__link">
+        4. Operators
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Dictionaries/" class="md-nav__link">
+        5. Dictionaries
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_Functions/" class="md-nav__link">
+        6. Functions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_Transforming_Data/" class="md-nav__link">
+        7. Transforming Data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8_Tables/" class="md-nav__link">
+        8. Tables
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9_Queries_q-sql/" class="md-nav__link">
+        9. Queries â q-sql
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_Execution_Control/" class="md-nav__link">
+        10. Execution Control
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_IO/" class="md-nav__link">
+        11. I/O
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_Workspace_Organization/" class="md-nav__link">
+        12. Workspace Organization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_Commands_and_System_Variables/" class="md-nav__link">
+        13. Commands and System Variables
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_Introduction_to_Kdb%2B/" class="md-nav__link">
+        14. Introduction to Kdb+
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A_Built-in_Functions/" class="md-nav__link">
+        Appendix A. Built-in Functions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../B_Error_Messages/" class="md-nav__link">
+        Appendix B. Error Messages
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../colophon/" class="md-nav__link">
+        Colophon
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/q/ref/" class="md-nav__link">
+        Q Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://kx.com/" class="md-nav__link">
+        About KX
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/q" class="md-nav__link">
+        kdb+ and q
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="In this chapter">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      In this chapter
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#30-overview" class="md-nav__link">
+    3.0 Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-introduction-to-lists" class="md-nav__link">
+    3.1 Introduction to Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Introduction to Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-list-definition-and-assignment" class="md-nav__link">
+    3.1.1 List Definition and Assignment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-count" class="md-nav__link">
+    3.1.2 count
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-simple-lists" class="md-nav__link">
+    3.2 Simple Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Simple Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-simple-integer-lists" class="md-nav__link">
+    3.2.1 Simple Integer Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-simple-floating-point-lists" class="md-nav__link">
+    3.2.2 Simple Floating Point Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-simple-binary-lists" class="md-nav__link">
+    3.2.3 Simple Binary Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-simple-symbol-lists" class="md-nav__link">
+    3.2.4 Simple Symbol Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#325-simple-char-lists-and-strings" class="md-nav__link">
+    3.2.5 Simple char Lists and Strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#326-lists-of-temporal-data" class="md-nav__link">
+    3.2.6 Lists of Temporal Data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-empty-and-singleton-lists" class="md-nav__link">
+    3.3 Empty and Singleton Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Empty and Singleton Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-the-general-empty-list" class="md-nav__link">
+    3.3.1 The General Empty List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-singleton-lists" class="md-nav__link">
+    3.3.2 Singleton Lists
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-indexing" class="md-nav__link">
+    3.4 Indexing
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 Indexing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-index-notation" class="md-nav__link">
+    3.4.1 Index Notation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-indexed-assignment" class="md-nav__link">
+    3.4.2 Indexed Assignment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-indexing-domain" class="md-nav__link">
+    3.4.3 Indexing Domain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-empty-index-and-null-item" class="md-nav__link">
+    3.4.4 Empty Index and Null Item
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-lists-with-expressions" class="md-nav__link">
+    3.4.5 Lists with Expressions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-combining-lists" class="md-nav__link">
+    3.5 Combining Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 Combining Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-joining-with" class="md-nav__link">
+    3.5.1 Joining with ,
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-merging-with" class="md-nav__link">
+    3.5.2 Merging with ^
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-lists-as-maps" class="md-nav__link">
+    3.6 Lists as Maps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-nesting" class="md-nav__link">
+    3.7 Nesting
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 Nesting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#371-depth" class="md-nav__link">
+    3.7.1 Depth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#372-pictorial-representation" class="md-nav__link">
+    3.7.2 Pictorial Representation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#373-examples" class="md-nav__link">
+    3.7.3 Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-iterated-indexing-and-indexing-at-depth" class="md-nav__link">
+    3.8 Iterated Indexing and Indexing at Depth
+  </a>
+  
+    <nav class="md-nav" aria-label="3.8 Iterated Indexing and Indexing at Depth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#381-iterated-item-indexing" class="md-nav__link">
+    3.8.1 Iterated Item Indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#382-indexing-at-depth" class="md-nav__link">
+    3.8.2 Indexing at Depth
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-indexing-with-lists" class="md-nav__link">
+    3.9 Indexing with Lists
+  </a>
+  
+    <nav class="md-nav" aria-label="3.9 Indexing with Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#391-retrieving-multiple-items" class="md-nav__link">
+    3.9.1 Retrieving Multiple Items
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#392-indexing-via-a-variable" class="md-nav__link">
+    3.9.2 Indexing via a Variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#393-indexing-with-nested-lists" class="md-nav__link">
+    3.9.3 Indexing with Nested Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#394-assignment-with-list-indexing" class="md-nav__link">
+    3.9.4 Assignment with List Indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#395-juxtaposition" class="md-nav__link">
+    3.9.5 Juxtaposition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#396-find" class="md-nav__link">
+    3.9.6 Find (?)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310-elided-indices" class="md-nav__link">
+    3.10 Elided Indices
+  </a>
+  
+    <nav class="md-nav" aria-label="3.10 Elided Indices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3101-eliding-indices-for-a-matrix" class="md-nav__link">
+    3.10.1 Eliding Indices for a Matrix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3102-eliding-indices-for-deeply-nested-lists" class="md-nav__link">
+    3.10.2 Eliding Indices for Deeply Nested Lists
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#311-rectangular-lists-and-matrices" class="md-nav__link">
+    3.11 Rectangular Lists and Matrices
+  </a>
+  
+    <nav class="md-nav" aria-label="3.11 Rectangular Lists and Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3111-rectangular-lists" class="md-nav__link">
+    3.11.1 Rectangular Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3112-formal-definition-of-matrices" class="md-nav__link">
+    3.11.2 Formal Definition of Matrices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3113-two-and-three-dimensional-matrices" class="md-nav__link">
+    3.11.3 Two- and Three-Dimensional Matrices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3114-matrix-flexibility" class="md-nav__link">
+    3.11.4 Matrix Flexibility
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#312-useful-list-operations" class="md-nav__link">
+    3.12 Useful List Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="3.12 Useful List Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3121-til" class="md-nav__link">
+    3.12.1 til
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3122-distinct" class="md-nav__link">
+    3.12.2 distinct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3123-where" class="md-nav__link">
+    3.12.3 where
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3124-group" class="md-nav__link">
+    3.12.4 group
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                
+                <h1 id="3-lists">3. Lists<a class="headerlink" href="#3-lists" title="Permanent link">&para;</a></h1>
+<h2 id="30-overview">3.0 Overview<a class="headerlink" href="#30-overview" title="Permanent link">&para;</a></h2>
+<p>All data structures in q are ultimately built from lists: a dictionary is a pair of lists; a table is a special dictionary; a keyed table is a pair of tables. Thus it is important to have a thorough grounding in lists.</p>
+<p>All lists are equal but some lists are more equal than others. These are the lists of atoms of homogenous type, called <em>simple lists</em> â known in mathematics as vectors. They have optimum storage and performance characteristics.</p>
+<p>While qâs list operations are similar to those in other functional languages, lists are stored and processed quite differently.</p>
+<ul>
+<li>They are not stored as singly-linked lists under the covers. Simple lists occupy contiguous storage and general lists are pointers in contiguous storage.</li>
+<li>Appending items to the end rather than âconsâ-ing to the front.</li>
+<li>Efficient direct item access is available via indexing.</li>
+<li>A general list can hold items of different type without resorting to a union (sum) type.</li>
+</ul>
+<p>It may be instructive to think of q lists as dynamically allocated arrays.</p>
+<h2 id="31-introduction-to-lists">3.1 Introduction to Lists<a class="headerlink" href="#31-introduction-to-lists" title="Permanent link">&para;</a></h2>
+<p>A list is an ordered collection. âA collection of what?â you ask. More precisely, a list is recursively defined as an ordered collection of atoms and other lists. We pay special attention to the case in which the list comprises atoms of uniform type.</p>
+<h3 id="311-list-definition-and-assignment">3.1.1 List Definition and Assignment<a class="headerlink" href="#311-list-definition-and-assignment" title="Permanent link">&para;</a></h3>
+<p>A (<em>general</em>) <em>list</em> is an ordered collection of q data. The members of the collection are its <em>items</em>. The notation for a general list encloses its items within matching parentheses and separates them with semi-colons.</p>
+<div class="admonition tip">
+<p class="admonition-title">Whitespace in list notation is optional. In what follows, we shall often insert optional whitespace after the semicolon separators for readability.</p>
+</div>
+<pre class="highlight"><code class="language-q">q)(1; 1.1; `1)
+_
+q)(1;2;3)
+_
+q)("a";"b";"c";"d")
+_
+q)(`Life;`the;`Universe;`and;`Everything)
+_
+q)(-10.0; 3.1415e; 1b; `abc; "z")
+_
+q)((1; 2; 3); (4; 5))
+_
+q)((1; 2; 3); (`1; "2"; 3); 4.4)
+_</code></pre>
+<p>If you diligently entered each of these examples in your console, you have noticed that q does not always echo what you type. The initial and last three lists are <em>general</em> lists, meaning they are not homogenous atoms. This could mean atoms of mixed type, nested lists of uniform type, or atoms and nested lists of mixed type.</p>
+<p>Items in a list are sequenced from left to right, providing an inherent order. The lists <code>1;2</code> and <code>2;1</code> are different. SQL is based on sets, which are inherently unordered. This distinction leads to some subtle differences between the semantics of queries on q tables versus the analogous SQL queries. The inherent ordering of lists makes large time series processing natural and fast in q, while it is cumbersome and slow in standard SQL due to the need to place things in order.</p>
+<p>Lists can be assigned to variables exactly like atoms.</p>
+<pre class="highlight"><code class="language-q">q)L1:(1;2;3)
+q)L2:("z";"a";"p";"h";"o";"d")
+q)L3:((1; 2; 3); (`1; "2"; 3); 4.4)</code></pre>
+<h3 id="312-count">3.1.2 count<a class="headerlink" href="#312-count" title="Permanent link">&para;</a></h3>
+<p>The number of items in a list is its <em>count</em>. You obtain the count of a list by asking for it with the unary function <a href="https://code.kx.com/q/ref/count/"><code>count</code></a>.</p>
+<pre class="highlight"><code class="language-q">q)count (1; 2; 3)
+3
+q)count L1
+_</code></pre>
+<p>This is our first encounter with a q function (or keyword), which we will learn about in Chapters 4 and 5. For now, we need only understand that <code>count</code> returns a long equal to the number of items in the list to its right.</p>
+<div class="admonition tip">
+<p class="admonition-title">The maximum number of items for a list in q3.* is 2<sup>64</sup>-1. In q2.* it was 2 billion.</p>
+</div>
+<p>Observe that the count of an atom is 1 even though an atom is not a list.</p>
+<pre class="highlight"><code class="language-q">q)count 42
+1
+q)count `zaphod
+_</code></pre>
+<p>Other useful operations are provided by <a href="https://code.kx.com/q/ref/last/"><code>first</code> and <code>last</code></a> that return the first and last item in a list, respectively.</p>
+<pre class="highlight"><code class="language-q">q)first (1; 2; 3)
+1
+q)last (1; 2; 3)
+3</code></pre>
+<h2 id="32-simple-lists">3.2 Simple Lists<a class="headerlink" href="#32-simple-lists" title="Permanent link">&para;</a></h2>
+<p>A list of atoms of a uniform type, called a <em>simple</em> list, corresponds to the mathematical notion of a <em>vector</em>. Such lists are treated specially in q. They have a simplified notation, take less storage and compute faster than general lists.</p>
+<div class="admonition tip">
+<p class="admonition-title">You can always use general list notation, even for simple lists.</p>
+</div>
+<p>Whenever q recognizes that the items of a list are homogenous atoms, it dynamically converts to a simple list without asking for permission. In most cases, the storage and performance advantages justify the imposition. However, in some cases â such as deletion of an outlier item of non-uniform type â this can cause a programming headache because the list will no longer allow appends or updates with items that do not conform to the resulting uniform type.</p>
+<h3 id="321-simple-integer-lists">3.2.1 Simple Integer Lists<a class="headerlink" href="#321-simple-integer-lists" title="Permanent link">&para;</a></h3>
+<p>The console display of a simple list of any numeric type omits the enclosing parentheses and replaces the separating semi-colons with (required) blanks. The following two expressions define the same list, as q verifies by testing for identity using <a href="https://code.kx.com/q/ref/match/" title="Match"><code>~</code></a>.</p>
+<pre class="highlight"><code class="language-q">q)(100;200;300)
+_
+q)100 200 300
+_
+q)100 200 300~(100; 200 ; 300)
+1b</code></pre>
+<p>The console display of the first expression demonstrates the automatic conversion to simple lists previously mentioned.</p>
+<p>Similar notation, with the addition of a single trailing type indicator, is used for simple lists of short and int.</p>
+<pre class="highlight"><code class="language-q">q)(1h; 2h; 3h)
+1 2 3h
+q)(100i; 200i; 300i)
+_</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Trailing type indicator</p>
+<p>The trailing type indicator in the console display of a simple list applies to the entire list and not just the last item of the list; otherwise, the list would not be simple and would be displayed in general form:</p>
+<pre class="highlight"><code>q)(1; 2; 3h)
+1
+2
+3h
+</code></pre>
+</div>
+<h3 id="322-simple-floating-point-lists">3.2.2 Simple Floating Point Lists<a class="headerlink" href="#322-simple-floating-point-lists" title="Permanent link">&para;</a></h3>
+<p>Simple lists of float and real are notated the same as integral lists.</p>
+<pre class="highlight"><code class="language-q">q)(123.4567; 9876.543; 99.0)
+123.4567 9876.543 99
+q)123.4567 9876.543 99
+_</code></pre>
+<p>Observe that the q console suppresses the decimal point when displaying a float having zero(es) to the right of the decimal; but the value is not an integer. This notational efficiency for float display means that a list of floats having no decimal parts displays with a trailing âfâ.</p>
+<pre class="highlight"><code class="language-q">q)1.0 2.0 3.0
+1 2 3f
+q)1 2 3f~1.0 2.0 3.0
+_</code></pre>
+<p>Also observe that if you include what appears to be an integer in a list of float, q assumes that you are following its convention by merely omitting redundant data to the right of the decimal. That is, you get a list of float and not a general list.</p>
+<pre class="highlight"><code class="language-q">q)1.1 2 3.3~1.1 2.0 3.3
+_</code></pre>
+<h3 id="323-simple-binary-lists">3.2.3 Simple Binary Lists<a class="headerlink" href="#323-simple-binary-lists" title="Permanent link">&para;</a></h3>
+<p>The abbreviated notation for a simple list of boolean or byte data juxtaposes the individual data values together with <strong>no</strong> whitespace between. The <code>b</code> type indicator for boolean trails the list.</p>
+<pre class="highlight"><code class="language-q">q)(0b;1b;0b;1b;1b)
+01011b
+q)01011b
+_</code></pre>
+<div class="admonition detail">
+<p class="admonition-title">Storage for a simple boolean list</p>
+<p>A simple list of boolean atoms requires the same number of bytes to store as it has atoms. While the simplified notation is suggestive of a bit mask, multiple bits are not compressed to fit inside a single byte. The boolean list above uses 5 bytes of storage.</p>
+</div>
+<p>The <code>0x</code> indicator for a simple list of byte precedes the list.</p>
+<pre class="highlight"><code class="language-q">q)(0x20;0xa1;0xff)
+0x20a1ff
+q)0x20a1ff~(0x20;0xa1;0xff)
+_</code></pre>
+<p>The display of a simple list of GUIDs is the same is that of integers â i.e., the values are separated by spaces.</p>
+<pre class="highlight"><code class="language-q">q)3?0Ng
+_</code></pre>
+<h3 id="324-simple-symbol-lists">3.2.4 Simple Symbol Lists<a class="headerlink" href="#324-simple-symbol-lists" title="Permanent link">&para;</a></h3>
+<p>The abbreviated notation for simple lists of symbols juxtaposes the individual atoms with no intervening whitespace.</p>
+<pre class="highlight"><code class="language-q">q)(`Life;`the;`Universe;`and;`Everything)
+`Life`the`Universe`and`Everything
+q)`Life`the`Universe`and`Everything
+_</code></pre>
+<p>Inserting spaces between symbol atoms causes an error.</p>
+<pre class="highlight"><code class="language-q">q)`bad `news
+'bad</code></pre>
+<h3 id="325-simple-char-lists-and-strings">3.2.5 Simple char Lists and Strings<a class="headerlink" href="#325-simple-char-lists-and-strings" title="Permanent link">&para;</a></h3>
+<p>The simplified notation for a list of char looks just like a string in most languages, with the juxtaposed sequence of characters enclosed in double quotes.</p>
+<pre class="highlight"><code class="language-q">q)("s"; "t"; "r"; "i"; "n"; "g")
+"string"
+q)"string"
+_</code></pre>
+<p>A simple list of char is actually called a <em>string</em>; however, it does not have the atomic semantics of a string in most languages. Since it is a list of char, <strong>not</strong> an atom, you cannot ask if two strings of different lengths are equal. You <strong>can</strong> ask if they are identical (as you can with any two q entities).</p>
+<pre class="highlight"><code class="language-q">q)"string"="text"
+'length
+q)"string"~"text"
+0b</code></pre>
+<h3 id="326-lists-of-temporal-data">3.2.6 Lists of Temporal Data<a class="headerlink" href="#326-lists-of-temporal-data" title="Permanent link">&para;</a></h3>
+<p>Since they are really integers, the abbreviated form for simple temporal lists separates items with a space.</p>
+<pre class="highlight"><code class="language-q">q)(2000.01.01; 2001.01.01; 2002.01.01)
+_
+q)(00:00:00.000; 00:00:01.000; 00:00:02.000)
+_</code></pre>
+<p>Specifying a list of mixed temporal types has a different behavior from that of a list of mixed numeric types. In this case, the list takes the type of the first item in the list; other items are widened or narrowed to match.</p>
+<details class="error">
+<summary>Mixed lists cannot be written in the vector notation</summary>
+<p>The paragraph above is in error. </p>
+<p>By definition, vectors have uniform type. The temporal vector notation allows items to be written in the notation of a narrower type, which the parser silently widens. The next example demonstrates this. â <em>Editor</em></p>
+</details>
+<pre class="highlight"><code class="language-q">q)12:34 01:02:03
+12:34:00 01:02:03
+q)01:02:03 12:34
+_</code></pre>
+<p>To force the type of a mixed list of temporal values, append a type specifier.</p>
+<pre class="highlight"><code class="language-q">q)01:02:03 12:34 11:59:59.999u
+01:02 12:34 11:59</code></pre>
+<h2 id="33-empty-and-singleton-lists">3.3 Empty and Singleton Lists<a class="headerlink" href="#33-empty-and-singleton-lists" title="Permanent link">&para;</a></h2>
+<p>Lists with one or zero items merit special consideration, especially since qâs notation and display are not exactly intuitive.</p>
+<h3 id="331-the-general-empty-list">3.3.1 The General Empty List<a class="headerlink" href="#331-the-general-empty-list" title="Permanent link">&para;</a></h3>
+<p>It is useful to have lists with no items. A pair of parentheses enclosing nothing (except optional whitespace) denotes the general empty list, which (annoyingly) has no console display.</p>
+<pre class="highlight"><code class="language-q">q)()
+q)</code></pre>
+<p>We shall see in <a href="../7_Transforming_Data/#74-creating-typed-empty-lists">Â§7.4</a> that it is possible to define an empty list with a specific type, so that only items of that type can be added to it.</p>
+<div class="admonition advanced">
+<p class="admonition-title">Advanced</p>
+<p>If you want to force the display of an empty list, use the q utility <a href="https://code.kx.com/q/ref/dotq/#qs1-string%20representation"><code>.Q.s1</code></a>, which converts any q entity into a string suitable for display. Perhaps this utility should be called the âwizard of Ozâ operator since it reveals whatâs behind the curtain.</p>
+<pre class="highlight"><code>q)L:()
+q)L
+q).Q.s1 L
+"()"
+</code></pre>
+</div>
+<h3 id="332-singleton-lists">3.3.2 Singleton Lists<a class="headerlink" href="#332-singleton-lists" title="Permanent link">&para;</a></h3>
+<p>A <em>singleton</em> is a list containing a single item. As any postal clerk will tell you, an item in a box is not the same as an unboxed item. So an atom and a singleton containing that atom are different.</p>
+<p>The syntax of a singleton presents a notational conundrum for q. We might expect to write the singleton list containing 42 as <code>(42)</code> but we cannot. The issue arises from qâs use of parentheses both for list demarcation and for the usual mathematical grouping in expressions. The latter leads to the following sequence of arithmetic reductions.</p>
+<p><code>(40+2)</code> <code>(42)</code> <code>42</code></p>
+<p>This forces <code>(42)</code> to be the <strong>atom</strong> 42.</p>
+<p>Unfortunately, there is no way to type a singleton literal. Singletons are created by the function <a href="https://code.kx.com/q/ref/enlist/"><code>enlist</code></a>, which âboxesâ its argument into a list with one item. Note that it manages to avoid the usual q predilection for aggressively short names.</p>
+<pre class="highlight"><code class="language-q">q)enlist 42
+,42</code></pre>
+<p>Observe that the console display of a singleton list uses the k form of enlist â i.e., unary <code>,</code>. Donât be fooled: we canât use this in q.</p>
+<div class="admonition warning">
+<p class="admonition-title">Single-character strings</p>
+<p>A string with a single character cannot be written syntactically as âaâ â this is a character atom. Use <code>enlist</code>. This is a common error for qbies.</p>
+<pre class="highlight"><code>q)"a"
+_
+q)enlist "a"
+_
+</code></pre>
+</div>
+<p>A singleton need not contain an atom as its sole item; it can be any q entity.</p>
+<pre class="highlight"><code class="language-q">q)enlist 1 2 3
+1 2 3
+q)enlist (10 20 30; `a`b`c)
+10 20 30 a b c</code></pre>
+<p>Observe that the console display is not consistent with showing <code>,</code> and sometimes is downright confusing.</p>
+<h2 id="34-indexing">3.4 Indexing<a class="headerlink" href="#34-indexing" title="Permanent link">&para;</a></h2>
+<p>A list is sequenced from left-to-right in the position of its items. The offset of an item from the beginning of the list is called its <em>index</em>. The initial item has index 0, the second item has index 1, etc. Thus a list of count <em>n</em> has items at indices 0 through <em>n</em> - 1.</p>
+<div class="admonition warning">
+<p class="admonition-title">There is no item at index <code>n</code>. This is a common qbie mistake.</p>
+</div>
+<h3 id="341-index-notation">3.4.1 Index Notation<a class="headerlink" href="#341-index-notation" title="Permanent link">&para;</a></h3>
+<p>To access the item at index <em>i</em> in a list, follow the list immediately with <code>[i]</code>. This is called <em>item indexing</em>. For example,</p>
+<pre class="highlight"><code class="language-q">q)(100; 200; 300)[0]
+100
+q)100 200 300[0]
+100
+q)L:100 200 300
+q)L[0]
+100
+q)L[1]
+_
+q)L[3] / index out of bounds returns null value
+_
+q)L[2]
+_</code></pre>
+<h3 id="342-indexed-assignment">3.4.2 Indexed Assignment<a class="headerlink" href="#342-indexed-assignment" title="Permanent link">&para;</a></h3>
+<p>Items in a list can also be assigned via item indexing. Thus,</p>
+<pre class="highlight"><code class="language-q">q)L:1 2 3
+q)L[1]:42
+q)L
+1 42 3</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Index assignment into a simple list</p>
+<p>Index assignment into a simple list enforces strict type matching with no type promotion. Otherwise put, when you assign an item into a simple list, the type must match exactly â i.e., a narrower type is not widened.</p>
+<p><pre><code class="language-q">
+q)L:100 200 300
+q)L[1]:42h
+'type
+</code></pre></p>
+</div>
+<p>This may come as a surprise if you are accustomed to numeric values always being promoted in a dynamically typed language â e.g., q itself.</p>
+<div class="admonition warning">
+<p class="admonition-title">Should you find exceptions to this in some releases of q3.*, do not count on them being there in future releases!</p>
+</div>
+<h3 id="343-indexing-domain">3.4.3 Indexing Domain<a class="headerlink" href="#343-indexing-domain" title="Permanent link">&para;</a></h3>
+<p>Providing an invalid data type for the index results in an error.</p>
+<pre class="highlight"><code class="language-q">q)L:(-10.0; 3.1415e; 1b; `abc; "z")
+q)L[1.0]
+'type</code></pre>
+<p>In contrast, if you index outside the proper bounds of the list, the result is <strong>not</strong> an error. Instead you get a null value, indicating âmissing data.â Specifically, indexing outside the range of 0 to <code>(count L) â 1</code> yields a null of the type of the item at index 0. This is the most efficient thing to return in the case of a general list where there is no canonical item type.</p>
+<pre class="highlight"><code class="language-q">q)L1:1 2 3 4
+q)L1[4]
+0N
+q)L2:1.1 2.2 3.3
+q)L2[-1]
+0n
+q)L3:(`1; 2; 3.3)
+q)L3[0W]
+`</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Pay special attention to the first example above that indexes the list at its count. Indexing one position past the end of the list is easy for qbies, especially if youâre not accustomed to indexing relative to 0.</p>
+</div>
+<h3 id="344-empty-index-and-null-item">3.4.4 Empty Index and Null Item<a class="headerlink" href="#344-empty-index-and-null-item" title="Permanent link">&para;</a></h3>
+<p>An omitted index returns the entire list.</p>
+<pre class="highlight"><code class="language-q">q)L:10 20 30 40
+q)L[]
+10 20 30 40</code></pre>
+<p>An omitted index is <strong>not</strong> the same as indexing with an empty list. The latter returns an empty list, so we use the <code>.Q.s1</code> utility to reveal its display.</p>
+<pre class="highlight"><code class="language-q">q).Q.s1 L[()]
+"()"</code></pre>
+<p>The syntactic form double-colon <code>::</code> denotes the nil item, which allows explicit notation or programmatic generation of an empty index.</p>
+<pre class="highlight"><code class="language-q">q)L[::]
+_</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Including the nil item in a list</p>
+<p>The type of the nil item does not match any other type in q. Consequently, inclusion of the nil item in a list forces the list to be general.</p>
+<p><pre><code class="language-q">
+q)L:(::; 1 ; 2 ; 3)
+q)type L
+0h
+q).Q.s1 L[0]
+"::"
+</code></pre></p>
+</div>
+<p>This is one way to avoid a nasty surprise when q would otherwise automatically convert a list to simple type. A simple case is when you reassign the only non-conforming item in the list.</p>
+<pre class="highlight"><code class="language-q">q)L:(1; 2; 3; `a)
+q)L[3]:4
+q)L
+1 2 3 4
+q)L[3]:`a
+'type</code></pre>
+<p>After the reassignment you can no longer assign <code>`a</code> back into the list in its original position. One way to avoid this is by placing <code>::</code> in the list as a guard.</p>
+<pre class="highlight"><code class="language-q">q)L:(::; 1 ; 2 ; 3; `a)
+q)L[4]:4
+q)L[4]:`a
+q)</code></pre>
+<p>A drawback of this technique is that you must avoid passing <code>::</code> on to expressions that use the actual data in the list.</p>
+<h3 id="345-lists-with-expressions">3.4.5 Lists with Expressions<a class="headerlink" href="#345-lists-with-expressions" title="Permanent link">&para;</a></h3>
+<p>Any valid q expression can occur in list construction.</p>
+<pre class="highlight"><code class="language-q">q)a:42
+q)b:43
+q)(a; b)
+42 43
+q)L1:1 2 3
+q)L2:40 50
+q)(L1; L2)
+q)(count L1; sum L2)
+_</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">You cannot use the abbreviated notation of simple lists with variables.</p>
+<p><pre><code class="language-q">
+q)a:42
+q)b:43
+q)a b
+': Bad file descriptor|
+</code></pre></p>
+</div>
+<p>The reason for this cryptic error message will be apparent when we deal with files later.</p>
+<h2 id="35-combining-lists">3.5 Combining Lists<a class="headerlink" href="#35-combining-lists" title="Permanent link">&para;</a></h2>
+<h3 id="351-joining-with">3.5.1 Joining with <code>,</code><a class="headerlink" href="#351-joining-with" title="Permanent link">&para;</a></h3>
+<p>We scoop the presentation on operators in the next chapter to describe the <a href="https://code.kx.com/q/ref/join/">Join</a> operator <code>,</code>. Its result is a new list in which (a copy of) the right operand is appended to the end of (a copy of) the left operand. Join accepts an atom in either argument â i.e., as if the corresponding singleton had been supplied.</p>
+<pre class="highlight"><code class="language-q">q)1 2 3,4 5
+1 2 3 4 5
+q)1,2 3 4
+1 2 3 4
+q)1 2 3,4
+1 2 3 4</code></pre>
+<p>Observe that if the arguments are not of uniform type, the result is a general list.</p>
+<pre class="highlight"><code class="language-q">q)1 2 3,4.4 5.5
+_</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Ensuring a list</p>
+<p>To ensure that a q entity  becomes a list, use either <code>(),x</code> or <code>x,()</code>. This leaves a list unchanged but effectively enlists an atom. Such a seemingly trivial expression is actually useful and is our first example of a q idiom. You cannot use <code>enlist x</code> for the same purpose. Why not?</p>
+</div>
+<h3 id="352-merging-with">3.5.2 Merging with <code>^</code><a class="headerlink" href="#352-merging-with" title="Permanent link">&para;</a></h3>
+<p>Another way to combine two lists of the same length is by coalescing them with <a href="https://code.kx.com/q/ref/coalesce/" title="Coalesce"><code>^</code></a>. The result is given by the rule that the right item prevails over the corresponding left item except when the right item is null.</p>
+<pre class="highlight"><code class="language-q">q)L1:10 0N 30
+q)L2:100 200 0N
+q)L1^L2
+100 200 30</code></pre>
+<h2 id="36-lists-as-maps">3.6 Lists as Maps<a class="headerlink" href="#36-lists-as-maps" title="Permanent link">&para;</a></h2>
+<p>Thus far, we have considered a list as data â i.e., a static collection of its items. We can also view it as a mathematical mapping provided by item indexing. Specifically, a list provides a map whose domain is integers and whose codomain is the collection of its items (supplemented with a null value). The list map assigns the output value <code>L[i]</code> to the input value <code>i</code>.</p>
+<p>i | â &gt; L[i]</p>
+<p>Here are the I/O tables for some basic lists.</p>
+<pre class="highlight"><code class="language-q">101 102 103 104</code></pre>
+<table>
+<thead>
+<tr>
+<th><em>I</em></th>
+<th><em>O</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>101</td>
+</tr>
+<tr>
+<td>1</td>
+<td>102</td>
+</tr>
+<tr>
+<td>2</td>
+<td>103</td>
+</tr>
+<tr>
+<td>3</td>
+<td>104</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="language-q">(`a; 123.45; 1b)</code></pre>
+<table>
+<thead>
+<tr>
+<th><em>I</em></th>
+<th><em>O</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>&#96;a</td>
+</tr>
+<tr>
+<td>1</td>
+<td>123.45</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1b</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="language-q">(1 2; 3 4)</code></pre>
+<table>
+<thead>
+<tr>
+<th><em>I</em></th>
+<th><em>O</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1 2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3 4</td>
+</tr>
+</tbody>
+</table>
+<p>The codomains of the first two examples are collection of atoms. The last example has a codomain comprised of lists.</p>
+<p>A list not only acts like a map, it <strong>is</strong> a unary map whose notation is the same as function application. This is a useful way of looking at things. We shall see in <a href="../4_Operators/">Chapter 4</a> that a nested list can be viewed as a multivalent map.</p>
+<p>From the perspective of lists as maps, the fact that indexing outside the bounds of a list returns a null means the map is implicitly extended to the domain of all integers with null output value outside the list proper.</p>
+<h2 id="37-nesting">3.7 Nesting<a class="headerlink" href="#37-nesting" title="Permanent link">&para;</a></h2>
+<p>Data complexity is built by using lists as items of lists.</p>
+<h3 id="371-depth">3.7.1 Depth<a class="headerlink" href="#371-depth" title="Permanent link">&para;</a></h3>
+<p>Now that weâre comfortable with simple lists, we return to general lists. <em>Nested</em> lists have item(s) that are themselves lists. The number of levels of nesting for a list is called its <em>depth</em>. Informally, the depth measures how much repeated indexing is necessary to arrive at only atoms. Atoms have depth 0 and simple lists have depth 1.</p>
+<p>The notation of complex lists is reflected in nested parentheses. For pedagogical purposes, in this section only, we shall often use general notation to define even simple lists since the parentheses make things manifest. However, the console always displays lists in the most concise form.</p>
+<p>Following is a list of depth 2 that has three items, the first two being atoms and the last a list. We also show its simplified notation.</p>
+<pre class="highlight"><code class="language-q">q)L:(1;2;(100;200))
+q)count L
+_
+q)L:(1;2;100 200)
+_
+q)count L
+3
+q)L[0]
+_
+q)L[1]
+_
+q)L[2]
+100 200</code></pre>
+<h3 id="372-pictorial-representation">3.7.2 Pictorial Representation<a class="headerlink" href="#372-pictorial-representation" title="Permanent link">&para;</a></h3>
+<p>We present a pictorial representation that may help in visualizing levels of nesting. An atom is represented as a circle containing its value. A list is represented as a box containing its items. A general list is a box containing boxes and atoms.</p>
+<p><img alt="Atoms and lists" src="../img/qfm002.png" /></p>
+<!-- FIXME 
+illustration should show (1; (42; "z"); ((42; "z"); (1.4; `ab)))
+
+Best
+Borong Liu
+ -->
+
+<h3 id="373-examples">3.7.3 Examples<a class="headerlink" href="#373-examples" title="Permanent link">&para;</a></h3>
+<p>Following is a list of depth 2 with two elements, each of which is a simple list.</p>
+<pre class="highlight"><code class="language-q">q)L2:((1;2;3);(`ab;`c))
+q)count L2
+_</code></pre>
+<p>Following is a list of depth 2 having three elements, two of which are general lists and one is an atom.</p>
+<pre class="highlight"><code class="language-q">q)L3:((1; 2h; 3j); ("a"; `bc`de); 1.23)
+q)count L3
+_
+q)L3[1]
+_
+q)count L3[1]
+_</code></pre>
+<p>Following is a list of depth 2 having one item that is a simple list.</p>
+<pre class="highlight"><code class="language-q">q)L4:enlist 1 2 3 4
+q)count L4
+_
+q)count L4[0]
+_</code></pre>
+<p>Following is a ârectangularâ list that can be thought of as the 3Ã4 matrix its display resembles.</p>
+<pre class="highlight"><code class="language-q">q)m:((11; 12; 13; 14); (21; 22; 23; 24); (31; 32; 33; 34))
+q)m
+11 12 13 14
+21 22 23 24
+31 32 33 34
+q)m[0]
+_
+q)m[1]
+_
+q)m[1][0]</code></pre>
+<h2 id="38-iterated-indexing-and-indexing-at-depth">3.8 Iterated Indexing and Indexing at Depth<a class="headerlink" href="#38-iterated-indexing-and-indexing-at-depth" title="Permanent link">&para;</a></h2>
+<p>In the examples above, we saw that the display of nested lists suggests arrays from other languages. You can indeed think of them as âraggedâ arrays, as long you are careful about the iterated indexing. Indexing at depth is an alternate notation that suggests nested lists can also be viewed as higher-dimensional arrays.</p>
+<h3 id="381-iterated-item-indexing">3.8.1 Iterated Item Indexing<a class="headerlink" href="#381-iterated-item-indexing" title="Permanent link">&para;</a></h3>
+<p>Retrieving an item in a nested list via a single index retrieves a top-most item.</p>
+<pre class="highlight"><code class="language-q">q)L:(1; (100; 200; (1000; 2000; 3000; 4000)))
+q)L[0]
+_
+q)L[1]
+100
+200
+1000 2000 3000 4000</code></pre>
+<p>Interpreting list indexing as function application for positional retrieval, we can read the last line,</p>
+<blockquote>
+<p>Retrieve the item at index 1 from L</p>
+</blockquote>
+<p>Since the result <code>L[1]</code> is itself a list, we can also retrieve its items via indexing. For example,</p>
+<pre class="highlight"><code class="language-q">q)L[1][2]
+1000 2000 3000 4000</code></pre>
+<p>Read this as,</p>
+<blockquote>
+<p>Retrieve the item at index 2 from the item at index 1 in L</p>
+</blockquote>
+<p>We can once again index into this result.</p>
+<pre class="highlight"><code class="language-q">q)L[1][2][0]
+1000</code></pre>
+<p>Read this as,</p>
+<blockquote>
+<p>Retrieve the item at index 0 from the item at index 2 in the item at index 1 in L</p>
+</blockquote>
+<h3 id="382-indexing-at-depth">3.8.2 Indexing at Depth<a class="headerlink" href="#382-indexing-at-depth" title="Permanent link">&para;</a></h3>
+<p>There is an alternate notation for iterated indexing into a nested list. It is strictly syntactic sugar and amounts to the same thing under the covers. This notation is called <em>indexing at depth</em> and it looks exactly like application of a multi-valent function (which, in fact, it is). The previous retrieval can also be written as,</p>
+<pre class="highlight"><code class="language-q">q)L[1;2;0]
+_</code></pre>
+<p>From one point of view, indexing at depth simplifies the notation for retrieval of inner items from a nested list.</p>
+<div class="admonition warning">
+<p class="admonition-title">Semicolons in indexing</p>
+<p>The semicolons in indexing at depth notation might make it appear that the collection of indices is a list. It is not, although we shall see later a way to perform indexing at depth in which the indices are a list. Also, donât confuse the semicolons with commas, which is a common qbie mistake.</p>
+</div>
+<p>Assignment via index at depth works but assignment does <strong>not</strong> work with iterated indexing.</p>
+<pre class="highlight"><code class="language-q">q)L:(1; (100; 200; (1000 2000 3000 4000)))
+q)L[1; 2; 0]: 999
+q)L
+_
+q)L[1][2][0]:42
+'assign</code></pre>
+<p>The last expression fails essentially because the intermediate retrievals are ephemeral â i.e., they not addressable entities.</p>
+<p>To confirm that the notation for indexing at depth is reasonable, we return to our âmatrixâ example.</p>
+<pre class="highlight"><code class="language-q">q)m:((11; 12; 13; 14); (21; 22; 23; 24); (31; 32; 33; 34))
+q)m
+_
+q)m[0][0]
+11
+q)m[0; 0]
+11
+q)m[0; 1]
+_
+q)m[1; 2]
+_</code></pre>
+<p>The indexing at depth notation suggests thinking of <code>m</code> as a multi-dimensional matrix, whereas repeated single indexing suggests thinking of it as an array of arrays. <em>Chacun Ã  son goÃ»t</em>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Take specifying only number of rows (or columns)</p>
+<p>It is possible to create a (possibly ragged) array of a given number of rows or columns from a flat list using the reshape operator <code>#</code> by specifying <code>0N</code> (missing data) for the number of rows or columns in the left operand.</p>
+<p><pre><code class="language-q">
+q)2 0N#til 10
+0 1 2 3 4
+5 6 7 8 9
+q)0N 3#til 10
+0 1 2
+3 4 5
+6 7 8
+,9
+</code></pre></p>
+</div>
+<h2 id="39-indexing-with-lists">3.9 Indexing with Lists<a class="headerlink" href="#39-indexing-with-lists" title="Permanent link">&para;</a></h2>
+<p>As a vector language, q prefers to deal with lists whenever possible. To this end, there is no reason to restrict list retrieval to one item at a time. Instead, we can ask for a list of items by passing a list of indices.</p>
+<h3 id="391-retrieving-multiple-items">3.9.1 Retrieving Multiple Items<a class="headerlink" href="#391-retrieving-multiple-items" title="Permanent link">&para;</a></h3>
+<p>In this section, we begin to see the power of q as a vector language. We start with,</p>
+<pre class="highlight"><code class="language-q">q)L:100 200 300 400</code></pre>
+<p>We know how to index single items of the list.</p>
+<pre class="highlight"><code class="language-q">q)L[0]
+100
+q)L[2]
+_</code></pre>
+<p>By extension, we can retrieve a list of multiple items via multiple indices. For simplicity we use simple list notation for the indices.</p>
+<pre class="highlight"><code class="language-q">q)L[0 2]
+100 300</code></pre>
+<p>The indices can be in any order, or even be duplicated and the corresponding items are retrieved. The shape of the output conforms to the input.</p>
+<pre class="highlight"><code class="language-q">q)L[3 2 0 1]
+_
+q)L[0 2 0]
+_</code></pre>
+<p>Here are some examples of indexing into literal lists.</p>
+<pre class="highlight"><code class="language-q">q)01101011b[0 2 4]
+011b
+q)"beeblebrox"[0 7 8]
+_</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Getting the semi-colons right</p>
+<p>Using a list as an index demonstrates why getting the semi-colon separators right is essential when indexing at depth. Leaving them out or using commas effectively specifies multiple indices, and you will get a corresponding list of values from the top level.</p>
+</div>
+<h3 id="392-indexing-via-a-variable">3.9.2 Indexing via a Variable<a class="headerlink" href="#392-indexing-via-a-variable" title="Permanent link">&para;</a></h3>
+<p>When retrieving items via multiple indices, the indices can live in a variable.</p>
+<pre class="highlight"><code class="language-q">q)L
+100 200 300 400
+q)I:0 2
+q)L[I]
+100 300</code></pre>
+<h3 id="393-indexing-with-nested-lists">3.9.3 Indexing with Nested Lists<a class="headerlink" href="#393-indexing-with-nested-lists" title="Permanent link">&para;</a></h3>
+<p>Observe that in our examples of list indexing, the result of index retrieval has the same shape as the index. If the index is an atom the result is an atom. When the index list was a simple list, the result was a list of the same count.</p>
+<p>More generally, we can retrieve via an arbitrary collection of indices. The retrieved list has the same shape as the index list.</p>
+<pre class="highlight"><code class="language-q">q)L:100 200 300 400
+q)L[(0 1; 2 3)]
+100 200
+300 400</code></pre>
+<p>Do not confuse this with indexing at depth. In the present case all items are retrieved at the top level only</p>
+<div class="admonition detail">
+<p class="admonition-title">Advanced: result conforms to index</p>
+<p>More precisely, the result of indexing via a list conforms to the index list. </p>
+<p>The notion of <em>conformability</em> of lists is defined recursively. All atoms conform. Two lists conform if they have the same number of items and each of their corresponding items conform. In plain language, two lists conform if they have the same shape.</p>
+</div>
+<h3 id="394-assignment-with-list-indexing">3.9.4 Assignment with List Indexing<a class="headerlink" href="#394-assignment-with-list-indexing" title="Permanent link">&para;</a></h3>
+<p>Recall that a list item can be (re)assigned via item indexing,</p>
+<pre class="highlight"><code class="language-q">q)L:100 200 300 400
+q)L[0]:100
+q)L
+_</code></pre>
+<p>Assignment via index extends to indexing via a simple list with the proviso that the index list and value list conform.</p>
+<pre class="highlight"><code class="language-q">q)L[1 2 3]:2000 3000 4000
+q)L
+_</code></pre>
+<p>Assignment via a simple index list is processed in sequence â i.e., from left-to-right. Thus,</p>
+<pre class="highlight"><code class="language-q">q)L[3 2 1]:999 888 777
+is equivalent to,
+q)L[3]:999
+q)L[2]:888
+q)L[1]:777</code></pre>
+<p>Consequently, in the case of a repeated item in the index list (not a swell idea), the right-most assignment prevails.</p>
+<pre class="highlight"><code class="language-q">q)L:100 200 300 400
+q)L[0 1 0 3]:1000 2000 3000 4000
+q)L
+_</code></pre>
+<p>You can assign a single value to multiple items in a list by using an atom for the assignment value. This is an example of a general phenomenon in q in which an atom is extended to conform to a list.</p>
+<pre class="highlight"><code class="language-q">q)L:100 200 300 400
+q)L[1 3]:999
+q)L
+_</code></pre>
+<h3 id="395-juxtaposition">3.9.5 Juxtaposition<a class="headerlink" href="#395-juxtaposition" title="Permanent link">&para;</a></h3>
+<p>Now that weâre familiar with retrieving and assigning via an index list, we introduce a simplified notation that is common in functional programming. It is permissible to leave out the brackets and juxtapose the list and index with separating whitespace (usually just a blank). Some examples follow.</p>
+<pre class="highlight"><code class="language-q">q)L:100 200 300 400
+q)L[0]
+100
+q)L 0
+100
+q)L[2 1]
+_
+q)L 2 1
+_
+q)I:2 1
+q)L I
+_
+q)L ::
+_</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">In the colloquial, âWe donât need no stinkinâ brackets!â</p>
+</div>
+<p>Which notation you use is a matter of personal preference. In this tutorial, we initially use brackets, since this notation is probably most comfortable for qbies coming from traditional programming. Experienced q programmers often use prefix syntax since it reduces notational density, although brackets can eliminate some parentheses.</p>
+<h3 id="396-find">3.9.6 Find (<code>?</code>)<a class="headerlink" href="#396-find" title="Permanent link">&para;</a></h3>
+<p>The <a href="https://code.kx.com/q/ref/find/">Find</a> operator is (an overload of) binary <code>?</code> that returns the index of the first occurrence of the right operand in the left operand.</p>
+<pre class="highlight"><code class="language-q">q)1001 1002 1003?1002
+1</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Since Find maps an item to its index, it is inverse to indexing â i.e., list positional retrieval thought of as a mapping.</p>
+</div>
+<p>If you try to find an item that is not in the list, the result is an integer equal to the count of the list.</p>
+<pre class="highlight"><code class="language-q">q)1001 1002 1003?1004
+3</code></pre>
+<p>One way to think of this result is that the position of an item that is not in the list is one past the end of the list, which is where it would be if you were to append it to the list.</p>
+<p>Find is atomic in the right operand meaning that it extends to lists.</p>
+<pre class="highlight"><code class="language-q">q)1001 1002 1003?1003 1001
+_</code></pre>
+<h2 id="310-elided-indices">3.10 Elided Indices<a class="headerlink" href="#310-elided-indices" title="Permanent link">&para;</a></h2>
+<h3 id="3101-eliding-indices-for-a-matrix">3.10.1 Eliding Indices for a Matrix<a class="headerlink" href="#3101-eliding-indices-for-a-matrix" title="Permanent link">&para;</a></h3>
+<p>We return to the situation of indexing at depth for nested lists. For simplicity, we start with a rectangular list that displays as a matrix.</p>
+<pre class="highlight"><code class="language-q">q)m:(1 2 3 4; 100 200 300 400; 1000 2000 3000 4000)
+q)m
+_</code></pre>
+<p>Analogy with traditional matrix notation suggests that we could retrieve a row or column from <code>m</code> by providing a âpartialâ index at depth. This indeed works because eliding an index in any slot is equivalent to specifying all legitimate indices for that slot.</p>
+<pre class="highlight"><code class="language-q">q)m[1;]
+100 200 300 400
+m[;3]
+4 400 4000</code></pre>
+<p>Observe that eliding the last index reduces to item indexing at the top level.</p>
+<pre class="highlight"><code class="language-q">q)m[1;]~m[1]
+_</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Because of this correspondence, it is permissible to drop the trailing semicolon. We recommend against this practice as it makes the purpose of code less evident.</p>
+</div>
+<p>The situation of eliding the first index is more interesting. It essentially retrieves a âcolumnâ as a slice through the top-level lists â i.e., a row.</p>
+<h3 id="3102-eliding-indices-for-deeply-nested-lists">3.10.2 Eliding Indices for Deeply Nested Lists<a class="headerlink" href="#3102-eliding-indices-for-deeply-nested-lists" title="Permanent link">&para;</a></h3>
+<p>Letâs tackle three levels of nesting. Here we can elide one or two indices in any slots.</p>
+<pre class="highlight"><code class="language-q">q)L:((1 2 3;4 5 6 7);(`a`b`c`d;`z`y`x`;`0`1`2);("now";"is";"the"))
+q)L
+(1 2 3;4 5 6 7)
+(`a`b`c`d;`z`y`x`;`0`1`2)
+("now";"is";"the")
+q)L[;1;]
+4 5 6 7
+`z`y`x`
+"is"
+q)L[;;2]
+3 6
+`c`x`2
+"w e"</code></pre>
+<p>Interpret <code>L[;1;]</code> as,</p>
+<blockquote>
+<p>Retrieve all items at index 1 of each top level list</p>
+</blockquote>
+<p>Interpret <code>L[;;2]</code> as,</p>
+<blockquote>
+<p>Retrieve the items at index 2 for each list at the second level</p>
+</blockquote>
+<p>Observe that in <code>L[;;2]</code> the attempt to retrieve the item at index 2 of the string <code>"is"</code> was out of bounds and so resulted in the null value <code>" "</code>. This is the source of the blank in <code>"w e"</code> of the result.</p>
+<p>As the final exam for this section, letâs combine an elided index with indexing by lists to retrieve a cross-section of <code>L</code>. Try to predict the result before entering the expression into your console session.</p>
+<pre class="highlight"><code class="language-q">q)L[0 2;;0 1]
+_</code></pre>
+<p>Interpret this as,</p>
+<blockquote>
+<p>Retrieve the items at positions 0 and 1 from all columns in rows 0 and 2</p>
+</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Style Recommendation</p>
+<p>In general, it is permissible to elide all trailing semicolons arising from elided indices. We consider this bad practice. Looking at the notation below, would you guess that the expression after the comment arose from that to the left of it? We didnât think so.</p>
+<p><pre><code class="language-q">
+L[1;;] / instead of L[1]
+L[;1;] / instead of L[;1]
+</code></pre></p>
+</div>
+<h2 id="311-rectangular-lists-and-matrices">3.11 Rectangular Lists and Matrices<a class="headerlink" href="#311-rectangular-lists-and-matrices" title="Permanent link">&para;</a></h2>
+<h3 id="3111-rectangular-lists">3.11.1 Rectangular Lists<a class="headerlink" href="#3111-rectangular-lists" title="Permanent link">&para;</a></h3>
+<p>In this section, we further investigate matrix-like nested lists. A rectangular list is a list of lists all having the same count. This does not mean that a rectangular list is necessarily a traditional matrix, since there can be additional levels of nesting.</p>
+<pre class="highlight"><code class="language-q">q)L:(1 2 3; (10 20; 100 200; 1000 2000))
+q)L
+1 2 3
+10 20 100 200 1000 2000</code></pre>
+<p>A rectangular list can be transposed with <a href="https://code.kx.com/q/ref/flip/"><code>flip</code></a>, meaning that the rows and columns are reflected across the diagonal. When <code>flip</code> is applied to a rectangular list, it physically transposes the data â i.e., it allocates new storage and copies the original data in column order.</p>
+<pre class="highlight"><code class="language-q">q)L:(1 2 3; 10 20 30; 100 200 300)
+q)L
+1 2 3
+10 20 30
+100 200 300
+q)flip L
+1 10 100
+2 20 200
+3 30 300</code></pre>
+<p>This effectively reverses the first and second slots in indexing at depth.</p>
+<pre class="highlight"><code class="language-q">q)L:(1 2 3; 10 20 30; 100 200 300)
+q)M:flip L
+q)L[1;2]
+30
+q)M[2;1]
+30</code></pre>
+<h3 id="3112-formal-definition-of-matrices">3.11.2 Formal Definition of Matrices<a class="headerlink" href="#3112-formal-definition-of-matrices" title="Permanent link">&para;</a></h3>
+<p>Matrices are a special case of rectangular lists and are defined recursively. A matrix of dimension 0 is a scalar. A matrix of dimension 1 is a simple list â i.e., a vector. The count of a vector is usually called its length or dimension in mathematics. Some functional programming languages have tuples, which can be thought of as coordinates of fixed-dimension vectors with respect to a basis; q does not.</p>
+<p>In q, vectors do not need to be of numeric type.</p>
+<pre class="highlight"><code class="language-q">q)v1:1 2 3 / vector of integers
+q)v2:98.60 99.72 100.34 101.93 / float vector
+q)v3:`so`long`and`thanks`for`all`the`fish / symbol vector</code></pre>
+<p>For <em>n</em>&gt;1, we define a <em>matrix of dimension n</em> as a list of matrices of dimension <em>n</em> - 1 all having the same size. Thus, a matrix of dimension 2 is a list of vectors, all having the same size. If all atoms in a matrix have the same type, we call this the <em>type</em> of the matrix.</p>
+<h3 id="3113-two-and-three-dimensional-matrices">3.11.3 Two- and Three-Dimensional Matrices<a class="headerlink" href="#3113-two-and-three-dimensional-matrices" title="Permanent link">&para;</a></h3>
+<p>Let <code>m</code> be a two-dimensional matrix as defined in the previous section. The items of <code>m</code> are its <em>rows</em>. As we have already seen, the <em>i<sup>th</sup></em> row of <code>m</code> can be obtained via item indexing as <code>m[i]</code>. Equivalently, we can use an elided index with indexing at depth to obtain the <em>i<sup>th</sup></em> row as <code>m[i;]</code>.</p>
+<p>The console display of <code>m</code> in tabular form motivates defining the list <code>m[;j]</code> as the <em>j</em><sup>th</sup> <em>column</em> of m. The notations <code>m[i][j]</code> and <code>m[i;j]</code> both retrieve the same item â namely, the item in row <em>i</em> and column <em>j</em>.</p>
+<p>We make one final observation. Matrices are nested lists stored in row order. When the rows are simple, each occupies contiguous storage. This makes row retrieval very fast. On the other hand, columns must be picked out of the rows, so column operations are slower.</p>
+<div class="admonition advanced">
+<p class="admonition-title">Advanced</p>
+<p>By convention we consider a matrix to be a collection of rows. It would be equally valid to consider each vector as a column and a two dimensional array as a collection of columns. As we shall see in <a href="../8_Tables/">Chapter 8</a>, a table is a collection of columns that are logically (not physically) transposed for ease of indexing. The constraints and calculations of q-sql operate on table column lists, so they are fast, especially when the columns are simple lists. In particular, a simple time series can be represented by two parallel lists, one holding temporal values and the other holding the associated values. Retrieving and manipulating the columns in vector operations is faster by orders of magnitude than performing the same operations in an RDBMS that stores data in rows with undefined order.</p>
+</div>
+<p>Higher-dimensional matrices occur less frequently in q than in its ancestors. For completeness, here is an example of a three-dimensional 2Ã3Ã2 matrix â i.e., each of the two top-level items is a 3Ã2 matrix. Observe that the console display of <code>mm</code> is unenlightening.</p>
+<pre class="highlight"><code class="language-q">q)mm:((1 2;3 4;5 6);(10 20;30 40;50 60))
+q)mm
+_
+q)mm[0]
+_
+q)mm[1]
+_</code></pre>
+<h2 id="3114-matrix-flexibility">3.11.4 Matrix Flexibility<a class="headerlink" href="#3114-matrix-flexibility" title="Permanent link">&para;</a></h2>
+<p>We have seen that although there is no separate construct for matrices in q, rectangular lists look and act like their mathematical matrix counterparts. However, they have features not available in simple mathematical notation or in most traditional languages. We have seen that a rectangular list can be viewed and manipulated both as a multi-dimensional array (i.e., indexing at depth) and as an array of arrays (repeated item indexing). In addition, we can extend individual item indexing with indexing via lists.</p>
+<pre class="highlight"><code class="language-q">q)m:(1 2; 10 20; 100 200; 1000 2000)
+q)m 0 2
+_</code></pre>
+<h2 id="312-useful-list-operations">3.12 Useful List Operations<a class="headerlink" href="#312-useful-list-operations" title="Permanent link">&para;</a></h2>
+<p>In this section we demonstrate basic use cases for some list operations that are frequently used in following chapters.</p>
+<h3 id="3121-til">3.12.1 <code>til</code><a class="headerlink" href="#3121-til" title="Permanent link">&para;</a></h3>
+<p>The unary <a href="https://code.kx.com/q/ref/til/"><code>til</code></a> takes a non-negative integer n and returns a list of n consecutive natural numbers starting at 0. It is useful for constructing regular lists of integers.</p>
+<pre class="highlight"><code class="language-q">q)til 10
+0 1 2 3 4 5 6 7 8 9
+q)1+til 10
+_
+q)2*til 10
+_
+q)1+2*til 10
+_
+q)-5+4*til 3
+_</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">If your code includes constructs of the form <em>function</em> <code>each til count â¦</code>you are almost certainly writing loopy â i.e., non-vector â code, otherwise known as VBQ.</p>
+</div>
+<h3 id="3122-distinct">3.12.2 <code>distinct</code><a class="headerlink" href="#3122-distinct" title="Permanent link">&para;</a></h3>
+<p>The unary function <a href="https://code.kx.com/q/ref/distinct/"><code>distinct</code></a> returns the unique items in its list argument, in order of first occurrence.</p>
+<pre class="highlight"><code class="language-q">q)distinct 1 2 3 2 3 4 6 4 3 5 6
+1 2 3 4 6 5</code></pre>
+<h3 id="3123-where">3.12.3 <code>where</code><a class="headerlink" href="#3123-where" title="Permanent link">&para;</a></h3>
+<p>The basic form of <a href="https://code.kx.com/q/ref/where/"><code>where</code></a> returns the indices of <code>1b</code> in a boolean list â i.e., it reports where the ones are.</p>
+<pre class="highlight"><code class="language-q">q)where 101010b
+0 2 4</code></pre>
+<p>This is useful to operate at positions that are indentified by a predicate.</p>
+<pre class="highlight"><code class="language-q">q)L:10 20 30 40 50
+q)L[where L&gt;20]:42
+q)L
+_</code></pre>
+<h3 id="3124-group">3.12.4 <code>group</code><a class="headerlink" href="#3124-group" title="Permanent link">&para;</a></h3>
+<p>The unary function <a href="https://code.kx.com/q/ref/group/"><code>group</code></a> takes a list and returns a dictionary in which each distinct item of the argument is mapped to the indices of its occurrences, in order of occurrence.</p>
+<pre class="highlight"><code class="language-q">q)group "i miss mississippi"
+i| 0 3 8 11 14 17
+ | 1 6
+m| 2 7
+s| 4 5 9 10 12 13
+p| 15 16</code></pre>
+                
+
+
+                
+              
+              
+                
+
+
+              
+            </article>
+            
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
+
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../2_Basic_Data_Types_Atoms/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. Basic Data Types â Atoms" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              2. Basic Data Types â Atoms
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../4_Operators/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Operators" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              4. Operators
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Â© 2021 Kx Systems, Inc. KX and kdb+ are registered trademarks of Kx Systems, Inc., a subsidiary of FD Technologies plc.
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs Insiders
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tabs.link", "header.autohide", "navigation.top"], "search": "../assets/javascripts/workers/search.d5944110.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1f47d4a.min.js"></script>
+      
+        <script src="https://code.kx.com/scripts/prism.js"></script>
+      
+        <script src="https://code.kx.com/scripts/extra.js"></script>
+      
+        <script src="https://code.kx.com/scripts/mathjax.js"></script>
+      
+        <script src="https://code.kx.com/scripts/polyfill.min.js"></script>
+      
+        <script src="https://code.kx.com/scripts/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,505 @@
+{"instruction": "Using qSQL, Show me how to implement lg in q/kdb+ in a production environment", "input": "", "output": "lg:{[tz;z] $[0>type z;first;(::)]@exec gmtDateTime+adjustment from aj[`timezoneID`gmtDateTime;([]timezoneID:tz;gmtDateTime:z,());select timezoneID,gmtDateTime,adjustment from t]}"}
+{"instruction": "Calculate bid-ask spread and mid price", "input": "", "output": "update spread:ask-bid, midprice:0.5*bid+ask from quotes"}
+{"instruction": "Implement a function rep that perform data operations in a production environment", "input": "", "output": "rep:{(.[;();:;].)each x;if[null first y;:()];-11!y;}"}
+{"instruction": "Implement a function basicread that perform data operations efficiently for a trading system", "input": "", "output": "basicread:{[file]data[file;basicinfo[file]]}"}
+{"instruction": "I need to write a q function that perform data operations", "input": "", "output": "read10:{[file]data10[file;info[file]]}"}
+{"instruction": "Write q code for rep to perform data operations", "input": "", "output": "rep:{(.[;();:;].)each x;}"}
+{"instruction": "Implement a function unregistered that execute a query and return results for a trading system", "input": "", "output": "unregistered:{except[key .z.W;exec w from`.servers.SERVERS]}"}
+{"instruction": "How do I write a q function that query and filter table data efficiently using qSQL", "input": "", "output": "q:{m:asc distinct(x:B x)`m;select sum z by p from x asof([]m;t:y)}"}
+{"instruction": "Write q code for getrequiredparams to execute a query and return results", "input": "", "output": "getrequiredparams:{[]exec parameter from .checkinputs.checkinputsconfig where required}"}
+{"instruction": "How do I write a q function that perform data operations efficiently", "input": "", "output": "end:{@[`.;.q.tables`.;@[;`sym;`g#]0#];}"}
+{"instruction": "How do I write a q function that perform data operations", "input": "", "output": "gen:{exp 0.001 * normalrand x}"}
+{"instruction": "Show me how to create a q/kdb+ function query_401 to update table records", "input": "", "output": "update `g#sym from flip `time`sym`price`size`src`ex`cond`mode1`side`batch`mode`feedtime!\"PSFJSBCCSSSP\" $\\: ()"}
+{"instruction": "Show me how to implement replaymaxrows in q/kdb+ in a kdb+ database", "input": "", "output": "replaymaxrows:{[tabname] replaynumrows^replaynumtab[tabname]}"}
+{"instruction": "Implement a function rep that perform data operations efficiently in q/kdb+", "input": "", "output": "rep:{(.[;();:;].)each x;if[null first y;:()];-11!y;}"}
+{"instruction": "Show me how to implement month in q/kdb+", "input": "", "output": "month:{[n]0D+.Q.addmonths[2000.01.01;0 1+n]}"}
+{"instruction": "In q/kdb+, How do I write a q function that retrieve data efficiently", "input": "", "output": "getpartition:{@[value;`.dqe.currentpartition;(`date^partitiontype)$(.z.D,.z.d)utctime]}"}
+{"instruction": "Create a q/kdb+ function normalrand to perform data operations", "input": "", "output": "normalrand:{(cos 2 * pi * x ? 1f) * sqrt neg 2 * log x ? 1f}"}
+{"instruction": "Create a q/kdb+ function go to perform data operations for financial data", "input": "", "output": "go:{if[`asc=x[0];:(xasc;x[1])];:(xdesc;x[1])}"}
+{"instruction": "Write a q function named tablelist that perform data operations", "input": "", "output": "tablelist:{.stpps.t}"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function loadhdb to load data from files or databases in a production environment for a trading system", "input": "", "output": "loadhdb:{[hdbdir]system \"l \",1_string hdbdir}"}
+{"instruction": "Implement a function pct that perform data operations", "input": "", "output": "pct:{.01*\"j\"$1e4*x}"}
+{"instruction": "I need to implement pth in q/kdb+", "input": "", "output": "pth:{if[10h<>type x;x:string x]; if[NT;x:@[x;where\"/\"=x;:;\"\\\\\"]];$[\":\"=first x;1_x;x]}"}
+{"instruction": "Can you help me write a q function named vol2 that perform data operations", "input": "", "output": "vol2:{x?100*1 1 1 1 2 2 3 4 5 8 10 15 20}"}
+{"instruction": "Using qSQL, Show me how to implement bucketlmchartdata in q/kdb+ efficiently in a kdb+ database", "input": "", "output": "bucketlmchartdata:{[x] x:`minute$$[x=0;1;x];0!select errcount:count i by (0D00:00+x) xbar time from logmsg where loglevel=`ERR}"}
+{"instruction": "Show me how to implement sm in q/kdb+ for a trading system", "input": "", "output": "sm:{([]row:where count each i;col:raze i;val:raze x@'i:where each x<>0)}"}
+{"instruction": "Write a q function named upd that group data by key columns", "input": "", "output": "upd:{[t;x]vwap+:select size wsum price,sum size by sym from x}"}
+{"instruction": "How do I write a q function that perform data operations efficiently in q/kdb+", "input": "", "output": "upd:{[t;x] t insert x;}"}
+{"instruction": "In q/kdb+, Write q code for getrequiredparams to execute a query and return results", "input": "", "output": "getrequiredparams:{[]exec parameter from .checkinputs.checkinputsconfig where required}"}
+{"instruction": "Using qSQL, Create a q/kdb+ function deldir to perform data operations in a production environment", "input": "", "output": "deldir:{system(\"rm -r \";\"rd /s /q \")[NT],pth x}"}
+{"instruction": "Using qSQL, Show me how to implement checkreturnederrorcustom in q/kdb+ for a trading system", "input": "", "output": "checkreturnederrorcustom:{[test;param]errors[test;`error]~@[.checkinputs.checkinputs;param;::]}"}
+{"instruction": "Provide a q function to implement a function upd that perform data operations for a trading system", "input": "", "output": "upd:{[t;x]$[type key t;@[t;k#x;,';k _ x];.[t;();:;k xgroup x]]}"}
+{"instruction": "Implement a function checkreturnederrorcustom that validate data", "input": "", "output": "checkreturnederrorcustom:{[test;param]errors[test;`error]~@[.dataaccess.checkinputs;param;::]}"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function allns to perform data operations in a production environment using qSQL", "input": "", "output": "allns:{`$(enlist enlist \".\"),\".\",/:string key `}"}
+{"instruction": "Implement a function spliltcolumns that perform data operations in a kdb+ database", "input": "", "output": "spliltcolumns:{[x;columns;types]@[x;columns;spliltandcast;types]}"}
+{"instruction": "Create a q/kdb+ function upd to perform data operations for financial data", "input": "", "output": "upd:{@[x;::;,;y]}"}
+{"instruction": "Write a q function named zh0 that perform data operations in a production environment", "input": "", "output": "zh0:{cols .Q.id flip x!(count x)#()}"}
+{"instruction": "How do I write a q function named end that perform data operations", "input": "", "output": "end:{(neg union/[w[;;0]])@\\:(`.u.end;x)}"}
+{"instruction": "Using qSQL, Write q code for upderr to perform data operations efficiently in q/kdb+", "input": "", "output": "upderr:{[t;x].tst.err:x}"}
+{"instruction": "Help me write a q function that perform data operations", "input": "", "output": "vol:{10+`int$x?90}"}
+{"instruction": "What's the q code for implement a function upd that perform data operations", "input": "", "output": "upd:{h(\".u.upd\";x;@[y;0;sym ids?])}"}
+{"instruction": "Implement a function ind that perform data operations", "input": "", "output": "ind:{[t;i](key t)!flip(flip value t)@'\\:i}"}
+{"instruction": "In q/kdb+, Show me how to implement publishgrid in q/kdb+", "input": "", "output": "publishgrid:{.u.pub[`grid; .testdata.getgrid[x]]}"}
+{"instruction": "Can you help me write q code for g to perform data operations", "input": "", "output": "g:{d+:e:r[7](6*d:r[30]24+19*a:r[19]x)+5+2*r[4;x]+2*r[7]x;dy[\"0320\";x]+d-7*(d=35)|(d=34)&(e=6)&a>10}"}
+{"instruction": "Create a q/kdb+ function checkeod to filter data based on conditions for a trading system for financial data", "input": "", "output": "checkeod:{[IDS].gw.eod&1<count distinct$[11h=type ids:raze IDS;ids;exec servertype from .gw.servers where any serverid in/:ids]}"}
+{"instruction": "Create a q/kdb+ function ext to perform data operations", "input": "", "output": "ext:{[loglevel;proctype;proc;id;message;dict]}"}
+{"instruction": "In q/kdb+, How do I write a q function that execute a query and return results in a production environment", "input": "", "output": "gethandles:{exec procname,proctype,w from .servers.SERVERS where (procname in x) | (proctype in x)}"}
+{"instruction": "In q/kdb+, Write q code for advancedreslist to perform data operations in a production environment using qSQL", "input": "", "output": "advancedreslist:{first x`resultdata}"}
+{"instruction": "Provide a q function to calculate aggregate statistics", "input": "", "output": "covf:{(-;(%;swsum[x;y];scx x);(*;avgf[x;x];avgf[y;x]))}"}
+{"instruction": "Create a q/kdb+ function extractschema to perform data operations for financial data", "input": "", "output": "extractschema:{t:value x; $[.Q.qp t; t; 0#t]}"}
+{"instruction": "Using qSQL, Show me how to implement testfuncrollover in q/kdb+ for a trading system", "input": "", "output": "testfuncrollover:{[]2000.01.05D}"}
+{"instruction": "Create a q/kdb+ function pth to filter data based on conditions using qSQL", "input": "", "output": "pth:{p:$[10h=type x;x;string x];if[WIN;p[where\"/\"=p]:\"\\\\\"];(\":\"=first p)_ p}"}
+{"instruction": "Create a q/kdb+ function checkeod to filter data based on conditions in a production environment in a kdb+ database", "input": "", "output": "checkeod:{[IDS].gw.eod&1<count distinct$[11h=type ids:raze IDS;ids;exec servertype from .gw.servers where any serverid in/:ids]}"}
+{"instruction": "Write q code that write a q function named sub that perform data operations", "input": "", "output": "sub:{if[x~`;:sub[;y]each t];if[not x in t;'x];del[x].z.w;add[x;y]}"}
+{"instruction": "Create a q/kdb+ function periodic to perform data operations for a trading system", "input": "", "output": "periodic:{[dir;tab;p] ` sv (hsym dir;`$raze string .proc.procname,\"_periodic\",.stplg.gentimeformat[p]) }"}
+{"instruction": "Can you help me write q code for removerole to perform data operations in a production environment", "input": "", "output": "removerole:{[n]roleinfo::.[roleinfo;();_;n]}"}
+{"instruction": "Can you help me write a q function named f that perform data operations", "input": "", "output": "f:{[t;c;s]?[t;enlist(=;`sym;enlist s);(enlist`second)!enlist`time.second;(enlist c)!enlist(last;c)]}"}
+{"instruction": "Write a q function named ren that perform data operations", "input": "", "output": "ren:{system$[WIN;\"move \";\"mv \"],pth[x],\" \",pth y}"}
+{"instruction": "How do I implement postloadeach in q/kdb+", "input": "", "output": "POSTLOADEACH:{x}"}
+{"instruction": "In q/kdb+, How do I write a q function that perform data operations in q/kdb+", "input": "", "output": "noise:{[n] (-.5+n?1f)+n?-5 -4 -3 -2 -1 0 0 0 1 2 3 4 5}"}
+{"instruction": "Implement a function add that perform data operations in a kdb+ database", "input": "", "output": "add:{[func;descrip] `.tut.torun insert `func`descrip!(func;descrip);}"}
+{"instruction": "Help me calculate aggregate statistics", "input": "", "output": "upd:{[t;x]vwap+:select size wsum price,sum size by sym from x}"}
+{"instruction": "Write a q function named here that perform data operations for a trading system", "input": "", "output": "here:{hsym`$system$[WIN;\"cd\";\"pwd\"]}"}
+{"instruction": "Show me how to implement tabperiod in q/kdb+ for a trading system", "input": "", "output": "tabperiod:{[dir;tab;p] ` sv (hsym dir;`$raze string (.proc.procname;\"_\";tab),.stplg.gentimeformat[p]) }"}
+{"instruction": "Show me how to implement KUltr in q/kdb+ in a production environment in a tick database", "input": "", "output": "KUltr:{`KUTR upsert(\"SIJSSIJSIBBBBZI\";enlist .KU.DELIM)0:.KU.SAVEFILE}"}
+{"instruction": "Using qSQL, Show me how to implement checktable in q/kdb+ for a trading system", "input": "", "output": "checktable:{[dict;parameter]:checktype[-11h;dict;parameter];}"}
+{"instruction": "In q/kdb+, Implement a function ws that perform data operations in a production environment", "input": "", "output": "ws:{neg[.z.w] -8!.j.j[evaluate[.j.k -9!x]];}"}
+{"instruction": "Using qSQL, Show me how to implement jstsiso8601 in q/kdb+ for a trading system", "input": "", "output": "jstsiso8601:{(\"-\" sv \".\" vs string `date$x),\"T\",string[`second$x],\"Z\"}"}
+{"instruction": "Using qSQL, Show me how to implement sub in q/kdb+ for a trading system", "input": "", "output": "sub:{if[x~`;:sub[;y]each t];if[not x in t;'x];del[x].z.w;add[x;y]}"}
+{"instruction": "Create a q/kdb+ function allns to perform data operations", "input": "", "output": "allns:{`$(enlist enlist \".\"),\".\",/:string key `}"}
+{"instruction": "How do I create a q/kdb+ function del to perform data operations", "input": "", "output": "del:{system(\"rm \";\"del \")[NT],pth x}"}
+{"instruction": "Write q code for vu to query and filter table data for a trading system for financial data", "input": "", "output": "vu:{select sym,price*size,size from x}"}
+{"instruction": "Implement a function gl that query and filter table data", "input": "", "output": "gl:{[tz;z] $[0>type z;first;(::)]@exec localDateTime-adjustment from aj[`timezoneID`localDateTime;([]timezoneID:tz;localDateTime:z,());select timezoneID,localDateTime,adjustment from t]}"}
+{"instruction": "What's the q code for implement vnstrpath in q/kdb+", "input": "", "output": "VNStrPath:{`char$raze last \"-\" vs string last ` vs x}"}
+{"instruction": "Can you help me write a q function named removeuser that perform data operations", "input": "", "output": "removeuser:{[u]user::.[user;();_;u]}"}
+{"instruction": "Write q code for vu to query and filter table data in q/kdb+", "input": "", "output": "vu:{select sym,price*size,size from x}"}
+{"instruction": "Write q code for f to group data by key columns in q/kdb+", "input": "", "output": "f:{t::select by ex from 0#x;g each x}"}
+{"instruction": "Can you help me write q code for grad to perform data operations", "input": "", "output": "grad:{[gradient] -1+2*gradient>count[gradient]?1f}"}
+{"instruction": "Help me implement crm in q/kdb+ efficiently", "input": "", "output": "crm:{cvm[x]%u*/:u:dev each x}"}
+{"instruction": "Show me how to calculate aggregate statistics", "input": "", "output": "swsum:{(sum;`$\"wsum\",x,y)}"}
+{"instruction": "Implement a function timeoutreset that perform data operations for a trading system", "input": "", "output": "timeoutreset:{.rdb.timeout:system\"T\";system\"T 0\"}"}
+{"instruction": "Implement a function endofperiod that perform data operations", "input": "", "output": "endofperiod:{[currp;nextp;data] .lg.o[`endofperiod;\"Received endofperiod. currentperiod, nextperiod and data are \",(string currp),\", \", (string nextp),\", \", .Q.s1 data]}"}
+{"instruction": "Create 1-minute OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:60000 xbar time.minute from trades"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function loadhdb to load data from files or databases", "input": "", "output": "loadhdb:{[hdbdir]system \"l \",1_string hdbdir}"}
+{"instruction": "Can you help me write a q function named fetch that retrieve data for a trading system", "input": "", "output": "fetch:{if[not 10h=abs type x;x:string x];$[1=count i:where(key DIR)like x,\"*\";1_raze\"\\n\",'TXT[(key DIR)[first i]];DIR]}"}
+{"instruction": "Show me how to implement rec in q/kdb+", "input": "", "output": "rec:{-1\"reconnect\"}"}
+{"instruction": "How do I write a q function that perform data operations in a production environment in a tick database", "input": "", "output": "ld:{if[not type key L::`$(-10_string L),string x;.[L;();:;()]];i::j::@[-11!;L;i::-11!(-2;L)];jcounts::icounts;if[0 < type i;-2 (string L),\" is a corrupt log. Truncate to length \",(string last i),\" and restart\";exit 1];hopen L}"}
+{"instruction": "What's the q code for implement ts in q/kdb+ for a trading system", "input": "", "output": "ts:{if[.eodtime.nextroll < x;if[d<(\"d\"$x)-1;system\"t 0\";'\"more than one day?\"];endofday[]]}"}
+{"instruction": "How do I write a q function that calculate aggregate statistics in a production environment", "input": "", "output": "upd:{[t;x].[t;();,;select by sym,5 xbar time.minute from x]}"}
+{"instruction": "Create a q/kdb+ function dmm2 to calculate aggregate statistics", "input": "", "output": "dmm2:{value[x]wsum y key x}"}
+{"instruction": "Create a q/kdb+ function whereami to filter data based on conditions", "input": "", "output": "whereami:{funcs first where x~/:value each funcs:raze varnames[;\"f\";0b] each reverse allns[]}"}
+{"instruction": "In q/kdb+, Implement a function endofperiod that perform data operations efficiently", "input": "", "output": "endofperiod:{[currp;nextp;data] .lg.o[`endofperiod;\"Received endofperiod. currentperiod, nextperiod and data are \",(string currp),\", \", (string nextp),\", \", .Q.s1 data]}"}
+{"instruction": "Using qSQL, Create a q/kdb+ function deleteusers to remove records from a table efficiently for a trading system", "input": "", "output": "deleteusers:{delete from`.access.USERS where u in x;}"}
+{"instruction": "Using qSQL, Show me how to implement cancast in q/kdb+", "input": "", "output": "cancast:{nw:x$\"\";if[not x in\"BGXCS\";nw:(min 0#;max 0#;::)@\\:nw];$[not any nw in x$11#y;$[11<count y;not any nw in x$y;1b];0b]}"}
+{"instruction": "Show me how to implement kupd in q/kdb+ in a tick database", "input": "", "output": "kupd:{[k;x] -1 `char$x;}"}
+{"instruction": "How do I calculate aggregate statistics", "input": "", "output": "tick:{init[];if[not min(`time`sym~2#key flip value@)each t;'`timesym];@[;`sym;`g#]each t;d::.eodtime.d;if[l::count y;L::`$\":\",y,\"/\",x,10#\".\";l::ld d]}"}
+{"instruction": "Show me how to write a q function that perform data operations in a production environment", "input": "", "output": "test:{senddefault `to`subject`body!(x;\"test email\";enlist (\"this is a test email to see if the TorQ email lib is configured correctly\"))}"}
+{"instruction": "Write a q function named k that perform data operations for a trading system in a kdb+ database", "input": "", "output": "k:{if[any qj in key x:g x;q,:enlist(`$-4_s;`$-4#s:-2_sf x),qf@'x qi]}"}
+{"instruction": "Using qSQL, Write q code for subfunc to perform data operations for a trading system", "input": "", "output": "subfunc:{`schemalist`logfilelist`rowcounts`date!(.u.sub\\:[x;y];enlist(.u`i`L);(.u `icounts);(.u `d))}"}
+{"instruction": "Create a q/kdb+ function upd to perform data operations", "input": "", "output": "upd:{[t;x] t insert x}"}
+{"instruction": "Write q code for swsum to calculate aggregate statistics efficiently", "input": "", "output": "swsum:{(sum;`$\"wsum\",x,y)}"}
+{"instruction": "Can you help me write a q function named hbdata that perform data operations in a production environment", "input": "", "output": "hbdata:{0!`error`warning xdesc .hb.hb}"}
+{"instruction": "In q/kdb+, Write a q function named a that perform data operations for a trading system", "input": "", "output": "a:{$[x=y;enlist til x;1=y;flip enlist til x;a[x;y],a[x;y-1],'x-:1]}"}
+{"instruction": "Implement a function vol that perform data operations", "input": "", "output": "vol:{10+`int$x?90}"}
+{"instruction": "Show me how to implement out in q/kdb+ in a tick database", "input": "", "output": "out:{if[debug;:.lg.o[`ldap] x]}"}
+{"instruction": "Write q code for tabsincountorder to perform data operations", "input": "", "output": "tabsincountorder:{x iasc count each value each x}"}
+{"instruction": "Write a q function named pub that perform data operations for a trading system", "input": "", "output": "pub:{req[neg x;y;z]}"}
+{"instruction": "Implement a function f1 that perform data operations in a tick database", "input": "", "output": "f1:{0N!`firing;system\"sleep \",string x}"}
+{"instruction": "Show me how to implement Roff in q/kdb+ using qSQL", "input": "", "output": "Roff:{Rcmd \"dev.off()\"}"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function gethandle to execute a query and return results for a trading system for financial data", "input": "", "output": "gethandle:{exec first w from .servers.getservers[`procname;x;()!();1b;1b]}"}
+{"instruction": "Write q code that write a q function named ts that perform data operations for a trading system", "input": "", "output": "ts:{.u.pub'[.u.t;value each .u.t];@[`.;.u.t;@[;`sym;`g#]0#]}"}
+{"instruction": "Show me how to implement jstsiso8601 in q/kdb+ for a trading system", "input": "", "output": "jstsiso8601:{(\"-\" sv \".\" vs string `date$x),\"T\",string[`second$x],\"Z\"}"}
+{"instruction": "Write a q function named unregistered that execute a query and return results in a tick database", "input": "", "output": "unregistered:{except[key .z.W;exec w from`CLIENTS]}"}
+{"instruction": "Write q code that create a q/kdb+ function postsaveall to save data to disk efficiently", "input": "", "output": "POSTSAVEALL:{@[`sym`time xasc x;`sym;`p#]}"}
+{"instruction": "Help me create a q/kdb+ function add to perform data operations efficiently", "input": "", "output": "add:{$[(count w x)>i:w[x;;0]?.z.w;.[`.u.w;(x;i;1);union;y];w[x],:enlist(.z.w;y)];(x;$[99=type v:value x;sel[v]y;@[0#v;`sym;`g#]])}"}
+{"instruction": "Implement a function addfunction that perform data operations", "input": "", "output": "addfunction:{[f;g]if[not (f;g) in functiongroup;functiongroup,:(f;g)];}"}
+{"instruction": "In q/kdb+, Write a q function named pkg that perform data operations in a kdb+ database", "input": "", "output": "pkg:{.utl.load $[10h ~ type .utl.PKGLOADING;.utl.PKGLOADING,\"/\",x;.utl.PKGLOADING,x]}"}
+{"instruction": "Write a q function named ren that perform data operations for a trading system in a tick database", "input": "", "output": "ren:{system$[WIN;\"move \";\"mv \"],pth[x],\" \",pth y}"}
+{"instruction": "Write q code for db to filter data based on conditions in a production environment", "input": "", "output": "db:{v x where count[v]>x:0 t\\x}"}
+{"instruction": "Using qSQL, Create a q/kdb+ function deleteusers to remove records from a table efficiently", "input": "", "output": "deleteusers:{delete from`.access.USERS where u in x;}"}
+{"instruction": "Show me how to implement month in q/kdb+ in a kdb+ database", "input": "", "output": "month:{[n]0D+.Q.addmonths[2000.01.01;0 1+n]}"}
+{"instruction": "Provide a q function to implement a function upd that perform data operations efficiently", "input": "", "output": "upd:{[t;x]$[type key t;@[t;k#x;,';k _ x];.[t;();:;k xgroup x]]}"}
+{"instruction": "Using qSQL, Write a q function named mw that calculate aggregate statistics for a trading system", "input": "", "output": "mw:{max count each x}"}
+{"instruction": "Create a q/kdb+ function upd to query and filter table data in a tick database", "input": "", "output": "upd:{[t;x]$[t~`trade;tq,:x lj .u.q;.u.q,:select by sym from x]}"}
+{"instruction": "How do I write a q function that perform data operations in q/kdb+", "input": "", "output": "shiv:{(last x)&(first x)|asc x+-2+(count x)?5}"}
+{"instruction": "Using qSQL, Write a q function named normalrand that perform data operations for a trading system", "input": "", "output": "normalrand:{(cos 2 * pi * x ? 1f) * sqrt neg 2 * log x ? 1f}"}
+{"instruction": "Help me implement a function camel that perform data operations efficiently", "input": "", "output": "camel:{$[11h~type x;@[;0;upper]each string x;@[string x;0;upper]]}"}
+{"instruction": "How do I implement testfuncrollover in q/kdb+", "input": "", "output": "testfuncrollover:{[]2000.01.05D}"}
+{"instruction": "Write q code that write q code for keyst to perform data operations", "input": "", "output": "keyst:{key first x`resultdata}"}
+{"instruction": "Show me how to implement a function query_251 that filter data based on conditions", "input": "", "output": "exec c from meta tab where t in \"csSC \""}
+{"instruction": "In q/kdb+, Show me how to implement hybridreplay in q/kdb+", "input": "", "output": "hybridreplay:{system\"q torq.q -debug -load \",processfile,\" \",testconfig,\" -.replay.tplogdir \",tplogdir,\" -.replay.hdbdir \",hdbdir,\" -.replay.schemafile \", schemafile,\" -.replay.mergemethod hybrid -proctype tickerlogreplay -procname tplogreplay1\"}"}
+{"instruction": "Write q code for endofday to perform data operations in a tick database", "input": "", "output": "endofday:{end d;d+:1;icounts::(`symbol$())!0#0,();if[.z.p>.eodtime.nextroll:.eodtime.getroll[.z.p];system\"t 0\";'\"next roll is in the past\"];.eodtime.dailyadj:.eodtime.getdailyadjustment[];if[l;hclose l;l::0(`.u.ld;d)]}"}
+{"instruction": "How do I write a q function that update table records", "input": "", "output": "t:{update row:col,col:row from x}"}
+{"instruction": "In q/kdb+, How do I write a q function that perform data operations in a production environment using qSQL", "input": "", "output": "unassignrole:{[u;r]if[(u;r) in userrole;userrole::.[userrole;();_;userrole?(u;r)]]}"}
+{"instruction": "Using qSQL, Write a q function named f that perform data operations efficiently in q/kdb+", "input": "", "output": "f:{current::0;runcurrent[]}"}
+{"instruction": "How do I write a q function that perform data operations using qSQL", "input": "", "output": "noise:{[n] (-.5+n?1f)+n?-5 -4 -3 -2 -1 0 0 0 1 2 3 4 5}"}
+{"instruction": "How do I write a q function that perform data operations", "input": "", "output": "p:{current::0|current-1; runcurrent[]}"}
+{"instruction": "What's the q code for write a q function that perform data operations efficiently", "input": "", "output": "read:{[file]data[file;info[file]]}"}
+{"instruction": "How do I write a q function that calculate aggregate statistics in a kdb+ database", "input": "", "output": "foo:{[d;f;t;g;x]@[;`sym;`p#].Q.dsftg[(dst;\"D\"$-8#string x;d);(` sv src,x;sum t 1;0);f;t;g]}"}
+{"instruction": "I need to create a q/kdb+ function getoutputparams to execute a query and return results for a trading system", "input": "", "output": "getoutputparams:{[test]exec parameter!get each parametervalue from .checkinputs.readcsv[` sv outputpath,`$string[test],\".csv\";\"s*\"]}"}
+{"instruction": "How do I write a q function that perform data operations using qSQL", "input": "", "output": "unassignrole:{[u;r]if[(u;r) in userrole;userrole::.[userrole;();_;userrole?(u;r)]]}"}
+{"instruction": "Create a q/kdb+ function del to perform data operations in q/kdb+", "input": "", "output": "del:{system(\"rm \";\"del \")[NT],pth x}"}
+{"instruction": "Using qSQL, Write a q function named upd that group data by key columns", "input": "", "output": "upd:{[t;x]vwap+:select size wsum price,sum size by sym from x}"}
+{"instruction": "Can you help me write q code for limit to perform data operations in a production environment", "input": "", "output": "limit:{(neg x)|x & y}"}
+{"instruction": "Implement a function stripEmptyLines that filter data based on conditions in a tick database", "input": "", "output": "stripEmptyLines:{[l];l where not \"\" ~/: configParsing.trim[\" \\t\"] l}"}
+{"instruction": "Using qSQL, Show me how to implement MSD in q/kdb+ efficiently", "input": "", "output": "MSD:{x^dxy[msd;x;y]}"}
+{"instruction": "What's the q code for write a q function that validate data", "input": "", "output": "checkrequiredparams:{[dict]all .checkinputs.getrequiredparams[]in key dict}"}
+{"instruction": "Write q code for db to filter data based on conditions", "input": "", "output": "db:{v x where count[v]>x:0 t\\x}"}
+{"instruction": "Using qSQL, Write a q function named checkparamnames that validate data in a production environment", "input": "", "output": "checkparamnames:{[dict]all key[dict]in .checkinputs.getvalidparams[]}"}
+{"instruction": "Using qSQL, Create a q/kdb+ function upderr to perform data operations for a trading system", "input": "", "output": "upderr:{[t;x] .tst.err:x}"}
+{"instruction": "Implement a function sg that update table records using qSQL", "input": "", "output": "sg:{update`g#sym from x}"}
+{"instruction": "Show me how to implement dropAll in q/kdb+", "input": "", "output": "dropAll:{.[x;();_/;desc y]}"}
+{"instruction": "Create 30-minute OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:1800000 xbar time.minute from trades"}
+{"instruction": "Show me how to implement a function stripemptylines that filter data based on conditions", "input": "", "output": "stripEmptyLines:{[l];l where not \"\" ~/: configParsing.trim[\" \\t\"] l}"}
+{"instruction": "How do I implement a function nx that perform data operations", "input": "", "output": "nx:{abs(x>0)-(exp[-.5*x*x]%sqrt 2*pi)*t*.31938153+t*-.356563782+t*1.781477937+t*-1.821255978+1.330274429*t:1%1+.2316419*abs x}"}
+{"instruction": "Write q code for pc to update table records for a trading system", "input": "", "output": "pc:{[result;W] update w:0Ni,endp:.proc.cp[] from`.clients.clients where w=W;cleanup[];result}"}
+{"instruction": "Write a q function named Rset that perform data operations for financial data", "input": "", "output": "Rset:{Rset0[x;y]}"}
+{"instruction": "Write q code that implement checksubscriptions in q/kdb+", "input": "", "output": "checksubscriptions:{update active:0b from `.sub.SUBSCRIPTIONS where not w in key .z.W;}"}
+{"instruction": "Can you help me calculate aggregate statistics in a production environment", "input": "", "output": "upd:{[t;x].[t;();,;select by sym,5 xbar time.minute from x]}"}
+{"instruction": "Can you help me create a q/kdb+ function duplicateconfig to update table records efficiently", "input": "", "output": "duplicateconfig:{[t] update proc:raze[t `proc] from ((select from t)where count each t[`proc])}"}
+{"instruction": "Provide a q function to calculate aggregate statistics", "input": "", "output": "meminfo:{5#system\"w\"}"}
+{"instruction": "Help me implement a function upd that perform data operations in a production environment", "input": "", "output": "upd:{h(\".u.upd\";x;@[y;0;sym ids?])}"}
+{"instruction": "I need to create a q/kdb+ function upd to perform data operations efficiently", "input": "", "output": "upd:{[t;x] .u.pub[t;x];}"}
+{"instruction": "Using qSQL, Create a q/kdb+ function upd to perform data operations in a production environment in q/kdb+", "input": "", "output": "upd:{[t;x] t insert x}"}
+{"instruction": "Show me how to implement xrnd in q/kdb+", "input": "", "output": "xrnd:{exp x * limit[2] normalrand y}"}
+{"instruction": "Create a q/kdb+ function allcols to perform data operations", "input": "", "output": "allcols:{[tabledir]get tabledir,`.d}"}
+{"instruction": "Write a q function named AMD that perform data operations for a trading system", "input": "", "output": "AMD:{1^dxy[amd;x;y]}"}
+{"instruction": "Write a q function named lmdata that perform data operations", "input": "", "output": "lmdata:{0!`time xdesc -20 sublist logmsg}"}
+{"instruction": "Write a q function named tablelist that perform data operations in a production environment", "input": "", "output": "tablelist:{.stpps.t}"}
+{"instruction": "Create a q/kdb+ function upd to calculate aggregate statistics", "input": "", "output": "upd:{[t;x]vwap+:select size wsum price,sum size by sym from x}"}
+{"instruction": "In q/kdb+, Implement a function isalive that perform data operations for a trading system", "input": "", "output": "isalive:{[proc] any \"q\" in' @[system;\"pgrep -lf \",proc,\" -u $USER\";\" \"]}"}
+{"instruction": "In q/kdb+, How do I write a q function that update table records", "input": "", "output": "t:{update row:col,col:row from x}"}
+{"instruction": "Show me how to implement upd in q/kdb+ in a kdb+ database", "input": "", "output": "upd:{[t;x]$[type key t;@[t;k#x;,';k _ x];.[t;();:;k xgroup x]]}"}
+{"instruction": "Show me how to implement gettable in q/kdb+ in a production environment", "input": "", "output": "gettable:{[queryparams]queryparams`tablename}"}
+{"instruction": "Write q code that write q code for tabsincountorder to perform data operations", "input": "", "output": "tabsincountorder:{x iasc count each value each x}"}
+{"instruction": "In q/kdb+, Write a q function named vol2 that perform data operations in a production environment for financial data", "input": "", "output": "vol2:{x?100*1 1 1 1 2 2 3 4 5 8 10 15 20}"}
+{"instruction": "Using qSQL, Write a q function named f that perform data operations efficiently in a tick database", "input": "", "output": "f:{current::0;runcurrent[]}"}
+{"instruction": "Write q code that write a q function that perform data operations", "input": "", "output": "read:{[file]data[file;info[file]]}"}
+{"instruction": "How do I implement a function eu that query and filter table data", "input": "", "output": "eu:{select sym,ex:size*\"N\"=ex,size from x}"}
+{"instruction": "Using qSQL, Show me how to implement lg in q/kdb+ in a production environment in a kdb+ database", "input": "", "output": "lg:{[tz;z] $[0>type z;first;(::)]@exec gmtDateTime+adjustment from aj[`timezoneID`gmtDateTime;([]timezoneID:tz;gmtDateTime:z,());select timezoneID,gmtDateTime,adjustment from t]}"}
+{"instruction": "Create a q/kdb+ function quotefinder to filter data based on conditions", "input": "", "output": "quotefinder:{y[2#where y>x]}"}
+{"instruction": "Write a q function named pthq that perform data operations", "input": "", "output": "pthq:{[x] $[10h=type x;ssr [x;\"\\\\\";\"/\"];`$ -1 _ ssr [string (` sv x,`);\"\\\\\";\"/\"]]}"}
+{"instruction": "In q/kdb+, Implement a function grantfunction that perform data operations", "input": "", "output": "grantfunction:{[o;r;p]if[not (o;r;p) in function;function,:(o;r;p)]}"}
+{"instruction": "In q/kdb+, Write a q function named isdictionary that perform data operations in a tick database", "input": "", "output": "isdictionary:{[dict]$[99h~type dict;:dict;'`$.schema.errors[`isdictionary;`errormessage]]}"}
+{"instruction": "In q/kdb+, Write q code for keyst to perform data operations", "input": "", "output": "keyst:{key first x`resultdata}"}
+{"instruction": "Provide a q function to write a q function that initialize or configure the system for a trading system", "input": "", "output": "addinitlist:{[x].proc.initlist,:enlist x}"}
+{"instruction": "How do I write a q function named g that query and filter table data for a trading system", "input": "", "output": "g:{first select max bid,(bid=max bid)wsum bsize,min ask,(ask=min ask)wsum asize from t,:x}"}
+{"instruction": "Can you help me implement a function formatresponse that format data for output", "input": "", "output": "formatresponse:{[status;sync;result]$[not[status]and sync;'result;result]}"}
+{"instruction": "Implement a function timeoutreset that perform data operations", "input": "", "output": "timeoutreset:{.rdb.timeout:system\"T\";system\"T 0\"}"}
+{"instruction": "Write q code for publishmeter to perform data operations in a tick database", "input": "", "output": "publishmeter:{.u.pub[`meter; .testdata.getmeter[x]]}"}
+{"instruction": "Help me implement u in q/kdb+ efficiently", "input": "", "output": "u:{$[(s:x`s)in key B;B[s],:x _`s;B[s]:update`g#m from enlist x _`s];}"}
+{"instruction": "How do I create a q/kdb+ function checkeod to filter data based on conditions", "input": "", "output": "checkeod:{[IDS].gw.eod&1<count distinct$[11h=type ids:raze IDS;ids;exec servertype from .gw.servers where any serverid in/:ids]}"}
+{"instruction": "Can you help me implement roff in q/kdb+ efficiently", "input": "", "output": "Roff:{Rcmd \"dev.off()\"}"}
+{"instruction": "Write a q function named sub that perform data operations using qSQL", "input": "", "output": "sub:{if[x~`;:sub[;y]each t];if[not x in t;'x];del[x].z.w;add[x;y]}"}
+{"instruction": "Show me how to implement bucketlmchartdata in q/kdb+ for financial data", "input": "", "output": "bucketlmchartdata:{[x] x:`minute$$[x=0;1;x];0!select errcount:count i by (0D00:00+x) xbar time from logmsg where loglevel=`ERR}"}
+{"instruction": "Functional select to get all trades for a symbol", "input": "", "output": "?[trades;enlist(=;`sym;enlist `AAPL);0b;()]"}
+{"instruction": "Write q code that write a q function named pub that perform data operations efficiently", "input": "", "output": "pub:{req[neg x;y;z]}"}
+{"instruction": "Write q code for f to filter data based on conditions for financial data", "input": "", "output": "f:{[d;s]x:string s;update sym:s from select from trade where date=d,sym=`$-2_x,ex=last x}"}
+{"instruction": "Write q code that create a q/kdb+ function canc to perform data operations", "input": "", "output": "canc:{trade[f x;`price`size]:(0f;0);}"}
+{"instruction": "Write a q function named extracttablename that perform data operations", "input": "", "output": "extracttablename:{[inputparams;queryparams]@[queryparams;`tablename;:;inputparams`tablename]}"}
+{"instruction": "How do I write a q function that validate data for a trading system", "input": "", "output": "checkrequiredparams:{[dict]all .checkinputs.getrequiredparams[]in key dict}"}
+{"instruction": "Help me implement a function cpy that perform data operations", "input": "", "output": "cpy:{system$[WIN;\"copy /v /z \";\"cp \"],pth[x],\" \",pth y}"}
+{"instruction": "Write a q function named g that query and filter table data", "input": "", "output": "g:{first select max bid,(bid=max bid)wsum bsize,min ask,(ask=min ask)wsum asize from t,:x}"}
+{"instruction": "Using qSQL, Create a q/kdb+ function duplicateconfig to update table records efficiently using qSQL", "input": "", "output": "duplicateconfig:{[t] update proc:raze[t `proc] from ((select from t)where count each t[`proc])}"}
+{"instruction": "Can you help me write a q function that perform data operations", "input": "", "output": "here:{hsym`$system$[WIN;\"cd\";\"pwd\"]}"}
+{"instruction": "What's the q code for create a q/kdb+ function ext to perform data operations", "input": "", "output": "ext:{[loglevel;proctype;proc;id;message;dict]}"}
+{"instruction": "Create a q/kdb+ function validpt to validate data", "input": "", "output": "validpt:{all(cmdtokens x)in y}"}
+{"instruction": "Write q code that create a q/kdb+ function pth to filter data based on conditions", "input": "", "output": "pth:{p:$[10h=type x;x;string x];if[WIN;p[where\"/\"=p]:\"\\\\\"];(\":\"=first p)_ p}"}
+{"instruction": "How do I write a q function that calculate aggregate statistics", "input": "", "output": "tick:{init[];if[not min(`time`sym~2#key flip value@)each t;'`timesym];@[;`sym;`g#]each t;d::.eodtime.d;if[l::count y;L::`$\":\",y,\"/\",x,10#\".\";l::ld d]}"}
+{"instruction": "Write q code that implement a function sg that update table records efficiently", "input": "", "output": "sg:{update`g#sym from x}"}
+{"instruction": "In q/kdb+, Write q code for stt to perform data operations in a kdb+ database", "input": "", "output": "stt:{[r;s]if[not s=9;sym[r]:`ok`stale`close 10 11?s]}"}
+{"instruction": "In q/kdb+, Write a q function named colreplay that perform data operations for a trading system", "input": "", "output": "colreplay:{system\"q torq.q -debug -load \",processfile,\" \",testconfig,\" -.replay.tplogdir \",tplogdir,\" -.replay.hdbdir \",hdbdir,\" -.replay.schemafile \", schemafile,\" -.replay.mergemethod col -proctype tickerlogreplay -procname tplogreplay1\"}"}
+{"instruction": "Create a q/kdb+ function Rnew to perform data operations", "input": "", "output": "Rnew:{Rcmd \"dev.new(noRStudioGD=TRUE)\"}"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function Rnew to perform data operations for a trading system for a trading system", "input": "", "output": "Rnew:{Rcmd \"dev.new(noRStudioGD=TRUE)\"}"}
+{"instruction": "Write a q function named checkeachpair that validate data efficiently for financial data", "input": "", "output": "checkeachpair:{[invalidpair]'`$.checkinputs.formatstring[.schema.errors[`checkeachpair;`errormessage];invalidpair]}"}
+{"instruction": "Can you help me create a q/kdb+ function ext to perform data operations", "input": "", "output": "ext:{[loglevel;proctype;proc;id;message;dict]}"}
+{"instruction": "Write a q function named cpy that perform data operations for a trading system", "input": "", "output": "cpy:{system$[WIN;\"copy /v /z \";\"cp \"],pth[x],\" \",pth y}"}
+{"instruction": "Filter trades to only include regular trading hours (9:30 AM to 4:00 PM)", "input": "", "output": "select from trades where time.time within 09:30 16:00"}
+{"instruction": "Write q code for x to filter data based on conditions for a trading system in q/kdb+", "input": "", "output": "x:{@[x;(where 0x1e=x),-1+count x;:;\"\\n\"]}"}
+{"instruction": "Create a q/kdb+ function adduser to perform data operations", "input": "", "output": "adduser:{[u;pu;su]USERS,:(u;pu;su);}"}
+{"instruction": "Implement a function end that perform data operations using qSQL", "input": "", "output": "end:{(neg union/[w[;;0]])@\\:(`.u.end;x)}"}
+{"instruction": "Implement a function rolllogauto that perform data operations", "input": "", "output": "rolllogauto:{rolllog[getenv`KDBLOG;.proc.procname;logtimestamp[];.usage.suppressalias;.usage.flushtime]}"}
+{"instruction": "Implement a function validuser that filter data based on conditions for a trading system in a tick database", "input": "", "output": "validuser:{[zu;pu;su]$[su;exec any(`,zu)in u from USERS where superuser;$[pu;exec any(`,zu)in u from USERS where poweruser or superuser;exec any(`,zu)in u from USERS]]}"}
+{"instruction": "In q/kdb+, How do I write a q function that initialize or configure the system efficiently for financial data", "input": "", "output": "addinitlist:{[x].proc.initlist,:enlist x}"}
+{"instruction": "Implement a function wssub that perform data operations", "input": "", "output": "wssub:{sub[x;`];}"}
+{"instruction": "In q/kdb+, Show me how to implement u in q/kdb+", "input": "", "output": "u:{$[(s:x`s)in key B;B[s],:x _`s;B[s]:update`g#m from enlist x _`s];}"}
+{"instruction": "Write q code for addserverattr to perform data operations in a tick database", "input": "", "output": "addserverattr:{[handle;servertype;attributes] `.gw.servers upsert (nextserverid[];handle;servertype;0b;1b;0i;0Np;0D;attributes;0Np)}"}
+{"instruction": "Show me how to implement readcheckinputs in q/kdb+ in q/kdb+", "input": "", "output": "readcheckinputs:{[checkinputspath] spliltcolumns[readcsv[checkinputspath;\"sbs*\"];`invalidpairs;`]}"}
+{"instruction": "In q/kdb+, Write a q function named upd that group data by key columns for a trading system for financial data", "input": "", "output": "upd:{[t;x]vwap+:select size wsum price,sum size by sym from x}"}
+{"instruction": "Using qSQL, How do I write a q function that perform data operations in a production environment in a tick database", "input": "", "output": "nor:{$[x=2*n:x div 2;raze sqrt[-2*log n?1f]*/:(sin;cos)@\\:(2*pi)*n?1f;-1_.z.s 1+x]}"}
+{"instruction": "Show me how to implement upd in q/kdb+", "input": "", "output": "upd:{[t;x].[t;();,;select by sym,5 xbar time.minute from x]}"}
+{"instruction": "Write q code that create a q/kdb+ function su to query and filter table data", "input": "", "output": "su:{update`u#sym from select by sym from x}"}
+{"instruction": "How do I write a q function that perform data operations", "input": "", "output": "dt:{[d;t].[dst;(`$string d;t;`);:;value t]}"}
+{"instruction": "Show me how to implement getinputparams in q/kdb+ for a trading system", "input": "", "output": "getinputparams:{[test]exec parameter!get each parametervalue from .checkinputs.readcsv[` sv inputpath,`$string[test],\".csv\";\"s*\"]}"}
+{"instruction": "How do I write a q function that perform data operations in a production environment for a trading system", "input": "", "output": "livehx:{y in x,key .z.W}"}
+{"instruction": "Show me how to implement memvals in q/kdb+ for financial data", "input": "", "output": "memvals:{get'[?[x;enlist(within;`i;count[x]-ticks,0);0b;()]]}"}
+{"instruction": "Show me how to implement timeformat in q/kdb+ efficiently", "input": "", "output": "timeformat:{(\" \" sv string `date`time$.proc.cp[]),\" \", $[.proc.localtime=1b;\"local time\";\"GMT\"]}"}
+{"instruction": "Show me how to write a q function named singular that perform data operations", "input": "", "output": "singular:{[dir;tab;p] ` sv (hsym dir;`$raze string .proc.procname,\"_\",.stplg.gentimeformat[p]) }"}
+{"instruction": "In q/kdb+, How do I write a q function that perform data operations", "input": "", "output": "out:{-1(string .z.z),\" \",x}"}
+{"instruction": "In q/kdb+, Implement a function add that perform data operations", "input": "", "output": "add:{[func;descrip] `.tut.torun insert `func`descrip!(func;descrip);}"}
+{"instruction": "Provide a q function to write a q function named gettestparams that execute a query and return results", "input": "", "output": "gettestparams:{[test]exec parameter!get each parametervalue from .checkinputs.readcsv[` sv testpath,`testdata,`$string[test],\".csv\";\"s*\"]}"}
+{"instruction": "Using qSQL, Implement a function query_251 that filter data based on conditions in a production environment in a kdb+ database", "input": "", "output": "exec c from meta tab where t in \"csSC \""}
+{"instruction": "Using qSQL, Show me how to implement lmchart in q/kdb+ for financial data", "input": "", "output": "lmchart:{0!select errcount:count i by 0D00:05 xbar time from logmsg where loglevel=`ERR}"}
+{"instruction": "Using qSQL, Write q code for pc to update table records", "input": "", "output": "pc:{[result;W] update w:0Ni,endp:.proc.cp[] from`.clients.clients where w=W;cleanup[];result}"}
+{"instruction": "What's the q code for implement upd in q/kdb+", "input": "", "output": "upd:{[t;x].[t;();,;select by sym,5 xbar time.minute from x]}"}
+{"instruction": "Show me how to implement readcheckinputs in q/kdb+ in a kdb+ database", "input": "", "output": "readcheckinputs:{[checkinputspath] spliltcolumns[readcsv[checkinputspath;\"sbs*\"];`invalidpairs;`]}"}
+{"instruction": "Functional update to multiply all prices by 2", "input": "", "output": "![`trades;();0b;enlist[`price]!enlist(*;`price;2)]"}
+{"instruction": "Write q code that create a q/kdb+ function q to perform data operations for a trading system", "input": "", "output": "q:{[syms;len;ls;ls2;src] len?/:(syms;ls;ls;ls2;ls2;\" 89ABCEGJKLNOPRTWZ\";\"NO\";src)}"}
+{"instruction": "Using qSQL, How do I write a q function that perform data operations in a production environment in q/kdb+", "input": "", "output": "a:{d+0^(x,1)r[7]d:dy[y]z}"}
+{"instruction": "In q/kdb+, Implement a function removefunction that perform data operations efficiently", "input": "", "output": "removefunction:{[f;g]if[(f;g) in functiongroup;functiongroup::.[functiongroup;();_;functiongroup?(f;g)]]}"}
+{"instruction": "Can you help me calculate aggregate statistics", "input": "", "output": "f:{[t;p;s](n#s)wavg(n:(1+t bin .z.N-0D00:01)-count t)#p}"}
+{"instruction": "How do I write a q function that perform data operations in q/kdb+", "input": "", "output": "warningperiod:{[processtype] `timespan$warningtolerance*publishinterval}"}
+{"instruction": "How do I write a q function that perform data operations for financial data", "input": "", "output": "buildDN:{\"uid=\",string[x],\",\",buildDNsuf}"}
+{"instruction": "I need to implement upd in q/kdb+ for a trading system", "input": "", "output": "upd:{[t;x] t insert x}"}
+{"instruction": "Write q code that write a q function that perform data operations", "input": "", "output": "noise:{[n] (-.5+n?1f)+n?-5 -4 -3 -2 -1 0 0 0 1 2 3 4 5}"}
+{"instruction": "Create a q/kdb+ function upd to perform data operations in a production environment", "input": "", "output": "upd:{@[x;::;,;y]}"}
+{"instruction": "Write a q function named query_915 that update table records", "input": "", "output": "update expint:i from ([]enumcol:`a`b`c`d`e`)"}
+{"instruction": "Create a q/kdb+ function loadhdb to load data from files or databases for financial data", "input": "", "output": "loadhdb:{[hdbdir]system \"l \",1_string hdbdir}"}
+{"instruction": "Provide a q function to write q code for validhost to validate data", "input": "", "output": "validhost:{[za] $[likeany[.dotz.ipa za;HOSTPATTERNS];1b;likeany[\".\"sv string\"i\"$0x0 vs za;HOSTPATTERNS]]}"}
+{"instruction": "Create a q/kdb+ function upd to perform data operations", "input": "", "output": "upd:{[f;t;x] if[t=`heartbeat; .hb.storeheartbeat[x]]; f . (t;x)}"}
+{"instruction": "Write q code for getunprocessed to retrieve data for a trading system in q/kdb+", "input": "", "output": "getunprocessed:{[matches;newonly] $[newonly;chktable[matches except exec filename from get hsym`$alreadyprocessed];removeprocessed[matches]]}"}
+{"instruction": "Can you help me implement a function end that perform data operations", "input": "", "output": "end:{(neg union/[w[;;0]])@\\:(`.u.end;x)}"}
+{"instruction": "Implement a function sdv that perform data operations in a production environment using qSQL", "input": "", "output": "sdv:{string(distinct x)except`}"}
+{"instruction": "Can you help me write a q function named checkkeytype that validate data", "input": "", "output": "checkkeytype:{[dict]11h~type key dict}"}
+{"instruction": "Write q code for getfile to retrieve data in a production environment in a kdb+ database", "input": "", "output": "getfile:{[filestring] $[os=`lin;last \"/\" vs filestring;last \"\\\\\" vs filestring]}"}
+{"instruction": "Help me implement lg in q/kdb+", "input": "", "output": "lg:{[tz;z] $[0>type z;first;(::)]@exec gmtDateTime+adjustment from aj[`timezoneID`gmtDateTime;([]timezoneID:tz;gmtDateTime:z,());select timezoneID,gmtDateTime,adjustment from t]}"}
+{"instruction": "Write q code for swsum to calculate aggregate statistics", "input": "", "output": "swsum:{(sum;`$\"wsum\",x,y)}"}
+{"instruction": "Write q code that write q code for jstsfromt to perform data operations", "input": "", "output": "jstsfromt:{\"j\"$\"t\"$x}"}
+{"instruction": "Show me how to implement testfuncrollover in q/kdb+", "input": "", "output": "testfuncrollover:{[]2000.01.05D}"}
+{"instruction": "Show me how to implement pth in q/kdb+", "input": "", "output": "pth:{if[10h<>type x;x:string x]; if[NT;x:@[x;where\"/\"=x;:;\"\\\\\"]];$[\":\"=first x;1_x;x]}"}
+{"instruction": "Can you help me create a q/kdb+ function upd to query and filter table data", "input": "", "output": "upd:{[t;x]$[t~`trade;tq,:x lj .u.q;.u.q,:select by sym from x]}"}
+{"instruction": "Show me how to implement bucketlmchartdata in q/kdb+ efficiently", "input": "", "output": "bucketlmchartdata:{[x] x:`minute$$[x=0;1;x];0!select errcount:count i by (0D00:00+x) xbar time from logmsg where loglevel=`ERR}"}
+{"instruction": "Write a q function named getattributes that retrieve data using qSQL", "input": "", "output": "getattributes:{`partition`tables!(.idb.currentpartition;tables[])}"}
+{"instruction": "In q/kdb+, Show me how to implement Roff in q/kdb+ using qSQL", "input": "", "output": "Roff:{Rcmd \"dev.off()\"}"}
+{"instruction": "How do I write a q function that perform data operations in a production environment", "input": "", "output": "trade:{trade::sg x}"}
+{"instruction": "Write q code for f to filter data based on conditions", "input": "", "output": "f:{i each x where not u:\"6\"=x[;3];k each x where u;if[count q;h(\".u.upd\";`quote;flip q)];q::()}"}
+{"instruction": "Implement a function u that group data by key columns", "input": "", "output": "u:{t,:(update sums price*size,sums size by sym from delete ex from x)pj ts[delete time from t]x`sym}"}
+{"instruction": "Show me how to implement readcheckinputs in q/kdb+", "input": "", "output": "readcheckinputs:{[checkinputspath] spliltcolumns[readcsv[checkinputspath;\"sbs*\"];`invalidpairs;`]}"}
+{"instruction": "What's the q code for create a q/kdb+ function del to perform data operations", "input": "", "output": "del:{w[x]_:w[x;;0]?y}"}
+{"instruction": "How do I write a q function that filter data based on conditions using qSQL", "input": "", "output": "filterVals:{$[1h ~ type x;any x;first x where not () ~/: x]}"}
+{"instruction": "I need to implement a function endofperiod that perform data operations efficiently", "input": "", "output": "endofperiod:{[currp;nextp;data] .lg.o[`endofperiod;\"Received endofperiod. currentperiod, nextperiod and data are \",(string currp),\", \", (string nextp),\", \", .Q.s1 data]}"}
+{"instruction": "Provide a q function to write a q function that filter data based on conditions efficiently", "input": "", "output": "remove:{[timerid] delete from `.timer.timer where id=timerid}"}
+{"instruction": "Implement a function stt that perform data operations efficiently in a tick database", "input": "", "output": "stt:{[r;e;s]if[s in 7 8;close,:r];-1 e;}"}
+{"instruction": "Write a q function named fetch that retrieve data using qSQL", "input": "", "output": "fetch:{if[not 10h=abs type x;x:string x];$[1=count i:where(key DIR)like x,\"*\";1_raze\"\\n\",'TXT[(key DIR)[first i]];DIR]}"}
+{"instruction": "Help me write q code for jstsfromt to perform data operations", "input": "", "output": "jstsfromt:{\"j\"$\"t\"$x}"}
+{"instruction": "Help me write a q function named qu that perform data operations", "input": "", "output": "qu:{[syms;len;uniq;ls;ls2;src] len?/:(neg[uniq]?syms;ls;ls;ls2;ls2;\" 89ABCEGJKLNOPRTWZ\";\"NO\";src)}"}
+{"instruction": "Provide a q function to write a q function that perform data operations in a production environment", "input": "", "output": "cleartable:{[t].lg.o[`writedown;\"clearing table \",string t]; @[`.;t;0#]}"}
+{"instruction": "Implement a function sdv that perform data operations", "input": "", "output": "sdv:{string(distinct x)except`}"}
+{"instruction": "Create a q/kdb+ function su to query and filter table data", "input": "", "output": "su:{update`u#sym from select by sym from x}"}
+{"instruction": "Write q code for exportallconfig to perform data operations in a tick database", "input": "", "output": "exportallconfig:{exportconfig torqnamespaces}"}
+{"instruction": "Provide a q function to create a q/kdb+ function add to perform data operations in a production environment", "input": "", "output": "add:{[name;public;descrip;params;return]}"}
+{"instruction": "Create a q/kdb+ function updformat to format data for output in a tick database", "input": "", "output": "updformat:{[t;d] `name`data!(t;(key d)!(d`tablename;jsformat[d`tabledata;typemap]))}"}
+{"instruction": "In q/kdb+, Show me how to implement out in q/kdb+", "input": "", "output": "out:{if[debug;:.lg.o[`ldap] x]}"}
+{"instruction": "I need to write q code for bgkill to perform data operations", "input": "", "output": "bgkill:{[procname] syscomm[procname;] \"bash \",getenv[`TORQHOME],\"/bin/killprocess.sh \",procname}"}
+{"instruction": "Help me write q code for getbuckets to retrieve data", "input": "", "output": "getbuckets:{[s;e;p](s+p*til(ceiling 1+e%p)-(ceiling s%p))}"}
+{"instruction": "Can you help me implement a function enum that perform data operations", "input": "", "output": "enum:{[tabledir;val]if[not 11=abs type val;:val];.Q.dd[tabledir;`sym]?val}"}
+{"instruction": "In q/kdb+, Write a q function named ts that perform data operations for a trading system in q/kdb+", "input": "", "output": "ts:{.u.pub'[.u.t;value each .u.t];@[`.;.u.t;@[;`sym;`g#]0#]}"}
+{"instruction": "I need to create a q/kdb+ function u to remove records from a table in a production environment", "input": "", "output": "u:{[x] delete from p[x] where namespace in `.q`.Q`.h`.o}"}
+{"instruction": "Create a q/kdb+ function gethandle to execute a query and return results in q/kdb+", "input": "", "output": "gethandle:{exec first w from .servers.getservers[`procname;x;()!();1b;1b]}"}
+{"instruction": "I need to implement f in q/kdb+", "input": "", "output": "f:{0N!(x;((!).\"I\\037\\036\"0:)'[y])}"}
+{"instruction": "What's the q code for implement a function enum that perform data operations for a trading system", "input": "", "output": "enum:{[tabledir;val]if[not 11=abs type val;:val];.Q.dd[tabledir;`sym]?val}"}
+{"instruction": "Show me how to write a q function named rset that perform data operations for a trading system", "input": "", "output": "Rset:{Rset0[x;y]}"}
+{"instruction": "Help me write a q function named end that perform data operations", "input": "", "output": "end:{(neg union/[w[;;0]])@\\:(`.u.end;x)}"}
+{"instruction": "Write q code that write q code for del to perform data operations efficiently", "input": "", "output": "del:{w[x]_:w[x;;0]?y}"}
+{"instruction": "How do I write a q function that perform data operations", "input": "", "output": "istype:{[targ;char] (char,del)~2#targ}"}
+{"instruction": "Help me write a q function that perform data operations", "input": "", "output": "p1:{logDirect[nextid[];x;.proc.cp[];y z;z;.proc.cp[]]}"}
+{"instruction": "In q/kdb+, Write q code for formatresponse to format data for output for a trading system", "input": "", "output": "formatresponse:{[status;sync;result]$[not[status]and sync;'result;result]}"}
+{"instruction": "Implement a function spliltcolumns that perform data operations", "input": "", "output": "spliltcolumns:{[x;columns;types]@[x;columns;spliltandcast;types]}"}
+{"instruction": "Implement a function camel that perform data operations", "input": "", "output": "camel:{$[11h~type x;@[;0;upper]each string x;@[string x;0;upper]]}"}
+{"instruction": "Using qSQL, How do I write a q function that perform data operations for a trading system in q/kdb+", "input": "", "output": "s:{neg[x]#flip 0b vs/:til prd x#2}"}
+{"instruction": "Using qSQL, Show me how to implement checkreturnederror in q/kdb+ efficiently for financial data", "input": "", "output": "checkreturnederror:{[test]errors[test;`error]~@[.dataaccess.checkinputs;gettestparams test;::]}"}
+{"instruction": "Implement a function add that perform data operations for a trading system in a kdb+ database", "input": "", "output": "add:{[func;descrip] `.tut.torun insert `func`descrip!(func;descrip);}"}
+{"instruction": "How do I write a q function named add that perform data operations", "input": "", "output": "add:{[name;public;descrip;params;return]}"}
+{"instruction": "What's the q code for write q code for trade to query and filter table data", "input": "", "output": "trade:{t::select`g#sym,time,price,wprice:price from x}"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function removefunc to remove records from a table in q/kdb+", "input": "", "output": "removefunc:{[fp] delete from `.timer.timer where fp~/:funcparam}"}
+{"instruction": "Implement a function upd that perform data operations using qSQL", "input": "", "output": "upd:{[t;x] t insert x}"}
+{"instruction": "Using qSQL, How do I write a q function that perform data operations efficiently in a tick database", "input": "", "output": "typesize:{4^0N 1 16 0N 1 2 4 8 4 8 1 8 8 4 4 8 8 4 4 4 abs type x}"}
+{"instruction": "Write q code for add to perform data operations efficiently", "input": "", "output": "add:{$[(count w x)>i:w[x;;0]?.z.w;.[`.u.w;(x;i;1);union;y];w[x],:enlist(.z.w;y)];(x;$[99=type v:value x;sel[v]y;@[0#v;`sym;`g#]])}"}
+{"instruction": "In q/kdb+, Write a q function named diskvals that perform data operations efficiently", "input": "", "output": "diskvals:{c:(count[x]-ticks)+til ticks;get'[.Q.ind[x;c]]}"}
+{"instruction": "Using qSQL, How do I write a q function that group data by key columns efficiently in a kdb+ database", "input": "", "output": "mm:{select sum val*v by row,col from ej[`a;`row`a`v xcol x;`a xcol y]}"}
+{"instruction": "How do I write a q function that perform data operations", "input": "", "output": "a:{d+0^(x,1)r[7]d:dy[y]z}"}
+{"instruction": "Show me how to implement nextserverid in q/kdb+ efficiently", "input": "", "output": "nextserverid:{.gw.serverid:.gw.serverid+1; .gw.serverid}"}
+{"instruction": "How do I implement sub in q/kdb+ for a trading system", "input": "", "output": "sub:{if[x~`;:sub[;y]each t];if[not x in t;'x];del[x].z.w;add[x;y]}"}
+{"instruction": "Create a q/kdb+ function allns to perform data operations for a trading system", "input": "", "output": "allns:{`$(enlist enlist \".\"),\".\",/:string key `}"}
+{"instruction": "I need to implement minmax in q/kdb+", "input": "", "output": "minmax:{(min x;max x)}"}
+{"instruction": "Provide a q function to write a q function named rnd that perform data operations", "input": "", "output": "rnd:{0.01*floor 0.5+x*100}"}
+{"instruction": "Using qSQL, How do I write a q function that filter data based on conditions", "input": "", "output": "filterVals:{$[1h ~ type x;any x;first x where not () ~/: x]}"}
+{"instruction": "How do I create a q/kdb+ function pth to filter data based on conditions", "input": "", "output": "pth:{p:$[10h=type x;x;string x];if[WIN;p[where\"/\"=p]:\"\\\\\"];(\":\"=first p)_ p}"}
+{"instruction": "What's the q code for create a q/kdb+ function upd to perform data operations for a trading system", "input": "", "output": "upd:{[tab;x] .u.icounts[tab]+::count first x;}"}
+{"instruction": "How do I write a q function that calculate aggregate statistics for a trading system", "input": "", "output": "profile:{[b;g] (0f,sums 0|b+noise[count g]+sums grad[g]) samples}"}
+{"instruction": "Write q code for getinputparams to execute a query and return results", "input": "", "output": "getinputparams:{[test]exec parameter!get each parametervalue from .checkinputs.readcsv[` sv inputpath,`$string[test],\".csv\";\"s*\"]}"}
+{"instruction": "Implement a function stt that perform data operations in a tick database", "input": "", "output": "stt:{[r;e;s]if[s in 7 8;close,:r];-1 e;}"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function upd to calculate aggregate statistics in a production environment", "input": "", "output": "upd:{[t;x]vwap+:select size wsum price,sum size by sym from x}"}
+{"instruction": "How do I write a q function that perform data operations in a kdb+ database", "input": "", "output": "msg:{(`upd;x;y)}"}
+{"instruction": "Compute tick-by-tick returns", "input": "", "output": "update tickReturn:1-price%prev price from `trades"}
+{"instruction": "How do I write a q function that perform data operations in a production environment", "input": "", "output": "b:{d+r[7]x-d:dy[y]z}"}
+{"instruction": "How do I write a q function that perform data operations in a tick database", "input": "", "output": "out:{-1(string .z.z),\" \",x}"}
+{"instruction": "Provide a q function to write q code for f to filter data based on conditions efficiently", "input": "", "output": "f:{[d;s]x:string s;update sym:s from select from trade where date=d,sym=`$-2_x,ex=last x}"}
+{"instruction": "Provide a q function to write a q function that parse and extract information", "input": "", "output": "errparse:{.lg.e[`addfiltered;m:y,\" error: \",x];'m}"}
+{"instruction": "Write q code for ttz to perform data operations", "input": "", "output": "ttz:{[d;s;z]lg[d;gl[s;z]]}"}
+{"instruction": "How do I write a q function that save data to disk", "input": "", "output": "POSTSAVEALL:{dasc[x;`sym`time;`p#]}"}
+{"instruction": "Create a q/kdb+ function addclientdetails to perform data operations in a production environment using qSQL", "input": "", "output": "addclientdetails:{`.gw.clients insert (.proc.cp[];x;.z.u;.z.a;.z.h)}"}
+{"instruction": "Create a q/kdb+ function Rnew to perform data operations in a kdb+ database", "input": "", "output": "Rnew:{Rcmd \"dev.new(noRStudioGD=TRUE)\"}"}
+{"instruction": "Write q code that implement a function ind that perform data operations", "input": "", "output": "ind:{[t;i](key t)!flip(flip value t)@'\\:i}"}
+{"instruction": "Show me how to write a q function named query_915 that update table records", "input": "", "output": "update expint:i from ([]enumcol:`a`b`c`d`e`)"}
+{"instruction": "Provide a q function to write a q function that perform data operations for a trading system", "input": "", "output": "typesize:{4^0N 1 16 0N 1 2 4 8 4 8 1 8 8 4 4 8 8 4 4 4 abs type x}"}
+{"instruction": "Provide a q function to implement logtimestamp in q/kdb+", "input": "", "output": "logtimestamp:{[].proc.cd[]}"}
+{"instruction": "I need to write a q function that perform data operations for a trading system", "input": "", "output": "sendresultmetric:{[p;r] sendmetric[\"torqup.\",(string `..checkconfig[r`checkid]`process);r`result];`..truefalse[p;r]}"}
+{"instruction": "Implement a function spliltandcast that perform data operations efficiently", "input": "", "output": "spliltandcast:{[x;typ]typ$\"|\"vs/:x}"}
+{"instruction": "Show me how to create a q/kdb+ function getperf to retrieve data", "input": "", "output": "getperf:{update function:.cache.funcs[id] from .cache.perf}"}
+{"instruction": "How do I write a q function that filter data based on conditions", "input": "", "output": "filterVals:{$[1h ~ type x;any x;first x where not () ~/: x]}"}
+{"instruction": "Using qSQL, Implement a function ind that perform data operations", "input": "", "output": "ind:{[t;i](key t)!flip(flip value t)@'\\:i}"}
+{"instruction": "Group trades into 10-minute buckets", "input": "", "output": "select from trades where time=600000 xbar time.minute"}
+{"instruction": "Write q code for subfunc to perform data operations using qSQL", "input": "", "output": "subfunc:{`schemalist`logfilelist`rowcounts`date!(.u.sub\\:[x;y];enlist(.u`i`L);(.u `icounts);(.u `d))}"}
+{"instruction": "Write q code for publishmeter to perform data operations in a kdb+ database", "input": "", "output": "publishmeter:{.u.pub[`meter; .testdata.getmeter[x]]}"}
+{"instruction": "Write a q function named here that perform data operations", "input": "", "output": "here:{hsym`$system$[WIN;\"cd\";\"pwd\"]}"}
+{"instruction": "Help me create a q/kdb+ function available to filter data based on conditions for a trading system", "input": "", "output": "available:{$[11h=type z; z inter x; z where 0<count each z inter\\: y]}"}
+{"instruction": "Implement a function getdetails that retrieve data for financial data", "input": "", "output": "getdetails:{(.z.f;.z.h;system\"p\";@[value;`.proc.procname;`];@[value;`.proc.proctype;`];@[value;(`.proc.getattributes;`);()!()])}"}
+{"instruction": "Using qSQL, Implement a function bucketlmchart that perform data operations in a tick database", "input": "", "output": "bucketlmchart:{.html.dataformat[\"bucketlmchart\";enlist bucketlmchartdata[x]]}"}
+{"instruction": "Implement a function basicread that perform data operations efficiently", "input": "", "output": "basicread:{[file]data[file;basicinfo[file]]}"}
+{"instruction": "In q/kdb+, How do I write a q function that perform data operations in a production environment", "input": "", "output": "here:{hsym`$system$[WIN;\"cd\";\"pwd\"]}"}
+{"instruction": "Show me how to write a q function that filter data based on conditions efficiently", "input": "", "output": "remove:{[timerid] delete from `.timer.timer where id=timerid}"}
+{"instruction": "Implement a function enum that perform data operations in q/kdb+", "input": "", "output": "enum:{[tabledir;val]if[not 11=abs type val;:val];.Q.dd[tabledir;`sym]?val}"}
+{"instruction": "Using qSQL, How do I write a q function that perform data operations efficiently in a tick database", "input": "", "output": "dxy:{[d;x;y]first$[0>type x;d(x;y);flip d flip(keys d)!(x;y)]}"}
+{"instruction": "Select all trades for symbol AAPL with price greater than 150", "input": "", "output": "select from trades where sym=`AAPL, price>150"}
+{"instruction": "Write q code for f to filter data based on conditions in q/kdb+", "input": "", "output": "f:{i each x where not u:\"6\"=x[;3];k each x where u;if[count q;h(\".u.upd\";`quote;flip q)];q::()}"}
+{"instruction": "Create a q/kdb+ function ts to perform data operations", "input": "", "output": "ts:{1!$[count x;x last each(group x`sym)y;x]}"}
+{"instruction": "Show me how to implement ipa in q/kdb+ in q/kdb+", "input": "", "output": "ipa:{$[`~r:IPA x;IPA[x]:$[`~r:.Q.host x;`$\".\"sv string\"i\"$0x0 vs x;r];r]}"}
+{"instruction": "How do I write q code for accum to perform data operations for a trading system", "input": "", "output": "accum:{prds 1.0,-1 _ x}"}
+{"instruction": "In q/kdb+, Show me how to implement readcheckinputs in q/kdb+ for a trading system for a trading system", "input": "", "output": "readcheckinputs:{[checkinputspath] spliltcolumns[readcsv[checkinputspath;\"sbs*\"];`invalidpairs;`]}"}
+{"instruction": "Write a q function named nosymresponse that perform data operations in a kdb+ database", "input": "", "output": "nosymresponse:{[rqt;colname] .j.j buildnosym[rqt]\\[();colname]}"}
+{"instruction": "Provide a q function to write a q function named sub that perform data operations", "input": "", "output": "sub:{if[x~`;:sub[;y]each t];if[not x in t;'x];del[x].z.w;add[x;y]}"}
+{"instruction": "How do I write a q function that perform data operations for a trading system", "input": "", "output": "removegroup:{[n]groupinfo::.[groupinfo;();_;n]}"}
+{"instruction": "Show me how to write q code for dv to filter data based on conditions", "input": "", "output": "dv:{i!x i:where not 0=x}"}
+{"instruction": "Show me how to implement upd in q/kdb+ in a production environment for financial data", "input": "", "output": "upd:{[t;x].[t;();,;r::select by sym from x]}"}
+{"instruction": "Create a q/kdb+ function upderr to perform data operations", "input": "", "output": "upderr:{[t;x] .tst.err:x}"}
+{"instruction": "Implement a function gcOFF that perform data operations", "input": "", "output": "gcOFF:{.tut.gc:0b}"}
+{"instruction": "Provide a q function to calculate aggregate statistics efficiently", "input": "", "output": "meminfo:{5#system\"w\"}"}
+{"instruction": "Provide a q function to write a q function named tablelist that perform data operations", "input": "", "output": "tablelist:{.stpps.t}"}
+{"instruction": "Using qSQL, Show me how to implement tabperiod in q/kdb+ in a production environment using qSQL", "input": "", "output": "tabperiod:{[dir;tab;p] ` sv (hsym dir;`$raze string (.proc.procname;\"_\";tab),.stplg.gentimeformat[p]) }"}
+{"instruction": "Using qSQL, Write a q function named f that perform data operations efficiently", "input": "", "output": "f:{current::0;runcurrent[]}"}
+{"instruction": "Can you help me implement a function upd that perform data operations", "input": "", "output": "upd:{[t;x] insert[t;x]}"}
+{"instruction": "Write q code that create a q/kdb+ function allcols to perform data operations", "input": "", "output": "allcols:{[tabledir]get tabledir,`.d}"}
+{"instruction": "What's the q code for write a q function that perform data operations for a trading system", "input": "", "output": "shiv:{(last x)&(first x)|asc x+-2+(count x)?5}"}
+{"instruction": "How do I write a q function that execute a query and return results", "input": "", "output": "getdict:{exec parameter!get each parametervalue from ((\"s*\";1#\",\")0: ` sv testpath,`inputs,`$string[x],\".csv\")}"}
+{"instruction": "What's the q code for implement a function randomize that perform data operations", "input": "", "output": "randomize:{value \"\\\\S \",string \"i\"$0.8*.z.p%1000000000}"}
+{"instruction": "In q/kdb+, How do I write a q function that update table records in a kdb+ database", "input": "", "output": "t:{update row:col,col:row from x}"}
+{"instruction": "How do I write a q function named colreplay that perform data operations for a trading system", "input": "", "output": "colreplay:{system\"q torq.q -debug -load \",processfile,\" \",testconfig,\" -.replay.tplogdir \",tplogdir,\" -.replay.hdbdir \",hdbdir,\" -.replay.schemafile \", schemafile,\" -.replay.mergemethod col -proctype tickerlogreplay -procname tplogreplay1\"}"}
+{"instruction": "Write a q function named normalrand that perform data operations in q/kdb+", "input": "", "output": "normalrand:{(cos 2 * pi * x ? 1f) * sqrt neg 2 * log x ? 1f}"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function getperf to retrieve data", "input": "", "output": "getperf:{update function:.cache.funcs[id] from .cache.perf}"}
+{"instruction": "Write q code that write a q function that execute a query and return results", "input": "", "output": "vwap:{[s;a;b]exec price%size from(-/)t asof([]sym:s;time:(b;a))}"}
+{"instruction": "Show me how to implement add in q/kdb+ for a trading system for financial data", "input": "", "output": "add:{[name;public;descrip;params;return]}"}
+{"instruction": "How do I write q code for hite to filter data based on conditions", "input": "", "output": "hite:{update lastp:.proc.cp[],hits:hits+1i,errs:errs+1i from`.clients.clients where w=.z.w;'x}"}
+{"instruction": "Write q code that implement a function trade that perform data operations", "input": "", "output": "trade:{e::su eu x}"}
+{"instruction": "In q/kdb+, Write q code for f to perform data operations in a kdb+ database", "input": "", "output": "f:{system\"sleep 2\";20+x}"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function del to perform data operations", "input": "", "output": "del:{w[x]_:w[x;;0]?y}"}
+{"instruction": "Can you help me write q code for removerole to perform data operations", "input": "", "output": "removerole:{[n]roleinfo::.[roleinfo;();_;n]}"}
+{"instruction": "How do I write a q function that perform data operations efficiently in a tick database", "input": "", "output": "istype:{[targ;char] (char,del)~2#targ}"}
+{"instruction": "How do I write a q function that perform data operations using qSQL", "input": "", "output": "dxy:{[d;x;y]first$[0>type x;d(x;y);flip d flip(keys d)!(x;y)]}"}
+{"instruction": "Write q code for advancedreslist to perform data operations using qSQL", "input": "", "output": "advancedreslist:{first x`resultdata}"}
+{"instruction": "How do I write a q function that perform data operations efficiently", "input": "", "output": "out:{-1(string .z.z),\" \",x}"}
+{"instruction": "Write q code for trade to perform data operations for financial data", "input": "", "output": "trade:{v::su vu x}"}
+{"instruction": "Write a q function named getattributes that retrieve data efficiently in a kdb+ database", "input": "", "output": "getattributes:{`partition`tables!(.idb.currentpartition;tables[])}"}
+{"instruction": "In q/kdb+, Show me how to implement getinputparams in q/kdb+ for a trading system", "input": "", "output": "getinputparams:{[test]exec parameter!get each parametervalue from .checkinputs.readcsv[` sv inputpath,`$string[test],\".csv\";\"s*\"]}"}
+{"instruction": "Write q code for getfile to retrieve data in a production environment", "input": "", "output": "getfile:{[filestring] $[os=`lin;last \"/\" vs filestring;last \"\\\\\" vs filestring]}"}
+{"instruction": "Using qSQL, Write q code for j to perform data operations", "input": "", "output": "j:{current::x;runcurrent[]}"}
+{"instruction": "Create 30-second OHLC bars from tick data", "input": "", "output": "select open:first price, high:max price, low:min price, close:last price by sym, bar:30000 xbar time.second from trades"}
+{"instruction": "Can you help me create a q/kdb+ function upd to query and filter table data in a production environment", "input": "", "output": "upd:{[t;x]$[t~`trade;tq,:x lj .u.q;.u.q,:select by sym from x]}"}
+{"instruction": "Write a q function named Rset that perform data operations", "input": "", "output": "Rset:{Rset0[x;y]}"}
+{"instruction": "What's the q code for write q code for del to perform data operations efficiently", "input": "", "output": "del:{w[x]_:w[x;;0]?y}"}
+{"instruction": "Using qSQL, Create a q/kdb+ function p to perform data operations for a trading system", "input": "", "output": "p:{neg[h](`.u.upd;x;y)}"}
+{"instruction": "Implement a function out that perform data operations for financial data", "input": "", "output": "out:{-1(string .z.Z),\" \",x;}"}
+{"instruction": "I need to write a q function named singular that perform data operations", "input": "", "output": "singular:{[dir;tab;p] ` sv (hsym dir;`$raze string .proc.procname,\"_\",.stplg.gentimeformat[p]) }"}
+{"instruction": "Show me how to create a q/kdb+ function upderr to perform data operations in a production environment", "input": "", "output": "upderr:{[t;x].tst.err:x}"}
+{"instruction": "How do I write a q function that initialize or configure the system", "input": "", "output": "init:{w::t!(count t::tables`.)#()}"}
+{"instruction": "In q/kdb+, Write q code for i to filter data based on conditions in a production environment", "input": "", "output": "i:{m,:sub each`$u where 9<count each u:(x:g x)800+til 14;if[count u:x 815;sub`$u]}"}
+{"instruction": "Can you help me create a q/kdb+ function upd to perform data operations in a production environment", "input": "", "output": "upd:{@[x;::;,;y]}"}
+{"instruction": "Implement a function cmp that perform data operations in q/kdb+", "input": "", "output": "cmp:{[op;v1;v2];must[.utl.requireVH.cmpVNStr[op;v2;v1];\"Expected \", v1, \" \", string[op], \" \", v2]}"}
+{"instruction": "Write q code for pth to filter data based on conditions for financial data", "input": "", "output": "pth:{p:$[10h=type x;x;string x];if[WIN;p[where\"/\"=p]:\"\\\\\"];(\":\"=first p)_ p}"}
+{"instruction": "Implement a function bucketlmchart that perform data operations for a trading system", "input": "", "output": "bucketlmchart:{.html.dataformat[\"bucketlmchart\";enlist bucketlmchartdata[x]]}"}
+{"instruction": "Write q code for filterFlags to perform data operations for a trading system", "input": "", "output": "filterFlags:{\"--\" ,/: \",\" vs (),x}"}
+{"instruction": "Can you help me write q code for gentimeformat to format data for output efficiently", "input": "", "output": "gentimeformat:{(raze string \"dv\"$x) except \".:\"}"}
+{"instruction": "How do I create a q/kdb+ function pathtotable to perform data operations for a trading system", "input": "", "output": "pathtotable:{[h;p;t] `$(string .Q.par[h;partitiontype$p;t]),\"/\"}"}
+{"instruction": "Show me how to implement validsize in q/kdb+ in q/kdb+", "input": "", "output": "validsize:{[x;y;z] $[superuser .z.u;x;MAXSIZE>s:-22!x;x;'\"result size of \",(string s),\" exceeds MAXSIZE value of \",string MAXSIZE]}"}
+{"instruction": "Show me how to write a q function named k that perform data operations", "input": "", "output": "k:{if[any qj in key x:g x;q,:enlist(`$-4_s;`$-4#s:-2_sf x),qf@'x qi]}"}
+{"instruction": "Implement a function isalive that perform data operations", "input": "", "output": "isalive:{[proc] any \"q\" in' @[system;\"pgrep -lf \",proc,\" -u $USER\";\" \"]}"}
+{"instruction": "Show me how to implement ren in q/kdb+", "input": "", "output": "ren:{system(\"mv \";\"move \")[NT],pth[x],\" \",pth y}"}
+{"instruction": "Show me how to write a q function named here that perform data operations", "input": "", "output": "here:{hsym`$system$[WIN;\"cd\";\"pwd\"]}"}
+{"instruction": "Create a q/kdb+ function maxrows to calculate aggregate statistics", "input": "", "output": "maxrows:{[tabname] numrows^numtab[tabname]}"}
+{"instruction": "How do I implement crm in q/kdb+ efficiently", "input": "", "output": "crm:{cvm[x]%u*/:u:dev each x}"}
+{"instruction": "Help me implement a function db that filter data based on conditions", "input": "", "output": "db:{v x where count[v]>x:0 t\\x}"}
+{"instruction": "Using qSQL, How do I write a q function that perform data operations", "input": "", "output": "trade:{trade::sg x}"}
+{"instruction": "Implement a function basicread that perform data operations efficiently in a tick database", "input": "", "output": "basicread:{[file]data[file;basicinfo[file]]}"}
+{"instruction": "Help me write a q function named err that perform data operations", "input": "", "output": "err:{\"dotz: \",x}"}
+{"instruction": "In q/kdb+, Write q code for removerole to perform data operations in a production environment", "input": "", "output": "removerole:{[n]roleinfo::.[roleinfo;();_;n]}"}
+{"instruction": "Write a q function named as that perform data operations in a tick database", "input": "", "output": "as:{[s;x]$[null x;ask s;ask[s]:x]}"}
+{"instruction": "In q/kdb+, Write a q function named types that filter data based on conditions in a kdb+ database", "input": "", "output": "types:{asc distinct exec proctypes from`.servers.SERVERS where .dotz.liveh w}"}
+{"instruction": "Using qSQL, Implement a function extracteachaggregation that calculate aggregate statistics for a trading system", "input": "", "output": "extracteachaggregation:{[func;columns;deftime](`$string[func],raze .[string(),?[columns=`$((string deftime),\".date\");`date;columns];(::;0);upper];?[`sumsq=func;(sum;(xexp;columns;2));parse[string func],columns])}"}
+{"instruction": "Write a q function named upd that group data by key columns for a trading system", "input": "", "output": "upd:{[t;x].[t;();,;select by sym from x]}"}
+{"instruction": "Provide a q function to calculate aggregate statistics in a production environment", "input": "", "output": "upd:{[t;x]vwap+:select size wsum price,sum size by sym from x}"}
+{"instruction": "Show me how to implement cancast in q/kdb+ for a trading system for a trading system", "input": "", "output": "cancast:{nw:x$\"\";if[not x in\"BXGCS\";nw:(min 0#;max 0#;::)@\\:nw];$[not any nw in x$(11&count y)#y;$[11<count y;not any nw in x$y;1b];0b]}"}
+{"instruction": "Create a q/kdb+ function pathexists to perform data operations for a trading system", "input": "", "output": "pathexists:{[path] path~key path}"}
+{"instruction": "Create a q/kdb+ function deleteusers to remove records from a table in q/kdb+", "input": "", "output": "deleteusers:{delete from`.access.USERS where u in x;}"}
+{"instruction": "Using qSQL, Implement a function extracteachaggregation that calculate aggregate statistics for a trading system in a tick database", "input": "", "output": "extracteachaggregation:{[func;columns;deftime](`$string[func],raze .[string(),?[columns=`$((string deftime),\".date\");`date;columns];(::;0);upper];?[`sumsq=func;(sum;(xexp;columns;2));parse[string func],columns])}"}
+{"instruction": "Show me how to create a q/kdb+ function deldir to perform data operations", "input": "", "output": "deldir:{system(\"rm -r \";\"rd /s /q \")[NT],pth x}"}
+{"instruction": "Help me write q code for gentimeformat to format data for output for a trading system", "input": "", "output": "gentimeformat:{(raze string \"dv\"$x) except \".:\"}"}
+{"instruction": "In q/kdb+, Write q code for getinputparams to execute a query and return results for a trading system", "input": "", "output": "getinputparams:{[test]exec parameter!get each parametervalue from .checkinputs.readcsv[` sv inputpath,`$string[test],\".csv\";\"s*\"]}"}
+{"instruction": "Using qSQL, How do I write a q function that perform data operations in a tick database", "input": "", "output": "msg:{(`upd;x;y)}"}
+{"instruction": "Implement a function sdv that perform data operations in a production environment", "input": "", "output": "sdv:{string(distinct x)except`}"}
+{"instruction": "Create a q/kdb+ function normalrand to perform data operations in a production environment", "input": "", "output": "normalrand:{(cos 2 * pi * x ? 1f) * sqrt neg 2 * log x ? 1f}"}
+{"instruction": "Using qSQL, Create a q/kdb+ function upd to perform data operations efficiently for financial data", "input": "", "output": "upd:{[t;x] t insert x}"}
+{"instruction": "Implement a function showresult that perform data operations", "input": "", "output": "showresult:{show x}"}
+{"instruction": "In q/kdb+, Write a q function named diskvals that perform data operations efficiently for financial data", "input": "", "output": "diskvals:{c:(count[x]-ticks)+til ticks;get'[.Q.ind[x;c]]}"}
+{"instruction": "How do I write a q function that perform data operations", "input": "", "output": "b:{d+r[7]x-d:dy[y]z}"}
+{"instruction": "Show me how to implement sel in q/kdb+ using qSQL", "input": "", "output": "sel:{$[`~y;x;select from x where sym in y]}"}
+{"instruction": "Calculate total volume and average price by symbol", "input": "", "output": "select totalVol:sum size, avgPrice:avg price by sym from trades"}
+{"instruction": "Show me how to implement gettestparams in q/kdb+ in a production environment using qSQL", "input": "", "output": "gettestparams:{[test]exec parameter!get each parametervalue from .checkinputs.readcsv[` sv testpath,`testdata,`$string[test],\".csv\";\"s*\"]}"}
+{"instruction": "What's the q code for implement addprocs in q/kdb+", "input": "", "output": "addprocs:{[proctypes;procnames] .hb.hb:(2!([]sym:proctypes,();procname:procnames,();time:.proc.cp[];counter:0Nj;pid:0Nj;host:`;port:0Nj;warning:0b;error:0b)),.hb.hb}"}
+{"instruction": "In q/kdb+, Write a q function named pub that perform data operations for a trading system in a kdb+ database", "input": "", "output": "pub:{req[neg x;y;z]}"}
+{"instruction": "Write a q function named mergemaxrows that calculate aggregate statistics", "input": "", "output": "mergemaxrows:{[tabname] mergenumrows^mergenumtab[tabname]}"}
+{"instruction": "Show me how to implement Roff in q/kdb+", "input": "", "output": "Roff:{Rcmd \"dev.off()\"}"}
+{"instruction": "Implement a function runcurrent that perform data operations", "input": "", "output": "runcurrent:{runfunc . value torun[current]}"}
+{"instruction": "Filter trades with size greater than 1000", "input": "", "output": "select from trades where size>1000"}
+{"instruction": "In q/kdb+, Implement a function sg that update table records efficiently for financial data", "input": "", "output": "sg:{update`g#sym from x}"}
+{"instruction": "Create a q/kdb+ function del to perform data operations for financial data", "input": "", "output": "del:{w[x]_:w[x;;0]?y}"}
+{"instruction": "Using qSQL, How do I write a q function that perform data operations in a production environment", "input": "", "output": "test:{senddefault `to`subject`body!(x;\"test email\";enlist (\"this is a test email to see if the TorQ email lib is configured correctly\"))}"}
+{"instruction": "In q/kdb+, Write q code for gentimeformat to format data for output efficiently", "input": "", "output": "gentimeformat:{(raze string \"dv\"$x) except \".:\"}"}
+{"instruction": "How do I create a q/kdb+ function allcols to perform data operations for a trading system", "input": "", "output": "allcols:{[tabledir]get tabledir,`.d}"}
+{"instruction": "Using qSQL, Create a q/kdb+ function POSTSAVEALL to save data to disk efficiently", "input": "", "output": "POSTSAVEALL:{@[`sym`time xasc x;`sym;`p#]}"}
+{"instruction": "Show me how to write a q function named tablelist that perform data operations", "input": "", "output": "tablelist:{.stpps.t}"}
+{"instruction": "Help me write a q function named calcsize that perform calculations", "input": "", "output": "calcsize:{[c;s;a] `long$2 xexp ceiling 2 xlog 16+a+s*c}"}
+{"instruction": "How do I write a q function that perform data operations", "input": "", "output": "sdv:{string(distinct x)except`}"}
+{"instruction": "Show me how to write a q function named getoutputparams that retrieve data", "input": "", "output": "getoutputparams:{[test]T:exec parameter!get each parametervalue from .checkinputs.readcsv[` sv outputpath,`$string[test],\".csv\";\"i*\"];:(T[til 4])}"}
+{"instruction": "Using qSQL, How do I write a q function that perform data operations in a production environment for a trading system", "input": "", "output": "a:{d+0^(x,1)r[7]d:dy[y]z}"}
+{"instruction": "Using qSQL, Implement a function upd that calculate aggregate statistics", "input": "", "output": "upd:{[t;x]vwap+:select size wsum price,sum size by sym from x}"}
+{"instruction": "Using qSQL, Show me how to implement validsize in q/kdb+ for financial data", "input": "", "output": "validsize:{[x;y;z] $[superuser .z.u;x;MAXSIZE>s:-22!x;x;'\"result size of \",(string s),\" exceeds MAXSIZE value of \",string MAXSIZE]}"}
+{"instruction": "Using qSQL, Write a q function named unregistered that execute a query and return results in a production environment", "input": "", "output": "unregistered:{except[key .z.W;exec w from`CLIENTS]}"}
+{"instruction": "Can you help me write a q function named upd that group data by key columns", "input": "", "output": "upd:{[t;x].[t;();,;select by sym from x]}"}
+{"instruction": "Show me how to write q code for trade to query and filter table data for a trading system", "input": "", "output": "trade:{t::select`g#sym,time,price,wprice:price from x}"}
+{"instruction": "How do I write a q function that perform data operations in a tick database", "input": "", "output": "del:{system$[WIN;\"del \";\"rm \"],pth x}"}
+{"instruction": "Write q code for getusage to retrieve data", "input": "", "output": "getusage:{@[value;`.proc.usage;generalusage,\"\\n\\n\",envusage,\"\\n\\n\",envoptusage,\"\\n\\n\",stdoptionusage,\"\\n\\n\",extrausage,\"\\n\\n\",configusage,\"\\n\\n\",helpusage,\"\\n\\n\"]}"}
+{"instruction": "What's the q code for write q code for advancedreslist to perform data operations", "input": "", "output": "advancedreslist:{((-1_cols x[1]),.Q.dd[x[0];`$string x[2]])xcol x[1]}"}
+{"instruction": "In q/kdb+, Write q code for removerole to perform data operations in a production environment in a kdb+ database", "input": "", "output": "removerole:{[n]roleinfo::.[roleinfo;();_;n]}"}
+{"instruction": "Can you help me write q code for tabsincountorder to perform data operations for a trading system", "input": "", "output": "tabsincountorder:{x iasc count each value each x}"}
+{"instruction": "Using qSQL, Show me how to implement testfuncpartitionrange in q/kdb+ for a trading system", "input": "", "output": "testfuncpartitionrange:{[timecolumn;primarytimecolumn;partitionfield;hdbtimerange]@[partitionfield$hdbtimerange;1;+;not timecolumn~primarytimecolumn]}"}
+{"instruction": "In q/kdb+, Implement a function buildnosym that perform data operations in a production environment", "input": "", "output": "buildnosym:{y,`target`datapoints!(z 0;value each ?[x;();0b;z!z])}"}
+{"instruction": "Show me how to implement trade in q/kdb+", "input": "", "output": "trade:{t::sg`sym`time`price`size#x}"}
+{"instruction": "Write q code for f to group data by key columns using qSQL", "input": "", "output": "f:{t::select by ex from 0#x;g each x}"}
+{"instruction": "Write a q function named rnd that perform data operations", "input": "", "output": "rnd:{0.01*floor 0.5+x*100}"}
+{"instruction": "What's the q code for implement a function query_251 that filter data based on conditions in a production environment", "input": "", "output": "exec c from meta tab where t in \"csSC \""}
+{"instruction": "Create a q/kdb+ function validtablepropertiespath to validate data efficiently", "input": "", "output": "validtablepropertiespath:{[].dataaccess.tablepropertiespath~key .dataaccess.tablepropertiespath}"}
+{"instruction": "In q/kdb+, Create a q/kdb+ function absagg to perform data operations", "input": "", "output": "absagg:{enlist[`$x,y]!enlist(value x;`$x,y)}"}
+{"instruction": "Show me how to write q code for bgkill to perform data operations efficiently", "input": "", "output": "bgkill:{[procname] syscomm[procname;] \"bash \",getenv[`TORQHOME],\"/bin/killprocess.sh \",procname}"}
+{"instruction": "Create a q/kdb+ function getpath to retrieve data", "input": "", "output": "getpath:{[filestring] (neg count getfile[filestring]) _filestring}"}
+{"instruction": "Implement a function dataformat that format data for output", "input": "", "output": "dataformat:{[t;d] `name`data!(t;jsformat\\:[d;typemap])}"}
+{"instruction": "Get the distribution of trades by hour of day", "input": "", "output": "select count i by hour:time.hh from trades"}
+{"instruction": "Create a q/kdb+ function allns to perform data operations for financial data", "input": "", "output": "allns:{`$(enlist enlist \".\"),\".\",/:string key `}"}
+{"instruction": "Can you help me create a q/kdb+ function hdbmessage to perform data operations efficiently", "input": "", "output": "hdbmessage:{[d] (`reload;d)}"}
+{"instruction": "I need to implement gettestparams in q/kdb+ in a production environment", "input": "", "output": "gettestparams:{[test]exec parameter!get each parametervalue from .checkinputs.readcsv[` sv testpath,`testdata,`$string[test],\".csv\";\"s*\"]}"}
+{"instruction": "Implement a function upd that perform data operations in a tick database", "input": "", "output": "upd:{[t;x] insert[t;x]}"}
+{"instruction": "How do I write a q function that perform data operations", "input": "", "output": "noise:{[n] (-.5+n?1f)+n?-5 -4 -3 -2 -1 0 0 0 1 2 3 4 5}"}
+{"instruction": "Implement a function KUstr that update table records", "input": "", "output": "KUstr:{.KU.SAVEFILE 0:.KU.DELIM 0:update code:string code from KUTR}"}
+{"instruction": "In q/kdb+, Write a q function named cmpF that perform data operations efficiently", "input": "", "output": "cmpF:{[vString;pth];must[.utl.requireVH.makeFilter[vString][pth];\"Expected \", (1 _ string pth), \" to pass the conditions: '\", vString, \"'\"]}"}
+{"instruction": "How do I write a q function that calculate aggregate statistics", "input": "", "output": "scx:{(sum;`$\"count\",x)}"}
+{"instruction": "I need to implement a function vol that perform data operations", "input": "", "output": "vol:{10+`int$x?90}"}
+{"instruction": "Write a q function named normalrand that perform data operations", "input": "", "output": "normalrand:{(cos 2 * pi * x ? 1f) * sqrt neg 2 * log x ? 1f}"}

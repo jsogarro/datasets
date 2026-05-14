@@ -1,0 +1,347 @@
+{"instruction": "Show today's trades", "input": "", "output": "select from trades where date=.z.d"}
+{"instruction": "List all orders with status pending", "input": "", "output": "select from orders where status=`pending"}
+{"instruction": "Find all instruments of type equity", "input": "", "output": "select from instruments where instType=`equity"}
+{"instruction": "Retrieve positions with pnl greater than zero", "input": "", "output": "select from positions where pnl>0"}
+{"instruction": "Get trades from yesterday", "input": "", "output": "select from trades where date=.z.d-1"}
+{"instruction": "Show me positions where quantity is negative", "input": "", "output": "select from positions where qty<0"}
+{"instruction": "Retrieve instruments with notional above 1 million", "input": "", "output": "select from instruments where notional>1000000"}
+{"instruction": "Get trades where exchange is NYSE", "input": "", "output": "select from trades where exch=`NYSE"}
+{"instruction": "Find all orders submitted today", "input": "", "output": "select from orders where submitTime.date=.z.d"}
+{"instruction": "Show signals where strength exceeds threshold", "input": "", "output": "select from signals where strength>threshold"}
+{"instruction": "Show me orders that are not filled", "input": "", "output": "select from orders where not status=`filled"}
+{"instruction": "Show positions for the tech portfolio", "input": "", "output": "select from positions where portfolio=`tech"}
+{"instruction": "Get bars from the last 30 days", "input": "", "output": "select from bars where date>=.z.d-30"}
+{"instruction": "Retrieve trades with execution type market", "input": "", "output": "select from trades where execType=`market"}
+{"instruction": "Show me instruments with maturity before year end", "input": "", "output": "select from instruments where maturity<2026.12.31"}
+{"instruction": "Get orders with limit price set", "input": "", "output": "select from orders where not null limitPrice"}
+{"instruction": "Find all sell trades", "input": "", "output": "select from trades where side=`sell"}
+{"instruction": "Retrieve positions with unrealized pnl below -1000", "input": "", "output": "select from positions where unrealizedPnl<-1000"}
+{"instruction": "Show me orders awaiting execution", "input": "", "output": "select from orders where status in `pending`partialFill"}
+{"instruction": "Get trades excluding internalized orders", "input": "", "output": "select from trades where not internalized"}
+{"instruction": "Find instruments denominated in USD", "input": "", "output": "select from instruments where ccy=`USD"}
+{"instruction": "Show signals generated in the current month", "input": "", "output": "select from signals where date within .z.d-date.month .z.d"}
+{"instruction": "Get the first 100 bars", "input": "", "output": "100#select from bars"}
+{"instruction": "Show me trades where commission was charged", "input": "", "output": "select from trades where commission>0"}
+{"instruction": "Find positions that are long", "input": "", "output": "select from positions where qty>0"}
+{"instruction": "Show all trades on the NASDAQ exchange", "input": "", "output": "select from trades where exch=`NASDAQ"}
+{"instruction": "Get instruments expiring this week", "input": "", "output": "select from instruments where maturity within .z.d .z.d+7"}
+{"instruction": "Retrieve bars with close above open", "input": "", "output": "select from bars where close>open"}
+{"instruction": "Show me orders sorted by submission time descending", "input": "", "output": "`submitTime xdesc select from orders"}
+{"instruction": "Show positions with stop loss set", "input": "", "output": "select from positions where not null stopLoss"}
+{"instruction": "Retrieve all equity instruments", "input": "", "output": "select from instruments where assetClass=`equity"}
+{"instruction": "Show me trades from multiple venues", "input": "", "output": "select from trades where exch in `NYSE`NASDAQ`ARCA"}
+{"instruction": "Get bars where volume exceeds 1 million", "input": "", "output": "select from bars where volume>1000000"}
+{"instruction": "Find orders that timed out", "input": "", "output": "select from orders where status=`timeout"}
+{"instruction": "Show signals with high confidence", "input": "", "output": "select from signals where confidence>0.8"}
+{"instruction": "Get the most recent 25 positions", "input": "", "output": "-25#select from positions"}
+{"instruction": "Show me all option contracts", "input": "", "output": "select from instruments where instType=`option"}
+{"instruction": "Find orders with partial fills", "input": "", "output": "select from orders where status=`partialFill"}
+{"instruction": "Get bars from the previous week", "input": "", "output": "select from bars where date within (.z.d-7;.z.d-1)"}
+{"instruction": "Retrieve positions with realized gains", "input": "", "output": "select from positions where realizedPnl>0"}
+{"instruction": "Show me low-latency trades", "input": "", "output": "select from trades where latency<100"}
+{"instruction": "Get all instruments maturing in 2027", "input": "", "output": "select from instruments where maturity.year=2027"}
+{"instruction": "Find orders routed to dark pools", "input": "", "output": "select from orders where venue like \"DARK*\""}
+{"instruction": "Show signals ranked by strength", "input": "", "output": "`strength xdesc select from signals"}
+{"instruction": "Get trades with slippage recorded", "input": "", "output": "select from trades where not null slippage"}
+{"instruction": "Show me positions updated today", "input": "", "output": "select from positions where updateTime.date=.z.d"}
+{"instruction": "Get bars with high-low range above 5", "input": "", "output": "select from bars where (high-low)>5"}
+{"instruction": "Find instruments with strike price 150", "input": "", "output": "select from instruments where strike=150"}
+{"instruction": "Show orders that were cancelled", "input": "", "output": "select from orders where status=`cancelled"}
+{"instruction": "Get trades where buyer initiated", "input": "", "output": "select from trades where aggressor=`buy"}
+{"instruction": "Retrieve all future contracts", "input": "", "output": "select from instruments where instType=`future"}
+{"instruction": "Show me quotes from the last trading day", "input": "", "output": "select from quotes where date=max date"}
+{"instruction": "Get positions with leverage greater than 2", "input": "", "output": "select from positions where leverage>2"}
+{"instruction": "Find bars with decreasing prices", "input": "", "output": "select from bars where close<open"}
+{"instruction": "Show trades that crossed the spread", "input": "", "output": "select from trades where crossedSpread"}
+{"instruction": "Get orders with iceberg quantity", "input": "", "output": "select from orders where not null icebergQty"}
+{"instruction": "Retrieve signals from the momentum strategy", "input": "", "output": "select from signals where strategy=`momentum"}
+{"instruction": "Show me all bond instruments", "input": "", "output": "select from instruments where assetClass=`bond"}
+{"instruction": "Show orders submitted by algorithm", "input": "", "output": "select from orders where origin=`algo"}
+{"instruction": "Get trades with transaction costs", "input": "", "output": "select from trades where txnCost>0"}
+{"instruction": "Retrieve bars grouped into hourly buckets", "input": "", "output": "select from bars where barSize=`1h"}
+{"instruction": "Show me positions in the energy sector", "input": "", "output": "select from positions where sector=`energy"}
+{"instruction": "Get instruments with callable features", "input": "", "output": "select from instruments where callable"}
+{"instruction": "Find all swap contracts", "input": "", "output": "select from instruments where instType=`swap"}
+{"instruction": "Show trades executed via smart order routing", "input": "", "output": "select from trades where routing=`smart"}
+{"instruction": "Count trades per symbol per day", "input": "", "output": "select cnt:count i by sym, date from trades"}
+{"instruction": "Sum notional value by instrument type", "input": "", "output": "select totalNotional:sum notional by instType from instruments"}
+{"instruction": "Find minimum and maximum prices per exchange", "input": "", "output": "select minPx:min price, maxPx:max price by exch from trades"}
+{"instruction": "Count orders by status", "input": "", "output": "select cnt:count i by status from orders"}
+{"instruction": "Calculate total PnL by portfolio", "input": "", "output": "select totalPnl:sum pnl by portfolio from positions"}
+{"instruction": "Count instruments by asset class", "input": "", "output": "select cnt:count i by assetClass from instruments"}
+{"instruction": "Calculate weighted average spread by symbol", "input": "", "output": "select wavgSpread:size wavg ask-bid by sym from quotes"}
+{"instruction": "Sum commission by exchange", "input": "", "output": "select totalComm:sum commission by exch from trades"}
+{"instruction": "Count signals by strategy", "input": "", "output": "select cnt:count i by strategy from signals"}
+{"instruction": "Average execution latency by venue", "input": "", "output": "select avgLatency:avg latency by venue from trades"}
+{"instruction": "Calculate daily volume by symbol", "input": "", "output": "select dailyVol:sum size by sym, date from trades"}
+{"instruction": "Count positions by sector", "input": "", "output": "select cnt:count i by sector from positions"}
+{"instruction": "Sum unrealized PnL by portfolio and date", "input": "", "output": "select totalUnrealPnl:sum unrealizedPnl by portfolio, date from positions"}
+{"instruction": "Average fill rate by order type", "input": "", "output": "select avgFillRate:avg fillRate by orderType from orders"}
+{"instruction": "Count bars by date", "input": "", "output": "select cnt:count i by date from bars"}
+{"instruction": "Calculate total slippage by algorithm", "input": "", "output": "select totalSlip:sum slippage by algoId from trades"}
+{"instruction": "Get average confidence by signal type", "input": "", "output": "select avgConf:avg confidence by signalType from signals"}
+{"instruction": "Sum traded value by symbol and exchange", "input": "", "output": "select tradedValue:sum price*size by sym, exch from trades"}
+{"instruction": "Count trades by execution type", "input": "", "output": "select cnt:count i by execType from trades"}
+{"instruction": "Calculate OHLC by date", "input": "", "output": "select o:first price, h:max price, l:min price, c:last price by date from trades"}
+{"instruction": "Get total quantity by order side and status", "input": "", "output": "select totalQty:sum qty by side, status from orders"}
+{"instruction": "Average transaction cost by venue", "input": "", "output": "select avgTxnCost:avg txnCost by venue from trades"}
+{"instruction": "Find number of unique symbols per day", "input": "", "output": "select symCount:count distinct sym by date from trades"}
+{"instruction": "Sum realized PnL by strategy", "input": "", "output": "select totalRealPnl:sum realizedPnl by strategy from positions"}
+{"instruction": "Calculate participation rate by symbol", "input": "", "output": "select partRate:sum[size]%marketVol by sym from trades"}
+{"instruction": "Get average spread by exchange", "input": "", "output": "select avgSpread:avg ask-bid by exch from quotes"}
+{"instruction": "Sum notional by currency", "input": "", "output": "select totalNotional:sum notional by ccy from instruments"}
+{"instruction": "Count positions by leverage tier", "input": "", "output": "select cnt:count i by 1 xbar leverage from positions"}
+{"instruction": "Average bar volume by symbol", "input": "", "output": "select avgVol:avg volume by sym from bars"}
+{"instruction": "Sum fees by order origin", "input": "", "output": "select totalFees:sum fees by origin from orders"}
+{"instruction": "Calculate daily returns by symbol", "input": "", "output": "select dailyRet:(last price - first price)%first price by sym, date from trades"}
+{"instruction": "Count signals above threshold by date", "input": "", "output": "select cnt:count i by date from signals where strength>threshold"}
+{"instruction": "Average execution quality by broker", "input": "", "output": "select avgQuality:avg execQuality by broker from trades"}
+{"instruction": "Sum iceberg quantity by symbol", "input": "", "output": "select totalIceberg:sum icebergQty by sym from orders"}
+{"instruction": "Calculate intraday high-low by symbol", "input": "", "output": "select intradayRange:max[price]-min[price] by sym, date from trades"}
+{"instruction": "Average position duration by portfolio", "input": "", "output": "select avgDuration:avg duration by portfolio from positions"}
+{"instruction": "Count instruments by maturity year", "input": "", "output": "select cnt:count i by maturity.year from instruments"}
+{"instruction": "Calculate effective spread by symbol", "input": "", "output": "select effSpread:2*avg abs price-mid by sym from trades"}
+{"instruction": "Get average signal strength by confidence tier", "input": "", "output": "select avgStrength:avg strength by 0.1 xbar confidence from signals"}
+{"instruction": "Sum liquidity removed by venue", "input": "", "output": "select totalLiq:sum liquidityRemoved by venue from trades"}
+{"instruction": "Find the busiest trading day", "input": "", "output": "`tradeCount xdesc select tradeCount:count i by date from trades"}
+{"instruction": "Average fill time by order type", "input": "", "output": "select avgFillTime:avg fillTime-submitTime by orderType from orders"}
+{"instruction": "Get PnL contribution by symbol", "input": "", "output": "select pnlContrib:sum pnl by sym from positions"}
+{"instruction": "Count bars with gaps by symbol", "input": "", "output": "select gapCount:sum open>prev close by sym from bars"}
+{"instruction": "Average market impact by order size tier", "input": "", "output": "select avgImpact:avg marketImpact by 500 xbar qty from orders"}
+{"instruction": "Find symbols with most aggressive trading", "input": "", "output": "`aggrRatio xdesc select aggrRatio:sum[size where aggressor=`buy]%sum size by sym from trades"}
+{"instruction": "Sum rebates by liquidity provider", "input": "", "output": "select totalRebate:sum rebate by provider from trades"}
+{"instruction": "Get order flow imbalance by symbol", "input": "", "output": "select imbalance:sum[size where side=`buy]-sum[size where side=`sell] by sym from orders"}
+{"instruction": "Count option contracts by strike and expiry", "input": "", "output": "select cnt:count i by strike, maturity from instruments where instType=`option"}
+{"instruction": "Average reversion time by signal", "input": "", "output": "select avgRevTime:avg reversionTime by signalType from signals"}
+{"instruction": "Find top executors by fill rate", "input": "", "output": "10#`fillRate xdesc select avgFillRate:avg fillRate by executor from orders"}
+{"instruction": "Calculate basis by futures contract", "input": "", "output": "select basis:avg futPrice-spotPrice by contract from trades"}
+{"instruction": "Get overnight position risk by portfolio", "input": "", "output": "select overnightRisk:sum abs qty*price by portfolio from positions where time>16:00"}
+{"instruction": "Sum dark pool volume by symbol", "input": "", "output": "select darkVol:sum size by sym from trades where venue like \"DARK*\""}
+{"instruction": "Average price improvement by routing strategy", "input": "", "output": "select avgImprovement:avg priceImprovement by routing from trades"}
+{"instruction": "Count failed orders by error type", "input": "", "output": "select cnt:count i by errorType from orders where status=`failed"}
+{"instruction": "Calculate alpha by strategy and symbol", "input": "", "output": "select alpha:avg returns-benchmarkReturns by strategy, sym from positions"}
+{"instruction": "Get percentage of market volume by trader", "input": "", "output": "select mktShare:100*sum[size]%sum size from trades by traderId"}
+{"instruction": "Find top venues by average execution speed", "input": "", "output": "5#`avgSpeed xasc select avgSpeed:avg execTime-submitTime by venue from trades"}
+{"instruction": "Sum cancelled quantity by reason code", "input": "", "output": "select totalCancelQty:sum qty by cancelReason from orders where status=`cancelled"}
+{"instruction": "Calculate Sharpe ratio by portfolio", "input": "", "output": "select sharpe:(avg returns)%dev returns by portfolio from positions"}
+{"instruction": "Get average holding period by symbol", "input": "", "output": "select avgHoldPeriod:avg exitTime-entryTime by sym from positions"}
+{"instruction": "Find passive vs aggressive volume split", "input": "", "output": "select passiveVol:sum[size where liquidity=`maker], aggrVol:sum[size where liquidity=`taker] by sym from trades"}
+{"instruction": "Set all pending orders to cancelled", "input": "", "output": "update status:`cancelled from orders where status=`pending"}
+{"instruction": "Delete trades older than 30 days", "input": "", "output": "delete from trades where date<.z.d-30"}
+{"instruction": "Mark all positions as closed", "input": "", "output": "update isClosed:1b from positions"}
+{"instruction": "Add running total of PnL by portfolio", "input": "", "output": "update cumPnl:sums pnl by portfolio from positions"}
+{"instruction": "Update orders to filled when quantity matches", "input": "", "output": "update status:`filled from orders where filledQty=qty"}
+{"instruction": "Delete bars with zero volume", "input": "", "output": "delete from bars where volume=0"}
+{"instruction": "Set risk flag for large positions", "input": "", "output": "update riskFlag:1b from positions where abs[qty]>10000"}
+{"instruction": "Delete signals with low confidence", "input": "", "output": "delete from signals where confidence<0.5"}
+{"instruction": "Set all expired instruments to inactive", "input": "", "output": "update active:0b from instruments where maturity<.z.d"}
+{"instruction": "Add return column to bars", "input": "", "output": "update return:(close-open)%open from bars"}
+{"instruction": "Delete duplicate quotes", "input": "", "output": "delete from quotes where i in {where 0<differ ([] sym;time)} quotes"}
+{"instruction": "Update time to market for orders", "input": "", "output": "update timeToMarket:execTime-submitTime from orders"}
+{"instruction": "Set sector based on symbol mapping", "input": "", "output": "update sector:sectorMap[sym] from positions"}
+{"instruction": "Delete test trades", "input": "", "output": "delete from trades where isTest"}
+{"instruction": "Update position value", "input": "", "output": "update value:qty*price from positions"}
+{"instruction": "Set venue to best execution path", "input": "", "output": "update venue:bestVenue from orders"}
+{"instruction": "Add implied volatility column", "input": "", "output": "update iv:impliedVol[sym;price;strike] from instruments"}
+{"instruction": "Set priority for high-value orders", "input": "", "output": "update priority:1b from orders where price*qty>1000000"}
+{"instruction": "Add realized PnL to positions", "input": "", "output": "update realizedPnl:(exitPrice-entryPrice)*qty from positions"}
+{"instruction": "Update fill ratio", "input": "", "output": "update fillRatio:filledQty%qty from orders"}
+{"instruction": "Set currency from instrument lookup", "input": "", "output": "update ccy:instruments[sym;`ccy] from trades"}
+{"instruction": "Add beta coefficient by symbol", "input": "", "output": "update beta:cov[returns;mktReturns]%var mktReturns by sym from trades"}
+{"instruction": "Delete cancelled orders older than a week", "input": "", "output": "delete from orders where status=`cancelled, date<.z.d-7"}
+{"instruction": "Update execution quality score", "input": "", "output": "update execQuality:1-abs[price-vwap]%vwap from trades"}
+{"instruction": "Set leverage from margin requirements", "input": "", "output": "update leverage:notional%margin from positions"}
+{"instruction": "Update signal decay", "input": "", "output": "update decayedStrength:strength*exp -0.1*age from signals"}
+{"instruction": "Set routing to smart order router", "input": "", "output": "update routing:`smart from orders where orderType=`limit, qty>500"}
+{"instruction": "Delete positions with zero quantity", "input": "", "output": "delete from positions where qty=0"}
+{"instruction": "Update Greeks for options", "input": "", "output": "update delta:calcDelta[sym;price;time], gamma:calcGamma[sym;price;time] from instruments where instType=`option"}
+{"instruction": "Add participation rate", "input": "", "output": "update partRate:size%volumeBucket by sym from trades"}
+{"instruction": "Delete bars with invalid OHLC", "input": "", "output": "delete from bars where not (low<=open) & (open<=high) & (low<=close) & (close<=high)"}
+{"instruction": "Update trade classification", "input": "", "output": "update classification:`aggressive from trades where price>=ask"}
+{"instruction": "Set position limits by portfolio", "input": "", "output": "update exceedsLimit:abs[qty]>limit by portfolio from positions"}
+{"instruction": "Add percentile rank", "input": "", "output": "update prctRank:rank price by sym, date from trades"}
+{"instruction": "Delete orders with duplicate IDs", "input": "", "output": "delete from orders where i in 1_ where 1<count each group orderId"}
+{"instruction": "Update market impact estimate", "input": "", "output": "update impact:(price-prevMid)%prevMid from trades"}
+{"instruction": "Set rebalance flag", "input": "", "output": "update needsRebal:abs[qty-targetQty]>threshold from positions"}
+{"instruction": "Delete signals that fired", "input": "", "output": "delete from signals where fired"}
+{"instruction": "Update order book depth snapshot", "input": "", "output": "update bidDepth:sum bidSize, askDepth:sum askSize from quotes"}
+{"instruction": "Set execution strategy based on urgency", "input": "", "output": "update execStrategy:`TWAP`VWAP`POV urgency bin urgency from orders"}
+{"instruction": "Add alpha signals to positions", "input": "", "output": "update alphaSignal:signals[sym;`strength] from positions"}
+{"instruction": "Delete trades with reversed transactions", "input": "", "output": "delete from trades where reversed"}
+{"instruction": "Set slippage metric", "input": "", "output": "update slippage:abs[price-benchmarkPrice]%benchmarkPrice from trades"}
+{"instruction": "Add trend indicator", "input": "", "output": "update trend:signum mavg[20;price]-mavg[50;price] from bars"}
+{"instruction": "Delete instruments not traded in 90 days", "input": "", "output": "delete from instruments where lastTradeDate<.z.d-90"}
+{"instruction": "Update margin requirement by leverage", "input": "", "output": "update marginReq:notional%leverage from positions"}
+{"instruction": "Set compliance flag for restricted symbols", "input": "", "output": "update restricted:sym in restrictedList from trades"}
+{"instruction": "Add volume-weighted spread", "input": "", "output": "update vwSpread:size wavg spread by sym from quotes"}
+{"instruction": "Delete bars outside trading hours", "input": "", "output": "delete from bars where not time within 09:30 16:00"}
+{"instruction": "Update effective tick size", "input": "", "output": "update effTick:price mod tickSize from trades"}
+{"instruction": "Add portfolio weight", "input": "", "output": "update weight:notional%sum notional by portfolio from positions"}
+{"instruction": "Delete failed signal entries", "input": "", "output": "delete from signals where status=`failed"}
+{"instruction": "Set fill priority by time", "input": "", "output": "update priority:rank submitTime from orders where status=`pending"}
+{"instruction": "Add smart beta exposure", "input": "", "output": "update momentumExp:returns, valueExp:bookToMkt by sym from positions"}
+{"instruction": "Delete orphaned orders", "input": "", "output": "delete from orders where not parentOrderId in exec orderId from orders"}
+{"instruction": "Set position age", "input": "", "output": "update age:.z.d-entryDate from positions"}
+{"instruction": "Add order flow toxicity metric", "input": "", "output": "update toxicity:abs[imbalance]*volatility from orders"}
+{"instruction": "Update synthetic position Greeks", "input": "", "output": "update netDelta:sum delta, netGamma:sum gamma by portfolio from positions"}
+{"instruction": "Set fill probability estimate", "input": "", "output": "update fillProb:1-exp -lambda*timeInMarket from orders"}
+{"instruction": "Add regime classification", "input": "", "output": "update regime:`trending`meanRev`volatile volatility bin dev price from trades"}
+{"instruction": "Update cost basis by FIFO", "input": "", "output": "update costBasis:wavg[qty;entryPrice] by sym from positions"}
+{"instruction": "Set hedging requirement", "input": "", "output": "update needsHedge:abs[netDelta]>deltaLimit by portfolio from positions"}
+{"instruction": "Delete duplicate instruments", "input": "", "output": "delete from instruments where i in 1_ where 1<count each group ([] sym;maturity;strike)"}
+{"instruction": "Update benchmark comparison", "input": "", "output": "update outperformance:returns-benchmarkReturns by sym from trades"}
+{"instruction": "Set reversion signal", "input": "", "output": "update revSignal:zScore<-2 from trades"}
+{"instruction": "Look up instrument name for each trade", "input": "", "output": "select sym, price, name:instruments[sym;`name] from trades"}
+{"instruction": "Join positions with portfolio metadata", "input": "", "output": "positions lj `portfolio xkey portfolios"}
+{"instruction": "Match orders with their fill records", "input": "", "output": "orders lj `orderId xkey fills"}
+{"instruction": "As-of join bars with corporate actions", "input": "", "output": "aj[`sym`date;bars;corpActions]"}
+{"instruction": "Equi-join trades on both symbol and exchange", "input": "", "output": "trades ij `sym`exch xkey venues"}
+{"instruction": "Plus join to merge trading volumes from two sources", "input": "", "output": "t1 pj t2"}
+{"instruction": "Join signals with their performance metrics", "input": "", "output": "signals lj `signalId xkey performance"}
+{"instruction": "Match each order with its parent order", "input": "", "output": "select from orders where parentOrderId in exec orderId from orders"}
+{"instruction": "As-of join trades with market data snapshots", "input": "", "output": "aj[`sym`time;trades;snapshots]"}
+{"instruction": "Join instruments with issuer information", "input": "", "output": "instruments lj `issuer xkey issuers"}
+{"instruction": "Union join today's trades with historical trades", "input": "", "output": "todayTrades uj histTrades"}
+{"instruction": "Window join to aggregate volume in time windows", "input": "", "output": "wj[00:00:00 00:05:00+\\:bars`time;`sym`time;bars;(ticks;(sum;`size))]"}
+{"instruction": "Left join quotes with exchange information", "input": "", "output": "quotes lj `exch xkey exchanges"}
+{"instruction": "As-of join positions with latest prices", "input": "", "output": "aj[`sym;positions;prices]"}
+{"instruction": "Join trades with liquidity classifications", "input": "", "output": "trades lj `tradeId xkey classifications"}
+{"instruction": "Match fills with their originating orders", "input": "", "output": "fills ij `orderId xkey orders"}
+{"instruction": "Union join multiple daily position snapshots", "input": "", "output": "pos1 uj pos2 uj pos3"}
+{"instruction": "As-of join bars with dividend events", "input": "", "output": "aj[`sym`date;bars;dividends]"}
+{"instruction": "Left join orders with execution reports", "input": "", "output": "orders lj `orderId xkey execReports"}
+{"instruction": "Join instruments with their sector classifications", "input": "", "output": "instruments lj `sym xkey sectors"}
+{"instruction": "Match trades with settlement instructions", "input": "", "output": "trades lj `tradeId xkey settlements"}
+{"instruction": "As-of join signals with realized outcomes", "input": "", "output": "aj[`sym`time;signals;outcomes]"}
+{"instruction": "Window join to compute rolling statistics", "input": "", "output": "wj[-00:10:00 00:00:00+\\:bars`time;`sym`time;bars;(trades;(avg;`price);(sum;`size))]"}
+{"instruction": "Union join order book snapshots from multiple venues", "input": "", "output": "nyseBook uj nasdaqBook"}
+{"instruction": "Left join positions with Greek sensitivities", "input": "", "output": "positions lj `sym xkey greeks"}
+{"instruction": "Join trades with counterparty information", "input": "", "output": "trades lj `counterpartyId xkey counterparties"}
+{"instruction": "As-of join orders with prevailing market conditions", "input": "", "output": "aj[`sym`time;orders;marketConditions]"}
+{"instruction": "Match option trades with underlying prices", "input": "", "output": "optionTrades lj `underlying xkey spotPrices"}
+{"instruction": "Window join for VWAP calculation over intervals", "input": "", "output": "wj[00:00:00 00:15:00+\\:bars`time;`sym`time;bars;(trades;(wavg;`size;`price))]"}
+{"instruction": "Union join partial fills into complete records", "input": "", "output": "fill1 uj fill2 uj fill3"}
+{"instruction": "Left join bars with earnings announcements", "input": "", "output": "bars lj `sym`date xkey earnings"}
+{"instruction": "As-of join trades with volatility surface", "input": "", "output": "aj[`sym`time;trades;volSurface]"}
+{"instruction": "Join signals with backtest results", "input": "", "output": "signals lj `signalId xkey backtests"}
+{"instruction": "Match quotes with consolidated tape", "input": "", "output": "quotes ij `sym`time xkey tape"}
+{"instruction": "Union join intraday and overnight positions", "input": "", "output": "intradayPos uj overnightPos"}
+{"instruction": "Left join orders with routing decisions", "input": "", "output": "orders lj `orderId xkey routingDecisions"}
+{"instruction": "As-of join bars with analyst ratings", "input": "", "output": "aj[`sym`date;bars;ratings]"}
+{"instruction": "Join instruments with trading restrictions", "input": "", "output": "instruments lj `sym xkey restrictions"}
+{"instruction": "Match trades with their transaction cost analysis", "input": "", "output": "trades lj `tradeId xkey tca"}
+{"instruction": "Window join for time-weighted calculations", "input": "", "output": "wj[00:00:00 01:00:00+\\:bars`time;`sym`time;bars;(quotes;(avg;`mid))]"}
+{"instruction": "Union join cleared and uncleared swaps", "input": "", "output": "clearedSwaps uj unclearedSwaps"}
+{"instruction": "Left join positions with collateral requirements", "input": "", "output": "positions lj `sym xkey collateral"}
+{"instruction": "As-of join trades with reference data updates", "input": "", "output": "aj[`sym`time;trades;refDataUpdates"}
+{"instruction": "Join quotes with market maker identifiers", "input": "", "output": "quotes lj `quoteId xkey marketMakers"}
+{"instruction": "Match orders with compliance checks", "input": "", "output": "orders lj `orderId xkey complianceChecks"}
+{"instruction": "Union join swap resets from different counterparties", "input": "", "output": "cpty1Resets uj cpty2Resets"}
+{"instruction": "Pivot a table to get prices by date and symbol", "input": "", "output": "exec sym!price by date from trades"}
+{"instruction": "Apply a function to each row", "input": "", "output": "{x`price * x`size} each trades"}
+{"instruction": "Add a unique attribute to orderId", "input": "", "output": "update `u#orderId from `orders"}
+{"instruction": "Calculate exponential moving average", "input": "", "output": "update ema:ema[0.1;price] from trades"}
+{"instruction": "Add a parted attribute to date column", "input": "", "output": "update `p#date from `bars"}
+{"instruction": "Build a time-series join index", "input": "", "output": "trades[`sym`time] xasc trades"}
+{"instruction": "Apply scan to calculate cumulative product", "input": "", "output": "update cumProd:prds 1+returns from trades"}
+{"instruction": "Create a splayed table on disk", "input": "", "output": "`:/path/to/trades/ set .Q.en[`:.;trades]"}
+{"instruction": "Use each-right to broadcast a calculation", "input": "", "output": "prices */:sizes"}
+{"instruction": "Filter rows using an each-left operation", "input": "", "output": "trades where sym in/:`AAPL`GOOG"}
+{"instruction": "Apply over to reduce a list", "input": "", "output": "(*/) over 1+returns"}
+{"instruction": "Filter with a complex fby aggregation", "input": "", "output": "select from trades where size>(sum;size) fby ([] sym;date)"}
+{"instruction": "Ungroup a nested table", "input": "", "output": "ungroup nested"}
+{"instruction": "Apply a custom aggregation using over", "input": "", "output": "{x,enlist max y} over trades"}
+{"instruction": "Create a dictionary from two lists", "input": "", "output": "syms!prices"}
+{"instruction": "Raze a list of tables into one", "input": "", "output": "raze (table1;table2;table3)"}
+{"instruction": "Use each to apply element-wise operation", "input": "", "output": "sqrt each prices"}
+{"instruction": "Calculate deltas between adjacent rows", "input": "", "output": "deltas prices"}
+{"instruction": "Use each-both for pairwise operations", "input": "", "output": "prices ,' sizes"}
+{"instruction": "Apply a type cast", "input": "", "output": "`float$stringPrices"}
+{"instruction": "Get first n rows per group", "input": "", "output": "select[3] from trades by sym"}
+{"instruction": "Use where to get indices of matching rows", "input": "", "output": "where trades`price>100"}
+{"instruction": "Amend a table in place", "input": "", "output": "`trades upsert newRow"}
+{"instruction": "Get the fill down for nulls", "input": "", "output": "fills prices"}
+{"instruction": "Use bin for bucketing", "input": "", "output": "0 100 500 1000 bin sizes"}
+{"instruction": "Extract rows by boolean vector", "input": "", "output": "trades where prices>100"}
+{"instruction": "Apply maxs for running maximum", "input": "", "output": "maxs prices"}
+{"instruction": "Calculate running minimum", "input": "", "output": "mins prices"}
+{"instruction": "Apply except to remove elements", "input": "", "output": "allSyms except excludedSyms"}
+{"instruction": "Intersect two lists", "input": "", "output": "list1 inter list2"}
+{"instruction": "Union two lists", "input": "", "output": "list1 union list2"}
+{"instruction": "Use within for range checks", "input": "", "output": "prices within 100 200"}
+{"instruction": "Apply sv to decode from base", "input": "", "output": "0 sv bits"}
+{"instruction": "Use reciprocal for inversion", "input": "", "output": "reciprocal prices"}
+{"instruction": "Calculate absolute values", "input": "", "output": "abs returns"}
+{"instruction": "Apply signum for sign extraction", "input": "", "output": "signum deltas"}
+{"instruction": "Get floor of floats", "input": "", "output": "floor prices"}
+{"instruction": "Ceiling of values", "input": "", "output": "ceiling prices"}
+{"instruction": "Use mod for remainder", "input": "", "output": "prices mod 10"}
+{"instruction": "Calculate exponential", "input": "", "output": "exp logReturns"}
+{"instruction": "Natural logarithm", "input": "", "output": "log prices"}
+{"instruction": "Base-10 logarithm", "input": "", "output": "log10 prices"}
+{"instruction": "Square root calculation", "input": "", "output": "sqrt variance"}
+{"instruction": "Use xexp for exponentiation", "input": "", "output": "prices xexp 2"}
+{"instruction": "Calculate correlation", "input": "", "output": "cor[prices;volumes]"}
+{"instruction": "Covariance between series", "input": "", "output": "cov[returns1;returns2]"}
+{"instruction": "Use wavg for weighted average", "input": "", "output": "sizes wavg prices"}
+{"instruction": "Standard deviation", "input": "", "output": "dev prices"}
+{"instruction": "Variance calculation", "input": "", "output": "var returns"}
+{"instruction": "Get percentiles", "input": "", "output": "0.5 0.9 0.95 0.99 xrank prices"}
+{"instruction": "Rank values", "input": "", "output": "rank prices"}
+{"instruction": "Use xrank for fractional ranking", "input": "", "output": "10 xrank prices"}
+{"instruction": "Apply sum to aggregate", "input": "", "output": "sum sizes"}
+{"instruction": "Product of elements", "input": "", "output": "prd 1+returns"}
+{"instruction": "Find minimum", "input": "", "output": "min prices"}
+{"instruction": "Find maximum", "input": "", "output": "max prices"}
+{"instruction": "Average calculation", "input": "", "output": "avg prices"}
+{"instruction": "Median value", "input": "", "output": "med prices"}
+{"instruction": "Mode of distribution", "input": "", "output": "{first key desc count each group x} prices"}
+{"instruction": "Use all to check boolean vector", "input": "", "output": "all prices>0"}
+{"instruction": "Check if any condition holds", "input": "", "output": "any prices>1000"}
+{"instruction": "Apply over for fold", "input": "", "output": "{x+y} over prices"}
+{"instruction": "Use scan for intermediate results", "input": "", "output": "{x+y} scan prices"}
+{"instruction": "Converge to fixed point", "input": "", "output": "{x*0.9}/ prices"}
+{"instruction": "Apply while with condition", "input": "", "output": "{x<100}/ {x*2}/ 1"}
+{"instruction": "Apply do loop for iterative calculation", "input": "", "output": "do[100; value:value*1.01]"}
+{"instruction": "Use conditional execution", "input": "", "output": "$[price>100; `buy; `sell]"}
+{"instruction": "Create nested conditionals", "input": "", "output": "$[price>200; `strongBuy; price>100; `buy; price>50; `hold; `sell]"}
+{"instruction": "Apply if statement", "input": "", "output": "if[price>threshold; action:`buy]"}
+{"instruction": "Use while loop", "input": "", "output": "while[condition; action[]; condition:update[]]"}
+{"instruction": "Use xprev for lagged values", "input": "", "output": "3 xprev prices"}
+{"instruction": "Apply mcount for moving count", "input": "", "output": "10 mcount prices>100"}
+{"instruction": "Calculate moving sum", "input": "", "output": "20 msum sizes"}
+{"instruction": "Get moving min", "input": "", "output": "15 mmin prices"}
+{"instruction": "Find moving max", "input": "", "output": "15 mmax prices"}
+{"instruction": "Use mdev for moving standard deviation", "input": "", "output": "20 mdev returns"}
+{"instruction": "Apply moving median", "input": "", "output": "10 mmed prices"}
+{"instruction": "Calculate exponential decay", "input": "", "output": "ema[0.05;prices]"}
+{"instruction": "Apply simple moving average", "input": "", "output": "20 mavg prices"}
+{"instruction": "Calculate weighted moving average", "input": "", "output": "10 wavg prices"}
+{"instruction": "Get time-weighted average", "input": "", "output": "times wavg prices"}
+{"instruction": "Use deltas for differences", "input": "", "output": "deltas prices"}
+{"instruction": "Calculate ratios for returns", "input": "", "output": "ratios prices"}
+{"instruction": "Apply differ for change detection", "input": "", "output": "where differ syms"}
+{"instruction": "Get cumulative sums", "input": "", "output": "sums sizes"}
+{"instruction": "Calculate cumulative product", "input": "", "output": "prds 1+returns"}
+{"instruction": "Use maxs for running max", "input": "", "output": "maxs prices"}
+{"instruction": "Apply mins for running min", "input": "", "output": "mins prices"}
+{"instruction": "Get fills for null handling", "input": "", "output": "fills prices"}
+{"instruction": "Rotate elements", "input": "", "output": "1 rotate prices"}
+{"instruction": "Apply distinct for unique values", "input": "", "output": "distinct syms"}
+{"instruction": "Get iasc for ascending sort indices", "input": "", "output": "iasc prices"}
+{"instruction": "Use idesc for descending indices", "input": "", "output": "idesc prices"}
+{"instruction": "Take first n elements", "input": "", "output": "10#prices"}
+{"instruction": "Take last n elements", "input": "", "output": "-10#prices"}
+{"instruction": "Drop first n elements", "input": "", "output": "10_prices"}
+{"instruction": "Drop last n elements", "input": "", "output": "-10_prices"}
+{"instruction": "Apply xbar for bucketing", "input": "", "output": "5 xbar prices"}
+{"instruction": "Get sublist with indices", "input": "", "output": "prices[5 10 15]"}
+{"instruction": "Apply @ for index", "input": "", "output": "prices@10"}
+{"instruction": "Use . for nested indexing", "input": "", "output": "trades[`AAPL;`price]"}
+{"instruction": "Extract with ?", "input": "", "output": "prices?100"}
+{"instruction": "Find index of element", "input": "", "output": "syms?`AAPL"}
+{"instruction": "Use in for membership", "input": "", "output": "`AAPL in syms"}
+{"instruction": "Apply within for range check", "input": "", "output": "prices within 100 200"}
+{"instruction": "Get like for pattern matching", "input": "", "output": "syms like \"A*\""}
+{"instruction": "Apply lower for lowercase", "input": "", "output": "lower names"}
+{"instruction": "Get upper for uppercase", "input": "", "output": "upper names"}

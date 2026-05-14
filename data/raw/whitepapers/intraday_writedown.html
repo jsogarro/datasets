@@ -1,0 +1,8763 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Compares two methods for dealing with insufficient RAM on a server, when a full dayâs worth of data cannot be held in memory.">
+      
+      
+        <meta name="author" content="Colm McCarthy">
+      
+      
+        <link rel="canonical" href="https://code.kx.com/q/wp/intraday-writedown/">
+      
+      
+        <link rel="prev" href="../query-interface/">
+      
+      
+        <link rel="next" href="../../interfaces/c-client-for-q/">
+      
+      <link rel="icon" href="../../local/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>RDB Intraday writedown solutions | q and kdb+ documentation - kdb+ and q documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../local/stylesheets/2021.css">
+    
+      <link rel="stylesheet" href="../../local/stylesheets/prism.css">
+    
+      <link rel="stylesheet" href="../../local/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../local/stylesheets/hide-footer-nav.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/q.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PG938LS');</script>
+<!-- End Google Tag Manager -->
+<!-- Delighted survey tool -->
+<script type="text/javascript">
+ !function(e,t,r,n){if(!e[n]){for(var a=e[n]=[],i=["survey","reset","config","init","set","get","event","identify","track","page","screen","group","alias"],s=0;s<i.length;s++){var c=i[s];a[c]=a[c]||function(e){return function(){var t=Array.prototype.slice.call(arguments);a.push([e,t])}}(c)}a.SNIPPET_VERSION="1.0.1";var o=t.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://d2yyd1h5u9mauk.cloudfront.net/integrations/web/v1/library/"+r+"/"+n+".js";var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(o,u)}}(window,document,"X3fUmYn77WW3rfAz","delightedThumbsK");
+ delightedThumbsK.survey({
+  properties: { // extra context (optional)
+   product: "KDB-q"
+  }
+ });
+</script>
+<!-- End Delighted survey tool -->
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="kx-light" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rdb-intraday-writedown-solutions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="">
+    <a href="https://code.kx.com/" title="code.kx.com" class="md-header__button md-logo" aria-label="kdb+ and q documentation" data-md-component="logo">
+      
+  <img src="../../local/img/kx.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            kdb+ and q documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RDB Intraday writedown solutions | q and kdb+ documentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="kx-light" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+<style>
+  /* Button used to open the chat form - fixed at the bottom of the page */
+  .open-button {
+    background-color: var(--md-typeset-a-color);
+    border: none;
+    border-radius: 10px;
+    bottom: 23px;
+    box-sizing: border-box;
+    color: var(--md-mermaid-label-bg-color);
+    cursor: pointer;
+    font-size: 13px;
+    opacity: 0.8;
+    padding: 10px 10px;
+    position: fixed;
+    right: 28px;
+    width: 160px;
+    z-index: 3;
+  }
+</style>
+<body>
+  <button class="open-button md-typeset" onclick="window.location.href='https://community.kx.com/t5/kdb-and-q/bd-p/kdb-q-questions'"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32C114.6 32 0 125.1 0 240c0 47.6 19.9 91.2 52.9 126.3C38 405.7 7 439.1 6.5 439.5c-6.6 7-8.4 17.2-4.6 26S14.4 480 24 480c61.5 0 110-25.7 139.1-46.3C192 442.8 223.2 448 256 448c141.4 0 256-93.1 256-208S397.4 32 256 32zm0 368c-26.7 0-53.1-4.1-78.4-12.1l-22.7-7.2-19.5 13.8c-14.3 10.1-33.9 21.4-57.5 29 7.3-12.1 14.4-25.7 19.9-40.2l10.6-28.1-20.6-21.8C69.7 314.1 48 282.2 48 240c0-88.2 93.3-160 208-160s208 71.8 208 160-93.3 160-208 160z"></path></svg></span>&nbsp;Ask a question</button>
+</body>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/home" class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        kdb+ and q
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/insights" class="md-tabs__link">
+      kdb Insights SDK
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/insights/enterprise" class="md-tabs__link">
+      kdb Insights Enterprise
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/kdbai" class="md-tabs__link">
+      KDB.AI
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/pykx" class="md-tabs__link">
+      PyKX
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/insights/api" class="md-tabs__link">
+      APIs
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/home/support.html" class="md-tabs__link">
+      Help
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="kdb+ and q documentation" class="md-nav__button md-logo" aria-label="kdb+ and q documentation" data-md-component="logo">
+      
+  <img src="../../local/img/kx.svg" alt="logo">
+
+    </a>
+    kdb+ and q documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/home" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          kdb+ and q
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          kdb+ and q
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/install/" class="md-nav__link">
+        Install
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/licensing/" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Learn
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Learn
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+          Mountain tour
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mountain tour
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/tour/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/tour/" class="md-nav__link">
+        Begin here
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/tour/session/" class="md-nav__link">
+        The q session
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/tour/tables/" class="md-nav__link">
+        Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/tour/csvs/" class="md-nav__link">
+        CSVs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/tour/datatypes/" class="md-nav__link">
+        Datatypes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/tour/scripts/" class="md-nav__link">
+        Scripts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/tour/ide/" class="md-nav__link">
+        IDE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/brief-introduction/" class="md-nav__link">
+        Q for quants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/q-by-examples/" class="md-nav__link">
+        Q by Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/q-for-all/" class="md-nav__link">
+        Q for All (video)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_6" id="__nav_2_3_6_label" tabindex="0">
+          Examples from Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Examples from Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/python/examples/" class="md-nav__link">
+        Basic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/python/examples/array/" class="md-nav__link">
+        Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/python/examples/list/" class="md-nav__link">
+        List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/python/examples/string/" class="md-nav__link">
+        Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/python/examples/dict/" class="md-nav__link">
+        Dictionaries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/q4m3/" class="md-nav__link">
+        Q for Mortals 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_8" id="__nav_2_3_8_label" tabindex="0">
+          Q by Puzzles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Q by Puzzles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/pb/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/pb/xmas-days/" class="md-nav__link">
+        12 Days of Xmas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/pb/abc-problem/" class="md-nav__link">
+        ABC problem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/pb/abundant-odds/" class="md-nav__link">
+        Abundant odds
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/pb/four-magic/" class="md-nav__link">
+        Four is magic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/pb/name-game/" class="md-nav__link">
+        Name Game
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/pb/sum-say/" class="md-nav__link">
+        Summarize and Say
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/pb/word-wheel/" class="md-nav__link">
+        Word wheel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_9" id="__nav_2_3_9_label" tabindex="0">
+          Reading room
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          Reading room
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/reading/" class="md-nav__link">
+        Information desk
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/reading/boggle/" class="md-nav__link">
+        Boggle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/reading/strings/" class="md-nav__link">
+        Cats cradle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/reading/fizzbuzz/" class="md-nav__link">
+        Fizz buzz
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/reading/klondike/" class="md-nav__link">
+        Klondike
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/phrases/" class="md-nav__link">
+        Phrasebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/reading/scrabble/" class="md-nav__link">
+        Scrabble
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_10" id="__nav_2_3_10_label" tabindex="0">
+          Application examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          Application examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../astronomy/" class="md-nav__link">
+        Astronomy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../card-counters/" class="md-nav__link">
+        Detecting card counters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corporate-actions/" class="md-nav__link">
+        Corporate actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disaster-management/" class="md-nav__link">
+        Disaster management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exoplanets/" class="md-nav__link">
+        Exoplanets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../market-depth/" class="md-nav__link">
+        Market depth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../market-fragmentation/" class="md-nav__link">
+        Market fragmentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../option-pricing/" class="md-nav__link">
+        Option pricing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disaster-floods/" class="md-nav__link">
+        Predicting floods
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal-processing/" class="md-nav__link">
+        Signal processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../space-weather/" class="md-nav__link">
+        Space weather
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../surveillance/" class="md-nav__link">
+        Trading surveillance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transaction-cost/" class="md-nav__link">
+        Transaction-cost analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trend-indicators/" class="md-nav__link">
+        Trend indicators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_11" id="__nav_2_3_11_label" tabindex="0">
+          Advanced q
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_11">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced q
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/qbists/style" class="md-nav__link">
+        Remarks on Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/shifts-scans/" class="md-nav__link">
+        Shifts & scans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/blogs/" class="md-nav__link">
+        Technical articles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/views/" class="md-nav__link">
+        Views
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/archive/" class="md-nav__link">
+        Origins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/terminology/" class="md-nav__link">
+        Terminology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_12" id="__nav_2_3_12_label" tabindex="0">
+          Starting kdb+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_12">
+          <span class="md-nav__icon md-icon"></span>
+          Starting kdb+
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/startingkdb/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/startingkdb/language/" class="md-nav__link">
+        The q language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/startingkdb/ipc/" class="md-nav__link">
+        IPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/startingkdb/tables/" class="md-nav__link">
+        Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/startingkdb/hdb/" class="md-nav__link">
+        Historical database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/startingkdb/tick/" class="md-nav__link">
+        Realtime database
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Language
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Language
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/" class="md-nav__link">
+        Reference card
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/by-topic/" class="md-nav__link">
+        By topic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
+          Iteration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Iteration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/iteration/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/implicit-iteration/" class="md-nav__link">
+        Implicit iteration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/iterators/" class="md-nav__link">
+        Iterators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/maps/" class="md-nav__link">
+        Maps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/accumulators/" class="md-nav__link">
+        Accumulators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iterators/" class="md-nav__link">
+        Guide to iterators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_4" id="__nav_2_4_4_label" tabindex="0">
+          Keywords
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Keywords
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/abs/" class="md-nav__link">
+        abs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/aj/" class="md-nav__link">
+        aj, aj0, ajf, ajf0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/all-any/" class="md-nav__link">
+        all, any
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/and/" class="md-nav__link">
+        and
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/asc/" class="md-nav__link">
+        asc, iasc, xasc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/asof/" class="md-nav__link">
+        asof
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/attr/" class="md-nav__link">
+        attr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/avg/" class="md-nav__link">
+        avg, avgs, mavg, wavg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/bin/" class="md-nav__link">
+        bin, binr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/ceiling/" class="md-nav__link">
+        ceiling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/count/" class="md-nav__link">
+        count, mcount
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/cols/" class="md-nav__link">
+        cols, xcol, xcols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/cor/" class="md-nav__link">
+        cor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/cos/" class="md-nav__link">
+        cos, acos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/cov/" class="md-nav__link">
+        cov, scov
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/cross/" class="md-nav__link">
+        cross
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/csv/" class="md-nav__link">
+        csv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/cut/" class="md-nav__link">
+        cut
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/delete/" class="md-nav__link">
+        delete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/deltas/" class="md-nav__link">
+        deltas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/desc/" class="md-nav__link">
+        desc, idesc, xdesc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/dev/" class="md-nav__link">
+        dev, mdev, sdev
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/differ/" class="md-nav__link">
+        differ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/distinct/" class="md-nav__link">
+        distinct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/div/" class="md-nav__link">
+        div
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/dsave/" class="md-nav__link">
+        dsave
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/each/" class="md-nav__link">
+        each, peach
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/ej/" class="md-nav__link">
+        ej
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/ema/" class="md-nav__link">
+        ema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/enlist/" class="md-nav__link">
+        enlist
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/eval/" class="md-nav__link">
+        eval, reval
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/except/" class="md-nav__link">
+        except
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/exec/" class="md-nav__link">
+        exec
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/exit/" class="md-nav__link">
+        exit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/exp/" class="md-nav__link">
+        exp, xexp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/fby/" class="md-nav__link">
+        fby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/fill/" class="md-nav__link">
+        fills
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/first/" class="md-nav__link">
+        first, last
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/fkeys/" class="md-nav__link">
+        fkeys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/flip/" class="md-nav__link">
+        flip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/floor/" class="md-nav__link">
+        floor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/get/" class="md-nav__link">
+        get, set
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/getenv/" class="md-nav__link">
+        getenv, setenv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/group/" class="md-nav__link">
+        group
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/gtime/" class="md-nav__link">
+        gtime, ltime
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/hcount/" class="md-nav__link">
+        hcount
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/hdel/" class="md-nav__link">
+        hdel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/hopen/" class="md-nav__link">
+        hopen, hclose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/hsym/" class="md-nav__link">
+        hsym
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/ij/" class="md-nav__link">
+        ij, ijf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/in/" class="md-nav__link">
+        in
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/insert/" class="md-nav__link">
+        insert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/inter/" class="md-nav__link">
+        inter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/inv/" class="md-nav__link">
+        inv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/key/" class="md-nav__link">
+        key
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/keys/" class="md-nav__link">
+        keys, xkey
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/like/" class="md-nav__link">
+        like
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/lj/" class="md-nav__link">
+        lj, ljf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/load/" class="md-nav__link">
+        load, rload
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/log/" class="md-nav__link">
+        log, xlog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/lower/" class="md-nav__link">
+        lower, upper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/lsq/" class="md-nav__link">
+        lsq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/max/" class="md-nav__link">
+        max, maxs, mmax
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/md5/" class="md-nav__link">
+        md5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/med/" class="md-nav__link">
+        med
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/meta/" class="md-nav__link">
+        meta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/min/" class="md-nav__link">
+        min, mins, mmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/mmu/" class="md-nav__link">
+        mmu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/mod/" class="md-nav__link">
+        mod
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/neg/" class="md-nav__link">
+        neg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/next/" class="md-nav__link">
+        next, prev, xprev
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/not/" class="md-nav__link">
+        not
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/null/" class="md-nav__link">
+        null
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/or/" class="md-nav__link">
+        or
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/over/" class="md-nav__link">
+        over, scan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/parse/" class="md-nav__link">
+        parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/pj/" class="md-nav__link">
+        pj
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/prd/" class="md-nav__link">
+        prd, prds
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/prior/" class="md-nav__link">
+        prior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/rand/" class="md-nav__link">
+        rand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/rank/" class="md-nav__link">
+        rank
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/ratios/" class="md-nav__link">
+        ratios
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/raze/" class="md-nav__link">
+        raze
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/read0/" class="md-nav__link">
+        read0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/read1/" class="md-nav__link">
+        read1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/reciprocal/" class="md-nav__link">
+        reciprocal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/reverse/" class="md-nav__link">
+        reverse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/rotate/" class="md-nav__link">
+        rotate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/save/" class="md-nav__link">
+        save, rsave
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/select/" class="md-nav__link">
+        select
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/show/" class="md-nav__link">
+        show
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/signum/" class="md-nav__link">
+        signum
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/sin/" class="md-nav__link">
+        sin, asin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/sqrt/" class="md-nav__link">
+        sqrt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/ss/" class="md-nav__link">
+        ss, ssr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/string/" class="md-nav__link">
+        string
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/sublist/" class="md-nav__link">
+        sublist
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/sum/" class="md-nav__link">
+        sum, sums, msum, wsum
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/sv/" class="md-nav__link">
+        sv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/system/" class="md-nav__link">
+        system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/tables/" class="md-nav__link">
+        tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/tan/" class="md-nav__link">
+        tan, atan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/til/" class="md-nav__link">
+        til
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/trim/" class="md-nav__link">
+        trim, ltrim, rtrim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/type/" class="md-nav__link">
+        type
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/uj/" class="md-nav__link">
+        uj, ujf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/union/" class="md-nav__link">
+        union
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/ungroup/" class="md-nav__link">
+        ungroup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/update/" class="md-nav__link">
+        update
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/upsert/" class="md-nav__link">
+        upsert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/value/" class="md-nav__link">
+        value
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/var/" class="md-nav__link">
+        var, svar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/view/" class="md-nav__link">
+        view, views
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/vs/" class="md-nav__link">
+        vs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/where/" class="md-nav__link">
+        where
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/within/" class="md-nav__link">
+        within
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/wj/" class="md-nav__link">
+        wj, wj1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/xbar/" class="md-nav__link">
+        xbar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/xgroup/" class="md-nav__link">
+        xgroup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/xrank/" class="md-nav__link">
+        xrank
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/overloads/" class="md-nav__link">
+        Overloaded glyphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_6" id="__nav_2_4_6_label" tabindex="0">
+          Operators
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Operators
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/add/" class="md-nav__link">
+        Add
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/amend/" class="md-nav__link">
+        Amend
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/apply/" class="md-nav__link">
+        Apply, Index, Trap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/assign/" class="md-nav__link">
+        Assign
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/cast/" class="md-nav__link">
+        Cast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/coalesce/" class="md-nav__link">
+        Coalesce
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/compose/" class="md-nav__link">
+        Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/cut/" class="md-nav__link">
+        Cut
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/deal/" class="md-nav__link">
+        Deal, Roll, Permute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/delete/" class="md-nav__link">
+        Delete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/display/" class="md-nav__link">
+        Display
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/dict/" class="md-nav__link">
+        Dict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/divide/" class="md-nav__link">
+        Divide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/dynamic-load/" class="md-nav__link">
+        Dynamic Load
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/drop/" class="md-nav__link">
+        Drop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/enkey/" class="md-nav__link">
+        Enkey, Unkey
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/enumerate/" class="md-nav__link">
+        Enumerate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/enumeration/" class="md-nav__link">
+        Enumeration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/enum-extend/" class="md-nav__link">
+        Enum Extend
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/equal/" class="md-nav__link">
+        Equal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/exec/" class="md-nav__link">
+        Exec
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/file-binary/" class="md-nav__link">
+        File Binary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/file-text/" class="md-nav__link">
+        File Text
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/fill/" class="md-nav__link">
+        Fill
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/find/" class="md-nav__link">
+        Find
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/flip-splayed/" class="md-nav__link">
+        Flip Splayed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/greater/" class="md-nav__link">
+        Greater
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/greater-than/" class="md-nav__link">
+        Greater Than
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/identity/" class="md-nav__link">
+        Identity, Null
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/join/" class="md-nav__link">
+        Join
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/less-than/" class="md-nav__link">
+        Less Than
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/lesser/" class="md-nav__link">
+        Lesser
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/match/" class="md-nav__link">
+        Match
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/mmu/" class="md-nav__link">
+        Matrix Multiply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/multiply/" class="md-nav__link">
+        Multiply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/not-equal/" class="md-nav__link">
+        Not Equal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/pad/" class="md-nav__link">
+        Pad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/select/" class="md-nav__link">
+        Select
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/set-attribute/" class="md-nav__link">
+        Set Attribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/simple-exec/" class="md-nav__link">
+        Simple Exec
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/signal/" class="md-nav__link">
+        Signal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/subtract/" class="md-nav__link">
+        Subtract
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/take/" class="md-nav__link">
+        Take
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/tok/" class="md-nav__link">
+        Tok
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/update/" class="md-nav__link">
+        Update
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/vector-conditional/" class="md-nav__link">
+        Vector Conditional
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_7" id="__nav_2_4_7_label" tabindex="0">
+          Control constructs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          Control constructs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/cond/" class="md-nav__link">
+        Cond
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/do/" class="md-nav__link">
+        do
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/if/" class="md-nav__link">
+        if
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/while/" class="md-nav__link">
+        while
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_8" id="__nav_2_4_8_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/doth/" class="md-nav__link">
+        .h (markup)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/dotj/" class="md-nav__link">
+        .j (JSON)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/dotm/" class="md-nav__link">
+        .m (modules)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/dotq/" class="md-nav__link">
+        .Q (utils)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/dotz/" class="md-nav__link">
+        .z (env, callbacks)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/application/" class="md-nav__link">
+        Application
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/atomic/" class="md-nav__link">
+        Atomic functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/comparison/" class="md-nav__link">
+        Comparison
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/conformable/" class="md-nav__link">
+        Conformability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/handles/" class="md-nav__link">
+        Connection handles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/cmdline/" class="md-nav__link">
+        Command-line options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/datatypes/" class="md-nav__link">
+        Datatypes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/dictsandtables/" class="md-nav__link">
+        Dictionaries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/enumerations/" class="md-nav__link">
+        Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/control/" class="md-nav__link">
+        Evaluation control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/exposed-infrastructure/" class="md-nav__link">
+        Exposed infrastructure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/files/" class="md-nav__link">
+        File system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/function-notation/" class="md-nav__link">
+        Function notation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/internal/" class="md-nav__link">
+        Internal functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/joins/" class="md-nav__link">
+        Joins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/math/" class="md-nav__link">
+        Mathematics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/metadata/" class="md-nav__link">
+        Metadata
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/namespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/pattern/" class="md-nav__link">
+        Pattern matching
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/parsetrees/" class="md-nav__link">
+        Parse trees
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_30" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_30" id="__nav_2_4_30_label" tabindex="0">
+          qSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_30_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_30">
+          <span class="md-nav__icon md-icon"></span>
+          qSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/qsql/" class="md-nav__link">
+        qSQL queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/funsql/" class="md-nav__link">
+        Functional qSQL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/regex/" class="md-nav__link">
+        Regular Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/syntax/" class="md-nav__link">
+        Syntax
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/syscmds/" class="md-nav__link">
+        System commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/faq/" class="md-nav__link">
+        Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/variadic/" class="md-nav__link">
+        Variadic syntax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/" class="md-nav__link">
+        Tables in the filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
+          Populating tables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Populating tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/loading-from-large-files/" class="md-nav__link">
+        Loading from large files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foreign-keys/" class="md-nav__link">
+        Foreign keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/linking-columns/" class="md-nav__link">
+        Linking columns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-loaders/" class="md-nav__link">
+        Data loaders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/mdb-odbc/" class="md-nav__link">
+        From MDB via ODBC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+          Persisting tables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Persisting tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/object/" class="md-nav__link">
+        Serializing an object
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/splayed-tables/" class="md-nav__link">
+        Splayed tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/partition/" class="md-nav__link">
+        Partitioned tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/segment/" class="md-nav__link">
+        Segmented databases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi-partitioned-dbs/" class="md-nav__link">
+        Multiple partitions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_4" id="__nav_2_5_4_label" tabindex="0">
+          Maintenance
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Maintenance
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-management/" class="md-nav__link">
+        Data management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/dare/" class="md-nav__link">
+        Data-At-Rest Encryption
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_4_3" id="__nav_2_5_4_3_label" tabindex="0">
+          Compression
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_5_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Compression
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/file-compression/" class="md-nav__link">
+        File compression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compress/" class="md-nav__link">
+        Compression examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/compression/fsicasestudy/" class="md-nav__link">
+        FSI case study
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../permissions/" class="md-nav__link">
+        Permissions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../columnar-database/" class="md-nav__link">
+        Query optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-scaling/" class="md-nav__link">
+        Query scaling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ts-shrink/" class="md-nav__link">
+        Time-series simplification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/compacting-hdb-sym/" class="md-nav__link">
+        Compacting HDB sym
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../symfiles/" class="md-nav__link">
+        Working with sym files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Developing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Developing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_1" id="__nav_2_6_1_label" tabindex="0">
+          IPC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          IPC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/ipc/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/listening-port/" class="md-nav__link">
+        Listening port
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/deferred-response/" class="md-nav__link">
+        Deferred response
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/callbacks/" class="md-nav__link">
+        Async callbacks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/named-pipes/" class="md-nav__link">
+        Named pipes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/serialization/" class="md-nav__link">
+        Serialization examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socket-sharding/" class="md-nav__link">
+        Socket sharding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/ssl/" class="md-nav__link">
+        SSL/TLS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/http/" class="md-nav__link">
+        HTTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/websockets/" class="md-nav__link">
+        WebSockets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/profiler/" class="md-nav__link">
+        Code profiler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/debug/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/man/" class="md-nav__link">
+        man.q
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/unit-tests/" class="md-nav__link">
+        Unit tests
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/using-dotz/" class="md-nav__link">
+        Monitor & control execution
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+          Coding
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Coding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/geospatial/" class="md-nav__link">
+        Geospatial indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/lp/" class="md-nav__link">
+        Linear programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/mt-primitives/" class="md-nav__link">
+        Multithreaded primitives
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/pivoting-tables/" class="md-nav__link">
+        Pivoting tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/precision/" class="md-nav__link">
+        Precision
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/programming-examples/" class="md-nav__link">
+        Programming examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/programming-idioms/" class="md-nav__link">
+        Programming idioms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/temporal-data/" class="md-nav__link">
+        Temporal data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/timezones/" class="md-nav__link">
+        Timezones
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/unicode/" class="md-nav__link">
+        Unicode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_4" id="__nav_2_6_4_label" tabindex="0">
+          DevOps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          DevOps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/cpu-affinity/" class="md-nav__link">
+        CPU affinity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/daemon/" class="md-nav__link">
+        Daemon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/firewalling/" class="md-nav__link">
+        Firewalling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/inetd/" class="md-nav__link">
+        inetd, xinetd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/linux-production/" class="md-nav__link">
+        Linux production notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/filesystemTestByNano/" class="md-nav__link">
+        File system comparison
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/logging/" class="md-nav__link">
+        Log Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi-thread/" class="md-nav__link">
+        Multi-threading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/versions/" class="md-nav__link">
+        Multiple versions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/peach/" class="md-nav__link">
+        Parallel processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/performance-tips/" class="md-nav__link">
+        Performance tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/shebang/" class="md-nav__link">
+        Shebang script
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../surveillance-latency/" class="md-nav__link">
+        Surveillance latency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/windows-service/" class="md-nav__link">
+        Windows service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_5" id="__nav_2_6_5_label" tabindex="0">
+          Release notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Release notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/" class="md-nav__link">
+        History
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn4.1/" class="md-nav__link">
+        Changes in 4.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn4.0/" class="md-nav__link">
+        Changes in 4.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn3.6/" class="md-nav__link">
+        Changes in 3.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn3.5/" class="md-nav__link">
+        Changes in 3.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn3.4/" class="md-nav__link">
+        Changes in 3.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn3.3/" class="md-nav__link">
+        Changes in 3.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn3.2/" class="md-nav__link">
+        Changes in 3.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn3.1/" class="md-nav__link">
+        Changes in 3.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn3.0/" class="md-nav__link">
+        Changes in 3.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn2.8/" class="md-nav__link">
+        Changes in 2.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn2.7/" class="md-nav__link">
+        Changes in 2.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn2.6/" class="md-nav__link">
+        Changes in 2.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn2.5/" class="md-nav__link">
+        Changes in 2.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/ChangesIn2.4/" class="md-nav__link">
+        Changes in 2.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/withdrawn/" class="md-nav__link">
+        Withdrawn
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devtools/" class="md-nav__link">
+        Developer tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/faq-listbox/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Streaming
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Streaming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1" id="__nav_2_7_1_label" tabindex="0">
+          General architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          General architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_1_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1_2" id="__nav_2_7_1_2_label" tabindex="0">
+          kdb+tick
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_7_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          kdb+tick
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/tickq/" class="md-nav__link">
+        Tickerplant (tick.q)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/uq/" class="md-nav__link">
+        Tickerplant pub/sub (u.q)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/rq/" class="md-nav__link">
+        RDB (r.q)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/kdb-tick/" class="md-nav__link">
+        Alternative architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-recovery/" class="md-nav__link">
+        TP Log (data recovery)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rt-tick/" class="md-nav__link">
+        RTEs (real-time engines)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gateway-design/" class="md-nav__link">
+        Gateway design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-routing/" class="md-nav__link">
+        Query routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/load-balancing/" class="md-nav__link">
+        Load balancing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tick-profiling/" class="md-nav__link">
+        Profiling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disaster-recovery/" class="md-nav__link">
+        Disaster recovery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://youtu.be/jqtkkCqBvr4" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../order-book/" class="md-nav__link">
+        Order Book
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/alternative-in-memory-layouts/" class="md-nav__link">
+        Alternative in-memory layouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/corporate-actions/" class="md-nav__link">
+        Corporate actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_14" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_14" id="__nav_2_7_14_label" tabindex="0">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_14_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_7_14">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-interface/" class="md-nav__link">
+        Distributed systems
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RDB intraday writedown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        RDB intraday writedown
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#standard-tick-setup" class="md-nav__link">
+    Standard tick setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wq" class="md-nav__link">
+    w.q
+  </a>
+  
+    <nav class="md-nav" aria-label="w.q">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handling-real-time-updates" class="md-nav__link">
+    Handling real-time updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-of-day-processing" class="md-nav__link">
+    End-of-day processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-of-wq" class="md-nav__link">
+    Limitations of w.q
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations of w.q">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downtime" class="md-nav__link">
+    Downtime
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    Performance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intraday-write-with-partitioned-temporary-directory" class="md-nav__link">
+    Intraday write with partitioned temporary directory
+  </a>
+  
+    <nav class="md-nav" aria-label="Intraday write with partitioned temporary directory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#querying-partitioned-writedown" class="md-nav__link">
+    Querying partitioned writedown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-of-wq-and-partitioned-writedown" class="md-nav__link">
+    Comparison of w.q and partitioned writedown
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison of w.q and partitioned writedown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#end-of-day-speed" class="md-nav__link">
+    End-of-day speed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-speed" class="md-nav__link">
+    Query speed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#author" class="md-nav__link">
+    Author
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8_1" id="__nav_2_8_1_label" tabindex="0">
+          Languages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Languages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8_1_1" id="__nav_2_8_1_1_label" tabindex="0">
+          C/C++
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_8_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          C/C++
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/c-client-for-q/" class="md-nav__link">
+        Quick guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/capiref/" class="md-nav__link">
+        API reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capi/" class="md-nav__link">
+        C API for kdb+
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/using-c-functions/" class="md-nav__link">
+        Extending q with C/C++
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kb/server-calling-client/" class="md-nav__link">
+        Async callbacks (C client)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/csharp/" class="md-nav__link">
+        C#
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/ffi/" class="md-nav__link">
+        Foreign Function Interface (FFI)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/java/" class="md-nav__link">
+        Java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/r/" class="md-nav__link">
+        R
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/rust/" class="md-nav__link">
+        Rust
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/scala-client-for-q/" class="md-nav__link">
+        Scala
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/" class="md-nav__link">
+        KX libraries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/q-client-for-bloomberg/" class="md-nav__link">
+        Bloomberg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/excel-client-for-q/" class="md-nav__link">
+        Excel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fix-messaging/" class="md-nav__link">
+        FIX messaging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/gpus/" class="md-nav__link">
+        GPUs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/matlab-client-for-q/" class="md-nav__link">
+        Matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8_8" id="__nav_2_8_8_label" tabindex="0">
+          ODBC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8_8">
+          <span class="md-nav__icon md-icon"></span>
+          ODBC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/q-client-for-odbc/" class="md-nav__link">
+        ODBC client
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/q-server-for-odbc3/" class="md-nav__link">
+        ODBC3 server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-visualization/" class="md-nav__link">
+        ODBC3 and Tableau
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solace/" class="md-nav__link">
+        Solace pub/sub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../github/" class="md-nav__link">
+        Open source
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/" class="md-nav__link">
+        Machine learning
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+          Using kdb+ in the cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Using kdb+ in the cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_2" id="__nav_2_9_2_label" tabindex="0">
+          Amazon Web Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_2">
+          <span class="md-nav__icon md-icon"></span>
+          Amazon Web Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/aws/" class="md-nav__link">
+        Reference architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_2_2" id="__nav_2_9_2_2_label" tabindex="0">
+          Amazon EC2 & Storage Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_9_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Amazon EC2 & Storage Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/aws/migration/" class="md-nav__link">
+        Migrating a kdb+ HDB to Amazon EC2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/aws/app-a-ebs/" class="md-nav__link">
+        Elastic Block Store (EBS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/aws/app-b-efs-nfs/" class="md-nav__link">
+        EFS (NFS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/aws/app-c-asg/" class="md-nav__link">
+        Amazon Storage Gateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/aws/lustre/" class="md-nav__link">
+        FSx for Lustre
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/aws-lambda/" class="md-nav__link">
+        AWS Lambda
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_3" id="__nav_2_9_3_label" tabindex="0">
+          Microsoft Azure
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_3">
+          <span class="md-nav__icon md-icon"></span>
+          Microsoft Azure
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/azure/architecture/" class="md-nav__link">
+        Reference architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_4" id="__nav_2_9_4_label" tabindex="0">
+          Google Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Google Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/gcpm/architecture/" class="md-nav__link">
+        Reference architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_5" id="__nav_2_9_5_label" tabindex="0">
+          Auto Scaling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_5">
+          <span class="md-nav__icon md-icon"></span>
+          Auto Scaling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/autoscale/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/autoscale/aws/" class="md-nav__link">
+        Amazon Web Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/autoscale/rdc/" class="md-nav__link">
+        Realtime data cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/autoscale/cost-risk/" class="md-nav__link">
+        Costs and risks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_6" id="__nav_2_9_6_label" tabindex="0">
+          Other file systems
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_6">
+          <span class="md-nav__icon md-icon"></span>
+          Other file systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/otherfs/mapr/" class="md-nav__link">
+        MapR-FS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/otherfs/goofys/" class="md-nav__link">
+        Goofys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/otherfs/s3fs/" class="md-nav__link">
+        S3FS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/otherfs/s3ql/" class="md-nav__link">
+        S3QL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/otherfs/objectivefs/" class="md-nav__link">
+        ObjectiveFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/otherfs/wekaio-matrix/" class="md-nav__link">
+        WekaIO Matrix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/otherfs/quobyte/" class="md-nav__link">
+        Quobyte
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://learninghub.kx.com" class="md-nav__link">
+        Academy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://learninghub.kx.com/forums/forum/kdb" class="md-nav__link">
+        Discussion Forum
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        White papers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/thissite/" class="md-nav__link">
+        About this site
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/insights" class="md-nav__link">
+        kdb Insights SDK
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/insights/enterprise" class="md-nav__link">
+        kdb Insights Enterprise
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/kdbai" class="md-nav__link">
+        KDB.AI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/pykx" class="md-nav__link">
+        PyKX
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/insights/api" class="md-nav__link">
+        APIs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/home/support.html" class="md-nav__link">
+        Help
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#standard-tick-setup" class="md-nav__link">
+    Standard tick setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wq" class="md-nav__link">
+    w.q
+  </a>
+  
+    <nav class="md-nav" aria-label="w.q">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handling-real-time-updates" class="md-nav__link">
+    Handling real-time updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-of-day-processing" class="md-nav__link">
+    End-of-day processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-of-wq" class="md-nav__link">
+    Limitations of w.q
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations of w.q">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downtime" class="md-nav__link">
+    Downtime
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    Performance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intraday-write-with-partitioned-temporary-directory" class="md-nav__link">
+    Intraday write with partitioned temporary directory
+  </a>
+  
+    <nav class="md-nav" aria-label="Intraday write with partitioned temporary directory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#querying-partitioned-writedown" class="md-nav__link">
+    Querying partitioned writedown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-of-wq-and-partitioned-writedown" class="md-nav__link">
+    Comparison of w.q and partitioned writedown
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison of w.q and partitioned writedown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#end-of-day-speed" class="md-nav__link">
+    End-of-day speed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-speed" class="md-nav__link">
+    Query speed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#author" class="md-nav__link">
+    Author
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="rdb-intraday-writedown-solutions">RDB Intraday writedown solutions<a class="headerlink" href="#rdb-intraday-writedown-solutions" title="Permanent link">&para;</a></h1>
+<p class="wp-author">by <a href="#author">Colm McCarthy</a></p>
+<p>With data volumes in the financial-services sector continuing to grow at exponential rates, kdb+ is the data-storage technology of choice for many financial institutions due to its efficiency in storing and retrieving large volumes of data. kdb+ is uniquely equipped to deal with these growing data volumes as it is extremely scalable and can deal with increasing data volumes with ease. </p>
+<p>As volumes grow the amount of data that an RDB can keep in memory may eventually be limited by the RAM available on the server. </p>
+<p>There exist two types of solution to this problem.</p>
+<ol>
+<li>The easiest and most obvious is the hardware solution which would involve increasing the RAM available or to scale across multiple machines, splitting the data up across servers by region, table or symbol.</li>
+<li>The second solution â the software solution â continues to use a server which has inadequate RAM to store a whole dayâs data. In this solution, the reliance on RAM is reduced by periodically writing the data to disk and then purging it from memory. This intraday write to disk allows a full dayâs worth of data to be contained on a single server. This is not the ideal setup for kdb+ and as such will come with some penalties attached.</li>
+</ol>
+<p>This paper discusses various software approaches to performing intraday writedowns in kdb+, which help overcome memory limitations.</p>
+<h2 id="standard-tick-setup">Standard tick setup<a class="headerlink" href="#standard-tick-setup" title="Permanent link">&para;</a></h2>
+<p>A common kdb+ <a href="../../architecture/">vanilla tick setup</a>, has a tickerplant (TP) receiving data and then logs it to disk, whilst publishing to an in-memory realtime database (RDB), which keeps all of the current dayâs data in memory. At the end of the day, the RDB commits this data to disk in a separate historical database (HDB) that stores all of this historical data. This means that the most recent data (and often most important) always has the fastest access time as it is stored in RAM.</p>
+<p>The standard approach above can be limited by available RAM if daily data volumes grow too large. It is important to realize also that extra RAM is required to query the data, on top of what is required to keep it in memory. The extra amount required will vary depending on the different use cases and queries that are run on it. Consideration must also be given to other processes such as chained RDBs or HDBs which will need to share the resources on the server.</p>
+<p>One solution is to write down some of the data from the RDB to a temporary directory on disk at different points throughout the day and then delete the data from memory, thus freeing up RAM. Various methods to achieve this will be discussed. </p>
+<h2 id="wq"><code>w.q</code><a class="headerlink" href="#wq" title="Permanent link">&para;</a></h2>
+<p><code>w.q</code> is available from <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span><a href="https://github.com/simongarland/tick/blob/master/w.q">simongarland/tick/w.q</a></p>
+<p><code>w.q</code> is an RDB, an alternative solution from the standard <a href="../../architecture/rq/"><code>r.q</code></a> RDB script. A <a href="../../kb/kdb-tick/#write-only-rdb">write-only RDB</a> script (<code>w.q</code>) can easily be modified to work with any standard kdb+ setup.</p>
+<h3 id="handling-real-time-updates">Handling real-time updates<a class="headerlink" href="#handling-real-time-updates" title="Permanent link">&para;</a></h3>
+<p>In a standard tick setup that uses <code>r.q</code>, the TP is publishing data asynchronously to the RDB and calling a <a href="../../architecture/rq/#upd"><code>upd</code></a> function equivalent to the <a href="../../ref/insert/"><code>insert</code></a> function. </p>
+<p>The important changes in <code>w.q</code> begin with the callback function <code>upd</code> which no longer simply inserts data into the table.</p>
+<pre class="highlight"><code class="language-q">append:{[t;data]
+  t insert data;
+  if[MAXROWS&lt;count value t;
+    // append enumerated buffer to disk
+    .[` sv TMPSAVE,t,`;();,;.Q.en[`:.]`. t];
+    // clear buffer
+    @[`.;t;0#];
+    ]}
+upd:append</code></pre>
+<p>The new <code>upd</code> function inserts the data into the table, and then if the count has exceeded a pre-configured value â <code>MAXROWS</code> â all data in the table is enumerated and is appended to a splayed table on disk in the <code>TMPSAVE</code> temporary directory. The data is then deleted from the RDB, thus reducing the memory used by the process.</p>
+<h3 id="end-of-day-processing">End-of-day processing<a class="headerlink" href="#end-of-day-processing" title="Permanent link">&para;</a></h3>
+<p>The end-of-day logic is invoked by the TP communicating with the RDB to call <a href="../../architecture/rq/#uend"><code>.u.end</code></a>. In the standard RDB (<code>r.q</code>), this consists of writing the RDB data to a new partition and then deleting all data from the RDB tables.</p>
+<p>At the end of the day all data has been written to disk in splayed tables, in time order. Most HDBs however are partitioned by date and a <a href="../../ref/set-attribute/#grouped-and-parted">parted attribute</a> is applied to the <code>sym</code> column, while also retaining time order within each sym. Therefore the on-disk temporary tables need to be reorganized before they can be added to the HDB as a new date partition.</p>
+<p>In <code>w.q</code>, <code>.u.end</code> is overridden to save any remaining data in the tables to the temporary directory before purging them. The data is then sorted on disk, moved from the temporary directory to a new date partition in the main HDB directory and made available to clients by reloading the HDB.</p>
+<pre class="highlight"><code class="language-q">/ end of day: save, clear, sort on disk, move, hdb reload
+.u.end:{
+  t:tables`.;
+  t@:where 11h=type each t@\:`sym;
+  / append enumerated buffer to disk
+  {.[` sv TMPSAVE,x,`;();,;.Q.en[`:.]`. x]}each t; / clear buffer
+  @[`.;t;0#];
+  / sort on disk by sym and set `p#
+  / {@[`sym xasc` sv TMPSAVE,x,`;`sym;`p#]}each t;
+  {disksort[` sv TMPSAVE,x,`;`sym;`p#]}each t;
+  / move the complete partition to final home, 
+  / use mv instead of built-in r if filesystem whines
+  system"r ",(1_string TMPSAVE)," ",-1_1_string .Q.par[`:.;x;`];
+  / reset TMPSAVE for new day
+  TMPSAVE::getTMPSAVE .z.d;
+  / and notify hdb to reload and pick up new partition
+  if[h:@[hopen;`$":",.u.x 1;0];h"\\l .";hclose h]; }</code></pre>
+<p>Instead of using <a href="../../ref/asc/#xasc"><code>xasc</code></a> to sort the table, the script implements an optimized function for sorting tables on disk. This function <code>disksort</code> takes three arguments: </p>
+<ul>
+<li>the handle to the on-disk table</li>
+<li>the column name to part the table by, generally <code>sym</code></li>
+<li>a function to <a href="../../ref/set-attribute/">apply an attribute</a>, e.g. <a href="../../ref/set-attribute/#grouped-and-parted"><code>`p#</code> for parted</a></li>
+</ul>
+<pre class="highlight"><code class="language-q">disksort:{[t;c;a]
+  if[not`s~attr(t:hsym t)c;
+    if[count t;
+      ii:iasc iasc flip c!t c,:();
+      if[not$[(0,-1+count ii)~(first;last)@\:ii;@[{`s#x;1b};ii;0b];0b];
+        {v:get y;
+          if[not$[all(fv:first v)~/:256#v;all fv~/:v;0b];
+            v[x]:v;
+            y set v];}[ii] each ` sv't,'get ` sv t,`.d 
+            ] 
+      ];
+  @[t;first c;a]];
+  t}</code></pre>
+<p>The table is not reorganized if the column we are parting the table by is already sorted â it may actually already have a <code>s</code> attribute applied. If the table needs to be sorted, each column is sorted in turn except if all values in a particular column are identical. Rather than check the whole column, initially just the first 256 entries are checked for uniqueness. Finally the <code>p</code> attribute is set on the <code>sym</code> column. To ensure best performance, <code>xasc</code> times should be compared with <code>disksort</code> on each table.</p>
+<p>The <code>w.q</code> script has an additional option to delete the temporary data on exit to handle recovery scenarios. The default behavior is to delete the temporary data and recover from the TP log as it is difficult to locate the point in the TP log which was last committed to disk.</p>
+<h3 id="limitations-of-wq">Limitations of <code>w.q</code><a class="headerlink" href="#limitations-of-wq" title="Permanent link">&para;</a></h3>
+<h4 id="downtime">Downtime<a class="headerlink" href="#downtime" title="Permanent link">&para;</a></h4>
+<p>When rolling the RDB at end of day it is very important to minimize the downtime of the RDB and to have the new date partition available as quickly as possible in the HDB. However, sorting very large tables on disk can add significant delay, no matter which sorting method is used. Table 1 describes the time taken (in seconds) to sort a quote table for increasing numbers of rows. The schema of the quote table is described below:</p>
+<pre class="highlight"><code class="language-q">quote:([]
+  time:`time$();
+  sym:`symbol$();
+  bid:`float$();
+  ask:`float$();
+  bsize:`int$();
+  asize:`int$() )</code></pre>
+<pre class="highlight"><code class="language-txt">Table 1:
+       rows  disksort     xasc
+------------------------------
+    100,000     0.017    0.011
+  1,000,000     0.207    0.125
+ 10,000,000     2.240    1.447
+ 50,000,000    10.778    7.046
+100,000,000    20.102   13.285
+500,000,000   121.485  112.452</code></pre>
+<p>As can be seen, the amount of time taken to sort a simple table like the above is quite large. This may be a serious problem as yesterdayâs data may not be queryable for a significant period each morning.</p>
+<h4 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h4>
+<p>The <code>w.q</code> solution was intended more as an effective method to alleviate RAM problems during data capture than to be a queryable process. Since the most recent data will be in-memory and everything else is splayed on disk, any queries for intraday data will have to be run against both tables and be combined. The query against the on-disk splay with no attributes will have a significant impact on query performance.</p>
+<p>This problem may be somewhat mitigated as the most recent data is of most interest. For example, we could keep the last 5 minutes of data in memory. This could be achieved by amending the <code>append</code> function described above.</p>
+<pre class="highlight"><code class="language-q">append:{[t;data]
+  t insert data;
+  // find if any rows older than 5 mins
+  if[(first t`time) &lt;minT:.z.t-00:05;
+    // append enumerated buffer to disk
+    cnt:count tab:select from t where time&lt;minT;
+    .[` sv TMPSAVE,t,`;();,;.Q.en[`:.] tab];
+    // clear buffer
+    @[`.;t;cnt _] ] }
+upd:append</code></pre>
+<p>However, for a table with many updates, a small number of rows will be written to disk very often making this approach inefficient. A better solution would be to write the data to disk on a timer. The timer could be set to trigger every 5 minutes, meaning that at all times the most recent 5 minutes worth of data in each table is available (up to 10 minutes). This would have a much smaller cost per writedown and operate more like a standard RDB.</p>
+<pre class="highlight"><code class="language-q">upd:insert
+writedown:{[t]
+  // find if any rows older than 5 mins
+  if[(first t`time) &lt;minT:.z.t-00:05;
+    // append enumerated buffer to disk
+    cnt:count tab:select from t where time&lt;minT;
+    .[` sv TMPSAVE,t,`;();,;.Q.en[`:.] tab];
+    // clear buffer
+    @[`.;t;cnt _] ] }
+
+.z.ts:{writedown each tables[]}   // timer function
+system"t 300000"                  // set timer to 5 mins</code></pre>
+<p>Alternatively, instead of keeping between 0 and <code>MAXROWS</code> in memory, we could keep between <code>MINROWS</code> and <code>MAXROWS</code>, thus guaranteeing a certain number of rows at all times in the RDB. Another consideration may be that some tables (perhaps smaller reference tables) may not need to be written down as much or indeed at all. Therefore a method to differentiate between the tables is required.</p>
+<pre class="highlight"><code class="language-q">WRITETBLS:`trade`quote                // tables to write down intra day 
+MAXROWS:30000                         // default max value
+MINROWS:20000                         // default min value
+MAXTBL:(enlist `quote)!enlist 100000  // dict of max values per table 
+MINTBL:(enlist `quote)!enlist 50000   // dict of min values per table
+append:{[t;data]
+  t insert data;
+  if[t in WRITETBLS;                  // if table over its allowable size
+    if[(mx:MAXROWS^MAXTBL[t])&lt;count value t;
+      // append enumerated buffer to disk (specific to table)      
+      .[` sv TMPSAVE,t,`;();,;.Q.en[`:.](cnt:mx-MINROWS^MINTBL[t]) sublist `. t];
+      // clear buffer
+      @[`.;t;cnt _] ] ] }
+upd:append</code></pre>
+<p>Using the above, the <code>quote</code> table would write down in chunks of 50,000 whenever it hit 100,000 rows, thus always having at least 50,000 in memory. The <code>trade</code> table, however, has no specific values set and so it would default back to writing in chunks of 10,000 rows, thus always having 20,000 in memory. Any other table would be unaffected and hold all data in memory until end of day.</p>
+<p>The end-of-day (EOD) function would have to change as some of the tables are not subject to the intraday writedown. These tables can be written straight to the HDB as previously.</p>
+<pre class="highlight"><code class="language-q">.u.end:{
+  t:tables`.;t@:where `g=attr each t@\:`sym;
+  / append enumerated buffer to disk for write tables 
+  {.[` sv TMPSAVE,x,`;();,;.Q.en[`:.]`. x]}each WRITETBLS; 
+  / clear buffer for write tables
+  @[`.;WRITETBLS;0#];
+  / write normal tables down in usual manner
+  {[x;t].Q.dpft[`:.;x;`sym;]each t;@[`.;t;0#]}[x;]each t except WRITETBLS;
+  / special logic to sort and move tmp tables to hdb
+  .u.endWTbls[x;WRITETBLS];
+  / reapply grouped attribute
+  @[;`sym;`g#] each t;
+  / and notify hdb to reload and pick up new partition
+  if[h:@[hopen;`$":",.u.x 1;0];h"\\l .";hclose h] }
+
+/ end of day: save, clear, sort on disk, move
+.u.endWTbls:{[x;t]
+  t@:where 11h=type each t@\:`sym;
+  / sort on disk by sym, set `p# and move
+  {disksort[` sv TMPSAVE,x,`;`sym;`p#]}each t;
+  system"r ",(1_string TMPSAVE)," ",-1_1_string .Q.par[`:.;x;`]; 
+  / reset TMPSAVE for new day
+  TMPSAVE::getTMPSAVE .z.d; }</code></pre>
+<p>Another customization, although beyond the scope of this paper, would be to have a separate process carry out the disksort-and-move for any tables that were written down intraday. This would mean the RDB could very quickly do its end-of-day processing (mostly writing any remaining rows to the temporary directory) and continue to receive data as usual from the TP.</p>
+<p>However, while this significantly reduces downtime for the RDB, the HDB will still not be able to pick up the new partition until the <code>disksort</code> is complete which may take quite some time as detailed earlier.</p>
+<h2 id="intraday-write-with-partitioned-temporary-directory">Intraday write with partitioned temporary directory<a class="headerlink" href="#intraday-write-with-partitioned-temporary-directory" title="Permanent link">&para;</a></h2>
+<p>A partitioned table in kdb+ may be partitioned by one of four separate datatypes, namely date, month, year and int. Date is the most commonly used, however, our solution for intraday writedowns involves partitioning by int. Partitioning by int offers some extra possibilities that can be used to help mitigate some of the problems associated with intraday writedowns. We will also make use of the fact that symbols in an HDB are enumerated against a simple int list.</p>
+<p>Each partition in our intraday writedown directory will store data for a single sym and the partition value will be the enumerated integer value for that sym. If, for example, in your HDBâs symfile the enumerated value of <code>`eurusd</code> is 223, then during the day EURUSD updates that are being written to disk will be appended to the relevant table in the 223 int partition. These entries will be sorted by time as they are being appended and so will have a <code>s</code> attribute on time in the temporary directory.</p>
+<p>The advantage of of this method is that the data in the temporary directory can be queried much more efficiently as it is essentially partitioned by sym and sorted by time. The second processing time-saving is seen at EOD: no sort is required since the data is already divided by sym. Therefore, adding to the HDB reduces from an append-and-sort to a simple append.</p>
+<p>The solution begins by setting the following in the RDB.</p>
+<pre class="highlight"><code class="language-q">// config
+TMPSAVE:`$":/home/local/FD/cmccarthy/wp/tmpPW" 
+HDBDIR:`$":/home/local/FD/cmccarthy/wp/hdb/schema" 
+WRITETBLS:`trade`quote
+MAXROWS:2000; MINROWS:1000
+MAXTBL:MINTBL:(0#`)!0#0N
+MAXTBL[`quote]:100000; MINTBL[`quote]:0
+MAXTBLSYM:MINTBLSYM:enlist[`]!enlist(0#`)!0#0N
+MAXTBLSYM[`quote;`eurusd]:100000; MINTBLSYM[`quote;`eurusd]:0
+
+// number of rows to write to disk by table by sym 
+minrows:{[t;s]MINROWS^MINTBL[t]^MINTBLSYM[t;s]} 
+maxrows:{[t;s]MAXROWS^MAXTBL[t]^MAXTBLSYM[t;s]} 
+writecount:{[t;s]maxrows[t;s]-minrows[t;s]}
+
+// time of last record saved to TMPSAVE by table and sym 
+LASTTIME:enlist[`]!enlist(0#`)!0#0Nt</code></pre>
+<p>Initially, the location of the HDB and temporary intraday DB are set, and the tables that need to be written down intraday are defined, as well as the minimum and maximum number of rows to keep in memory. This configuration is similar to some of the customizations described in previously for <code>w.q</code>, but slightly more granular in that it allows values to be set for each table and for each sym within that table. This is done using a dictionary of dictionaries, which can be easily indexed.</p>
+<pre class="highlight"><code class="language-q">q)MAXTBLSYM:MINTBLSYM:enlist[`]!enlist(0#`)!0#0N
+q)MAXTBLSYM[`quote;`eurgbp]:75000;MAXTBLSYM[`quote;`eurusd]:100000 
+q)MAXTBLSYM[`trade;`eurgbp]:40000;MAXTBLSYM[`trade;`eurusd]:50000
+
+q)MAXTBLSYM
+     | (`symbol$())!`long$()
+quote| `eurgbp`eurusd!75000 100000
+trade| `eurgbp`eurusd!40000 50000
+
+q)MAXTBLSYM[`trade;`eurgbp]
+40000
+q)MAXTBLSYM[`quote;`eurgbp`eurusd]
+75000 100000</code></pre>
+<p>The <code>minrows</code>, <code>maxrows</code> and <code>writecount</code> functions simply take a table and sym and return the relevant counts. <code>LASTTIME</code> stores the time of the last record for each sym per table that was written to the temporary directory. This may be used later to help speed up some queries.</p>
+<pre class="highlight"><code class="language-q">// store table schemas and column names for all tables
+system "l /home/local/FD/cmccarthy/wp/tick/schema.q" 
+TBLSCHEMAS.:(); TBLCOLS.:()
+{TBLSCHEMAS[x]:0#value x}each tables[]; {TBLCOLS[x]:cols value x}each tables[]
+
+// create structure for tables in the in memory portion of WRITETBLS
+createTblStruct:{(` sv`.mem,x,`)set TBLSCHEMAS x}
+createTblStruct each WRITETBLS
+
+// retrieve sym file from HDB directory
+HDBSYM:` sv HDBDIR,`sym
+sym:@[get;HDBSYM;`symbol$()]
+
+// remove all but an empty 0 directory and symlink to HDB sym file
+clearTmpDir:{[]
+  system"rm -rf ",(1_string TMPSAVE),"/0/*";
+  {system"rm -rf ",x;}each 1_'string` sv'TMPSAVE,'key[TMPSAVE]except`sym`0; }
+
+// run on startup in case TMPSAVE directory is not empty i.e. recovery
+clearTmpDir[]</code></pre>
+<p>The table schema is loaded and the schema of each table is stored in <code>TBLSCHEMAS</code> as they will be needed at EOD. This is also stored in a dictionary of dictionaries. The same method is used to store the column names of each table in <code>TBLCOLS</code>.</p>
+<p>As we are planning on storing the data in the temporary directory divided by sym, it also makes sense to store it in memory divided by sym. This is achieved by creating a tree-like structure which allows us to easily retrieve data for a particular sym in a particular table. The tables are stored in a top level namespace, <code>.mem</code>. Using the <code>quote</code> table from earlier as an example:</p>
+<pre class="highlight"><code class="language-q">q)eurusd:eurgbp:0#quote 
+q)insert[`eurusd;(2#12:10:01.000;2#`eurusd;2#1.0;2#1.1;2#10;2#20)]
+q)insert[`eurgbp;(2#12:10:01.000;2#`eurgbp;2#1.0;2#1.1;2#10;2#20)]
+q).mem[`quote;`eurusd]:eurusd
+q).mem[`quote;`eurgbp]:eurgbp
+
+q).mem.quote
+      | +`time`sym`bid`ask`bsize`asize!(`time$();`symbol$();`float...
+eurusd| +`time`sym`bid`ask`bsize`asize!(12:10:01.000 12:10:01.000;... 
+eurgbp| +`time`sym`bid`ask`bsize`asize!(12:10:01.000 12:10:01.000;...
+
+q).mem[`quote;`eurgbp]
+time         sym    bid ask bsize asize 
+--------------------------------------- 
+12:10:01.000 eurgbp 1   1.1 10    20 
+12:10:01.000 eurgbp 1   1.1 10    20</code></pre>
+<p>When creating the temporary directory initially, it is advisable to create an empty 0 partition inside it. This is to avoid the case whereby the first sym written down is mistaken by kdb+ to be a year e.g. 2021. By having an empty 0 folder kdb+ recognises the whole directory to be partitioned by integer.</p>
+<p>It is also helpful to create a symlink to the actual HDB symfile rather than attempting to copy it between the two directories. The <code>clearTmpDir</code> function will empty the temporary directory of everything except the symlink and an empty 0 partition. This is run on startup in case there is still data in the temporary directory e.g. in case of running recovery. It is also run at EOD to clear the temporary directory in preparation for the next day.</p>
+<p>This temporary directory will be loaded into kdb+ like a regular HDB. Thus these memory-mapped tables will override the empty tables loaded from the table schema on start up of the RDB. These on-disk tables can then be queried (akin to a HDB). As with <code>w.q</code>, the <code>upd</code> function needs to be overridden to work with this new solution.</p>
+<pre class="highlight"><code class="language-q">// adjusted upd
+upd:{[t;x]
+  $[t in WRITETBLS;
+    // insert data into new table structure
+    [.[` sv `.mem,t;();,';x group x`sym];
+      // append to disk any sym segments over the allowable count
+      writeToTmp[t;;0b]each s 
+        where maxrows[t;s]&lt;=count each .mem[t]s:distinct x`sym;];
+    // if not a WRITETBL then insert as normal 
+    .[insert;(t;x);{}] ]; }</code></pre>
+<p>First, the table is grouped by sym. This function assumes that bulk updates are being received. If it is known that only single rows will be received (i.e. no buffering of data in the TP) then this group is unnecessary and should be removed. Next, for each sym the rows are appended to the relevant table in the <code>.mem</code> dictionary structure.</p>
+<p>After this there is a check, using the <code>maxrows</code> function, to determine if any of the tables for these syms have now exceeded their max allowable rowcount. If they have then this table name and sym name are sent to the <code>writeToTmp</code> function. If the table was not in the <code>WRITETBLS</code> list then it is inserted as normal.</p>
+<pre class="highlight"><code class="language-q">// function to append a table/sym to the temporary directory
+writeToTmp:{[t;s;e]
+  // enumerate against symfile
+  i:sym?(HDBSYM?s);
+  newTbl:not t in key LASTTIME; 
+  newPart:not(`$string i)in key TMPSAVE;
+  // if EOD append full table (else writecount) to int partition
+  cnt:$[e;count .mem[t;s]; writecount[t;s]];
+  (dir:` sv .Q.par[TMPSAVE;i;t],`)upsert .Q.en[HDBDIR] 
+  $[e;.mem[t;s];cnt sublist .mem[t;s]];
+  // apply sort attribute to on disk partition
+  @[dir;`time;`s#];
+  // update LASTTIME with time from last row appended to disk
+  LASTTIME[t;s]:.mem[t;s;`time]cnt-1;
+  // delete the rows that have been written and apply sort attribute
+  .[`.mem;(t;s);cnt _]; .[`.mem;(t;s);@[;`time;`s#]];
+  // if new partition/table then populate all partitions and reload
+  if[newTbl or newPart;.Q.chk[TMPSAVE];system"l ",1_ string TMPSAVE] }</code></pre>
+<p>The <code>writeToTmp</code> function takes three arguments: the table name, symbol name and an end-of-day flag. This end-of-day flag is added because at EOD the tables will need to emptied completely instead of a partial write and purge. This function:</p>
+<ul>
+<li>Enumerates the symbol against the sym file.</li>
+<li>If a new partition or new table is being created, then <code>.Q.chk</code> is run to populate all partitions correctly and the temporary directory is reloaded.</li>
+<li>The number of rows to write is calculated using <code>writecount</code> (or <code>count table</code> if EOD).</li>
+<li>These rows are upserted to the correct table in the temporary directory with a sorted attribute.</li>
+<li><code>LASTTIME</code> stores the time of the last row appended to disk.</li>
+<li>The rows written down are deleted from the RDB and the sorted attribute is reapplied. </li>
+</ul>
+<p>Our logic for EOD processing now becomes:</p>
+<pre class="highlight"><code class="language-q">// modified EOD funct
+.u.end:{[d]
+  // set new path for HDB and date
+  hdbDateDir:` sv HDBDIR,`$string d;
+
+  // writedown for normal tables
+  {[x;t].Q.dpft[HDBDIR;x;`sym;]each t;@[`.;t;:;TBLSCHEMAS t]}[d;]each 
+    tables[] except WRITETBLS;
+
+  // flush yet to be written data to TPMSAVE (with end of day flag)
+  {[t]writeToTmp[t;;1b]each where 0&lt;count each .mem[t];
+  // reset the table to initial schema and reset .mem structure
+  @[`.;t;:;TBLSCHEMAS t];![`.mem;();0b;enlist t];createTblStruct t}each WRITETBLS;
+
+  // append partitioned tables from TMPSAVE into one table in HDB
+  appendHDB[WRITETBLS;hdbDateDir];
+
+  // notify HDB to reload
+  if[h:@[hopen;`$":",.u.x 1;0];h"\\l .";hclose h];
+
+  // clear temp directory
+  clearTmpDir[];
+
+  // reset global LASTTIME
+  LASTTIME::enlist[`]!enlist(0#`)!0#0Nt; }</code></pre>
+<p>The first step of this <code>.u.end</code> is to write down any tables that are not part of the intraday writedown as normal. Next, any data still left in the <code>.mem</code> structure needs to be flushed to the temporary directory with the end-of-day flag.</p>
+<p>At this point, the tables can be emptied, and reset to their initial schema, as can the <code>.mem</code> structure. The <code>appendHDB</code> function is detailed below and moves/appends the temporary directory into a regular HDB partition.</p>
+<p>Similarly to <code>w.q</code>, this step could easily be performed by a separate process, thus freeing up the RDB to continue to receive data for the next day. Finally, the HDB process is notified to reload, the temporary directory is cleared and the <code>LASTTIME</code> variable is reset.</p>
+<p>The EOD move/append logic is divided into four functions/steps:</p>
+<p><code>appendCol</code></p>
+<dl>
+<dt><pre class="highlight"><code class="language-q">// # columns can be omitted (used for list columns including strings)
+appendCol:{[dtDir;tbl;col;colPath]
+  if[not col like"*#";upsert[` sv dtDir,tbl,col;get colPath]] }</code></pre></dt>
+<dd>
+<p>This function appends the data from one column in the temporary directory onto the similarly-named column in that table in the HDB date partition. Any <code>#</code> columns should not be moved as these will be generated automatically in the HDB partition. (<code>#</code> columns are used to store the lengths of each row for a list column.)</p>
+</dd>
+</dl>
+<p><code>appendPart</code></p>
+<dl>
+<dt><pre class="highlight"><code class="language-q">// append one temp partition table to HDB
+appendPart:{[dtDir;tbl;tblPart] 
+  colz:key[tblPart]except`.d;colzPaths:` sv'tblPart,'colz;
+  // write each column to disk
+  appendCol[dtDir;tbl]'[colz;colzPaths]; }</code></pre></dt>
+<dd>
+<p>The <code>appendPart</code> function works on a single table in a partition in the temporary directory and determines all the columns present in that table, and their fully qualified paths. <code>appendCol</code> is then invoked for each of these columns.</p>
+</dd>
+</dl>
+<p><code>appendTable</code></p>
+<dl>
+<dt><pre class="highlight"><code class="language-q">// append each temp partition table into one table in hdb
+appendTable:{[dtDir;tbl;parts]
+  tblParts:{[tbl;part]` sv TMPSAVE,part,tbl}[tbl]each parts;
+  appendPart[dtDir;tbl;]each tblParts;
+  // create .d file with sym before time as normal for hdb
+  @[hdb:` sv dtDir,tbl,`; `.d; :;
+    `sym`time,get[` sv (first tblParts),`.d]except`time`sym ]; }</code></pre></dt>
+<dd>
+<p>For one table, this works out the fully-qualified path of that table in each partition in the temporary directory and sends each of them to the <code>appendPart</code> function, which appends all theses table into one in the HDB date partition. Finally, a new <code>.d</code> file is created in the HDB partition as generally the order of the <code>sym</code> and <code>time</code> columns are switched compared to the RDB.</p>
+</dd>
+</dl>
+<p><code>appendHDB</code></p>
+<dl>
+<dt><pre class="highlight"><code class="language-q">// append all data in TMPSAVE to HDB
+appendHDB:{[tbls;dtDir]
+  parts:key[TMPSAVE]except`sym;
+  appendTable[dtDir;;parts] each key` sv TMPSAVE,first parts; 
+  .Q.chk[HDBDIR]; // ensure all tables present in hdb
+  // apply p# to each table directory
+  {[dir;t]@[` sv dir,t,`;`sym;`p#]}[dtDir] each tbls; }</code></pre></dt>
+<dd>
+<p>This function works out what partitions are present (i.e. 0 20 56 222 etc.) and also what tables. After appending all the tables using <code>appendTable</code>, <code>.Q.chk</code> is performed on the new HDB partition to ensure no table has been missed out (e.g. if a <code>WRITETBLS</code> table received no updates that day). Finally each table in the HDB date partition has a <code>p</code> (parted) attribute applied.</p>
+</dd>
+</dl>
+<h3 id="querying-partitioned-writedown">Querying partitioned writedown<a class="headerlink" href="#querying-partitioned-writedown" title="Permanent link">&para;</a></h3>
+<p>Before the query speeds for the different solutions can be compared, the method for querying the partitioned writedown must be discussed. The data for each table is no longer stored in one in-memory table but divided into a different table for each sym, both on-disk and in-memory. This is far from ideal but is one of the penalties that comes with this solution for dealing with low memory.</p>
+<p>To query the partitioned portion the correct int value of the sym must be used. This is an example of how querying the intraday partition would work:</p>
+<pre class="highlight"><code class="language-q">q)select from quote where int=sym?`eurusd
+int time         sym    bid       ask       bsize asize 
+-------------------------------------------------------
+3   00:00:01.000 eurusd 0.6735184 0.1566519 0     9
+3   00:00:02.000 eurusd 0.4668601 0.3365118 0     1
+...
+
+q)select bid,bidsize from quote where int in sym?`gbpusd`eurusd 
+sym    bid       bsize
+----------------------
+gbpusd 0.2159371 5
+gbpusd 0.6669928 3
+...</code></pre>
+<p>To query the equivalent in-memory portions of the tables. the following should be run:</p>
+<pre class="highlight"><code class="language-q">q)select from .mem[`quote;`eurusd]
+time         sym    bid       ask       bsize asize 
+------------------------------------------------
+16:32:40.946 eurusd 0.6387174 0.2846485 9     7
+16:32:40.947 eurusd 0.704888  0.2335227 4     9
+...
+
+q){[t;s]raze{[t;s]select sym,bid,bsize from .mem[t;s]}[t;]each s}[`quote;`gbpusd`eurusd]
+sym    bid       bsize
+-------------------
+gbpusd 0.6735184 0
+gbpusd 0.4668601 0
+...</code></pre>
+<p>Obviously, we will want to run just one query/function which will do all the selects and joining of different tables and return the desired result.</p>
+<p>Ideally, the query should always limit the results by sym and use as few columns as possible. The general solution is to select the raw columns from both in memory and on disk for each sym and combine them into one table. While Where clauses can be added to the individual selects relatively easily, group-bys or aggregations should be carried out afterwards on the combined dataset. If the aggregations were to be done while performing the selects some sort of map-reduce functionality would be necessary.</p>
+<p>The aim should always be to get the smallest raw dataset possible and then apply aggregations and group-bys. This may mean some large queries would end up pulling in too much data (considering lack of memory was the initial problem) or unnecessarily large amounts of data are returned for relatively simple queries such as first/last. User behavior will have to adjust to take account of some of these limitations.</p>
+<p>One approach would be to implement a general query function which will
+combine results from the on-disk and in-memory datasets. If a particular userâs query is not catered for by this function, a bespoke function would need to be written for that user.</p>
+<p>The following is an example of a query function which combines in-memory data with data from the intraday partition:</p>
+<pre class="highlight"><code class="language-q">// general function for querying WRITETBLS
+genQuery:{[t;s;c;whr;st;et]
+  // t    table name
+  // s    list of syms to return, ` will return all syms
+  // c    columns to return, ` will return all columns
+  // whr  a functional Where clause
+  // st   start of time interval
+  // et   end of time interval
+
+  // treat ` as requesting all syms
+  s:(),$[s~`;key[.mem t]except`;s];
+
+  // treat ` as requesting all cols
+  c:(),$[c~`;TBLCOLS t;c];
+
+  // use time window to narrow down search using within
+  win:enlist(within;`time;(st;et));
+
+  // if start time greater than last time on disk for sym, no disk select required
+  memFlag:st&gt;LASTTIME[t;s];
+
+  // functional select for each sym from rdb/temp and join 
+  // (unenumerating the historic data), also takes Where clause
+  tabs:{[t;c;win;whr;s;memFlag]
+    $[memFlag; ();
+      unEnum delete int from ?[t;(enlist(=;`int;sym?s)),win,whr;0b;c!c]] ,
+        ?[.mem[t;s];win,whr;0b;c!c]}[t;c;win;whr;;]'[s;memFlag];
+  raze tabs }</code></pre>
+<p>The time interval specifies the times that the data requested should be within. This can be very helpful when used in conjunction with <code>LASTTIME</code>, which can tell you whether the desired data for a given sym is completely in-memory, or in-memory and on disk. If it is all in memory then the more expensive disk read can be omitted.</p>
+<p>The actual selects are carried out using the functional format, one sym at a time and the results joined together using <code>raze</code>. It is important to un-enumerate any sym columns from the on disk selection so that when the tables are razed together the tables sym columns will be consistent and type 11 instead of a mix of 11 and 20. This is achieved using the <code>unEnum</code> function:</p>
+<pre class="highlight"><code class="language-q">// unenumerate the sym columns from the HDB
+unEnum:{[tab]
+  {[t;c]$[20=type t[c];@[t;c;:;sym@t[c]];t]}/[tab;cols tab] }</code></pre>
+<p>In the following example, the Where clause is applied to each of the individual selects before the whole result set is combined:</p>
+<pre class="highlight"><code class="language-q">q)genQuery[`quote;`eurusd`gbpusd;`;((&lt;;`bsize;5);(&lt;;`bid;0.5));10:00;23: 59]
+time         sym    bid       ask       bsize asize 
+-------------------------------------------------- 
+10:40:21.210 eurusd 0.2440827 0.8446513 2     7 
+10:40:21.240 eurusd 0.2088232 0.1153054 1     1
+10:40:21.520 eurusd 0.2007019 0.1717345 2     2
+...</code></pre>
+<p>The <code>genQuery</code> function could easily be expanded and refined based on what type of queries are run most often and how they are best optimized. However this function demonstrates the principles of how to query both the in-memory and the partitioned data structure together.</p>
+<h3 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h3>
+<p>This solution, comes with some limitations, namely added complexity in maintaining the data in the RDB and in creating the HDB partition. Also, querying the data is much more complicated as result of the data being stored in a different format in memory and in the temporary directory. However, depending on the use case, the benefits may outweigh the drawbacks.</p>
+<h2 id="comparison-of-wq-and-partitioned-writedown">Comparison of <code>w.q</code> and partitioned writedown<a class="headerlink" href="#comparison-of-wq-and-partitioned-writedown" title="Permanent link">&para;</a></h2>
+<p>Although not exactly like-for-like, an attempt will be made to compare <code>w.q</code> with the partitioned writedown discussed above. This will be done in two areas: end-of-day processing speed and query speed intraday. While <code>w.q</code> was not designed to be queried intraday, it will serve as a useful benchmark for querying the partitioned writedown solution.</p>
+<h3 id="end-of-day-speed">End-of-day speed<a class="headerlink" href="#end-of-day-speed" title="Permanent link">&para;</a></h3>
+<p>This test measures how long it takes for the temporary intraday directory to be converted into a standard HDB date partition. At EOD, <code>w.q</code> must first sort the tables on disk and then move them to the HDB, whereas a simple append is all that is required for the partitioned writedown. This offers significant performance benefits for EOD processing, as seen in Table 2 and Figure 2.</p>
+<p>This test was performed using the earlier <code>quote</code> table with varying numbers of rows.</p>
+<pre class="highlight"><code class="language-txt">Table 2:
+       rows disksort   xasc partWrite
+-------------------------------------
+    100,000   0.017   0.011     0.014
+  1,000,000   0.207   0.125     0.091
+ 10,000,000   2.240   1.447     0.826
+ 50,000,000  10.778   7.046     4.363
+100,000,000  20.102  13.285     8.844
+500,000,000 121.485 112.452    71.658</code></pre>
+<p><img alt="Figure 2: Time to convert to HDB" src="img/figure02.png" />
+<small><em>Figure 2: Time to convert to HDB</em></small></p>
+<p>As can be seen, using the partitioned write offers between 40-60%
+speedup on the end of day processing compared to <code>w.q</code>.</p>
+<h3 id="query-speed">Query speed<a class="headerlink" href="#query-speed" title="Permanent link">&para;</a></h3>
+<p>To compare the query speeds between <code>w.q</code> and the partitioned writedown we must compare how long it takes to select data from the respective temporary directories, keeping in mind that <code>w.q</code> stores the data as a single splayed table for each table.</p>
+<p>To demonstrate, four different queries were run on a quote table as
+defined in <a href="#limitations-of-wq"><em>Limitations of w.q</em></a> above, with 100 million rows and 10 distinct syms and the time measured in milli-seconds:</p>
+<table>
+<thead>
+<tr>
+<th>query</th>
+<th>solution</th>
+<th>syntax</th>
+<th align="right">time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All cols, one sym</td>
+<td>w.q</td>
+<td><code>select from quote where sym=`eurusd</code></td>
+<td align="right">2491</td>
+</tr>
+<tr>
+<td>All cols, 3 syms</td>
+<td>w.q</td>
+<td><code>select from quote where sym in `eurusd`eurgbp`gbpusd</code></td>
+<td align="right">7128</td>
+</tr>
+<tr>
+<td>3 cols, 1 sym</td>
+<td>w.q</td>
+<td><code>select time,bid,bsize from quote where sym=`eurusd</code></td>
+<td align="right">1750</td>
+</tr>
+<tr>
+<td>3 cols, 3 syms</td>
+<td>w.q</td>
+<td><code>select time,bid,bsize from quote where sym in `eurusd`eurgbp`gbpusd</code></td>
+<td align="right">2990</td>
+</tr>
+<tr>
+<td>All cols, one sym</td>
+<td>partWrite.q</td>
+<td><code>select from quote where int=sym?`eurusd</code></td>
+<td align="right">312</td>
+</tr>
+<tr>
+<td>All cols, 3 syms</td>
+<td>partWrite.q</td>
+<td><code>select from quote where int in sym?`eurusd`eurgbp`gbpusd</code></td>
+<td align="right">982</td>
+</tr>
+<tr>
+<td>3 cols, 1 sym</td>
+<td>partWrite.q</td>
+<td><code>select time,bid,bsize from quote where int=sym?`eurusd</code></td>
+<td align="right">209</td>
+</tr>
+<tr>
+<td>3 cols, 3 syms</td>
+<td>partWrite.q</td>
+<td><code>select time,bid,bsize from quote where int in sym?`eurusd`eurgbp`gbpusd</code></td>
+<td align="right">382</td>
+</tr>
+</tbody>
+</table>
+<p><small><em>Table 3</em></small></p>
+<p><img alt="Figure 3: Query speeds for on-disk data" src="img/figure03.png" /><br />
+<small><em>Figure 3: Query speeds for on-disk data</em></small></p>
+<p>As can be seen in Table 3 and Figure 3, the speed-up in query times is substantial and thus may be worth the more complex storage and querying method.</p>
+<h2 id="author">Author<a class="headerlink" href="#author" title="Permanent link">&para;</a></h2>
+<p><strong>Colm McCarthy</strong> is a senior kdb+ consultant who has worked for leading investment banks across a number of different asset classes.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.fdtechnologies.com/">FD Technologies plc</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tabs.link", "content.code.copy", "header.autohide", "navigation.tabs", "navigation.top"], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../local/scripts/prism.js"></script>
+        
+      
+        
+          <script src="../../local/scripts/jquery-3.6.0.min.js"></script>
+        
+      
+        
+          <script src="../../local/scripts/extra.js"></script>
+        
+      
+        
+          <script src="../../local/scripts/mathjax.js"></script>
+        
+      
+        
+          <script src="../../local/scripts/polyfill.min.js"></script>
+        
+      
+        
+          <script src="../../local/scripts/tex-mml-chtml.js"></script>
+        
+      
+        
+          <script src="../../scripts/strip-repl-prompts.js"></script>
+        
+      
+    
+  </body>
+</html>

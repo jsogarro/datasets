@@ -1,0 +1,1491 @@
+Skip to content 
+
+[ ![logo](../../local/img/kx.svg) ](https://code.kx.com/ "code.kx.com")
+
+kdb+ and q documentation 
+
+Permissions with kdb+ | q and kdb+ documentation 
+
+Initializing search 
+
+
+
+
+ Ask a question
+
+  * [ Home ](https://code.kx.com/home)
+  * [ kdb+ and q ](../..)
+  * [ kdb Insights SDK ](https://code.kx.com/insights)
+  * [ kdb Insights Enterprise ](https://code.kx.com/insights/enterprise)
+  * [ KDB.AI ](https://code.kx.com/kdbai)
+  * [ PyKX ](https://code.kx.com/pykx)
+  * [ APIs ](https://code.kx.com/insights/api)
+  * [ Help ](https://code.kx.com/home/support.html)
+
+
+
+[ ![logo](../../local/img/kx.svg) ](../.. "kdb+ and q documentation") kdb+ and q documentation 
+
+  * [ Home ](https://code.kx.com/home)
+  * kdb+ and q  kdb+ and q 
+    * [ About ](../..)
+    * Getting Started  Getting Started 
+      * [ Install ](../../learn/install/)
+      * [ Licenses ](../../learn/licensing/)
+    * Learn  Learn 
+      * [ Overview ](../../learn/)
+      * Mountain tour  Mountain tour 
+        * [ Overview ](../../learn/tour/overview/)
+        * [ Begin here ](../../learn/tour/)
+        * [ The q session ](../../learn/tour/session/)
+        * [ Tables ](../../learn/tour/tables/)
+        * [ CSVs ](../../learn/tour/csvs/)
+        * [ Datatypes ](../../learn/tour/datatypes/)
+        * [ Scripts ](../../learn/tour/scripts/)
+        * [ IDE ](../../learn/tour/ide/)
+      * [ Q for quants ](../../learn/brief-introduction/)
+      * [ Q by Examples ](../../learn/q-by-examples/)
+      * [ Q for All (video) ](../../learn/q-for-all/)
+      * Examples from Python  Examples from Python 
+        * [ Basic ](../../learn/python/examples/)
+        * [ Array ](../../learn/python/examples/array/)
+        * [ List ](../../learn/python/examples/list/)
+        * [ Strings ](../../learn/python/examples/string/)
+        * [ Dictionaries ](../../learn/python/examples/dict/)
+      * [ Q for Mortals 3 ](https://code.kx.com/q4m3/)
+      * Q by Puzzles  Q by Puzzles 
+        * [ About ](../../learn/pb/)
+        * [ 12 Days of Xmas ](../../learn/pb/xmas-days/)
+        * [ ABC problem ](../../learn/pb/abc-problem/)
+        * [ Abundant odds ](../../learn/pb/abundant-odds/)
+        * [ Four is magic ](../../learn/pb/four-magic/)
+        * [ Name Game ](../../learn/pb/name-game/)
+        * [ Summarize and Say ](../../learn/pb/sum-say/)
+        * [ Word wheel ](../../learn/pb/word-wheel/)
+      * Reading room  Reading room 
+        * [ Information desk ](../../learn/reading/)
+        * [ Boggle ](../../learn/reading/boggle/)
+        * [ Cats cradle ](../../learn/reading/strings/)
+        * [ Fizz buzz ](../../learn/reading/fizzbuzz/)
+        * [ Klondike ](../../learn/reading/klondike/)
+        * [ Phrasebook ](https://code.kx.com/phrases/)
+        * [ Scrabble ](../../learn/reading/scrabble/)
+      * Application examples  Application examples 
+        * [ Astronomy ](../astronomy/)
+        * [ Detecting card counters ](../card-counters/)
+        * [ Corporate actions ](../corporate-actions/)
+        * [ Disaster management ](../disaster-management/)
+        * [ Exoplanets ](../exoplanets/)
+        * [ Market depth ](../market-depth/)
+        * [ Market fragmentation ](../market-fragmentation/)
+        * [ Option pricing ](../option-pricing/)
+        * [ Predicting floods ](../disaster-floods/)
+        * [ Signal processing ](../signal-processing/)
+        * [ Space weather ](../space-weather/)
+        * [ Trading surveillance ](../surveillance/)
+        * [ Transaction-cost analysis ](../transaction-cost/)
+        * [ Trend indicators ](../trend-indicators/)
+      * Advanced q  Advanced q 
+        * [ Remarks on Style ](https://github.com/qbists/style)
+        * [ Shifts & scans ](../../learn/shifts-scans/)
+        * [ Technical articles ](../../learn/blogs/)
+        * [ Views ](../../learn/views/)
+        * [ Origins ](../../learn/archive/)
+        * [ Terminology ](../../about/terminology/)
+      * Starting kdb+  Starting kdb+ 
+        * [ Overview ](../../learn/startingkdb/)
+        * [ The q language ](../../learn/startingkdb/language/)
+        * [ IPC ](../../learn/startingkdb/ipc/)
+        * [ Tables ](../../learn/startingkdb/tables/)
+        * [ Historical database ](../../learn/startingkdb/hdb/)
+        * [ Realtime database ](../../learn/startingkdb/tick/)
+    * Language  Language 
+      * [ Reference card ](../../ref/)
+      * [ By topic ](../../basics/by-topic/)
+      * Iteration  Iteration 
+        * [ Overview ](../../basics/iteration/)
+        * [ Implicit iteration ](../../basics/implicit-iteration/)
+        * [ Iterators ](../../ref/iterators/)
+        * [ Maps ](../../ref/maps/)
+        * [ Accumulators ](../../ref/accumulators/)
+        * [ Guide to iterators ](../iterators/)
+      * Keywords  Keywords 
+        * [ abs ](../../ref/abs/)
+        * [ aj, aj0, ajf, ajf0 ](../../ref/aj/)
+        * [ all, any ](../../ref/all-any/)
+        * [ and ](../../ref/and/)
+        * [ asc, iasc, xasc ](../../ref/asc/)
+        * [ asof ](../../ref/asof/)
+        * [ attr ](../../ref/attr/)
+        * [ avg, avgs, mavg, wavg ](../../ref/avg/)
+        * [ bin, binr ](../../ref/bin/)
+        * [ ceiling ](../../ref/ceiling/)
+        * [ count, mcount ](../../ref/count/)
+        * [ cols, xcol, xcols ](../../ref/cols/)
+        * [ cor ](../../ref/cor/)
+        * [ cos, acos ](../../ref/cos/)
+        * [ cov, scov ](../../ref/cov/)
+        * [ cross ](../../ref/cross/)
+        * [ csv ](../../ref/csv/)
+        * [ cut ](../../ref/cut/)
+        * [ delete ](../../ref/delete/)
+        * [ deltas ](../../ref/deltas/)
+        * [ desc, idesc, xdesc ](../../ref/desc/)
+        * [ dev, mdev, sdev ](../../ref/dev/)
+        * [ differ ](../../ref/differ/)
+        * [ distinct ](../../ref/distinct/)
+        * [ div ](../../ref/div/)
+        * [ dsave ](../../ref/dsave/)
+        * [ each, peach ](../../ref/each/)
+        * [ ej ](../../ref/ej/)
+        * [ ema ](../../ref/ema/)
+        * [ enlist ](../../ref/enlist/)
+        * [ eval, reval ](../../ref/eval/)
+        * [ except ](../../ref/except/)
+        * [ exec ](../../ref/exec/)
+        * [ exit ](../../ref/exit/)
+        * [ exp, xexp ](../../ref/exp/)
+        * [ fby ](../../ref/fby/)
+        * [ fills ](../../ref/fill/)
+        * [ first, last ](../../ref/first/)
+        * [ fkeys ](../../ref/fkeys/)
+        * [ flip ](../../ref/flip/)
+        * [ floor ](../../ref/floor/)
+        * [ get, set ](../../ref/get/)
+        * [ getenv, setenv ](../../ref/getenv/)
+        * [ group ](../../ref/group/)
+        * [ gtime, ltime ](../../ref/gtime/)
+        * [ hcount ](../../ref/hcount/)
+        * [ hdel ](../../ref/hdel/)
+        * [ hopen, hclose ](../../ref/hopen/)
+        * [ hsym ](../../ref/hsym/)
+        * [ ij, ijf ](../../ref/ij/)
+        * [ in ](../../ref/in/)
+        * [ insert ](../../ref/insert/)
+        * [ inter ](../../ref/inter/)
+        * [ inv ](../../ref/inv/)
+        * [ key ](../../ref/key/)
+        * [ keys, xkey ](../../ref/keys/)
+        * [ like ](../../ref/like/)
+        * [ lj, ljf ](../../ref/lj/)
+        * [ load, rload ](../../ref/load/)
+        * [ log, xlog ](../../ref/log/)
+        * [ lower, upper ](../../ref/lower/)
+        * [ lsq ](../../ref/lsq/)
+        * [ max, maxs, mmax ](../../ref/max/)
+        * [ md5 ](../../ref/md5/)
+        * [ med ](../../ref/med/)
+        * [ meta ](../../ref/meta/)
+        * [ min, mins, mmin ](../../ref/min/)
+        * [ mmu ](../../ref/mmu/)
+        * [ mod ](../../ref/mod/)
+        * [ neg ](../../ref/neg/)
+        * [ next, prev, xprev ](../../ref/next/)
+        * [ not ](../../ref/not/)
+        * [ null ](../../ref/null/)
+        * [ or ](../../ref/or/)
+        * [ over, scan ](../../ref/over/)
+        * [ parse ](../../ref/parse/)
+        * [ pj ](../../ref/pj/)
+        * [ prd, prds ](../../ref/prd/)
+        * [ prior ](../../ref/prior/)
+        * [ rand ](../../ref/rand/)
+        * [ rank ](../../ref/rank/)
+        * [ ratios ](../../ref/ratios/)
+        * [ raze ](../../ref/raze/)
+        * [ read0 ](../../ref/read0/)
+        * [ read1 ](../../ref/read1/)
+        * [ reciprocal ](../../ref/reciprocal/)
+        * [ reverse ](../../ref/reverse/)
+        * [ rotate ](../../ref/rotate/)
+        * [ save, rsave ](../../ref/save/)
+        * [ select ](../../ref/select/)
+        * [ show ](../../ref/show/)
+        * [ signum ](../../ref/signum/)
+        * [ sin, asin ](../../ref/sin/)
+        * [ sqrt ](../../ref/sqrt/)
+        * [ ss, ssr ](../../ref/ss/)
+        * [ string ](../../ref/string/)
+        * [ sublist ](../../ref/sublist/)
+        * [ sum, sums, msum, wsum ](../../ref/sum/)
+        * [ sv ](../../ref/sv/)
+        * [ system ](../../ref/system/)
+        * [ tables ](../../ref/tables/)
+        * [ tan, atan ](../../ref/tan/)
+        * [ til ](../../ref/til/)
+        * [ trim, ltrim, rtrim ](../../ref/trim/)
+        * [ type ](../../ref/type/)
+        * [ uj, ujf ](../../ref/uj/)
+        * [ union ](../../ref/union/)
+        * [ ungroup ](../../ref/ungroup/)
+        * [ update ](../../ref/update/)
+        * [ upsert ](../../ref/upsert/)
+        * [ value ](../../ref/value/)
+        * [ var, svar ](../../ref/var/)
+        * [ view, views ](../../ref/view/)
+        * [ vs ](../../ref/vs/)
+        * [ where ](../../ref/where/)
+        * [ within ](../../ref/within/)
+        * [ wj, wj1 ](../../ref/wj/)
+        * [ xbar ](../../ref/xbar/)
+        * [ xgroup ](../../ref/xgroup/)
+        * [ xrank ](../../ref/xrank/)
+      * [ Overloaded glyphs ](../../ref/overloads/)
+      * Operators  Operators 
+        * [ Add ](../../ref/add/)
+        * [ Amend ](../../ref/amend/)
+        * [ Apply, Index, Trap ](../../ref/apply/)
+        * [ Assign ](../../ref/assign/)
+        * [ Cast ](../../ref/cast/)
+        * [ Coalesce ](../../ref/coalesce/)
+        * [ Compose ](../../ref/compose/)
+        * [ Cut ](../../ref/cut/)
+        * [ Deal, Roll, Permute ](../../ref/deal/)
+        * [ Delete ](../../ref/delete/)
+        * [ Display ](../../ref/display/)
+        * [ Dict ](../../ref/dict/)
+        * [ Divide ](../../ref/divide/)
+        * [ Dynamic Load ](../../ref/dynamic-load/)
+        * [ Drop ](../../ref/drop/)
+        * [ Enkey, Unkey ](../../ref/enkey/)
+        * [ Enumerate ](../../ref/enumerate/)
+        * [ Enumeration ](../../ref/enumeration/)
+        * [ Enum Extend ](../../ref/enum-extend/)
+        * [ Equal ](../../ref/equal/)
+        * [ Exec ](../../ref/exec/)
+        * [ File Binary ](../../ref/file-binary/)
+        * [ File Text ](../../ref/file-text/)
+        * [ Fill ](../../ref/fill/)
+        * [ Find ](../../ref/find/)
+        * [ Flip Splayed ](../../ref/flip-splayed/)
+        * [ Greater ](../../ref/greater/)
+        * [ Greater Than ](../../ref/greater-than/)
+        * [ Identity, Null ](../../ref/identity/)
+        * [ Join ](../../ref/join/)
+        * [ Less Than ](../../ref/less-than/)
+        * [ Lesser ](../../ref/lesser/)
+        * [ Match ](../../ref/match/)
+        * [ Matrix Multiply ](../../ref/mmu/)
+        * [ Multiply ](../../ref/multiply/)
+        * [ Not Equal ](../../ref/not-equal/)
+        * [ Pad ](../../ref/pad/)
+        * [ Select ](../../ref/select/)
+        * [ Set Attribute ](../../ref/set-attribute/)
+        * [ Simple Exec ](../../ref/simple-exec/)
+        * [ Signal ](../../ref/signal/)
+        * [ Subtract ](../../ref/subtract/)
+        * [ Take ](../../ref/take/)
+        * [ Tok ](../../ref/tok/)
+        * [ Update ](../../ref/update/)
+        * [ Vector Conditional ](../../ref/vector-conditional/)
+      * Control constructs  Control constructs 
+        * [ Cond ](../../ref/cond/)
+        * [ do ](../../ref/do/)
+        * [ if ](../../ref/if/)
+        * [ while ](../../ref/while/)
+      * Namespaces  Namespaces 
+        * [ .h (markup) ](../../ref/doth/)
+        * [ .j (JSON) ](../../ref/dotj/)
+        * [ .m (modules) ](../../ref/dotm/)
+        * [ .Q (utils) ](../../ref/dotq/)
+        * [ .z (env, callbacks) ](../../ref/dotz/)
+      * [ Application ](../../basics/application/)
+      * [ Atomic functions ](../../basics/atomic/)
+      * [ Comparison ](../../basics/comparison/)
+      * [ Conformability ](../../basics/conformable/)
+      * [ Connection handles ](../../basics/handles/)
+      * [ Command-line options ](../../basics/cmdline/)
+      * [ Datatypes ](../../basics/datatypes/)
+      * [ Dictionaries ](../../basics/dictsandtables/)
+      * [ Enumerations ](../../basics/enumerations/)
+      * [ Evaluation control ](../../basics/control/)
+      * [ Exposed infrastructure ](../../basics/exposed-infrastructure/)
+      * [ File system ](../../basics/files/)
+      * [ Function notation ](../../basics/function-notation/)
+      * [ Glossary ](../../basics/glossary/)
+      * [ Internal functions ](../../basics/internal/)
+      * [ Joins ](../../basics/joins/)
+      * [ Mathematics ](../../basics/math/)
+      * [ Metadata ](../../basics/metadata/)
+      * [ Namespaces ](../../basics/namespaces/)
+      * [ Pattern matching ](../../basics/pattern/)
+      * [ Parse trees ](../../basics/parsetrees/)
+      * qSQL  qSQL 
+        * [ qSQL queries ](../../basics/qsql/)
+        * [ Functional qSQL ](../../basics/funsql/)
+      * [ Regular Expressions ](../../basics/regex/)
+      * [ Syntax ](../../basics/syntax/)
+      * [ System commands ](../../basics/syscmds/)
+      * [ Tables ](../../kb/faq/)
+      * [ Variadic syntax ](../../basics/variadic/)
+    * Database  Database 
+      * [ Tables in the filesystem ](../../database/)
+      * Populating tables  Populating tables 
+        * [ Loading from large files ](../../kb/loading-from-large-files/)
+        * [ Foreign keys ](../foreign-keys/)
+        * [ Linking columns ](../../kb/linking-columns/)
+        * [ Data loaders ](../data-loaders/)
+        * [ From MDB via ODBC ](../../database/mdb-odbc/)
+      * Persisting tables  Persisting tables 
+        * [ Serializing an object ](../../database/object/)
+        * [ Splayed tables ](../../kb/splayed-tables/)
+        * [ Partitioned tables ](../../kb/partition/)
+        * [ Segmented databases ](../../database/segment/)
+        * [ Multiple partitions ](../multi-partitioned-dbs/)
+      * Maintenance  Maintenance 
+        * [ Data management ](../data-management/)
+        * [ Data-At-Rest Encryption ](../../kb/dare/)
+        * Compression  Compression 
+          * [ File compression ](../../kb/file-compression/)
+          * [ Compression examples ](../compress/)
+          * [ FSI case study ](../../kb/compression/fsicasestudy/)
+        * Permissions  [ Permissions ](./) On this page 
+          * Restricting access to a kdb+ server 
+            * âu command-line option 
+            * .z.pw 
+          * User classes 
+            * Superusers 
+            * Users 
+            * Powerusers 
+          * Protecting proprietary code 
+          * Code injection 
+          * Restricting HTTP queries 
+          * Logging client activity 
+          * Conclusion 
+          * Author 
+        * [ Query optimization ](../columnar-database/)
+        * [ Query scaling ](../query-scaling/)
+        * [ Time-series simplification ](../ts-shrink/)
+        * [ Compacting HDB sym ](../../kb/compacting-hdb-sym/)
+        * [ Working with sym files ](../symfiles/)
+    * Developing  Developing 
+      * IPC  IPC 
+        * [ Overview ](../../basics/ipc/)
+        * [ Listening port ](../../basics/listening-port/)
+        * [ Deferred response ](../../kb/deferred-response/)
+        * [ Async callbacks ](../../kb/callbacks/)
+        * [ Named pipes ](../../kb/named-pipes/)
+        * [ Serialization examples ](../../kb/serialization/)
+        * [ Socket sharding ](../socket-sharding/)
+        * [ SSL/TLS ](../../kb/ssl/)
+        * [ HTTP ](../../kb/http/)
+        * [ WebSockets ](../../kb/websockets/)
+      * Tools  Tools 
+        * [ Code profiler ](../../kb/profiler/)
+        * [ Debugging ](../../basics/debug/)
+        * [ Errors ](../../basics/errors/)
+        * [ man.q ](../../about/man/)
+        * [ Unit tests ](../../kb/unit-tests/)
+        * [ Monitor & control execution ](../../kb/using-dotz/)
+      * Coding  Coding 
+        * [ Geospatial indexing ](../../kb/geospatial/)
+        * [ Linear programming ](../../kb/lp/)
+        * [ Multithreaded primitives ](../../kb/mt-primitives/)
+        * [ Pivoting tables ](../../kb/pivoting-tables/)
+        * [ Precision ](../../basics/precision/)
+        * [ Programming examples ](../../kb/programming-examples/)
+        * [ Programming idioms ](../../kb/programming-idioms/)
+        * [ Temporal data ](../../kb/temporal-data/)
+        * [ Timezones ](../../kb/timezones/)
+        * [ Unicode ](../../kb/unicode/)
+      * DevOps  DevOps 
+        * [ CPU affinity ](../../kb/cpu-affinity/)
+        * [ Daemon ](../../kb/daemon/)
+        * [ Firewalling ](../../kb/firewalling/)
+        * [ inetd, xinetd ](../../kb/inetd/)
+        * [ Linux production notes ](../../kb/linux-production/)
+        * [ File system comparison ](../../kb/filesystemTestByNano/)
+        * [ Log Files ](../../kb/logging/)
+        * [ Multi-threading ](../multi-thread/)
+        * [ Multiple versions ](../../kb/versions/)
+        * [ Parallel processing ](../../basics/peach/)
+        * [ Performance tips ](../../kb/performance-tips/)
+        * [ Shebang script ](../../develop/shebang/)
+        * [ Surveillance latency ](../surveillance-latency/)
+        * [ Windows service ](../../kb/windows-service/)
+      * Release notes  Release notes 
+        * [ History ](../../releases/)
+        * [ Changes in 4.1 ](../../releases/ChangesIn4.1/)
+        * [ Changes in 4.0 ](../../releases/ChangesIn4.0/)
+        * [ Changes in 3.6 ](../../releases/ChangesIn3.6/)
+        * [ Changes in 3.5 ](../../releases/ChangesIn3.5/)
+        * [ Changes in 3.4 ](../../releases/ChangesIn3.4/)
+        * [ Changes in 3.3 ](../../releases/ChangesIn3.3/)
+        * [ Changes in 3.2 ](../../releases/ChangesIn3.2/)
+        * [ Changes in 3.1 ](../../releases/ChangesIn3.1/)
+        * [ Changes in 3.0 ](../../releases/ChangesIn3.0/)
+        * [ Changes in 2.8 ](../../releases/ChangesIn2.8/)
+        * [ Changes in 2.7 ](../../releases/ChangesIn2.7/)
+        * [ Changes in 2.6 ](../../releases/ChangesIn2.6/)
+        * [ Changes in 2.5 ](../../releases/ChangesIn2.5/)
+        * [ Changes in 2.4 ](../../releases/ChangesIn2.4/)
+        * [ Withdrawn ](../../releases/withdrawn/)
+      * [ Developer tools ](../../devtools/)
+      * [ FAQ ](../../kb/faq-listbox/)
+    * Streaming  Streaming 
+      * General architecture  General architecture 
+        * [ Overview ](../../architecture/)
+        * kdb+tick  kdb+tick 
+          * [ Tickerplant (tick.q) ](../../architecture/tickq/)
+          * [ Tickerplant pub/sub (u.q) ](../../architecture/uq/)
+          * [ RDB (r.q) ](../../architecture/rq/)
+      * [ Alternative architecture ](../../kb/kdb-tick/)
+      * [ TP Log (data recovery) ](../data-recovery/)
+      * [ RTEs (real-time engines) ](../rt-tick/)
+      * [ Gateway design ](../gateway-design/)
+      * [ Query routing ](../query-routing/)
+      * [ Load balancing ](../../kb/load-balancing/)
+      * [ Profiling ](../tick-profiling/)
+      * [ Disaster recovery ](../disaster-recovery/)
+      * [ Kubernetes ](https://youtu.be/jqtkkCqBvr4)
+      * [ Order Book ](../order-book/)
+      * [ Alternative in-memory layouts ](../../kb/alternative-in-memory-layouts/)
+      * [ Corporate actions ](../../kb/corporate-actions/)
+      * Advanced  Advanced 
+        * [ Distributed systems ](../query-interface/)
+        * [ RDB intraday writedown ](../intraday-writedown/)
+    * Interfaces  Interfaces 
+      * Languages  Languages 
+        * C/C++  C/C++ 
+          * [ Quick guide ](../../interfaces/c-client-for-q/)
+          * [ API reference ](../../interfaces/capiref/)
+          * [ C API for kdb+ ](../capi/)
+          * [ Extending q with C/C++ ](../../interfaces/using-c-functions/)
+          * [ Async callbacks (C client) ](../../kb/server-calling-client/)
+        * [ C# ](../../interfaces/csharp/)
+        * [ Foreign Function Interface (FFI) ](../../interfaces/ffi/)
+        * [ Java ](../../interfaces/java/)
+        * [ Python ](../../interfaces/python/)
+        * [ R ](../../interfaces/r/)
+        * [ Rust ](../../interfaces/rust/)
+        * [ Scala ](../../interfaces/scala-client-for-q/)
+      * [ KX libraries ](../../interfaces/)
+      * [ Bloomberg ](../../interfaces/q-client-for-bloomberg/)
+      * [ Excel ](../../interfaces/excel-client-for-q/)
+      * [ FIX messaging ](../fix-messaging/)
+      * [ GPUs ](../../interfaces/gpus/)
+      * [ Matlab ](../../interfaces/matlab-client-for-q/)
+      * ODBC  ODBC 
+        * [ ODBC client ](../../interfaces/q-client-for-odbc/)
+        * [ ODBC3 server ](../../interfaces/q-server-for-odbc3/)
+        * [ ODBC3 and Tableau ](../data-visualization/)
+      * [ Solace pub/sub ](../solace/)
+      * [ Open source ](../../github/)
+      * [ Machine learning ](../../ml/)
+    * Using kdb+ in the cloud  Using kdb+ in the cloud 
+      * [ About ](../../cloud/)
+      * Amazon Web Services  Amazon Web Services 
+        * [ Reference architecture ](../../cloud/aws/)
+        * Amazon EC2 & Storage Services  Amazon EC2 & Storage Services 
+          * [ Migrating a kdb+ HDB to Amazon EC2 ](../../cloud/aws/migration/)
+          * [ Elastic Block Store (EBS) ](../../cloud/aws/app-a-ebs/)
+          * [ EFS (NFS) ](../../cloud/aws/app-b-efs-nfs/)
+          * [ Amazon Storage Gateway ](../../cloud/aws/app-c-asg/)
+          * [ FSx for Lustre ](../../cloud/aws/lustre/)
+        * [ AWS Lambda ](../../cloud/aws-lambda/)
+      * Microsoft Azure  Microsoft Azure 
+        * [ Reference architecture ](../../cloud/azure/architecture/)
+      * Google Cloud  Google Cloud 
+        * [ Reference architecture ](../../cloud/gcpm/architecture/)
+      * Auto Scaling  Auto Scaling 
+        * [ About ](../../cloud/autoscale/)
+        * [ Amazon Web Services ](../../cloud/autoscale/aws/)
+        * [ Realtime data cluster ](../../cloud/autoscale/rdc/)
+        * [ Costs and risks ](../../cloud/autoscale/cost-risk/)
+      * Other file systems  Other file systems 
+        * [ MapR-FS ](../../cloud/otherfs/mapr/)
+        * [ Goofys ](../../cloud/otherfs/goofys/)
+        * [ S3FS ](../../cloud/otherfs/s3fs/)
+        * [ S3QL ](../../cloud/otherfs/s3ql/)
+        * [ ObjectiveFS ](../../cloud/otherfs/objectivefs/)
+        * [ WekaIO Matrix ](../../cloud/otherfs/wekaio-matrix/)
+        * [ Quobyte ](../../cloud/otherfs/quobyte/)
+    * [ Academy ](https://learninghub.kx.com)
+    * [ Discussion Forum ](https://learninghub.kx.com/forums/forum/kdb)
+    * [ White papers ](../)
+    * [ About this site ](../../about/thissite/)
+  * [ kdb Insights SDK ](https://code.kx.com/insights)
+  * [ kdb Insights Enterprise ](https://code.kx.com/insights/enterprise)
+  * [ KDB.AI ](https://code.kx.com/kdbai)
+  * [ PyKX ](https://code.kx.com/pykx)
+  * [ APIs ](https://code.kx.com/insights/api)
+  * [ Help ](https://code.kx.com/home/support.html)
+
+
+
+On this page 
+
+  * Restricting access to a kdb+ server 
+    * âu command-line option 
+    * .z.pw 
+  * User classes 
+    * Superusers 
+    * Users 
+    * Powerusers 
+  * Protecting proprietary code 
+  * Code injection 
+  * Restricting HTTP queries 
+  * Logging client activity 
+  * Conclusion 
+  * Author 
+
+
+
+# Permissions with kdb+¶
+
+by Tom Martin
+
+kdb+ processes often contain sensitive, proprietary information in the form of data or proprietary code. Thus, it is important to restrict the access to this information. 
+
+kdb+ offers a number of in-built access functions. This paper discusses various methods in which a permissioning and entitlements system can be implemented in kdb+ by extending these in-built functions, allowing access to sensitive information to be controlled and restricted, exposing data to some clients but not to others.
+
+Commercial-grade products
+
+KX offers [commercial-grade products](../../devtools/) to manage entitlements as well as other aspects of administration for kdb+. While this paper attempts to shed some light on the various approaches available to developers wishing to implement a permissioning system in kdb+, the approach presented here is merely intended as a starting point, and as such it should not be considered secure. Some workarounds to the system described here are discussed in the paper.
+
+Tests performed using kdb+ 3.0 (2013.04.05)
+
+## Restricting access to a kdb+ server¶
+
+The first step in securing and permissioning a kdb+ server is to control who can and cannot connect to it. This is done using a combination of:
+
+  * The `âu` command-line option
+  * The `.z.pw` callback
+
+
+
+### `âu` command-line option¶
+
+If specified, the [`âu` command-line option](../../basics/cmdline/#-u-usr-pwd-local) is the first check a kdb+ process will make when a user tries to connect. At startup, the `âu` option should point to a password file which maps usernames to passwords. The passwords can be stored either as plaintext or as an MD5 hash. When given a string, the `md5` keyword in kdb+ returns the hash of that string; when storing this value in the password file, the first two characters should be stripped. For example, the following two password files are equivalent:
+    
+    
+    $ cat users
+    user1:password
+    $ cat users_encrypted 
+    user1:5f4dcc3b5aa765d61d8327deb882cf99
+    
+    
+    q)md5 "password"
+    0x5f4dcc3b5aa765d61d8327deb882cf99
+
+When kdb+ is started with the `âu` option, any connecting user must specify a username and a password. If these do not match what is in the password file, then the user will not be allowed to access the server.
+
+After the user successfully gains access to the process, the `âu` option implements further restrictions: the user can only access files that are under the root directory of kdb+ server i.e. the directory in which the server was started. Consider the following directory structure:
+    
+    
+    |-- file1.q
+    `-- start_dir
+        `-- file2.q
+
+If we start the server in the `start_dir` directory and the `âu` option is specified, connecting clients will have access to `file2.q`, since it is under the root directory, but `file1.q` will be restricted. If `âU` is used in place of `âu`, the username/password check remains but the filesystem restriction is lifted.
+
+Server1 (`-u`):
+    
+    
+    $ q -p 5001 -u ../passwordfiles/users_encrypted
+    KDB+ 3.0 2013.04.05 Copyright (C) 1993-2013 Kx Systems
+    l32/ 1()core 502MB tommartin debian-image 127.0.1.1 PLAY 2013.07.04
+
+Server2 (`-U`):
+    
+    
+    $ q -p 6001 -U ../passwordfiles/users_encrypted
+    KDB+ 3.0 2013.04.05 Copyright (C) 1993-2013 Kx Systems
+    l32/ 1()core 502MB tommartin debian-image 127.0.1.1 PLAY 2013.07.04
+
+Client:
+    
+    
+    q)h:hopen`:localhost:5001
+    'access 
+    q)h:hopen`:localhost:5001:user1:pwd 
+    'access
+    
+    q)//connect to the server which has filesystem restrictions 
+    q)h:hopen`:localhost:5001:user1:password
+    q)//file2.q loads successfully as itâs under the root 
+    q)h(system;âl file2.qâ)
+    q)//file1.q produces an 'access error
+    q)h(system;âl ../file1.qâ)
+    'access
+    
+    q)//connect to server with no filesystem restrictions 
+    q)h:hopen`:localhost:6001:user1:password
+    q)//file1.q loads successfully
+    q)h(system;âl ../file1.qâ)
+
+### `.z.pw`¶
+
+The [`.z.pw` callback](../../ref/dotz/#zpw-validate-user) is called immediately after successful `âu`/`-U` authentication (if specified at startup â otherwise `.z.pw` is the first authentication check done by a kdb+ process). It allows for further customizations of the authentication process. For instance, this callback could be used to call out to an external LDAP server against which a connecting user could be validated. kdb+ can also be integrated with Kerberos, but this is outside the scope of this paper. The `.z.pw` callback takes two arguments â a username and a password. If the validation check passes, `1b` is returned and the user is granted access. Otherwise, `0b` is returned and access to the server is denied.
+
+In an unrestricted process, this callback will always return `1b`.
+    
+    
+    .z.pw:{[u;p] 1b}
+
+Rather than using `-u` with a password file, we could instead maintain a table of users on our kdb+ server and use the `.z.pw` callback to validate connecting clients.
+
+First, define a simple table which stores users and their passwords.
+    
+    
+    .perm.users:([user:`$()] password:())
+
+Passwords can be stored in various ways, including plaintext, as a straight MD5 hash, or as an MD5 hash with added salt. For salt, we could just take a combination of the username and the specified password, apply an MD5 hash to it and use that as the stored password.
+    
+    
+    q).perm.toString:{[x] $[10h=abs type x;x;string x]} 
+    q).perm.encrypt:{[u;p] md5 raze .perm.toString p,u} 
+    q).perm.add:{[u;p] `.perm.users upsert (u;.perm.encrypt[u;p]);}
+    q).perm.add[;`password] each `user1`user2`user3; 
+    q).perm.users
+    user | password
+    -----| ---------------------------------- 
+    user1| 0x9022daebd17737ba0bd9cd4732ea66b6 
+    user2| 0x6538d48739b8cb51beca1c7f65152d7f 
+    user3| 0xa757abc2c49f29cfd98bd5480b6fcdde
+
+Inside the `.z.pw` callback, we add some logic that does a lookup on the users table and retrieves the password. It compares the stored password with the password supplied by the client and grants access if they match.
+    
+    
+    .z.pw:{[user;pwd] 
+      $[.perm.encrypt[user;pwd]~.perm.users[user][`password];1b;0b]}
+
+## User classes¶
+
+Restricting access is only the first step towards implementing a permissioning system in kdb+. Once a user has connected, we can control and restrict what the user can do. To achieve this, we split users into three distinct user classes:
+
+  * **Users** can only execute certain stored procedures that are defined on the server.
+  * **Powerusers** have more privileges than ordinary users. They can write free-form queries, but cannot write to the database unless they are executing a stored procedure.
+  * **Superusers** can execute any code they wish.
+
+
+
+While queries can be executed synchronously (where the client expects a response and blocks until it receives one) or asynchronously (client expects no response), for the purposes of this paper we will restrict asynchronous queries (routed through the [`.z.ps` handler](../../ref/dotz/#zps-set)) to superusers and instead focus on synchronous queries (routed through [`.z.pg`](../../ref/dotz/#zpg-get)).
+
+![Permissioning system schematic](img/figure1.png)  
+_Permissioning system schematic_
+
+With this in mind, we re-define the users table to have an extra `class` column which indicates which class a user belongs to.
+    
+    
+    q).perm.users:([user:`$()] class:`$(); password:()) 
+    q).perm.add:{[u;c;p] `.perm.users upsert (u;c;.perm.encrypt [u;p]);} 
+    q).perm.addUser:{[u;p] .perm.add[u;`user;p]} 
+    q).perm.addPoweruser:{[u;p] .perm.add[u;`poweruser;p]} 
+    q).perm.addSuperuser:{[u;p] .perm.add[u;`superuser;p]} 
+    q).perm.getClass:{[u] .perm.users[u][`class]}
+    q).perm.isSU:{[u] `superuser~.perm.getClass[u]}
+    q).perm.isPU:{[u] `poweruser~.perm.getClass[u]}
+    q).perm.addUser[`user1;`password] 
+    q).perm.addPoweruser[`poweruser1;`password] 
+    q).perm.addSuperuser[`superuser1;`password] 
+    q).perm.users
+    user      | class     password
+    ----------| --------------------------------------------
+    user1     | user      0x9022daebd17737ba0bd9cd4732ea66b6
+    poweruser1| poweruser 0x1e948f5d3b634d15d91cfbaaa955e399
+    superuser1| superuser 0x9f233f505811d3fbdb2ee7a9bf5aa581
+
+Having granted access to a user, we override the synchronous message handler `.z.pg` in order to determine what class the user belongs to and then act accordingly.
+    
+    
+    .z.pg:{[query]
+      user:.z.u;
+      class:.perm.getClass[user];
+      $[class~`superuser; value query;
+        class~`poweruser; .perm.pg.poweruser[user;query]; 
+        .perm.pg.user[user;query]] }
+
+### Superusers¶
+
+The most straightforward queries to validate are those pertaining to superusers. Since these users can execute any kind of query, no additional logic is required and we can simply evaluate the query. For the other two classes, we need to add logic to validate the query and if necessary, block it.
+
+### Users¶
+
+For users belonging to the ordinary-user class, the validation logic is relatively straightforward. Since these users can only execute predefined stored procedures, it is easy to identify when these users have attempted a restricted query. First, we define a stored procedure wrapper function, the arguments of which will be the stored procedure name and the arguments to pass it. Using a wrapper function provides a single point of entry for ordinary users and simplifies the validation logic. We also define a dictionary that maps stored-procedure names to the users who have permission to execute them. The wrapper function will do a lookup against this dictionary to see if the stored procedure exists and if the user has the necessary entitlements to execute the stored procedure.
+    
+    
+    .perm.sprocs:()!()
+    .perm.addSproc:{[s] .perm.sprocs,:enlist[s]!enlist enlist`} 
+    .perm.grantSproc:{[s;u] @[`.perm.sprocs;s;union;u];} 
+    .perm.revokeSproc:{[s;u] @[`.perm.sprocs;s;except;u];} 
+    .perm.parse:{[x] if[-10h=type x;x:enlist x]; $[10h=type x;parse x; x]}
+    
+    //Stored procedure wrapper function - Single point of entry
+    .perm.executeSproc:{[s;params]
+      user:.z.u;
+      if[not s in key .perm.sprocs;'string[s]," is not a valid stored procedure"];
+      if[(not .perm.isSU user) and not user in .perm.sprocs[s];
+        '"You do not have permission to execute this stored procedure"];
+      f:$[1=count (value value s)[1];@;.];
+      f[s;params] }
+
+The validation logic is thus reduced to checking whether or not the user is calling the wrapper function.
+    
+    
+    .perm.pg.user:{[user;query]
+        em:"You only have permission to execute stored procedures: ";
+        em,:".perm.executeSproc[sprocName;(list;of;params)]";
+      if[not ".perm.executeSproc"~.perm.toString first .perm.parse query;'em];value query}
+
+As a demonstration, we will define and register a stored procedure on a server and try to execute it from a client process.
+
+Server:
+    
+    
+    getVWAP:{[s;ivl] select 
+      vwap:size wavg price by sym, 
+      bucket:ivl xbar time.minute 
+      from trade where sym in s }
+    
+    
+    q).perm.addSproc[`getVWAP]
+    q)//Sproc is registered, but no users have permission to execute it 
+    q).perm.sprocs
+    getVWAP|
+
+Client:
+    
+    
+    q)h:hopen`:localhost:5001:user1:password
+    q)//try to execute a raw query
+    q)h"select count i by sym from trade"
+    'You only have permission to execute stored procedures: .perm.executeSproc[sprocName;(list;of;params)]
+    q)//try to execute a sproc that does not exist 
+    q)h".perm.executeSproc[`getVWAPP;(`AAPL;5)]" 
+    'getVWAPP is not a valid stored procedure
+
+At this stage, the stored procedure exists on the server, but no users have permission to execute it. We grant permission to `user1` on the server side:
+
+Server:
+    
+    
+    q).perm.grantSproc[`getVWAP;`user1]
+
+On the client side, `user1` can execute the stored procedure successfully:
+
+Client:
+    
+    
+    q)h".perm.executeSproc[`getVWAP;(`AAPL;5)]" 
+    sym  bucket| vwap
+    -----------| --------
+    AAPL 09:00 | 440.8216
+    AAPL 09:05 | 440.8516
+    AAPL 09:10 | 440.9229
+    AAPL 09:15 | 440.9324
+    AAPL 09:20 | 440.9074
+    AAPL 09:25 | 440.8243
+    AAPL 09:30 | 440.7459
+    AAPL 09:35 | 440.6386
+    AAPL 09:40 | 440.6522
+    AAPL 09:45 | 440.5254
+    ..
+
+### Powerusers¶
+
+While the user and superuser classes have relatively simple validation logic, the poweruser class is slightly more complex. Like ordinary users, powerusers have the ability to execute stored procedures. They can also write raw, freeform queries, but we will add some additional logic here to enforce table- specific permissions, meaning a poweruser may be able to select from table A, but not from table B etc. Finally, we will enforce read-only entitlements on all powerusers.
+
+In order to properly enforce these restrictions, we need to parse and classify every query a poweruser attempts to execute. For the purposes of this paper, we will restrict this to classifying the various table operations (`select`, `delete`, `insert`, `update` and `upsert`), though a fully-functional permissioning system would expand this to classify every type of query.
+
+The `parse` keyword in q can be used to generate a parse tree from a string query, allowing you to see its functional form. We use this to classify each type of query. For example, consider the following select statement.
+    
+    
+     select 
+       open:first price, 
+       high:max price, 
+       low:min price, 
+       close:last price 
+       by sym from trade where date=2013.05.15
+
+We can wrap this in a string and then parse it to see its functional form
+    
+    
+    q)parse"select open:first price,high:max price,low:min price,close:last price by sym from trade where date=2013.05.15"
+    ?
+    `trade
+    ,,(=;`date;2013.05.15)
+    (,`sym)!,`sym
+    `open`high`low`close!((*:;`price);(max;`price);(min;`price);(last;`pri ce))
+
+Generally we could classify a select statement by saying:
+
+  1. It has 5 items
+  2. The first item is `?`
+
+
+
+However, there are optional 5th and 6th arguments to a functional select statement. The fifth argument is used to select the first or last rows from a table, while the 6th argument allows you to extract rows from the table based on indexes.
+
+Our classification function for select statements is:
+    
+    
+    .perm.is.select:{[x] (count[x] in 5 6 7) and (?)~first x}
+
+We make no distinction between `select` statements and `exec` statements. This function will return `1b` for both.
+    
+    
+    q)s: " open:first price, high:max price, low:min price, close:last price"
+    q)s,: " by sym from trade where date=2013.05.15"
+    q).perm.is.select parse "select",s
+    1b
+    q).perm.is.select parse "exec",s
+    1b
+    q).perm.is.select parse "update price+10 from trade" 
+    0b
+
+While this logic successfully identifies any select statements, itâs also possible to view a table by simply typing its name. To incorporate this into our classification function, we first need to write some helper functions which will return a list of every table defined in a kdb+ session.
+    
+    
+    //identify whether a variable name is a namespace
+    .perm.isNamespace:{[x] 
+      if[-11h~type x;x:value x]; 
+      if[not 99h~type x;:0b];
+      (1#x)~enlist[`]!enlist(::) }
+    
+    //Recursively retrieve a list of every table in a namespace
+    .perm.nsTables:{[ns]
+      if[ns~`.;:system"a ."];
+      if[not .perm.isNamespace[ns];:()];
+      raze(` sv' ns,/:system"a ",string ns),.z.s'[` sv' ns,/:system"v ",string ns] }
+    
+    //Get a list of every table in every namespace
+    .perm.allTables:{[] raze .perm.nsTables each `$".",/:string each `,key[`]}
+    
+    
+    q).perm.allTables[]
+    ,`.o.TI
+    q)t:([]a:1 2 3)
+    q).perm.allTables[]
+    `t`.o.TI
+    q).a.t:([]a:1 2 3)
+    q).perm.allTables[]
+    `t`.o.TI`.a.t
+
+Our select statement classification thus becomes:
+    
+    
+    .perm.is.select:{[x] 
+      (any x~/: .perm.allTables[]) 
+      or (count[x] in 5 6 7) and (?)~first x }
+
+Expanding this to classify all table operations:
+    
+    
+    .perm.is.select:{[x] 
+      (any x~/: .perm.allTables[]) 
+      or (count[x] in 5 6 7) and (?)~first x }
+    .perm.is.update:{[x] (5=count x) and ((!)~first x) and 99h=type last x}
+    .perm.is.delete:{[x] (5=count x) and ((!)~first x) and 11h=type last x}
+    .perm.is.insert:{[x] (insert)~first x} 
+    .perm.is.upsert:{[x] (.[;();,;])~first x}
+
+We also define two utility functions which indicate whether an incoming query is a table operation, and what type of table operation it is:
+    
+    
+    .perm.isTableQuery:{[x] any (value each `.perm.is,/:1_key[.perm.is])@\:x}
+    
+    .perm.getQueryType:{[x]
+      f:`.perm.is,/:g:1_key[.perm.is];
+      first g where ((value each f)@\:x) }
+    
+    
+    q).perm.getQueryType parse"select from trade"
+    `select
+    q).perm.getQueryType parse"update price:price%10 from trade" 
+    `update
+    q).perm.getQueryType parse"delete from trade where size=0" 
+    `delete
+    q).perm.getQueryType parse"`trade upsert (.z.t;`AAPL;440.1234;500000;`NYSE)"
+    `upsert
+    q).perm.getQueryType parse"`trade insert (.z.t;`AAPL;440.1234;500000;`NYSE)"
+    `insert
+
+Now that the logic is in place to classify incoming table operations, we can add functionality to our permissioning system which allows us to grant table-specific and operation-specific entitlements to users. We maintain a table of table names and the types of operations each user is allowed to execute on that table.
+    
+    
+    .perm.tables:([]table:`$();user:`$();permission:`$()) 
+    .perm.queries:`select`update`upsert`insert`delete;
+    
+    .perm.grant:{[t;u;p] 
+      if[not p in .perm.queries;'"Not a valid table operation"]; 
+      `.perm.tables insert (t;u;p); }
+    
+    .perm.revoke:{[t;u;p] 
+      delete from `.perm.tables where table=t,user=u,permission=p; }
+    
+    .perm.grantAll:{[t;u] 
+      .perm.grant[t;u;] each .perm.queries; }
+    
+    .perm.getUserPerms:{[t;u] 
+      exec distinct permission from .perm.tables where table=t, user=u }
+
+Then for our validation logic, we identify which table is being queried and what type of operation is being executed. We do a lookup on our permissions table to see if the user is allowed to attempt this particular operation on this particular table and if not we block the query.
+    
+    
+    .perm.validateTableQuery:{[user;query]
+    table:first $[-11h~type query;query;query 1];
+      p:.perm.getUserPerms[table;user];
+      qt:.perm.getQueryType[query];
+      if[not qt in p;'"You do not have ",string[qt]," permission on ",string[table]];
+      eval query }
+
+Our poweruser validation function becomes:
+    
+    
+    .perm.pg.poweruser:{[user;query] 
+      if[".perm.executeSproc"~.perm.toString first .perm.parse query; 
+        :value query];
+      if[.perm.isTableQuery q:.perm.parse query; 
+        :.perm.validateTableQuery[user;q]] }
+
+Server:
+    
+    
+    q).perm.grant[`quote;`poweruser1;`select] 
+    q).perm.grantAll[`trade;`poweruser1] 
+    q).perm.tables
+    table user permission 
+    ---------------------------
+    quote poweruser1 select
+    trade poweruser1 select
+    trade poweruser1 update
+    trade poweruser1 upsert
+    trade poweruser1 insert
+    trade poweruser1 delete
+
+Client:
+    
+    
+    q)h:hopen`:localhost:5001:poweruser1:password 
+    q)h"select from .perm.users"
+    'You do not have select permission on .perm.users 
+    q)//type table name is equivalent to select 
+    q)h".perm.users"
+    'You do not have select permission on .perm.users 
+    q)1#h"select from quote"
+    time         sym  bid     ask      bsize  asize ex 
+    ---------------------------------------------------- 
+    09:00:00.863 AMZN 259.455 259.4499 100000 90000 NYSE 
+    q)1#h"quote"
+    time         sym  bid     ask      bsize  asize ex 
+    ---------------------------------------------------- 
+    09:00:00.863 AMZN 259.455 259.4499 100000 90000 NYSE 
+    q)h"update mid:(bid+ask)%2 from quote"
+    'You do not have update permission on quote 
+    q)1#h"update vwap:size wavg price by sym from trade" 
+    time         sym  price    size   ex   vwap 
+    ----------------------------------------------- 
+    09:00:05.878 GOOG 875.2613 190000 BATS 876.9627
+
+Reference: [`reval`](../../ref/eval/#reval) for read-only access
+
+## Protecting proprietary code¶
+
+kdb+ processes often contain a large amount of proprietary code that is exposed to all users that connect to it. Simply typing the name of a function will display its definition. Q scripts can be compiled into binary objects using the [`\_ scriptname.q` system command](../../basics/syscmds/#_-hide-q-code). This creates the file `scriptname.q_`. When this file is loaded into a q session, all code contained in the script is obscured. However like using the `âb` option to enforce write-only access, this solution hides the function definitions from every single user. Instead, we might prefer to be selective in who can and cannot see the definition of particular functions.
+
+On the kdb+ server, we maintain a list of functions/variables which we wish to obscure. To prevent users from seeing their definition, we must first analyze the various ways in which the definition of a function can be displayed in a kdb+ process.
+
+1) Typing the name of the function
+    
+    
+    q)getVWAP
+    {[s;ivl] select vwap:size wavg price by sym, bucket:ivl xbar time.minute from trade where sym in s}
+
+2) Using the `value` keyword on a function passed by reference
+    
+    
+    q)value `getVWAP
+    {[s;ivl] select vwap:size wavg price by sym, bucket:ivl xbar time.minute from trade where sym in s}
+
+3) Using the `value` keyword on a function passed explicitly
+    
+    
+    q)value getVWAP
+    0xa0a1a281a30a040005
+    `s`ivl
+    `symbol$()
+    ``trade
+    (,`vwap)!,(wavg;`size;`price)
+    `sym`bucket!(`sym;(k){x*y div x:$[16h=abs[@x];"j"$x;x]};`ivl;`time.minute))
+    ,(in;`sym;`s)
+    ?
+    "{[s;ivl] select vwap:size wavg price by sym, bucket:ivl xbar time.minute from trade where sym in s}"
+
+4) Using the `value` keyword twice on a function passed by reference
+    
+    
+    q)value value `getVWAP
+    0xa0a1a281a30a040005
+    `s`ivl
+    `symbol$()
+    ``trade
+    (,`vwap)!,(wavg;`size;`price)
+    `sym`bucket!(`sym;(k){x*y div x:$[16h=abs[@x];"j"$x;x]};`ivl;`time.minute))
+    ,(in;`sym;`s)
+    ?
+    "{[s;ivl] select vwap:size wavg price by sym, bucket:ivl xbar time.minute from trade where sym in s}"
+
+This is by no means an exhaustive list. For instance, (4) above could also be achieved using the following:
+    
+    
+    q){@[value;x]}/[2;`getVWAP]
+
+However, for the purposes of the paper we will just use the four means described above. We then define the following which allow us to determine if a client is attempting to view restricted code:
+    
+    
+    .perm.hiddenFuncs:(); 
+    .perm.hideFunction:{`.perm.hiddenFuncs?x;} 
+    
+    .perm.hidden:{[query]
+      vv:{(x;(value;x); (value;enlist x); (value;(value;enlist x)))} 
+      if[any .perm.parse[query] ~/: raze vv each .perm.hiddenFuncs;
+        '"You don't have permission to view this function/variable"] }
+
+It would be beneficial to hide entire namespaces from clients. For instance, all of our validation logic is stored in the `.perm` namespace, and this is certainly something we would want to hide from clients.
+    
+    
+    //Get all variables in a namespace
+    .perm.nsFuncs:{[ns]
+      if[ns~`.;:system"f ."];
+      if[not .perm.isNamespace[ns];:()];
+      raze(` sv' ns,/:system"f ",string ns),.z.s'[` sv' ns,/:system"v ",string ns] }
+    
+    .perm.hideNamespace:{[ns].perm.hideFunction each ns,.perm.nsFuncs[ns]}
+
+We can add this additional check to our poweruser validation function:
+    
+    
+    .perm.pg.poweruser:{[user;query] 
+      if[".perm.executeSproc"~.perm.toString first .perm.parse query;
+        :value query]; 
+      if[.perm.isTableQuery q:.perm.parse[query];
+        :.perm.validateTableQuery[user;q]]; 
+      .perm.hidden query;
+      .perm.readOnly query }
+
+Server:
+    
+    
+    q).perm.hideNamespace[`.perm]
+    q).perm.hideFunction[`getVWAP]
+
+Client:
+    
+    
+    q)h".perm.addUser"
+    'You don't have permission to view this function/variable 
+    q)h".perm.pg.poweruser"
+    'You don't have permission to view this function/variable
+    q)h"getVWAP"
+    'You don't have permission to view this function/variable
+    q)h"getOHLC"
+    {[s] select open:first price, high:max price, low:min price, close:last price by sym from trade where sym in s}
+
+## Code injection¶
+
+While the approach presented in this paper so far has outlined various methods of restricting users from executing particular queries, it is not immune to circumvention. By formatting queries in certain ways, a user can bypass the parsing logic to execute a query that they do not have permission to execute. One such method would be to add a leading semi-colon to the query.
+    
+    
+    q)h"select from .perm.users"
+    'You do not have select permission on .perm.users 
+    q)h";select from .perm.users"
+    user      | class     password
+    ----------| --------------------------------------------
+    user1     | user      0x9022daebd17737ba0bd9cd4732ea66b6
+    poweruser1| poweruser 0x1e948f5d3b634d15d91cfbaaa955e399
+    superuser1| superuser 0x9f233f505811d3fbdb2ee7a9bf5aa581
+
+Parsing this query can shed some light on how it can be blocked:
+    
+    
+    q)parse";select from .perm.users"
+    ";"
+    ::
+    (?;`.perm.users;();0b;())
+    q)parse";;;;select from .perm.users"
+    ";"
+    ::
+    ::
+    ::
+    ::
+    (?;`.perm.users;();0b;())
+
+To stop this form of injection, we can block any queries whose parse tree contains the generic null `(::)`.
+    
+    
+    .perm.blockInjection:{[query] 
+      if[any (::)~/:.perm.parse query;
+        '"Invalid Query"] }
+
+We add this function to our poweruser validation function:
+    
+    
+    .perm.pg.poweruser:{[user;query] 
+      if[".perm.executeSproc"~.perm.toString first .perm.parse query;
+        :value query]; 
+      if[.perm.isTableQuery q:.perm.parse[query];
+        :.perm.validateTableQuery[user;q]]; 
+      .perm.hidden query;
+      .perm.blockInjection query;
+      .perm.readOnly query }
+
+On the client, attempts to circumvent the restrictions are blocked.
+    
+    
+    q)h".perm.users"
+    'You do not have select permission on .perm.users 
+    q)h";.perm.users"
+    'Invalid Query 
+    q)h";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.perm.users" 
+    'Invalid Query
+
+This has the knock-on effect of blocking all niladic functions that are called with the form `function[]`. As a workaround, functions that need no arguments should be called as `function[`]`.
+
+Another potential backdoor is the stored-procedure wrapper function. Since we allow write access when executing stored procedures, users can use code injection to update global variables on the server. For instance, instead of calling
+    
+    
+    h".perm.executeSproc[`getVWAP;(`AAPL;5)]"
+
+`user1` could instead call
+    
+    
+    h".perm.executeSproc[[.perm.addSuperuser[`user1;`password];`getVWAP];(`AAPL;5)]"
+
+`user1` has thus become a superuser and now has the ability to execute anything on the server.
+    
+    
+    q)h"delete from `trade"
+    'You can only execute stored procedures:.perm.executeSproc[sp;(x;y;z)]
+    q)h".perm.executeSproc[[.perm.addSuperuser[`user1;`password];`getVWAP] ;(`AAPL;5)]"
+    sym  bucket| vwap
+    -----------| --------
+    AAPL 09:00 | 440.8216
+    AAPL 09:05 | 440.8516
+    AAPL 09:10 | 440.9229
+    AAPL 09:15 | 440.9324
+    AAPL 09:20 | 440.9074
+    AAPL 09:25 | 440.8243
+    ..
+    q)h"delete from `trade"
+    `trade
+    q)h"trade"
+    time sym price size ex
+    ----------------------
+
+The solution is to analyze the arguments the user is passing to `.perm.executeSproc` and determine if the user is attempting to write to the process, and if so reject the query. To do this, we create a slightly modified version of `.perm.readOnly` which suppresses all errors except for the noupdate error (i.e. the error that is signalled when attempting to writing to the process).
+    
+    
+    .perm.readOnlyNoError:{[x]
+      res:first{[q;exe]$[exe;@[value;q;{(`error;x)}];()]}[x;]peach 10b;
+      if[(2=count res) and `error~first res;
+        if[last[res]~"noupdate";'"You do not have write access"]] }
+
+Our validation functions then become
+    
+    
+    .perm.pg.user:{[user;query]
+      if[not".perm.executeSproc"~.perm.toString first q:.perm.parse query;
+        '"You can only execute stored procedures:.perm.executeSproc[sp;(x;y;z)]"];
+      .perm.readOnlyNoError'[(eval;)each 1_q]; 
+      value query }
+    
+    .perm.pg.poweruser:{[user;query] 
+      if[".perm.executeSproc"~.perm.toString first q:.perm.parse query;
+        .perm.readOnlyNoError'[(eval;)each 1_q];
+        :value query];
+      if[.perm.isTableQuery q;
+        :.perm.validateTableQuery[user;q]]; 
+      .perm.hidden query;
+      .perm.blockInjection query;
+      .perm.readOnly query }
+
+The attempt to elevate permissions is now blocked.
+    
+    
+    q)h".perm.executeSproc[`getVWAP;(`AAPL;5)]" 
+    sym  bucket| vwap
+    -----------| --------
+    AAPL 09:00 | 440.8216
+    AAPL 09:05 | 440.8516
+    AAPL 09:10 | 440.9229
+    AAPL 09:15 | 440.9324
+    AAPL 09:20 | 440.9074
+    AAPL 09:25 | 440.8243
+    ..
+    q)h".perm.executeSproc[[.perm.addSuperuser[`user1;`password];`getVWAP] ;(`AAPL;5)]"
+    'You do not have write access
+
+## Restricting HTTP queries¶
+
+So far, this paper has just discussed how to restrict and control access from a client process that connects via IPC. However, it is also possible to connect to a kdb+ process via HTTP. While the `.z.pw` callback works equally for both IPC and HTTP connections, HTTP queries are not routed through the `.z.pg` message handler. Rather, they are handled by [`.z.ph`](../../ref/dotz/#zph-http-get). As defined in `q.k`, `.z.ph` is responsible for composing the HTML webpage, executing the query, and formatting the results into a HTML table.
+
+`q.k` definition:
+    
+    
+    k).z.ph:{x:uh$[@x;x;*x];$[~#x;hy[`htm]fram[$.z.f;x]("?";"?",*x:$."\\v" ); 
+     x~,"?";hp@{hb["?",x]x}'$."\\v";"?["~2#x;hp jx["J"$2_x]R "?"=*x;@[{hp jx[0]
+     R::1_x};x;he];"?"in x;@[{hy[t]@`/:tx[t:`$- 3#n#x]@.(1+n:x?"?")_x};x;he] 
+     #r:@[1::;`$":",p:HOME,"/",x;""];hy[`$(1+x?".")_x]"c"$r;hn["404 Not Found";`txt]
+     p,": not found"]}
+
+Translated to q:
+    
+    
+    .z.ph:{[x]
+      x:.h.uh $[type x;x;first x];
+      $[not count x;  //1
+          .h.hy[`htm;.h.fram[string .z.f;x;("?";"?",first x:string system"v")]];
+        x~enlist "?"; //2
+          .h.hp[{.h.hb["?",x; x]}each string system"v"];
+        "?["~2#x;      //3
+          .h.hp[.h.jx["J"$2_x; .h.R]];
+        "?"=first x; //4 
+          @[{.h.hp[.h.jx[0;.h.R::1_x]]};x;.h.he];
+        "?" in x;      //5
+          @[{.h.ht[t;] ` sv .h.tx[t:`$-3#n#x;value (1+n:x?"?")_x]};x;.h.he];
+        count r:@[1:;`$":",p:.h.HOME,"/",x;""]; //6
+          .h.hy[`$(1+x?".")_x; "c"$r];
+        .h.hn["404 Not Found";`txt;p,": not found"]] //7 }
+
+`.z.ph` consists of seven branches, each of which is numbered above. We will focus mostly on branches 1 and 4. Branch 1 is responsible for composing the HTML page, populating the left-hand pane with a list of all variables in the root namespace. It then executes the first of these variables. In an unprotected kdb+ process, there is no problem with this, since every user has access to every variable. In a permissioned system however, the user may not have permission to view this variable. Rather than having an error display each time the user accesses the URL, we can instead define a specific variable that is loaded when the URL is accessed and which all users will be able to view.
+    
+    
+    .perm.h.open:âkdb+ permissionsâ
+
+Branch 1 then changes from this:
+    
+    
+    .h.hy[`htm;.h.fram[string .z.f;x;("?";"?",first x:string system"v")]];
+
+To this:
+    
+    
+    .h.hy[`htm;.h.fram[string .z.f;x;("?";"?.perm.h.open")]];
+
+Branch 4 is responsible for handling incoming queries (anything beginning with `?`). Inside this branch, the function [`.h.jx`](../../ref/doth/#hjx-table) is called. This is responsible for executing the incoming query.
+    
+    
+    q).h.jx
+    k){[j;x]x:. x;$[$[.Q.qt[x];(N:(*."\\C")-4)<n:#x;0];
+     (" "/:ha'["?[",/:$(0;0|j-N),|&\(n- N;j+N);
+     $`home`up`down`end],,($n),"[",($j),"]";"");()],hc'.Q.S[."\\C";j ]x}
+
+The very first statement in `.h.jx` is `x:. x`, which is the k-equivalent of `x:value x` . To restrict the execution of queries that come into the process via HTTP, it is just a matter of replicating in `.h.jx` the logic we previously inserted into `.z.pg`. We define a new function, `.h.jx2`, which takes two additional arguments: user and class. We add our validation from `.z.pg` here, including the override for `.perm.h.open`.
+    
+    
+    k).h.jx2:{[j;x;u;c] 
+     x: $[(c=`superuser)|x~â.perm.h.openâ;c=`poweruser; .perm.pg.poweruser[u;x] ; .perm.pg.user[u;x]];
+     $[$[.Q.qt[x];(N:(*."\\C")-4)<n:#x;0];
+      (" "/:.h.ha'[
+        "?[",/:$(0;0|j- N),|&\(n- N;j+N);$`home`up`down`end], ,($n),"[",($j),"]";"");
+        ()],
+       .h.hc'.Q.S[."\\C ";j]x}
+
+In `.z.ph` we then replace any references to `.h.jx` with `.h.jx2`, adding in our extract user and class arguments.
+    
+    
+    .z.ph:{[x]
+      .perm.h.user:.z.u;
+      .perm.h.open:âkdb+ permissionsâ; 
+      .perm.h.class: .perm.getClass[.perm.h.user]; 
+      x:.h.uh $[type x;x;first x];
+      $[not count x; //1
+          .h.hy[`htm;.h.fram[string .z.f;x;("?";"?.perm.h.open")]];
+        x~enlist "?";  //2
+          .h.hp[{.h.hb["?",x; x]}each string system"v"]; 
+        "?["~2#x; //3
+          .h.hp[.h.jx2["J"$2_x; .h.R; .perm.h.user;.perm.h.class]]; 
+        "?"=first x; //4
+          @[{.h.hp[.h.jx2[0;.h.R::1_x;.perm.h.user;.perm.h.class]]};x;.h.he]; 
+        "?" in x; //5
+          @[{.h.ht[t;] ` sv .h.tx[t:`$-3#n#x;value (1+n:x?"?")_x]};x;.h.he];
+        count r:@[1:;`$":",p:.h.HOME,"/",x;""]; //6 
+          .h.hy[`$(1+x?".")_x; "c"$r];
+        .h.hn["404 Not Found";`txt;p,": not found"]] //7 }
+
+![Screen shots](img/screenshots.png)
+
+## Logging client activity¶
+
+As stated previously, the restrictions described in this paper are not watertight. If so inclined, an industrious user could potentially find a workaround for the restrictions that have been imposed. The development of a permissioning system is a gradual process, with holes being patched as they are identified. To help with this process, all client activity on a kdb+ process should be logged so that if a user does manage to circumvent the system there will be a record of it.
+
+There are two separate logs we wish to maintain:
+
+  * Access â who accessed the system?
+  * Query â what commands did they execute?
+
+
+
+To store this information, we need to define two new tables.
+    
+    
+    .perm.queryLog:([]
+      time:`timestamp$();
+      handle:`int$();
+      user:`$();
+      class:`$();
+      hostname:`$();
+      ip:`$();
+      query:();
+      valid:`boolean$();
+      error:() )
+    
+    .perm.accessLog:([]
+      time:`timestamp$();
+      handle:`int$();
+      user:`$();
+      class:`$();
+      hostname:`$();
+      ip:`$();
+      state:`$();error:() )
+
+`.perm.queryLog`
+    
+
+will keep a record of all queries entered on the system, including when they were executed, who executed them, whether they were valid queries and if not, why they failed.
+
+`.perm.accessLog`
+    
+
+keeps a record of all attempts to access the server. 
+
+We then define some utility functions that will help populate the tables.
+    
+    
+    .perm.getIP:{[] `$"."sv string `int$0x0 vs .z.a}
+    
+    .perm.logQuery:{[q;valid;err]
+      ip:.perm.getIP[];
+      cls:.perm.getClass[.z.u];
+      `.perm.queryLog insert (.z.P;.z.w;.z.u;cls;.z.h;ip;q;valid;enlist err) }
+    
+    .perm.logValidQuery:{[q] .perm.logQuery[q;1b;""]} 
+    .perm.logInvalidQuery:{[q;err] .perm.logQuery[q;0b;err]}
+    
+    .perm.logAccess:{[hdl;u;state;msg]
+      ip:.perm.getIP[];
+      cls:.perm.getClass[u];
+      `.perm.accessLog insert (.z.P;hdl;u;cls;.z.h;ip;state;enlist msg) }
+    
+    .perm.blockAccess:{[usr;msg].perm.logAccess[.z.w;usr;`block; msg]; 0b} 
+    .perm.grantAccess:{[usr] .perm.logAccess[.z.w;usr;`connect;""]; 1b}
+
+Then it is just a matter of making some adjustments to our message handlers: `.z.pw`, `.z.pg`, and `.z.ph`.
+
+For `.z.pw`, we want to log the cases where access has been denied. This happens if the requested username is not valid, or if the password supplied by the user does not match what is stored in the users table.
+    
+    
+    .z.pw:{[user;pwd]
+      $[not user in key .perm.users;
+          .perm.blockAccess[user;"User does not exist"];
+        not .perm.encrypt[user;pwd]~.perm.users[user][`password];
+          .perm.blockAccess[user;"Password Authentication Failed"]; 
+        .perm.grantAccess user] }
+
+Client:
+    
+    
+    q)h:hopen`:localhost:5001:POWERUSER1:password 
+    'access 
+    q)h:hopen`:localhost:5001:poweruser1:PASSWORD 
+    'access 
+    q)h:hopen`:localhost:5001:poweruser1:password
+
+Server:
+    
+    
+    q)select user,hostname,ip,state,error from .perm.accessLog
+    user       hostname     ip        state   error 
+    --------------------------------------------------------------------------
+    POWERUSER1 debian-image 127.0.0.1 block   "User does not exist"
+    POWERUSER1 debian-image 127.0.0.1 block   "User does not exist"
+    poweruser1 debian-image 127.0.0.1 block   "Password Authentication Failed" 
+    poweruser1 debian-image 127.0.0.1 block   "Password Authentication Failed"
+    poweruser1 debian-image 127.0.0.1 connect ""
+
+Retries
+
+To resolve compatibility issues between the various versions, kdb+ attempts the IPC handshake twice if the authentication fails, so any errors will be duplicated in our logging table.
+
+To log client queries, we need to make changes to `.z.pg` and `.z.ph`. First, we rename `.z.pg` and `.z.ph` to `.perm.zpg` and `.perm.zph` respectively. We then use `.z.pg` and `.z.ph` as wrapper functions around our original handlers, allowing us to catch and log any errors.
+    
+    
+    .z.pg:{[query] 
+      res:@[.perm.zpg; query; {[x;y].perm.logInvalidQuery[x;y];'y}[query;]];
+      .perm.logValidQuery query;
+      res }
+
+When a HTTP call results in an error, it doesnât signal the error in the usual way, so we canât use [protected evaluation](../../ref/apply/#trap) to trap the error. Rather, it generates a HTTP response displaying the error.
+    
+    
+    HTTP/1.1 400 Bad Request
+    Content-Type: text/plain
+    Connection: close
+    Content-Length: N
+    'Error message
+
+This means we can use pattern matching to identify when HTTP calls result in errors.
+    
+    
+    .z.ph:{[query]
+      res:.perm.zph query;
+      if[res like "HTTP/1.1 400 Bad Request*";
+        .perm.logInvalidQuery[1_first query;errMsg:5_"\r\n" vs res];
+        :res];
+      .perm.logValidQuery[1_first query];
+      res }
+
+Client:
+    
+    
+    q)h:hopen`:localhost:5001:poweruser1:password 
+    q)h"select from .perm.users"
+    'You do not have select permission on .perm.users 
+    q)h"a:1"
+    'You do not have write access
+    q)h"select from trade"
+    'You do not have select permission on trade 
+    q)h"select from quote"
+    time         sym  bid      ask      bsize  asize  ex 
+    ------------------------------------------------------ 
+    09:00:00.863 AMZN 266.0749 266.0697 100000 90000  NYSE 
+    09:00:02.416 MSFT 34.41319 34.41266 80000  80000  BATS 
+    09:00:03.440 AAPL 449.5043 449.4989 30000  110000 BATS 
+    09:00:03.959 MSFT 34.41286 34.41274 110000 110000 BATS 
+    09:00:04.340 AMZN 266.0636 266.0593 20000  150000 NYSE 
+    ..
+
+Server:
+    
+    
+    q)select user,query,valid,error from .perm.queryLog 
+    user        query                    valid error
+    -------------------------------------------------------------------------- -------------------
+    poweruser1 "select from .perm.users" 0     "You do not have select permission on .perm.users"    
+    poweruser1 "a:1"                     0     "You do not have write access"
+    poweruser1 "select from trade"       0     "You do not have select permission on trade"    
+    poweruser1 "select from quote"       1     ""
+
+## Conclusion¶
+
+This paper was an introduction to permissioning in kdb+ without using LDAP or any other external entitlements system.
+
+In order to pass a security audit, access to this data should be controlled and logged to ensure that only those who are entitled to view the information are able to do so.
+
+We have described a number of methods of securing a kdb+ process. We examined the concept of splitting clients into separate groups or classes, each with different permission levels. We examined how to block write access on a kdb+ process, and how to restrict certain users from viewing proprietary code. While the system described in the paper offers a broad coverage, including blocking some forms of code injection, it is not intended to be complete.
+
+While the approach outlined in this paper solely used q code to implement a permissioning system, there is scope to extend this to incorporate external protocols such as LDAP, Kerberos or Single Sign-On, allowing kdb+ to be fully integrated with a firmâs authentication infrastructure. One should also consider out-of-the-box solutions like [KX Control](../../devtools/#kx-control) which, as well as handling permissioning, also delivers a well-defined framework for process workflow, scheduling, audit trails and system alerts.
+
+[Monitor & control execution](../../kb/using-dotz/)
+
+## Author¶
+
+**Tom Martin** is a senior kdb+ consultant for KX who has built kdb+ systems for some of the worldâs leading financial institutions. Tom is currently based in London, where he works on FX auto-hedging and client algos at a top-tier investment bank.
+
+Back to top 
+
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).  
+Kx and kdb+ are registered trademarks of [Kx Systems, Inc.](https://kx.com), a subsidiary of [FD Technologies plc](https://www.fdtechnologies.com/). 
+
+Made with [ Material for MkDocs ](https://squidfunk.github.io/mkdocs-material/)

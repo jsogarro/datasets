@@ -1,0 +1,8599 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Quick reference for kdb+ and the q programming language">
+      
+      
+        <meta name="author" content="KX Systems, Inc., a subsidiary of KX Software Limited">
+      
+      
+        <link rel="canonical" href="https://code.kx.com/q/ref/">
+      
+      
+        <link rel="prev" href="../learn/startingkdb/tick/">
+      
+      
+        <link rel="next" href="../basics/by-topic/">
+      
+      <link rel="icon" href="../local/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>Reference card | kdb+ and q documentation - kdb+ and q documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../local/stylesheets/2021.css">
+    
+      <link rel="stylesheet" href="../local/stylesheets/prism.css">
+    
+      <link rel="stylesheet" href="../local/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../local/stylesheets/hide-footer-nav.css">
+    
+      <link rel="stylesheet" href="../stylesheets/q.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PG938LS');</script>
+<!-- End Google Tag Manager -->
+<!-- Delighted survey tool -->
+<script type="text/javascript">
+ !function(e,t,r,n){if(!e[n]){for(var a=e[n]=[],i=["survey","reset","config","init","set","get","event","identify","track","page","screen","group","alias"],s=0;s<i.length;s++){var c=i[s];a[c]=a[c]||function(e){return function(){var t=Array.prototype.slice.call(arguments);a.push([e,t])}}(c)}a.SNIPPET_VERSION="1.0.1";var o=t.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://d2yyd1h5u9mauk.cloudfront.net/integrations/web/v1/library/"+r+"/"+n+".js";var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(o,u)}}(window,document,"X3fUmYn77WW3rfAz","delightedThumbsK");
+ delightedThumbsK.survey({
+  properties: { // extra context (optional)
+   product: "KDB-q"
+  }
+ });
+</script>
+<!-- End Delighted survey tool -->
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="kx-light" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reference-card" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="">
+    <a href="https://code.kx.com/" title="code.kx.com" class="md-header__button md-logo" aria-label="kdb+ and q documentation" data-md-component="logo">
+      
+  <img src="../local/img/kx.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            kdb+ and q documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reference card | kdb+ and q documentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="kx-light" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+<style>
+  /* Button used to open the chat form - fixed at the bottom of the page */
+  .open-button {
+    background-color: var(--md-typeset-a-color);
+    border: none;
+    border-radius: 10px;
+    bottom: 23px;
+    box-sizing: border-box;
+    color: var(--md-mermaid-label-bg-color);
+    cursor: pointer;
+    font-size: 13px;
+    opacity: 0.8;
+    padding: 10px 10px;
+    position: fixed;
+    right: 28px;
+    width: 160px;
+    z-index: 3;
+  }
+</style>
+<body>
+  <button class="open-button md-typeset" onclick="window.location.href='https://community.kx.com/t5/kdb-and-q/bd-p/kdb-q-questions'"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32C114.6 32 0 125.1 0 240c0 47.6 19.9 91.2 52.9 126.3C38 405.7 7 439.1 6.5 439.5c-6.6 7-8.4 17.2-4.6 26S14.4 480 24 480c61.5 0 110-25.7 139.1-46.3C192 442.8 223.2 448 256 448c141.4 0 256-93.1 256-208S397.4 32 256 32zm0 368c-26.7 0-53.1-4.1-78.4-12.1l-22.7-7.2-19.5 13.8c-14.3 10.1-33.9 21.4-57.5 29 7.3-12.1 14.4-25.7 19.9-40.2l10.6-28.1-20.6-21.8C69.7 314.1 48 282.2 48 240c0-88.2 93.3-160 208-160s208 71.8 208 160-93.3 160-208 160z"></path></svg></span>&nbsp;Ask a question</button>
+</body>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/home" class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        kdb+ and q
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/insights" class="md-tabs__link">
+      kdb Insights SDK
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/insights/enterprise" class="md-tabs__link">
+      kdb Insights Enterprise
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/kdbai" class="md-tabs__link">
+      KDB.AI
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/pykx" class="md-tabs__link">
+      PyKX
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/insights/api" class="md-tabs__link">
+      APIs
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://code.kx.com/home/support.html" class="md-tabs__link">
+      Help
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="kdb+ and q documentation" class="md-nav__button md-logo" aria-label="kdb+ and q documentation" data-md-component="logo">
+      
+  <img src="../local/img/kx.svg" alt="logo">
+
+    </a>
+    kdb+ and q documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/home" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          kdb+ and q
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          kdb+ and q
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/install/" class="md-nav__link">
+        Install
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/licensing/" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Learn
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Learn
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+          Mountain tour
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Mountain tour
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/tour/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/tour/" class="md-nav__link">
+        Begin here
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/tour/session/" class="md-nav__link">
+        The q session
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/tour/tables/" class="md-nav__link">
+        Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/tour/csvs/" class="md-nav__link">
+        CSVs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/tour/datatypes/" class="md-nav__link">
+        Datatypes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/tour/scripts/" class="md-nav__link">
+        Scripts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/tour/ide/" class="md-nav__link">
+        IDE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/brief-introduction/" class="md-nav__link">
+        Q for quants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/q-by-examples/" class="md-nav__link">
+        Q by Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/q-for-all/" class="md-nav__link">
+        Q for All (video)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_6" id="__nav_2_3_6_label" tabindex="0">
+          Examples from Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Examples from Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/python/examples/" class="md-nav__link">
+        Basic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/python/examples/array/" class="md-nav__link">
+        Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/python/examples/list/" class="md-nav__link">
+        List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/python/examples/string/" class="md-nav__link">
+        Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/python/examples/dict/" class="md-nav__link">
+        Dictionaries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/q4m3/" class="md-nav__link">
+        Q for Mortals 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_8" id="__nav_2_3_8_label" tabindex="0">
+          Q by Puzzles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Q by Puzzles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/pb/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/pb/xmas-days/" class="md-nav__link">
+        12 Days of Xmas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/pb/abc-problem/" class="md-nav__link">
+        ABC problem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/pb/abundant-odds/" class="md-nav__link">
+        Abundant odds
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/pb/four-magic/" class="md-nav__link">
+        Four is magic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/pb/name-game/" class="md-nav__link">
+        Name Game
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/pb/sum-say/" class="md-nav__link">
+        Summarize and Say
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/pb/word-wheel/" class="md-nav__link">
+        Word wheel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_9" id="__nav_2_3_9_label" tabindex="0">
+          Reading room
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          Reading room
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/reading/" class="md-nav__link">
+        Information desk
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/reading/boggle/" class="md-nav__link">
+        Boggle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/reading/strings/" class="md-nav__link">
+        Cats cradle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/reading/fizzbuzz/" class="md-nav__link">
+        Fizz buzz
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/reading/klondike/" class="md-nav__link">
+        Klondike
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/phrases/" class="md-nav__link">
+        Phrasebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/reading/scrabble/" class="md-nav__link">
+        Scrabble
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_10" id="__nav_2_3_10_label" tabindex="0">
+          Application examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          Application examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/astronomy/" class="md-nav__link">
+        Astronomy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/card-counters/" class="md-nav__link">
+        Detecting card counters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/corporate-actions/" class="md-nav__link">
+        Corporate actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/disaster-management/" class="md-nav__link">
+        Disaster management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/exoplanets/" class="md-nav__link">
+        Exoplanets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/market-depth/" class="md-nav__link">
+        Market depth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/market-fragmentation/" class="md-nav__link">
+        Market fragmentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/option-pricing/" class="md-nav__link">
+        Option pricing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/disaster-floods/" class="md-nav__link">
+        Predicting floods
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/signal-processing/" class="md-nav__link">
+        Signal processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/space-weather/" class="md-nav__link">
+        Space weather
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/surveillance/" class="md-nav__link">
+        Trading surveillance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/transaction-cost/" class="md-nav__link">
+        Transaction-cost analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/trend-indicators/" class="md-nav__link">
+        Trend indicators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_11" id="__nav_2_3_11_label" tabindex="0">
+          Advanced q
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_11">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced q
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/qbists/style" class="md-nav__link">
+        Remarks on Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/shifts-scans/" class="md-nav__link">
+        Shifts & scans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/blogs/" class="md-nav__link">
+        Technical articles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/views/" class="md-nav__link">
+        Views
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/archive/" class="md-nav__link">
+        Origins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/terminology/" class="md-nav__link">
+        Terminology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_12" id="__nav_2_3_12_label" tabindex="0">
+          Starting kdb+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_12">
+          <span class="md-nav__icon md-icon"></span>
+          Starting kdb+
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/startingkdb/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/startingkdb/language/" class="md-nav__link">
+        The q language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/startingkdb/ipc/" class="md-nav__link">
+        IPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/startingkdb/tables/" class="md-nav__link">
+        Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/startingkdb/hdb/" class="md-nav__link">
+        Historical database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/startingkdb/tick/" class="md-nav__link">
+        Realtime database
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Language
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Language
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Reference card
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Reference card
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    Keywords
+  </a>
+  
+    <nav class="md-nav" aria-label="Keywords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#by-category" class="md-nav__link">
+    By category
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterators" class="md-nav__link">
+    Iterators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-control" class="md-nav__link">
+    Execution control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-options-and-system-commands" class="md-nav__link">
+    Command-line options and system commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datatypes" class="md-nav__link">
+    Datatypes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+    <nav class="md-nav" aria-label="Namespaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#h-markup" class="md-nav__link">
+    .h (markup)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j-json" class="md-nav__link">
+    .j (JSON)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m-modules" class="md-nav__link">
+    .m (modules)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-utils" class="md-nav__link">
+    .Q (utils)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-environment-callbacks" class="md-nav__link">
+    .z (environment, callbacks)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/by-topic/" class="md-nav__link">
+        By topic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
+          Iteration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Iteration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/iteration/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/implicit-iteration/" class="md-nav__link">
+        Implicit iteration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="iterators/" class="md-nav__link">
+        Iterators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maps/" class="md-nav__link">
+        Maps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="accumulators/" class="md-nav__link">
+        Accumulators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/iterators/" class="md-nav__link">
+        Guide to iterators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_4" id="__nav_2_4_4_label" tabindex="0">
+          Keywords
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Keywords
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="abs/" class="md-nav__link">
+        abs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aj/" class="md-nav__link">
+        aj, aj0, ajf, ajf0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="all-any/" class="md-nav__link">
+        all, any
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="and/" class="md-nav__link">
+        and
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asc/" class="md-nav__link">
+        asc, iasc, xasc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="asof/" class="md-nav__link">
+        asof
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="attr/" class="md-nav__link">
+        attr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="avg/" class="md-nav__link">
+        avg, avgs, mavg, wavg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bin/" class="md-nav__link">
+        bin, binr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ceiling/" class="md-nav__link">
+        ceiling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="count/" class="md-nav__link">
+        count, mcount
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cols/" class="md-nav__link">
+        cols, xcol, xcols
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cor/" class="md-nav__link">
+        cor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cos/" class="md-nav__link">
+        cos, acos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cov/" class="md-nav__link">
+        cov, scov
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cross/" class="md-nav__link">
+        cross
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="csv/" class="md-nav__link">
+        csv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cut/" class="md-nav__link">
+        cut
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="delete/" class="md-nav__link">
+        delete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deltas/" class="md-nav__link">
+        deltas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="desc/" class="md-nav__link">
+        desc, idesc, xdesc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dev/" class="md-nav__link">
+        dev, mdev, sdev
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="differ/" class="md-nav__link">
+        differ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distinct/" class="md-nav__link">
+        distinct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="div/" class="md-nav__link">
+        div
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dsave/" class="md-nav__link">
+        dsave
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="each/" class="md-nav__link">
+        each, peach
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ej/" class="md-nav__link">
+        ej
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ema/" class="md-nav__link">
+        ema
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enlist/" class="md-nav__link">
+        enlist
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="eval/" class="md-nav__link">
+        eval, reval
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="except/" class="md-nav__link">
+        except
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exec/" class="md-nav__link">
+        exec
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exit/" class="md-nav__link">
+        exit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exp/" class="md-nav__link">
+        exp, xexp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fby/" class="md-nav__link">
+        fby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fill/" class="md-nav__link">
+        fills
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="first/" class="md-nav__link">
+        first, last
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fkeys/" class="md-nav__link">
+        fkeys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flip/" class="md-nav__link">
+        flip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="floor/" class="md-nav__link">
+        floor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="get/" class="md-nav__link">
+        get, set
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getenv/" class="md-nav__link">
+        getenv, setenv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="group/" class="md-nav__link">
+        group
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="gtime/" class="md-nav__link">
+        gtime, ltime
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hcount/" class="md-nav__link">
+        hcount
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hdel/" class="md-nav__link">
+        hdel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hopen/" class="md-nav__link">
+        hopen, hclose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hsym/" class="md-nav__link">
+        hsym
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ij/" class="md-nav__link">
+        ij, ijf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="in/" class="md-nav__link">
+        in
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="insert/" class="md-nav__link">
+        insert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inter/" class="md-nav__link">
+        inter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inv/" class="md-nav__link">
+        inv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="key/" class="md-nav__link">
+        key
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="keys/" class="md-nav__link">
+        keys, xkey
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="like/" class="md-nav__link">
+        like
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lj/" class="md-nav__link">
+        lj, ljf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="load/" class="md-nav__link">
+        load, rload
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="log/" class="md-nav__link">
+        log, xlog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lower/" class="md-nav__link">
+        lower, upper
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lsq/" class="md-nav__link">
+        lsq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="max/" class="md-nav__link">
+        max, maxs, mmax
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="md5/" class="md-nav__link">
+        md5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="med/" class="md-nav__link">
+        med
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="meta/" class="md-nav__link">
+        meta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="min/" class="md-nav__link">
+        min, mins, mmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mmu/" class="md-nav__link">
+        mmu
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mod/" class="md-nav__link">
+        mod
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="neg/" class="md-nav__link">
+        neg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="next/" class="md-nav__link">
+        next, prev, xprev
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="not/" class="md-nav__link">
+        not
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="null/" class="md-nav__link">
+        null
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="or/" class="md-nav__link">
+        or
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="over/" class="md-nav__link">
+        over, scan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="parse/" class="md-nav__link">
+        parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pj/" class="md-nav__link">
+        pj
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prd/" class="md-nav__link">
+        prd, prds
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prior/" class="md-nav__link">
+        prior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rand/" class="md-nav__link">
+        rand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rank/" class="md-nav__link">
+        rank
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ratios/" class="md-nav__link">
+        ratios
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="raze/" class="md-nav__link">
+        raze
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="read0/" class="md-nav__link">
+        read0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="read1/" class="md-nav__link">
+        read1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reciprocal/" class="md-nav__link">
+        reciprocal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reverse/" class="md-nav__link">
+        reverse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rotate/" class="md-nav__link">
+        rotate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="save/" class="md-nav__link">
+        save, rsave
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="select/" class="md-nav__link">
+        select
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="show/" class="md-nav__link">
+        show
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signum/" class="md-nav__link">
+        signum
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sin/" class="md-nav__link">
+        sin, asin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sqrt/" class="md-nav__link">
+        sqrt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ss/" class="md-nav__link">
+        ss, ssr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="string/" class="md-nav__link">
+        string
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sublist/" class="md-nav__link">
+        sublist
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sum/" class="md-nav__link">
+        sum, sums, msum, wsum
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sv/" class="md-nav__link">
+        sv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="system/" class="md-nav__link">
+        system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tables/" class="md-nav__link">
+        tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tan/" class="md-nav__link">
+        tan, atan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="til/" class="md-nav__link">
+        til
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="trim/" class="md-nav__link">
+        trim, ltrim, rtrim
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="type/" class="md-nav__link">
+        type
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="uj/" class="md-nav__link">
+        uj, ujf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="union/" class="md-nav__link">
+        union
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ungroup/" class="md-nav__link">
+        ungroup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="update/" class="md-nav__link">
+        update
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="upsert/" class="md-nav__link">
+        upsert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="value/" class="md-nav__link">
+        value
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="var/" class="md-nav__link">
+        var, svar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="view/" class="md-nav__link">
+        view, views
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vs/" class="md-nav__link">
+        vs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="where/" class="md-nav__link">
+        where
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="within/" class="md-nav__link">
+        within
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="wj/" class="md-nav__link">
+        wj, wj1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xbar/" class="md-nav__link">
+        xbar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xgroup/" class="md-nav__link">
+        xgroup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xrank/" class="md-nav__link">
+        xrank
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="overloads/" class="md-nav__link">
+        Overloaded glyphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_6" id="__nav_2_4_6_label" tabindex="0">
+          Operators
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Operators
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="add/" class="md-nav__link">
+        Add
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="amend/" class="md-nav__link">
+        Amend
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apply/" class="md-nav__link">
+        Apply, Index, Trap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="assign/" class="md-nav__link">
+        Assign
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cast/" class="md-nav__link">
+        Cast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="coalesce/" class="md-nav__link">
+        Coalesce
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="compose/" class="md-nav__link">
+        Compose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cut/" class="md-nav__link">
+        Cut
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deal/" class="md-nav__link">
+        Deal, Roll, Permute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="delete/" class="md-nav__link">
+        Delete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="display/" class="md-nav__link">
+        Display
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dict/" class="md-nav__link">
+        Dict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="divide/" class="md-nav__link">
+        Divide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dynamic-load/" class="md-nav__link">
+        Dynamic Load
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="drop/" class="md-nav__link">
+        Drop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enkey/" class="md-nav__link">
+        Enkey, Unkey
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enumerate/" class="md-nav__link">
+        Enumerate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enumeration/" class="md-nav__link">
+        Enumeration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enum-extend/" class="md-nav__link">
+        Enum Extend
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="equal/" class="md-nav__link">
+        Equal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exec/" class="md-nav__link">
+        Exec
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="file-binary/" class="md-nav__link">
+        File Binary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="file-text/" class="md-nav__link">
+        File Text
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fill/" class="md-nav__link">
+        Fill
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="find/" class="md-nav__link">
+        Find
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="flip-splayed/" class="md-nav__link">
+        Flip Splayed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="greater/" class="md-nav__link">
+        Greater
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="greater-than/" class="md-nav__link">
+        Greater Than
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="identity/" class="md-nav__link">
+        Identity, Null
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="join/" class="md-nav__link">
+        Join
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="less-than/" class="md-nav__link">
+        Less Than
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lesser/" class="md-nav__link">
+        Lesser
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="match/" class="md-nav__link">
+        Match
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mmu/" class="md-nav__link">
+        Matrix Multiply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="multiply/" class="md-nav__link">
+        Multiply
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="not-equal/" class="md-nav__link">
+        Not Equal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pad/" class="md-nav__link">
+        Pad
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="select/" class="md-nav__link">
+        Select
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set-attribute/" class="md-nav__link">
+        Set Attribute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="simple-exec/" class="md-nav__link">
+        Simple Exec
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signal/" class="md-nav__link">
+        Signal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="subtract/" class="md-nav__link">
+        Subtract
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="take/" class="md-nav__link">
+        Take
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tok/" class="md-nav__link">
+        Tok
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="update/" class="md-nav__link">
+        Update
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vector-conditional/" class="md-nav__link">
+        Vector Conditional
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_7" id="__nav_2_4_7_label" tabindex="0">
+          Control constructs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          Control constructs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cond/" class="md-nav__link">
+        Cond
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="do/" class="md-nav__link">
+        do
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="if/" class="md-nav__link">
+        if
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="while/" class="md-nav__link">
+        while
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_8" id="__nav_2_4_8_label" tabindex="0">
+          Namespaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Namespaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="doth/" class="md-nav__link">
+        .h (markup)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dotj/" class="md-nav__link">
+        .j (JSON)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dotm/" class="md-nav__link">
+        .m (modules)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dotq/" class="md-nav__link">
+        .Q (utils)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dotz/" class="md-nav__link">
+        .z (env, callbacks)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/application/" class="md-nav__link">
+        Application
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/atomic/" class="md-nav__link">
+        Atomic functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/comparison/" class="md-nav__link">
+        Comparison
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/conformable/" class="md-nav__link">
+        Conformability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/handles/" class="md-nav__link">
+        Connection handles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/cmdline/" class="md-nav__link">
+        Command-line options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/datatypes/" class="md-nav__link">
+        Datatypes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/dictsandtables/" class="md-nav__link">
+        Dictionaries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/enumerations/" class="md-nav__link">
+        Enumerations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/control/" class="md-nav__link">
+        Evaluation control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/exposed-infrastructure/" class="md-nav__link">
+        Exposed infrastructure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/files/" class="md-nav__link">
+        File system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/function-notation/" class="md-nav__link">
+        Function notation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/internal/" class="md-nav__link">
+        Internal functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/joins/" class="md-nav__link">
+        Joins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/math/" class="md-nav__link">
+        Mathematics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/metadata/" class="md-nav__link">
+        Metadata
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/namespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/pattern/" class="md-nav__link">
+        Pattern matching
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/parsetrees/" class="md-nav__link">
+        Parse trees
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_30" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_30" id="__nav_2_4_30_label" tabindex="0">
+          qSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_30_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_30">
+          <span class="md-nav__icon md-icon"></span>
+          qSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/qsql/" class="md-nav__link">
+        qSQL queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/funsql/" class="md-nav__link">
+        Functional qSQL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/regex/" class="md-nav__link">
+        Regular Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/syntax/" class="md-nav__link">
+        Syntax
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/syscmds/" class="md-nav__link">
+        System commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/faq/" class="md-nav__link">
+        Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/variadic/" class="md-nav__link">
+        Variadic syntax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Tables in the filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_2" id="__nav_2_5_2_label" tabindex="0">
+          Populating tables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Populating tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/loading-from-large-files/" class="md-nav__link">
+        Loading from large files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/foreign-keys/" class="md-nav__link">
+        Foreign keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/linking-columns/" class="md-nav__link">
+        Linking columns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/data-loaders/" class="md-nav__link">
+        Data loaders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/mdb-odbc/" class="md-nav__link">
+        From MDB via ODBC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
+          Persisting tables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Persisting tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/object/" class="md-nav__link">
+        Serializing an object
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/splayed-tables/" class="md-nav__link">
+        Splayed tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/partition/" class="md-nav__link">
+        Partitioned tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/segment/" class="md-nav__link">
+        Segmented databases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/multi-partitioned-dbs/" class="md-nav__link">
+        Multiple partitions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_4" id="__nav_2_5_4_label" tabindex="0">
+          Maintenance
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Maintenance
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/data-management/" class="md-nav__link">
+        Data management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/dare/" class="md-nav__link">
+        Data-At-Rest Encryption
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_4_3" id="__nav_2_5_4_3_label" tabindex="0">
+          Compression
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_5_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Compression
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/file-compression/" class="md-nav__link">
+        File compression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/compress/" class="md-nav__link">
+        Compression examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/compression/fsicasestudy/" class="md-nav__link">
+        FSI case study
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/permissions/" class="md-nav__link">
+        Permissions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/columnar-database/" class="md-nav__link">
+        Query optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/query-scaling/" class="md-nav__link">
+        Query scaling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/ts-shrink/" class="md-nav__link">
+        Time-series simplification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/compacting-hdb-sym/" class="md-nav__link">
+        Compacting HDB sym
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/symfiles/" class="md-nav__link">
+        Working with sym files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Developing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Developing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_1" id="__nav_2_6_1_label" tabindex="0">
+          IPC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          IPC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/ipc/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/listening-port/" class="md-nav__link">
+        Listening port
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/deferred-response/" class="md-nav__link">
+        Deferred response
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/callbacks/" class="md-nav__link">
+        Async callbacks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/named-pipes/" class="md-nav__link">
+        Named pipes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/serialization/" class="md-nav__link">
+        Serialization examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/socket-sharding/" class="md-nav__link">
+        Socket sharding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/ssl/" class="md-nav__link">
+        SSL/TLS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/http/" class="md-nav__link">
+        HTTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/websockets/" class="md-nav__link">
+        WebSockets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/profiler/" class="md-nav__link">
+        Code profiler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/debug/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/man/" class="md-nav__link">
+        man.q
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/unit-tests/" class="md-nav__link">
+        Unit tests
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/using-dotz/" class="md-nav__link">
+        Monitor & control execution
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+          Coding
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Coding
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/geospatial/" class="md-nav__link">
+        Geospatial indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/lp/" class="md-nav__link">
+        Linear programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/mt-primitives/" class="md-nav__link">
+        Multithreaded primitives
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/pivoting-tables/" class="md-nav__link">
+        Pivoting tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/precision/" class="md-nav__link">
+        Precision
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/programming-examples/" class="md-nav__link">
+        Programming examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/programming-idioms/" class="md-nav__link">
+        Programming idioms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/temporal-data/" class="md-nav__link">
+        Temporal data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/timezones/" class="md-nav__link">
+        Timezones
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/unicode/" class="md-nav__link">
+        Unicode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_4" id="__nav_2_6_4_label" tabindex="0">
+          DevOps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          DevOps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/cpu-affinity/" class="md-nav__link">
+        CPU affinity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/daemon/" class="md-nav__link">
+        Daemon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/firewalling/" class="md-nav__link">
+        Firewalling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/inetd/" class="md-nav__link">
+        inetd, xinetd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/linux-production/" class="md-nav__link">
+        Linux production notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/filesystemTestByNano/" class="md-nav__link">
+        File system comparison
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/logging/" class="md-nav__link">
+        Log Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/multi-thread/" class="md-nav__link">
+        Multi-threading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/versions/" class="md-nav__link">
+        Multiple versions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/peach/" class="md-nav__link">
+        Parallel processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/performance-tips/" class="md-nav__link">
+        Performance tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../develop/shebang/" class="md-nav__link">
+        Shebang script
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/surveillance-latency/" class="md-nav__link">
+        Surveillance latency
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/windows-service/" class="md-nav__link">
+        Windows service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_5" id="__nav_2_6_5_label" tabindex="0">
+          Release notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Release notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/" class="md-nav__link">
+        History
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn4.1/" class="md-nav__link">
+        Changes in 4.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn4.0/" class="md-nav__link">
+        Changes in 4.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn3.6/" class="md-nav__link">
+        Changes in 3.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn3.5/" class="md-nav__link">
+        Changes in 3.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn3.4/" class="md-nav__link">
+        Changes in 3.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn3.3/" class="md-nav__link">
+        Changes in 3.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn3.2/" class="md-nav__link">
+        Changes in 3.2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn3.1/" class="md-nav__link">
+        Changes in 3.1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn3.0/" class="md-nav__link">
+        Changes in 3.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn2.8/" class="md-nav__link">
+        Changes in 2.8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn2.7/" class="md-nav__link">
+        Changes in 2.7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn2.6/" class="md-nav__link">
+        Changes in 2.6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn2.5/" class="md-nav__link">
+        Changes in 2.5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/ChangesIn2.4/" class="md-nav__link">
+        Changes in 2.4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/withdrawn/" class="md-nav__link">
+        Withdrawn
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devtools/" class="md-nav__link">
+        Developer tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/faq-listbox/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Streaming
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Streaming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1" id="__nav_2_7_1_label" tabindex="0">
+          General architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          General architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_1_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_1_2" id="__nav_2_7_1_2_label" tabindex="0">
+          kdb+tick
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_7_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          kdb+tick
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/tickq/" class="md-nav__link">
+        Tickerplant (tick.q)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/uq/" class="md-nav__link">
+        Tickerplant pub/sub (u.q)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/rq/" class="md-nav__link">
+        RDB (r.q)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/kdb-tick/" class="md-nav__link">
+        Alternative architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/data-recovery/" class="md-nav__link">
+        TP Log (data recovery)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/rt-tick/" class="md-nav__link">
+        RTEs (real-time engines)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/gateway-design/" class="md-nav__link">
+        Gateway design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/query-routing/" class="md-nav__link">
+        Query routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/load-balancing/" class="md-nav__link">
+        Load balancing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/tick-profiling/" class="md-nav__link">
+        Profiling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/disaster-recovery/" class="md-nav__link">
+        Disaster recovery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://youtu.be/jqtkkCqBvr4" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/order-book/" class="md-nav__link">
+        Order Book
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/alternative-in-memory-layouts/" class="md-nav__link">
+        Alternative in-memory layouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/corporate-actions/" class="md-nav__link">
+        Corporate actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_14" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_14" id="__nav_2_7_14_label" tabindex="0">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_14_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7_14">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/query-interface/" class="md-nav__link">
+        Distributed systems
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/intraday-writedown/" class="md-nav__link">
+        RDB intraday writedown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8_1" id="__nav_2_8_1_label" tabindex="0">
+          Languages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Languages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_1_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8_1_1" id="__nav_2_8_1_1_label" tabindex="0">
+          C/C++
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_8_1_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          C/C++
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/c-client-for-q/" class="md-nav__link">
+        Quick guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/capiref/" class="md-nav__link">
+        API reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/capi/" class="md-nav__link">
+        C API for kdb+
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/using-c-functions/" class="md-nav__link">
+        Extending q with C/C++
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kb/server-calling-client/" class="md-nav__link">
+        Async callbacks (C client)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/csharp/" class="md-nav__link">
+        C#
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/ffi/" class="md-nav__link">
+        Foreign Function Interface (FFI)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/java/" class="md-nav__link">
+        Java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/r/" class="md-nav__link">
+        R
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/rust/" class="md-nav__link">
+        Rust
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/scala-client-for-q/" class="md-nav__link">
+        Scala
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/" class="md-nav__link">
+        KX libraries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/q-client-for-bloomberg/" class="md-nav__link">
+        Bloomberg
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/excel-client-for-q/" class="md-nav__link">
+        Excel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/fix-messaging/" class="md-nav__link">
+        FIX messaging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/gpus/" class="md-nav__link">
+        GPUs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/matlab-client-for-q/" class="md-nav__link">
+        Matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8_8" id="__nav_2_8_8_label" tabindex="0">
+          ODBC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8_8">
+          <span class="md-nav__icon md-icon"></span>
+          ODBC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/q-client-for-odbc/" class="md-nav__link">
+        ODBC client
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/q-server-for-odbc3/" class="md-nav__link">
+        ODBC3 server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/data-visualization/" class="md-nav__link">
+        ODBC3 and Tableau
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/solace/" class="md-nav__link">
+        Solace pub/sub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        Open source
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ml/" class="md-nav__link">
+        Machine learning
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+          Using kdb+ in the cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Using kdb+ in the cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_2" id="__nav_2_9_2_label" tabindex="0">
+          Amazon Web Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_2">
+          <span class="md-nav__icon md-icon"></span>
+          Amazon Web Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/aws/" class="md-nav__link">
+        Reference architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_2_2" id="__nav_2_9_2_2_label" tabindex="0">
+          Amazon EC2 & Storage Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_9_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Amazon EC2 & Storage Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/aws/migration/" class="md-nav__link">
+        Migrating a kdb+ HDB to Amazon EC2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/aws/app-a-ebs/" class="md-nav__link">
+        Elastic Block Store (EBS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/aws/app-b-efs-nfs/" class="md-nav__link">
+        EFS (NFS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/aws/app-c-asg/" class="md-nav__link">
+        Amazon Storage Gateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/aws/lustre/" class="md-nav__link">
+        FSx for Lustre
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/aws-lambda/" class="md-nav__link">
+        AWS Lambda
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_3" id="__nav_2_9_3_label" tabindex="0">
+          Microsoft Azure
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_3">
+          <span class="md-nav__icon md-icon"></span>
+          Microsoft Azure
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/azure/architecture/" class="md-nav__link">
+        Reference architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_4" id="__nav_2_9_4_label" tabindex="0">
+          Google Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Google Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/gcpm/architecture/" class="md-nav__link">
+        Reference architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_5" id="__nav_2_9_5_label" tabindex="0">
+          Auto Scaling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_5">
+          <span class="md-nav__icon md-icon"></span>
+          Auto Scaling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/autoscale/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/autoscale/aws/" class="md-nav__link">
+        Amazon Web Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/autoscale/rdc/" class="md-nav__link">
+        Realtime data cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/autoscale/cost-risk/" class="md-nav__link">
+        Costs and risks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9_6" id="__nav_2_9_6_label" tabindex="0">
+          Other file systems
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9_6">
+          <span class="md-nav__icon md-icon"></span>
+          Other file systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/otherfs/mapr/" class="md-nav__link">
+        MapR-FS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/otherfs/goofys/" class="md-nav__link">
+        Goofys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/otherfs/s3fs/" class="md-nav__link">
+        S3FS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/otherfs/s3ql/" class="md-nav__link">
+        S3QL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/otherfs/objectivefs/" class="md-nav__link">
+        ObjectiveFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/otherfs/wekaio-matrix/" class="md-nav__link">
+        WekaIO Matrix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/otherfs/quobyte/" class="md-nav__link">
+        Quobyte
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://learninghub.kx.com" class="md-nav__link">
+        Academy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://learninghub.kx.com/forums/forum/kdb" class="md-nav__link">
+        Discussion Forum
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wp/" class="md-nav__link">
+        White papers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/thissite/" class="md-nav__link">
+        About this site
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/insights" class="md-nav__link">
+        kdb Insights SDK
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/insights/enterprise" class="md-nav__link">
+        kdb Insights Enterprise
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/kdbai" class="md-nav__link">
+        KDB.AI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/pykx" class="md-nav__link">
+        PyKX
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/insights/api" class="md-nav__link">
+        APIs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://code.kx.com/home/support.html" class="md-nav__link">
+        Help
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    Keywords
+  </a>
+  
+    <nav class="md-nav" aria-label="Keywords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#by-category" class="md-nav__link">
+    By category
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterators" class="md-nav__link">
+    Iterators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-control" class="md-nav__link">
+    Execution control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-options-and-system-commands" class="md-nav__link">
+    Command-line options and system commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datatypes" class="md-nav__link">
+    Datatypes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+    <nav class="md-nav" aria-label="Namespaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#h-markup" class="md-nav__link">
+    .h (markup)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j-json" class="md-nav__link">
+    .j (JSON)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m-modules" class="md-nav__link">
+    .m (modules)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-utils" class="md-nav__link">
+    .Q (utils)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-environment-callbacks" class="md-nav__link">
+    .z (environment, callbacks)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="reference-card">Reference card<a class="headerlink" href="#reference-card" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Want a quick and handy q reference resource? Download the <a href="../assets/q-cheat-sheet.pdf" target="_blank">q Cheat Sheet (PDF download)</a>.</p>
+</div>
+<h2 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Permanent link">&para;</a></h2>
+<style>
+ .kx-tight td,
+ .kx-tight th {
+  font-size: 85%;
+  padding: 0 .4em;
+ }
+ .kx-tight th {
+  border-bottom: 1px solid rgba(0,0,0,.3);
+  opacity: .7;
+  text-align: left;
+ }
+ .kx-tight thead {
+  border-bottom: 1px solid #aaa;
+ }
+</style>
+
+<table class="kx-tight">
+<tbody markdown>
+<tr>
+<p><td markdown><a href="abs/" title="absolute value">abs</a></td><td markdown><a href="cor/" title="correlation">cor</a></td><td markdown><a href="ej/" title="equi-join">ej</a></td><td markdown><a href="gtime/" title="UTC timestamp">gtime</a></td><td markdown><a href="like/" title="pattern matching">like</a></td><td markdown><a href="min/#mins" title="minimum of preceding items">mins</a></td><td markdown><a href="next/#prev" title="previous items">prev</a></td><td markdown><a href="cov/#scov" title="statistical covariance">scov</a></td><td markdown><a href="system/" title="execute system command">system</a></td><td markdown><a href="avg/#wavg" title="weighted average">wavg</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="cos/" title="arccosine">acos</a></td><td markdown><a href="cos/" title="cosine">cos</a></td><td markdown><a href="ema/" title="exponentially-weighted moving average">ema</a></td><td markdown><a href="hopen/#hclose" title="close a file or process">hclose</a></td><td markdown><a href="lj/" title="left join">lj ljf</a></td><td markdown><a href="max/#mmax" title="moving maxima">mmax</a></td><td markdown><a href="prior/" title="apply function between each item and its predecessor">prior</a></td><td markdown><a href="dev/#sdev" title="statistical standard deviation">sdev</a></td><td markdown><a href="tables/" title="sorted list of tables">tables</a></td><td markdown><a href="where/" title="replicated items">where</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="aj/" title="as-of join">aj aj0</a></td><td markdown><a href="count/" title="number of items">count</a></td><td markdown><a href="enlist/" title="arguments as a list">enlist</a></td><td markdown><a href="hcount/" title="size of a file">hcount</a></td><td markdown><a href="load/" title="load binary data">load</a></td><td markdown><a href="min/#mmin" title="moving minima">mmin</a></td><td markdown><a href="rand/" title="random number">rand</a></td><td markdown><a href="select/" title="select columns from a table">select</a></td><td markdown><a href="tan/" title="tangent">tan</a></td><td markdown><a href="while/" title="repeat under condition">while</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="aj/" title="as-of join">ajf ajf0</a></td><td markdown><a href="cov/" title="covariance">cov</a></td><td markdown><a href="eval/" title="evaluate a parse tree">eval</a></td><td markdown><a href="hdel/" title="delete a file">hdel</a></td><td markdown><a href="log/" title="natural logarithm">log</a></td><td markdown><a href="mmu/" title="matrix multiplication">mmu</a></td><td markdown><a href="rank/" title="grade up">rank</a></td><td markdown><a href="get/#set" title="assign a value to a name">set</a></td><td markdown><a href="til/" title="integers up to x">til</a></td><td markdown><a href="within/" title="flag items within range">within</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="all-any/#all" title="all nonzero">all</a></td><td markdown><a href="cross/" title="cross product">cross</a></td><td markdown><a href="except/" title="left argument without items in right argument">except</a></td><td markdown><a href="hopen/" title="open a file">hopen</a></td><td markdown><a href="lower/" title="lower case">lower</a></td><td markdown><a href="mod/" title="remainder">mod</a></td><td markdown><a href="ratios/" title="ratios of consecutive pairs">ratios</a></td><td markdown><a href="getenv/#setenv" title="set an environment variable">setenv</a></td><td markdown><a href="trim/" title="remove leading and trailing spaces">trim</a></td><td markdown><a href="wj/" title="window join">wj wj1</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="lesser/" title="lesser">and</a></td><td markdown><a href="csv/" title="comma delimiter">csv</a></td><td markdown><a href="exec/" title="">exec</a></td><td markdown><a href="hsym/" title="convert symbol to filename or IP address">hsym</a></td><td markdown><a href="lsq/" title="least squares – matrix divide">lsq</a></td><td markdown><a href="sum/#msum" title="moving sum">msum</a></td><td markdown><a href="raze/" title="join items">raze</a></td><td markdown><a href="show/" title="format to the console">show</a></td><td markdown><a href="type/" title="data type">type</a></td><td markdown><a href="sum/#wsum" title="weighted sum">wsum</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="all-any/#any" title="any item is non-zero">any</a></td><td markdown><a href="cut/" title="cut array into pieces">cut</a></td><td markdown><a href="exit/" title="terminate q">exit</a></td><td markdown><a href="asc/#iasc" title="indices of ascending sort">iasc</a></td><td markdown><a href="gtime/#ltime" title="local timestamp">ltime</a></td><td markdown><a href="neg/" title="negate">neg</a></td><td markdown><a href="read0/" title="read file as lines">read0</a></td><td markdown><a href="signum/" title="sign of its argument/s">signum</a></td><td markdown><a href="uj/" title="union join">uj ujf</a></td><td markdown><a href="asc/#xasc" title="table sorted ascending by columns">xasc</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="asc/" title="ascending sort">asc</a></td><td markdown><a href="delete/" title="delete rows or columns from a table">delete</a></td><td markdown><a href="exp/" title="power of e">exp</a></td><td markdown><a href="desc/#idesc" title="indices of descending sort">idesc</a></td><td markdown><a href="trim/" title="function remove leading spaces">ltrim</a></td><td markdown><a href="next/" title="next items">next</a></td><td markdown><a href="read1/" title="read file as bytes">read1</a></td><td markdown><a href="sin/" title="sine">sin</a></td><td markdown><a href="ungroup/" title="flattened table">ungroup</a></td><td markdown><a href="xbar/" title="interval bar">xbar</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="sin/" title="arcsine">asin</a></td><td markdown><a href="deltas/" title="differences between consecutive pairs">deltas</a></td><td markdown><a href="fby/" title="filter-by">fby</a></td><td markdown><a href="if/" title="if">if</a></td><td markdown><a href="avg/#mavg" title="moving average">mavg</a></td><td markdown><a href="not/" title="logical not">not</a></td><td markdown><a href="reciprocal/" title="reciprocal of a number">reciprocal</a></td><td markdown><a href="sqrt/" title="square root">sqrt</a></td><td markdown><a href="union/" title="distinct items of combination of two lists">union</a></td><td markdown><a href="cols/#xcol" title="rename table columns">xcol</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="asof/" title="as-of join">asof</a></td><td markdown><a href="desc/" title="descending sort">desc</a></td><td markdown><a href="fill/#fills" title="forward-fill nulls">fills</a></td><td markdown><a href="ij/" title="inner join">ij ijf</a></td><td markdown><a href="max/" title="maximum">max</a></td><td markdown><a href="null/" title="is argument a null">null</a></td><td markdown><a href="eval/#reval" title="variation of eval">reval</a></td><td markdown><a href="ss/" title="string search">ss</a></td><td markdown><a href="update/" title="insert or replace table records">update</a></td><td markdown><a href="cols/#xcols" title="re-order table columns">xcols</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="tan/" title="arctangent">atan</a></td><td markdown><a href="dev/" title="standard deviation">dev</a></td><td markdown><a href="first/" title="first item">first</a></td><td markdown><a href="in/" title="membership">in</a></td><td markdown><a href="max/#maxs" title="maxima of preceding items">maxs</a></td><td markdown><a href="greater/" title="greater">or</a></td><td markdown><a href="reverse/" title="reverse the order of items">reverse</a></td><td markdown><a href="ss/#ssr" title="string search and replace">ssr</a></td><td markdown><a href="lower/" title="upper-case">upper</a></td><td markdown><a href="desc/#xdesc" title="table sorted descending by columns">xdesc</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="attr/" title="attributes">attr</a></td><td markdown><a href="differ/" title="flag differences in consecutive pairs">differ</a></td><td markdown><a href="fkeys/" title="foreign-key columns mapped to their tables">fkeys</a></td><td markdown><a href="insert/" title="append records to a table">insert</a></td><td markdown><a href="count/#mcount" title="moving count">mcount</a></td><td markdown><a href="over/" title="reduce an array with a value">over</a></td><td markdown><a href="load/#rload" title="load a splayed table">rload</a></td><td markdown><a href="string/" title="cast to string">string</a></td><td markdown><a href="upsert/" title="add table records">upsert</a></td><td markdown><a href="exp/#xexp" title="raised to a power">xexp</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="avg/#avg" title="arithmetic mean">avg</a></td><td markdown><a href="distinct/" title="unique items">distinct</a></td><td markdown><a href="flip/" title="transpose">flip</a></td><td markdown><a href="inter/" title="items common to both arguments">inter</a></td><td markdown><a href="md5/" title="MD5 hash">md5</a></td><td markdown><a href="parse/" title="parse a string">parse</a></td><td markdown><a href="rotate/" title="rotate items">rotate</a></td><td markdown><a href="sublist/" title="sublist of a list">sublist</a></td><td markdown><a href="value/" title="value of a variable or dictionary key; value of an executed sting">value</a></td><td markdown><a href="xgroup/" title="table grouped by keys">xgroup</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="avg/#avgs" title="running averages">avgs</a></td><td markdown><a href="div/" title="integer division">div</a></td><td markdown><a href="floor/" title="greatest integer less than argument">floor</a></td><td markdown><a href="inv/" title="matrix inverse">inv</a></td><td markdown><a href="dev/#mdev" title="moving deviation">mdev</a></td><td markdown><a href="each/" title="parallel each">peach</a></td><td markdown><a href="save/#rsave" title="">rsave</a></td><td markdown><a href="sum/" title="sum of a list">sum</a></td><td markdown><a href="var/" title="variance">var</a></td><td markdown><a href="keys/#xkey" title="set primary keys of a table">xkey</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="bin/" title="binary search">bin binr</a></td><td markdown><a href="do/" title="repeat">do</a></td><td markdown><a href="get/" title="get a q data file">get</a></td><td markdown><a href="key/" title="keys of a dictionary etc.">key</a></td><td markdown><a href="med/" title="median">med</a></td><td markdown><a href="pj/" title="plus join">pj</a></td><td markdown><a href="trim/" title="remove trailing spaces">rtrim</a></td><td markdown><a href="sum/#sums" title="cumulative sums">sums</a></td><td markdown><a href="view/" title="definition of a dependency">view</a></td><td markdown><a href="log/#xlog" title="base-x logarithm">xlog</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="ceiling/" title="lowest integer above">ceiling</a></td><td markdown><a href="dsave/" title="save global tables to disk">dsave</a></td><td markdown><a href="getenv/" title="value of an environment variable">getenv</a></td><td markdown><a href="keys/" title="names of a table's columns">keys</a></td><td markdown><a href="meta/" title="metadata of a table">meta</a></td><td markdown><a href="prd/" title="product">prd</a></td><td markdown><a href="save/" title="save global data to file">save</a></td><td markdown><a href="sv/" title="decode/consolidate">sv</a></td><td markdown><a href="view/#views" title="list of defined views">views</a></td><td markdown><a href="next/#xprev" title="previous items">xprev</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="cols/#cols" title="column names of a table">cols</a></td><td markdown><a href="each/" title="apply to each item">each</a></td><td markdown><a href="group/" title="dictionary of distinct items">group</a></td><td markdown><a href="first/#last" title="last item">last</a></td><td markdown><a href="min/" title="minimum">min</a></td><td markdown><a href="prd/" title="running products">prds</a></td><td markdown><a href="over/" title="apply value to successive items">scan</a></td><td markdown><a href="var/#svar" title="statistical variance">svar</a></td><td markdown><a href="vs/" title="encode">vs</a></td><td markdown><a href="xrank/" title="items assigned to buckets">xrank</a></td></p>
+</tr>
+</tbody>
+</table>
+<h3 id="by-category">By category<a class="headerlink" href="#by-category" title="Permanent link">&para;</a></h3>
+<table class="kx-tight">
+<tbody>
+<tr>
+<p><td markdown>control</td><td markdown><a href="do/" title="repeat">do</a>, <a href="exit/" title="terminate q">exit</a>, <a href="if/" title="if">if</a>, <a href="while/" title="repeat under condition">while</a></td></p>
+</tr>
+<tr>
+<p><td markdown>env</td><td markdown><a href="getenv/" title="value of an environment variable">getenv</a>, <a href="gtime/" title="UTC timestamp">gtime</a>, <a href="gtime/#ltime" title="local timestamp">ltime</a>, <a href="getenv/#setenv" title="set an environment variable">setenv</a></td></p>
+</tr>
+<tr>
+<p><td markdown>interpret</td><td markdown><a href="eval/" title="evaluate a parse tree">eval</a>, <a href="parse/" title="parse a string">parse</a>, <a href="eval/#reval" title="variation of eval">reval</a>, <a href="show/" title="format to the console">show</a>, <a href="system/" title="execute system command">system</a>, <a href="value/" title="value of a variable or dictionary key; value of an executed sting">value</a></td></p>
+</tr>
+<tr>
+<p><td markdown>io</td><td markdown><a href="dsave/" title="save global tables to disk">dsave</a>, <a href="get/" title="get a q data file">get</a>, <a href="hopen/#hclose" title="close a file or process">hclose</a>, <a href="hcount/" title="size of a file">hcount</a>, <a href="hdel/" title="delete a file">hdel</a>, <a href="hopen/" title="open a file">hopen</a>, <a href="hsym/" title="convert symbol to filename or IP address">hsym</a>, <a href="load/" title="load binary data">load</a>, <a href="read0/" title="read file as lines">read0</a>, <a href="read1/" title="read file as bytes">read1</a>, <a href="load/#rload" title="load a splayed table">rload</a>, <a href="save/#rsave" title="">rsave</a>, <a href="save/" title="save global data to file">save</a>, <a href="get/#set" title="assign a value to a name">set</a></td></p>
+</tr>
+<tr>
+<p><td markdown>iterate</td><td markdown><a href="each/" title="apply to each item">each</a>, <a href="over/" title="reduce an array with a value">over</a>, <a href="each/" title="parallel each">peach</a>, <a href="prior/" title="apply function between each item and its predecessor">prior</a>, <a href="over/" title="apply value to successive items">scan</a></td></p>
+</tr>
+<tr>
+<p><td markdown>join</td><td markdown><a href="aj/" title="as-of join">aj aj0</a>, <a href="aj/" title="as-of join">ajf ajf0</a>, <a href="asof/" title="as-of join">asof</a>, <a href="ej/" title="equi-join">ej</a>, <a href="ij/" title="inner join">ij ijf</a>, <a href="lj/" title="left join">lj ljf</a>, <a href="pj/" title="plus join">pj</a>, <a href="uj/" title="union join">uj ujf</a>, <a href="wj/" title="window join">wj wj1</a></td></p>
+</tr>
+<tr>
+<p><td markdown>list</td><td markdown><a href="count/" title="number of items">count</a>, <a href="cross/" title="cross product">cross</a>, <a href="cut/" title="cut array into pieces">cut</a>, <a href="enlist/" title="arguments as a list">enlist</a>, <a href="except/" title="left argument without items in right argument">except</a>, <a href="fill/#fills" title="forward-fill nulls">fills</a>, <a href="first/" title="first item">first</a>, <a href="flip/" title="transpose">flip</a>, <a href="group/" title="dictionary of distinct items">group</a>, <a href="in/" title="membership">in</a>, <a href="inter/" title="items common to both arguments">inter</a>, <a href="first/#last" title="last item">last</a>, <a href="count/#mcount" title="moving count">mcount</a>, <a href="next/" title="next items">next</a>, <a href="next/#prev" title="previous items">prev</a>, <a href="raze/" title="join items">raze</a>, <a href="reverse/" title="reverse the order of items">reverse</a>, <a href="rotate/" title="rotate items">rotate</a>, <a href="sublist/" title="sublist of a list">sublist</a>, <a href="sv/" title="decode/consolidate">sv</a>, <a href="til/" title="integers up to x">til</a>, <a href="union/" title="distinct items of combination of two lists">union</a>, <a href="vs/" title="encode">vs</a>, <a href="where/" title="replicated items">where</a>, <a href="next/#xprev" title="previous items">xprev</a></td></p>
+</tr>
+<tr>
+<p><td markdown>logic</td><td markdown><a href="all-any/#all" title="all nonzero">all</a>, <a href="lesser/" title="lesser">and</a>, <a href="all-any/#any" title="any item is non-zero">any</a>, <a href="not/" title="logical not">not</a>, <a href="greater/" title="greater">or</a></td></p>
+</tr>
+<tr>
+<p><td markdown>math</td><td markdown><a href="abs/" title="absolute value">abs</a>, <a href="cos/" title="arccosine">acos</a>, <a href="sin/" title="arcsine">asin</a>, <a href="tan/" title="arctangent">atan</a>, <a href="avg/#avg" title="arithmetic mean">avg</a>, <a href="avg/#avgs" title="running averages">avgs</a>, <a href="ceiling/" title="lowest integer above">ceiling</a>, <a href="cor/" title="correlation">cor</a>, <a href="cos/" title="cosine">cos</a>, <a href="cov/" title="covariance">cov</a>, <a href="deltas/" title="differences between consecutive pairs">deltas</a>, <a href="dev/" title="standard deviation">dev</a>, <a href="div/" title="integer division">div</a>, <a href="ema/" title="exponentially-weighted moving average">ema</a>, <a href="exp/" title="power of e">exp</a>, <a href="floor/" title="greatest integer less than argument">floor</a>, <a href="inv/" title="matrix inverse">inv</a>, <a href="log/" title="natural logarithm">log</a>, <a href="lsq/" title="least squares – matrix divide">lsq</a>, <a href="avg/#mavg" title="moving average">mavg</a>, <a href="max/" title="maximum">max</a>, <a href="max/#maxs" title="maxima of preceding items">maxs</a>, <a href="dev/#mdev" title="moving deviation">mdev</a>, <a href="med/" title="median">med</a>, <a href="min/" title="minimum">min</a>, <a href="min/#mins" title="minimum of preceding items">mins</a>, <a href="max/#mmax" title="moving maxima">mmax</a>, <a href="min/#mmin" title="moving minima">mmin</a>, <a href="mmu/" title="matrix multiplication">mmu</a>, <a href="mod/" title="remainder">mod</a>, <a href="sum/#msum" title="moving sum">msum</a>, <a href="neg/" title="negate">neg</a>, <a href="prd/" title="product">prd</a>, <a href="prd/" title="running products">prds</a>, <a href="rand/" title="random number">rand</a>, <a href="ratios/" title="ratios of consecutive pairs">ratios</a>, <a href="reciprocal/" title="reciprocal of a number">reciprocal</a>, <a href="cov/#scov" title="statistical covariance">scov</a>, <a href="dev/#sdev" title="statistical standard deviation">sdev</a>, <a href="signum/" title="sign of its argument/s">signum</a>, <a href="sin/" title="sine">sin</a>, <a href="sqrt/" title="square root">sqrt</a>, <a href="sum/" title="sum of a list">sum</a>, <a href="sum/#sums" title="cumulative sums">sums</a>, <a href="var/#svar" title="statistical variance">svar</a>, <a href="tan/" title="tangent">tan</a>, <a href="var/" title="variance">var</a>, <a href="avg/#wavg" title="weighted average">wavg</a>, <a href="within/" title="flag items within range">within</a>, <a href="sum/#wsum" title="weighted sum">wsum</a>, <a href="exp/#xexp" title="raised to a power">xexp</a>, <a href="log/#xlog" title="base-x logarithm">xlog</a></td></p>
+</tr>
+<tr>
+<p><td markdown>meta</td><td markdown><a href="attr/" title="attributes">attr</a>, <a href="null/" title="is argument a null">null</a>, <a href="tables/" title="sorted list of tables">tables</a>, <a href="type/" title="data type">type</a>, <a href="view/" title="definition of a dependency">view</a>, <a href="view/#views" title="list of defined views">views</a></td></p>
+</tr>
+<tr>
+<p><td markdown>query</td><td markdown><a href="delete/" title="delete rows or columns from a table">delete</a>, <a href="exec/" title="">exec</a>, <a href="fby/" title="filter-by">fby</a>, <a href="select/" title="select columns from a table">select</a>, <a href="update/" title="insert or replace table records">update</a></td></p>
+</tr>
+<tr>
+<p><td markdown>sort</td><td markdown><a href="asc/" title="ascending sort">asc</a>, <a href="bin/" title="binary search">bin binr</a>, <a href="desc/" title="descending sort">desc</a>, <a href="differ/" title="flag differences in consecutive pairs">differ</a>, <a href="distinct/" title="unique items">distinct</a>, <a href="asc/#iasc" title="indices of ascending sort">iasc</a>, <a href="desc/#idesc" title="indices of descending sort">idesc</a>, <a href="rank/" title="grade up">rank</a>, <a href="xbar/" title="interval bar">xbar</a>, <a href="xrank/" title="items assigned to buckets">xrank</a></td></p>
+</tr>
+<tr>
+<p><td markdown>table</td><td markdown><a href="cols/#cols" title="column names of a table">cols</a>, <a href="csv/" title="comma delimiter">csv</a>, <a href="fkeys/" title="foreign-key columns mapped to their tables">fkeys</a>, <a href="insert/" title="append records to a table">insert</a>, <a href="key/" title="keys of a dictionary etc.">key</a>, <a href="keys/" title="names of a table's columns">keys</a>, <a href="meta/" title="metadata of a table">meta</a>, <a href="ungroup/" title="flattened table">ungroup</a>, <a href="upsert/" title="add table records">upsert</a>, <a href="asc/#xasc" title="table sorted ascending by columns">xasc</a>, <a href="cols/#xcol" title="rename table columns">xcol</a>, <a href="cols/#xcols" title="re-order table columns">xcols</a>, <a href="desc/#xdesc" title="table sorted descending by columns">xdesc</a>, <a href="xgroup/" title="table grouped by keys">xgroup</a>, <a href="keys/#xkey" title="set primary keys of a table">xkey</a></td></p>
+</tr>
+<tr>
+<p><td markdown>text</td><td markdown><a href="like/" title="pattern matching">like</a>, <a href="lower/" title="lower case">lower</a>, <a href="trim/" title="function remove leading spaces">ltrim</a>, <a href="md5/" title="MD5 hash">md5</a>, <a href="trim/" title="remove trailing spaces">rtrim</a>, <a href="ss/" title="string search">ss</a>, <a href="ss/#ssr" title="string search and replace">ssr</a>, <a href="string/" title="cast to string">string</a>, <a href="trim/" title="remove leading and trailing spaces">trim</a>, <a href="lower/" title="upper-case">upper</a></td></p>
+</tr>
+</tbody>
+</table>
+<p><a href="dotq/#id-sanitize"><code>.Q.id</code></a> (sanitize),
+<a href="dotq/#res-keywords"><code>.Q.res</code></a> (reserved words)</p>
+<h2 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link">&para;</a></h2>
+<style>.kx-glyph{background-color: rgba(0,0,0,.05);font-size: 110%;text-align: center; white-space: nowrap;}</style>
+<table class="kx-tight">
+<tr>
+<td class="kx-glyph"><a href="overloads/#dot"><code>.</code></a></td>
+<p><td colspan="3" markdown><a href="apply/">Apply</a>, <a href="apply/#index">Index</a>, <a href="apply/#trap">Trap</a>, <a href="amend/">Amend</a></td></p>
+<td class="kx-glyph"><a href="overloads/#at"><code>@</code></a></td>
+<p><td colspan="3" markdown><a href="apply/#apply-at-index-at">Apply At</a>, <a href="apply/#apply-at-index-at">Index At</a>, <a href="apply/#trap-at">Trap At</a>, <a href="amend/">Amend At</a></td></p>
+</tr>
+<tr>
+<td class="kx-glyph"><a href="overloads/#dollar"><code>$</code></a></td>
+<p><td colspan="7" markdown><a href="cast/">Cast</a>, <a href="tok/">Tok</a>, <a href="enumerate/">Enumerate</a>, <a href="pad/">Pad</a>, <a href="mmu/"><code>mmu</code></a></td></p>
+</tr>
+<tr>
+<td class="kx-glyph"><a href="overloads/#bang"><code>!</code></a></td>
+<p><td colspan="7" markdown><a href="dict/">Dict</a>, <a href="enkey/">Enkey</a>, <a href="enkey/#unkey">Unkey</a>, <a href="enumeration/">Enumeration</a>, <a href="flip-splayed/">Flip Splayed</a>, <a href="display/">Display</a>, <a href="../basics/internal/">internal</a>, <a href="../basics/funsql/#update">Update</a>, <a href="../basics/funsql/#delete">Delete</a>, <a href="lsq/"><code>lsq</code></a></td></p>
+</tr>
+<tr>
+<td class="kx-glyph"><a href="overloads/#query"><code>?</code></a></td>
+<p><td colspan="7" markdown><a href="find/">Find</a>, <a href="deal/">Roll, Deal</a>, <a href="enum-extend/">Enum Extend</a>, <a href="../basics/funsql/#select">Select</a>, <a href="../basics/funsql/#exec">Exec</a>, <a href="../basics/funsql/#simple-exec">Simple Exec</a>, <a href="vector-conditional/">Vector Conditional</a></td></p>
+</tr>
+<tr></tr>
+<tr>
+<p><td markdown class="kx-glyph"><code>+ - * %</code></td><td colspan="7" markdown><a href="add/">Add</a>, <a href="subtract/">Subtract</a>, <a href="multiply/">Multiply</a>, <a href="divide/">Divide</a></td> </p>
+</tr>
+<tr>
+<p><td markdown class="kx-glyph"><code>= &lt;&gt; ~</code></td><td colspan="7" markdown><a href="../basics/comparison/#six-comparison-operators">Equals</a>, <a href="../basics/comparison/#six-comparison-operators">Not Equals</a>, <a href="../basics/comparison/#match">Match</a></td></p>
+</tr>
+<tr>
+<td class="kx-glyph"><code>&lt; &lt;= &gt;= &gt;</code></td>
+<p><td colspan="7" markdown><a href="../basics/comparison/#six-comparison-operators">Less Than</a>, <a href="../basics/comparison/#six-comparison-operators">Up To</a>, <a href="../basics/comparison/#six-comparison-operators">At Least</a>, <a href="../basics/comparison/#six-comparison-operators">Greater Than</a></td></p>
+</tr>
+<tr>
+<p><td markdown class="kx-glyph"><code>| &amp;</code></td><td colspan="3" markdown><a href="greater/">Greater (OR)</a>, <a href="lesser/">Lesser, AND</a></td> </p>
+</tr>
+<tr>
+<td class="kx-glyph"><a href="overloads/#hash"><code>#</code></a></td>
+<p><td colspan="3" markdown><a href="take/">Take</a>, <a href="set-attribute/">Set&nbsp;Attribute</a></td></p>
+<td class="kx-glyph"><a href="overloads/#_-underscore"><code>_</code></a></td>
+<p><td markdown><a href="cut/">Cut</a>, <a href="drop/">Drop</a></td></p>
+<td class="kx-glyph"><code>:</code></td>
+<p><td markdown><a href="assign/">Assign</a></td></p>
+</tr>
+<tr>
+<td class="kx-glyph"><code>^</code></td>
+<p><td colspan="3" markdown><a href="fill/">Fill</a>, <a href="coalesce/">Coalesce</a></td></p>
+<td class="kx-glyph"><code>,</code></td>
+<p><td markdown><a href="join/">Join</a></td></p>
+<td class="kx-glyph"><a href="overloads/#quote"><code>'</code></a></td>
+<p><td markdown><a href="compose/">Compose</a></td></p>
+</tr>
+<tr>
+<p><td markdown class="kx-glyph"><code>0: 1: 2:</code></td><td colspan="7" markdown><a href="file-text/">File Text</a>, <a href="file-binary/">File Binary</a>, <a href="dynamic-load/">Dynamic Load</a></td> </p>
+</tr>
+<tr>
+<p><td markdown class="kx-glyph"><code>0 ±1 ±2 ±n</code></td><td colspan="7" markdown>write to <a href="../basics/handles/">console, stdout, stderr, handle <em>n</em></a></td> </p>
+</tr>
+<tr>
+<p><td markdown class="kx-glyph" colspan="6"><code>.: @: $: !: ?: +: -: *: %: =: ~: &lt;: &gt;: |: &amp;: #: _: ^: ,:</code></td><td colspan="2" markdown><a href="assign/#assign-through-operator">Assign through operator</a></td> </p>
+</tr>
+</table>
+<p><a href="overloads/">Overloaded glyphs</a></p>
+<h2 id="iterators"><a href="iterators/">Iterators</a><a class="headerlink" href="#iterators" title="Permanent link">&para;</a></h2>
+<div class="typewriter">
+<p><a href="maps/">maps</a>                                                    <a href="accumulators/">accumulators</a>
+<a href="overloads/#quote"><code>'</code></a>   <a href="maps/#each">Each</a>, <a href="each/"><code>each</code></a>, <a href="maps/#case">Case</a>       <code>/:</code>  <a href="maps/#each-left-and-each-right">Each Right</a>              <a href="overloads/#slash"><code>/</code></a>  <a href="accumulators/">Over</a>, <a href="over/"><code>over</code></a>
+<a href="overloads/#quote-colon"><code>':</code></a>  <a href="maps/#each-parallel">Each Parallel</a>, <a href="each/"><code>peach</code></a>   <code>\:</code>  <a href="maps/#each-left-and-each-right">Each Left</a>               <a href="overloads/#backslash"><code>\</code></a>  <a href="accumulators/">Scan</a>, <a href="over/"><code>scan</code></a>
+<a href="overloads/#quote-colon"><code>':</code></a>  <a href="maps/#each-prior">Each Prior</a>, <a href="prior/"><code>prior</code></a></p>
+</div>
+<h2 id="execution-control"><a href="../basics/control/">Execution control</a><a class="headerlink" href="#execution-control" title="Permanent link">&para;</a></h2>
+<div class="typewriter">
+<p><a href="apply/#trap">.[f;x;e] Trap</a>          <a href="../basics/function-notation/#explicit-return">: Return</a>        <a href="do/">do</a>  <a href="exit/">exit</a>         <a href="cond/">$[x;y;z] Cond</a>
+<a href="apply/#trap">@[f;x;e] Trap-At</a>       <a href="signal/">' Signal</a>        <a href="if/">if</a>  <a href="while/">while</a>        <a href="../basics/pattern/#pattern-conditional">:[v;p1;r1;...] Pattern conditional</a></p>
+</div>
+<p><a href="../basics/debug/">Debugging</a></p>
+<h2 id="other">Other<a class="headerlink" href="#other" title="Permanent link">&para;</a></h2>
+<div class="typewriter">
+<p><a href="../basics/debug/">`   pop stack</a>        <a href="overloads/#colon-colon">::</a>   <a href="identity/">identity</a>         <a href="../basics/syscmds/">\x  system cmd x</a>
+<a href="overloads/#dot">.</a>   <a href="../basics/debug/">push stack</a>            <a href="identity/">generic null</a>     <a href="../basics/debug/">\    abort</a>
+                          <a href="../basics/function-notation/#name-scope">global amend</a>     \\   quit q
+                          <a href="../learn/views/">set view</a>         /    comment</p>
+<p>()     <a href="../basics/syntax/#precedence-and-order-of-evaluation">precedence</a>    [;]  <a href="../basics/syntax/#conditional-evaluation-and-control-statements">expn block</a>       {}  <a href="../basics/function-notation/">lambda</a>       `   symbol
+(;)    <a href="../basics/syntax/#list-notation">list</a>               <a href="../basics/syntax/#bracket-notation">argt list</a>        ;   separator    `:  filepath
+([]..) <a href="../basics/syntax/#table-notation">table</a></p>
+</div>
+<!-- <td markdown class="kx-glyph">`:`</td><td markdown>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
+
+<h2 id="attributes"><a href="../basics/syntax/#attributes">Attributes</a><a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h2>
+<div class="typewriter">
+<p><strong>g</strong> grouped     <strong>p</strong> parted     <strong>s</strong> sorted     <strong>u</strong> unique</p>
+</div>
+<p><a href="set-attribute/">Set Attribute</a></p>
+<h2 id="command-line-options-and-system-commands">Command-line options and system commands<a class="headerlink" href="#command-line-options-and-system-commands" title="Permanent link">&para;</a></h2>
+<table class="kx-tight">
+<tr>
+<p><td markdown><a href="../basics/cmdline/#file">file</a></td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/syscmds/#a-tables"><code>\a</code></a></td><td markdown>tables</td><td markdown><a href="../basics/syscmds/#r-rename"><code>\r</code></a></td><td markdown>rename</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-b-blocked"><code>-b</code></a></td><td markdown>blocked</td><td markdown><a href="../basics/cmdline/#-s-secondary-threads"><code>-s</code></a> <a href="../basics/syscmds/#s-number-of-secondary-threads"><code>\s</code></a></td><td markdown>secondary processes</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/syscmds/#b-views"><code>\b</code></a> <a href="../basics/syscmds/#b-pending-views"><code>\B</code></a></td><td markdown>views</td><td markdown><a href="../basics/cmdline/#-s-random-seed"><code>-S</code></a> <a href="../basics/syscmds/#s-random-seed"><code>\S</code></a></td><td markdown>random seed</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-c-console-size"><code>-c</code></a> <a href="../basics/syscmds/#c-console-size"><code>\c</code></a></td><td markdown>console size</td><td markdown><a href="../basics/cmdline/#-t-timer-ticks"><code>-t</code></a> <a href="../basics/syscmds/#t-timer"><code>\t</code></a></td><td markdown>timer ticks</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-c-http-size"><code>-C</code></a> <a href="../basics/syscmds/#c-http-size"><code>\C</code></a></td><td markdown>HTTP size</td><td markdown><a href="../basics/syscmds/#ts-time-and-space"><code>\ts</code></a></td><td markdown>time and space</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/syscmds/#cd-change-directory"><code>\cd</code></a></td><td markdown>change directory</td><td markdown><a href="../basics/cmdline/#-t-timeout"><code>-T</code></a> <a href="../basics/syscmds/#t-timeout"><code>\T</code></a></td><td markdown>timeout</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/syscmds/#d-directory"><code>\d</code></a></td><td markdown>directory</td><td markdown><a href="../basics/cmdline/#-u-usr-pwd-local"><code>-u</code></a> <a href="../basics/cmdline/#-u-usr-pwd"><code>-U</code></a> <a href="../basics/syscmds/#u-reload-user-password-file"><code>\u</code></a></td><td markdown>usr-pwd</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-e-error-traps"><code>-e</code></a> <a href="../basics/syscmds/#e-error-trap-clients"><code>\e</code></a></td><td markdown>error traps</td><td markdown><a href="../basics/cmdline/#-u-disable-syscmds"><code>-u</code></a></td><td markdown>disable syscmds</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-e-tls-server-mode"><code>-E</code></a> <a href="../basics/syscmds/#e-tls-server-mode"><code>\E</code></a></td><td markdown>TLS server mode</td><td markdown><a href="../basics/syscmds/#v-variables"><code>\v</code></a></td><td markdown>variables</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/syscmds/#f-functions"><code>\f</code></a></td><td markdown>functions</td><td markdown><a href="../basics/cmdline/#-w-workspace"><code>-w</code></a> <a href="../basics/syscmds/#w-workspace"><code>\w</code></a></td><td markdown>memory</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-g-garbage-collection"><code>-g</code></a> <a href="../basics/syscmds/#g-garbage-collection-mode"><code>\g</code></a></td><td markdown>garbage collection</td><td markdown><a href="../basics/cmdline/#-w-start-week"><code>-W</code></a> <a href="../basics/syscmds/#w-week-offset"><code>\W</code></a></td><td markdown>week offset</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/syscmds/#l-load-file-or-directory"><code>\l</code></a></td><td markdown>load file or directory</td><td markdown><a href="../basics/syscmds/#x-expunge"><code>\x</code></a></td><td markdown>expunge</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-l-log-updates"><code>-l</code></a> <a href="../basics/cmdline/#-l-log-sync"><code>-L</code></a></td><td markdown>log sync</td><td markdown><a href="../basics/cmdline/#-z-date-format"><code>-z</code></a> <a href="../basics/syscmds/#z-date-parsing"><code>\z</code></a></td><td markdown>date format</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-o-utc-offset"><code>-o</code></a> <a href="../basics/syscmds/#o-offset-from-utc"><code>\o</code></a></td><td markdown>UTC offset</td><td markdown><a href="../basics/syscmds/#1-2-redirect"><code>\1</code> <code>\2</code></a></td><td markdown>redirect</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-p-listening-port"><code>-p</code></a> <a href="../basics/syscmds/#p-listening-port"><code>\p</code></a></td><td markdown>listening port</td><td markdown><a href="../basics/syscmds/#_-hide-q-code"><code>\_</code></a></td><td markdown>hide q code</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-p-display-precision"><code>-P</code></a> <a href="../basics/syscmds/#p-precision"><code>\P</code></a></td><td markdown>display precision</td><td markdown><a href="../basics/syscmds/#terminate"><code>\</code></a></td><td markdown>terminate</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-q-quiet-mode"><code>-q</code></a></td><td markdown>quiet mode</td><td markdown><a href="../basics/syscmds/#toggle-qk"><code>\</code></a></td><td markdown>toggle q/k</td></p>
+</tr>
+<tr>
+<p><td markdown><a href="../basics/cmdline/#-r-replicate"><code>-r</code></a> <a href="../basics/syscmds/#r-replication-primary"><code>\r</code></a></td><td markdown>replicate</td><td markdown><a href="../basics/syscmds/#quit"><code>\\</code></a></td><td markdown>quit</td></p>
+</tr>
+</table>
+<p><a href="system/"><code>system</code></a>
+<br></p>
+<p><a href="../basics/cmdline/">Command-line options</a>,
+<a href="../basics/syscmds/">System commands</a>,
+<a href="../basics/syscmds/#os-commands">OS commands</a></p>
+<!--
+## Environment variables
+
+<table class="kx-tight">
+<thead><tr markdown><th>var</th><th>default</th><th>use</th></tr></thead>
+<tbody>
+<tr markdown><td markdown><code>QHOME</code></td><td markdown><code>$HOME/q</code></td><td markdown>folder searched for q.k and unqualified script names</td></tr>
+<tr markdown><td markdown><code>QLIC</code></td><td markdown><code>$HOME</code></td><td markdown>folder searched for k4.lic license file</td></tr>
+<tr markdown><td markdown><code>QINIT</code></td><td markdown><code>q.q</code></td><td markdown>additional file loaded after q.k has initialised</td></tr>
+<tr markdown><td markdown><code>LINES</code></td><td markdown/><td markdown>supplied by OS, used to set <code>\c</code></td></tr>
+<tr markdown><td markdown><code>COLUMNS</code></td><td markdown/><td markdown><code>\c $LINES $COLUMNS</code></td></tr>
+</tbody>
+</table>
+
+If not set, `LINES COLUMNS` default to 25 80 for console, and 36 2000 for Web. `\c` [clamps](https://en.wikipedia.org/wiki/Clamping_(graphics) "wikipedia definition") to range 10…2000 for both inputs.
+
+Ensure `LINES` and `COLUMNS` are exported. In Bash
+<pre class="highlight"><code class="language-bash">$ export LINES COLUMNS</code></pre>
+before starting q.
+<pre class="highlight"><code class="language-q">q)getenv`VARNAME
+q)`VARNAME setenv "NEWVALUE"</code></pre>
+ -->
+
+<h2 id="datatypes"><a href="../basics/datatypes/">Datatypes</a><a class="headerlink" href="#datatypes" title="Permanent link">&para;</a></h2>
+<div class="typewriter">
+<p><strong>Basic datatypes</strong>
+n   c   name      sz  literal            null inf SQL       Java      .Net
+------------------------------------------------------------------------------------
+0   *   list
+1   b   boolean   1   0b                                    Boolean   boolean
+2   g   guid      16                     0Ng                UUID      GUID
+4   x   byte      1   0x00                                  Byte      byte
+5   h   short     2   0h                 0Nh  0Wh smallint  Short     int16
+6   i   int       4   0i                 0Ni  0Wi int       Integer   int32
+7   j   long      8   0j                 0Nj  0Wj bigint    Long      int64
+                      0                  0N   0W
+8   e   real      4   0e                 0Ne  0We real      Float     single
+9   f   float     8   0.0                0n   0w  float     Double    double
+                      0f                 0Nf
+10  c   char      1   " "                " "                Character char
+11  s   symbol        `                  `        varchar
+12  p   timestamp 8   dateDtimespan      0Np  0Wp           Timestamp DateTime (RW)
+13  m   month     4   2000.01m           0Nm
+14  d   date      4   2000.01.01         0Nd  0Wd date      Date
+15  z   datetime  8   dateTtime          0Nz  0wz timestamp Timestamp DateTime (RO)
+16  n   timespan  8   00:00:00.000000000 0Nn  0Wn           Timespan  TimeSpan
+17  u   minute    4   00:00              0Nu  0Wu
+18  v   second    4   00:00:00           0Nv  0Wv
+19  t   time      4   00:00:00.000       0Nt  0Wt time      Time      TimeSpan</p>
+<p>Columns:
+<em>n</em>    short int returned by <a href="type/"><code>type</code></a> and used for <a href="cast/">Cast</a>, e.g. <code>9h$3</code>
+<em>c</em>    character used lower-case for <a href="cast/">Cast</a> and upper-case for <a href="tok/">Tok</a> and <a href="file-text/#load-csv">Load CSV</a>
+<em>sz</em>   size in bytes
+<em>inf</em>  infinity (no math on temporal types); <code>0Wh</code> is <code>32767h</code></p>
+<p>RO: read only; RW: read-write</p>
+<p><strong>Other datatypes</strong>
+20-76   enums
+77      anymap                                      104  <a href="../basics/application/#projection">projection</a>
+78-96   77+t – mapped list of lists of type t       105  <a href="compose/">composition</a>
+97      nested sym enum                             106  <a href="maps/#each">f'</a>
+98      table                                       107  <a href="accumulators/">f/</a>
+99      dictionary                                  108  <a href="accumulators/">f\</a>
+100     <a href="../basics/function-notation/">lambda</a>                                      109  <a href="maps/">f':</a>
+101     unary primitive                             110  <a href="maps/#each-left-and-each-right">f/:</a>
+102     operator                                    111  <a href="maps/#each-left-and-each-right">f\:</a>
+103     <a href="iterators/">iterator</a>                                    112  <a href="dynamic-load/">dynamic load</a></p>
+</div>
+<p>Above, <code>f</code> is an <a href="../basics/glossary/#applicable-value">applicable value</a>.</p>
+<p>Nested types are 77+t (e.g. 78 is boolean. 96 is time.)</p>
+<p><a href="cast/">Cast <code>$</code></a>: where <code>char</code> is from the <code>c</code> column above <code>char$data:CHAR$string</code></p>
+<pre class="highlight"><code class="language-txt">dict:`a`b!…
+table:([]x:…;y:…)
+date.(year month week mm dd)
+time.(minute second mm ss)
+milliseconds: time mod 1000</code></pre>
+<h2 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">&para;</a></h2>
+<h3 id="h-markup"><a href="doth/"><code>.h</code></a> (markup)<a class="headerlink" href="#h-markup" title="Permanent link">&para;</a></h3>
+<p>HTTP, markup and data conversion.</p>
+<h3 id="j-json"><a href="dotj/"><code>.j</code></a> (JSON)<a class="headerlink" href="#j-json" title="Permanent link">&para;</a></h3>
+<p>De/serialize as JSON.</p>
+<h3 id="m-modules"><a href="dotm/"><code>.m</code></a> (modules)<a class="headerlink" href="#m-modules" title="Permanent link">&para;</a></h3>
+<p>The currently loaded modules. In kdb+ 4.x, <code>.m</code> is reserved for memory domain 1 objects. In kdb+ 5.0 and later, <code>.m</code> is used for modules.</p>
+<h3 id="q-utils"><a href="dotq/"><code>.Q</code></a> (utils)<a class="headerlink" href="#q-utils" title="Permanent link">&para;</a></h3>
+<p>Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O, debugging, profiling.</p>
+<h3 id="z-environment-callbacks"><a href="dotz/"><code>.z</code></a> (environment, callbacks)<a class="headerlink" href="#z-environment-callbacks" title="Permanent link">&para;</a></h3>
+<p>Environment, callbacks</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.fdtechnologies.com/">FD Technologies plc</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tabs.link", "content.code.copy", "header.autohide", "navigation.tabs", "navigation.top"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../local/scripts/prism.js"></script>
+        
+      
+        
+          <script src="../local/scripts/jquery-3.6.0.min.js"></script>
+        
+      
+        
+          <script src="../local/scripts/extra.js"></script>
+        
+      
+        
+          <script src="../local/scripts/mathjax.js"></script>
+        
+      
+        
+          <script src="../local/scripts/polyfill.min.js"></script>
+        
+      
+        
+          <script src="../local/scripts/tex-mml-chtml.js"></script>
+        
+      
+        
+          <script src="../scripts/strip-repl-prompts.js"></script>
+        
+      
+    
+  </body>
+</html>
