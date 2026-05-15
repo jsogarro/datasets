@@ -25,7 +25,6 @@ Datasets used to build, train, and evaluate a q/kdb+ specialized AI coding assis
 ```
 ~/sandbox/datasets/
 ├── README.md                     This file
-├── FILES_IN_USE.md               Tier-1/2/3 file usage guide
 │
 ├── data/
 │   ├── benchmark/                100-task evaluation benchmark
