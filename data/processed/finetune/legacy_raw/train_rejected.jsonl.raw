@@ -1,1 +1,0 @@
-{"instruction": "Using qSQL, Write q code for trim to perform data operations", "input": "", "output": "trim:{configParsing.ltrim[x] configParsing.rtrim[x] y}"}
